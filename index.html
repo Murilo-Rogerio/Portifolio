@@ -1,0 +1,2172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#08080a">
+<meta name="description" content="Portfólio e currículo interativo de Murilo Rogério Carvalho da Conceição — Desenvolvedor Full-Stack, Geotecnologia & WebGIS, Robótica & Automação.">
+<title>Murilo Rogério — Full-Stack · Geotecnologia & WebGIS</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b0b0f'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='26' font-weight='700' fill='%23e8e8ee' text-anchor='middle'%3EMR%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================================
+   DESIGN SYSTEM — tokens
+   ========================================================================== */
+:root{
+  --bg:        #08080a;
+  --surface:   rgba(255,255,255,.032);
+  --surface-2: rgba(255,255,255,.05);
+  --line:      rgba(255,255,255,.08);
+  --line-2:    rgba(255,255,255,.15);
+  --text:      #f2f2f5;
+  --text-2:    #babbc5;
+  --text-3:    #8a8b96;
+  --violet:    #8b5cf6;
+  --violet-2:  #a78bfa;
+  --indigo:    #6366f1;
+  --blue:      #60a5fa;
+  --green:     #34d399;
+  --rose:      #e8b0cd;
+  --font:      'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono:      'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease:      cubic-bezier(.22,.9,.32,1);
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+html{ color-scheme:dark; scroll-behavior:smooth; overflow-x:hidden; }
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font);
+  font-size:15px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+
+::selection{ background:rgba(139,92,246,.35); color:#fff; }
+
+::-webkit-scrollbar{ width:10px; }
+::-webkit-scrollbar-track{ background:var(--bg); }
+::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.1); border-radius:8px; border:2px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover{ background:rgba(255,255,255,.18); }
+
+a{ color:inherit; text-decoration:none; }
+ul,ol{ list-style:none; }
+button{ font:inherit; color:inherit; background:none; border:none; cursor:pointer; text-align:left; }
+
+:focus-visible{ outline:2px solid rgba(167,139,250,.7); outline-offset:3px; border-radius:6px; }
+
+/* cursor nativo escondido apenas quando o custom está ativo (via JS) */
+html.cursor-on, html.cursor-on *{ cursor:none !important; }
+
+/* ==========================================================================
+   BARRA DE PROGRESSO DE LEITURA (topo fixo)
+   ========================================================================== */
+#progress{
+  position:fixed; top:0; left:0; z-index:70;
+  width:0%; height:3px;
+  background:linear-gradient(90deg, #a855f7, #6366f1);
+  box-shadow:0 0 12px rgba(139,92,246,.45);
+  border-radius:0 99px 99px 0;
+}
+
+/* ==========================================================================
+   AMBIENTE — luz de fundo, grão e spotlight
+   ========================================================================== */
+.ambient{
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(880px 620px at 16% -8%,  rgba(122,86,214,.13), transparent 62%),
+    radial-gradient(760px 540px at 90% 4%,   rgba(54,104,214,.10), transparent 60%),
+    radial-gradient(900px 720px at 72% 110%, rgba(88,58,178,.08),  transparent 56%),
+    var(--bg);
+}
+
+.grain{
+  position:fixed; inset:0; z-index:60; pointer-events:none; opacity:.028;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.spotlight{
+  position:fixed; top:0; left:0; z-index:40;
+  width:600px; height:600px; border-radius:50%;
+  pointer-events:none; mix-blend-mode:screen;
+  background:radial-gradient(circle, rgba(139,92,246,.075), rgba(56,130,246,.045) 42%, transparent 66%);
+  opacity:0; transition:opacity .8s ease;
+  will-change:transform;
+}
+.spotlight.on{ opacity:1; }
+
+/* ==========================================================================
+   CURSOR CUSTOMIZADO (ponto + anel) — só desktop com pointer fino
+   ========================================================================== */
+#cursor-dot, #cursor-ring{
+  position:fixed; top:0; left:0; z-index:90;
+  pointer-events:none; opacity:0;
+  border-radius:50%;
+  transition:opacity .4s ease;
+}
+#cursor-dot{
+  width:6px; height:6px;
+  background:#cbb8ff;
+  box-shadow:0 0 10px rgba(167,139,250,.7);
+  transform:translate3d(var(--x,-100px), var(--y,-100px), 0) translate(-50%,-50%);
+}
+#cursor-ring{
+  width:36px; height:36px;
+  border:1.5px solid rgba(167,139,250,.55);
+  transform:translate3d(var(--x,-100px), var(--y,-100px), 0) translate(-50%,-50%) scale(var(--s,1));
+  transition:opacity .4s ease, border-color .35s ease;
+}
+html.cursor-live #cursor-dot,
+html.cursor-live #cursor-ring{ opacity:1; }
+html.cursor-live #cursor-ring.link{
+  --s:1.65;
+  border-color:rgba(196,181,253,.9);
+}
+@media (pointer:coarse){
+  #cursor-dot, #cursor-ring{ display:none; }
+}
+
+/* ==========================================================================
+   ÍCONES
+   ========================================================================== */
+.ic{
+  width:18px; height:18px; flex:none;
+  fill:none; stroke:currentColor; stroke-width:2;
+  stroke-linecap:round; stroke-linejoin:round;
+}
+
+/* ==========================================================================
+   GRID BENTO
+   ========================================================================== */
+.wrap{
+  position:relative; z-index:2;
+  max-width:1080px; margin:0 auto;
+  padding:44px 24px 40px;
+}
+.bento{
+  display:grid;
+  grid-template-columns:repeat(12, 1fr);
+  gap:18px;
+}
+.cell{ display:grid; }
+.stack{ display:flex; flex-direction:column; gap:18px; }
+.sp-12{ grid-column:span 12; }
+.sp-7 { grid-column:span 7;  }
+.sp-6 { grid-column:span 6;  }
+.sp-5 { grid-column:span 5;  }
+.sp-4 { grid-column:span 4;  }
+.sp-3 { grid-column:span 3;  }
+
+/* ==========================================================================
+   PAINEL DE VIDRO — agora com tilt 3D composto via variáveis
+   (--rx/--ry escritas pelo JS nos cards .tilt; --lift pelo hover)
+   ========================================================================== */
+.panel{
+  position:relative;
+  border-radius:24px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.045);
+  transform:perspective(1100px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateZ(0) translateY(var(--lift,0px));
+  transform-style:preserve-3d;
+  transition:
+    transform .5s var(--ease),
+    background-color .45s ease,
+    border-color .45s ease,
+    box-shadow .45s ease;
+}
+
+/* brilho interno que acompanha o cursor */
+.panel::before{
+  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  background:radial-gradient(520px circle at var(--mx,-600px) var(--my,-600px), rgba(255,255,255,.055), transparent 42%);
+  opacity:0; transition:opacity .45s ease;
+}
+
+/* borda em gradiente que acende no hover */
+.panel::after{
+  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  padding:1px;
+  background:linear-gradient(135deg, rgba(167,139,250,.55), rgba(96,165,250,.18) 42%, rgba(255,255,255,.28));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+          mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          mask-composite:exclude;
+  opacity:0; transition:opacity .45s ease;
+}
+
+@media (hover:hover){
+  .panel:hover{
+    --lift:-4px;
+    background-color:var(--surface-2);
+    border-color:var(--line-2);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 26px 52px -26px rgba(0,0,0,.75);
+  }
+  .panel:hover::before,
+  .panel:hover::after{ opacity:1; }
+}
+
+@supports not (backdrop-filter:blur(1px)){
+  .panel{ background:rgba(18,18,24,.86); }
+}
+
+/* ==========================================================================
+   PERFIL
+   ========================================================================== */
+.profile{
+  padding:46px 28px 42px;
+  text-align:center;
+}
+.profile > *{ position:relative; }
+
+.avatar{
+  position:relative;
+  width:114px; height:114px;
+  margin:0 auto 22px;
+}
+.avatar-halo{
+  position:absolute; inset:-16px; border-radius:50%; z-index:-1;
+  background:radial-gradient(circle, rgba(139,92,246,.22), transparent 64%);
+}
+.avatar-ring{
+  position:absolute; inset:0; border-radius:50%;
+  background:conic-gradient(from 0deg,
+    rgba(255,255,255,0) 0deg,
+    rgba(139,92,246,.95) 62deg,
+    rgba(125,165,250,.8) 128deg,
+    rgba(255,255,255,.07) 205deg,
+    rgba(255,255,255,0) 300deg,
+    rgba(139,92,246,.35) 360deg);
+  animation:ring-spin 7s linear infinite;
+}
+.avatar-core{
+  position:absolute; inset:4px; border-radius:50%;
+  background:#0c0c10;
+  border:1px solid rgba(255,255,255,.07);
+  display:grid; place-items:center;
+  font-weight:600; font-size:29px; letter-spacing:.03em; color:#eef0f4;
+}
+@keyframes ring-spin{ to{ transform:rotate(360deg); } }
+
+.profile h1{
+  font-size:clamp(25px, 4.4vw, 35px);
+  font-weight:600; letter-spacing:-.03em; line-height:1.18;
+}
+.profile h1 .soft{ font-weight:400; color:#b9bac6; }
+
+.roles{
+  margin-top:11px;
+  font-family:var(--mono); font-size:11px; font-weight:500;
+  letter-spacing:.13em; text-transform:uppercase;
+  color:var(--text-3);
+}
+
+.pills{
+  display:flex; gap:10px; justify-content:center;
+  flex-wrap:wrap; margin-top:20px;
+}
+.pill{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 15px; border-radius:999px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.09);
+  font-size:12.5px; font-weight:500; color:#d9dae1;
+}
+.pill .ic{ width:14px; height:14px; color:#9a9baa; }
+.pill.status{
+  background:rgba(52,211,153,.08);
+  border-color:rgba(52,211,153,.24);
+  color:#d3f3e4;
+}
+.pill.status .dot{
+  width:8px; height:8px; border-radius:50%; flex:none;
+  background:var(--green);
+  animation:dot-ping 2.2s cubic-bezier(.4,0,.2,1) infinite;
+}
+@keyframes dot-ping{
+  0%   { box-shadow:0 0 0 0 rgba(52,211,153,.5); }
+  75%  { box-shadow:0 0 0 9px rgba(52,211,153,0); }
+  100% { box-shadow:0 0 0 0 rgba(52,211,153,0); }
+}
+@keyframes soft-pulse{ 0%,100%{ opacity:1; } 50%{ opacity:.55; } }
+
+/* ==========================================================================
+   MARQUEE — letreiro infinito entre o hero e o conteúdo
+   ========================================================================== */
+.marquee{
+  grid-column:span 12;
+  overflow:hidden;
+  padding:15px 0;
+  border-top:1px solid rgba(255,255,255,.07);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  -webkit-mask:linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+          mask:linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+}
+.marquee-track{
+  display:flex; gap:0;
+  width:max-content;
+  animation:marquee 30s linear infinite;
+}
+.marquee:hover .marquee-track{ animation-play-state:paused; }
+.marquee-track > span{
+  display:inline-flex; align-items:center; gap:14px;
+  padding-right:14px;
+  white-space:nowrap;
+  font-family:var(--mono); font-size:11.5px; font-weight:500;
+  letter-spacing:.18em; text-transform:uppercase;
+  color:var(--text-2);
+}
+.marquee-track > span i{
+  font-style:normal; color:var(--violet-2);
+  font-size:12px;
+}
+@keyframes marquee{ to{ transform:translateX(-50%); } }
+
+/* ==========================================================================
+   RÓTULO DE SEÇÃO
+   ========================================================================== */
+.spec-head{
+  display:flex; align-items:center; gap:14px;
+  margin-bottom:10px;
+  font-family:var(--mono); font-size:10px; font-weight:500;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--text-3);
+}
+.spec-head::after{
+  content:""; flex:1; height:1px;
+  background:linear-gradient(90deg, rgba(255,255,255,.13), rgba(255,255,255,.02));
+}
+
+/* ==========================================================================
+   RESUMO + MÉTRICAS COM CONTADORES
+   ========================================================================== */
+.summary{
+  padding:26px 28px 24px;
+  display:flex; flex-direction:column;
+}
+.summary p{
+  margin-top:14px;
+  font-size:14.5px; line-height:1.8; color:var(--text-2);
+}
+.summary p strong{ font-weight:500; color:#e7e7ec; }
+
+.metrics{
+  display:grid; grid-template-columns:repeat(4, 1fr);
+  gap:14px;
+  margin-top:auto; padding-top:22px;
+}
+.metric{
+  padding:14px 14px 12px;
+  border-radius:14px;
+  background:rgba(255,255,255,.028);
+  border:1px solid rgba(255,255,255,.06);
+}
+.metric b{
+  display:block;
+  font-family:var(--mono); font-size:clamp(22px, 3vw, 28px);
+  font-weight:600; letter-spacing:-.02em; color:#ececf2;
+  font-variant-numeric:tabular-nums;
+  line-height:1.1;
+}
+.metric b em{ font-style:normal; color:var(--violet-2); }
+.metric span{
+  display:block; margin-top:6px;
+  font-size:10.5px; line-height:1.45; color:var(--text-3);
+}
+
+/* ==========================================================================
+   FICHA TÉCNICA
+   ========================================================================== */
+.ficha{ padding:24px; display:flex; flex-direction:column; }
+.ficha header{ display:flex; align-items:center; gap:13px; margin-bottom:8px; }
+.sk-icon{
+  width:38px; height:38px; flex:none;
+  display:grid; place-items:center; border-radius:11px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.09);
+  color:#d6d7de;
+}
+.ficha h2{ font-size:15.5px; font-weight:600; letter-spacing:-.01em; }
+.frow{
+  display:flex; justify-content:space-between; align-items:baseline;
+  gap:16px; padding:11px 0;
+}
+.frow + .frow{ border-top:1px solid rgba(255,255,255,.055); }
+.frow dt{
+  font-family:var(--mono); font-size:9.5px; font-weight:500;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); flex:none;
+}
+.frow dd{ font-size:13px; color:#d5d6de; text-align:right; }
+
+/* ==========================================================================
+   TERMINAL — murilo.config.ts
+   ========================================================================== */
+.terminal{ padding:0; overflow:hidden; display:flex; flex-direction:column; }
+.t-bar{
+  display:flex; align-items:center; gap:8px;
+  padding:13px 18px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.025);
+}
+.t-dots{ display:flex; gap:6px; }
+.t-dots i{
+  width:9px; height:9px; border-radius:50%;
+  background:rgba(255,255,255,.14);
+}
+.t-dots i:first-child{ background:rgba(255,255,255,.22); }
+.t-name{
+  margin-left:6px;
+  font-family:var(--mono); font-size:10.5px; font-weight:500;
+  letter-spacing:.08em; color:var(--text-3);
+}
+.t-body{
+  padding:18px 20px 20px;
+  overflow-x:auto;
+  font-family:var(--mono); font-size:12px; line-height:1.85;
+}
+.t-row{ display:flex; gap:18px; white-space:pre; }
+.t-ln{
+  width:2ch; flex:none; text-align:right;
+  color:#4c4d57; user-select:none;
+}
+.t-code{ color:#b9bac6; }
+.tk-kw  { color:#c4b5fd; }
+.tk-prop{ color:#93c5fd; }
+.tk-str { color:#9ce0b0; }
+.tk-num { color:#f0b6d0; }
+.tk-com { color:#63646f; font-style:italic; }
+.tk-pun { color:#8a8b96; }
+.t-caret{
+  display:inline-block; width:7px; height:15px;
+  background:rgba(196,181,253,.85); vertical-align:-2px;
+  animation:soft-pulse 1.1s steps(2) infinite;
+}
+
+/* ==========================================================================
+   WIDGET LOCALIZAÇÃO / RELÓGIO + AÇÕES RÁPIDAS
+   ========================================================================== */
+.geo{ padding:22px; display:flex; flex-direction:column; }
+.geo header{ display:flex; align-items:center; gap:13px; }
+.geo h2{ font-size:15.5px; font-weight:600; letter-spacing:-.01em; }
+.geo .g-sub{
+  margin-top:3px;
+  font-family:var(--mono); font-size:10px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--text-3);
+}
+.clock{
+  margin-top:16px;
+  font-family:var(--mono); font-size:clamp(28px, 4vw, 34px);
+  font-weight:600; letter-spacing:.02em; color:#ececf2;
+  font-variant-numeric:tabular-nums;
+  line-height:1.1;
+}
+.clock small{
+  font-size:13px; font-weight:500; color:var(--violet-2);
+}
+.g-date{
+  margin-top:7px;
+  font-size:12px; color:var(--text-3);
+}
+.g-tz{
+  display:inline-flex; align-items:center; gap:7px;
+  margin-top:14px; padding-top:14px;
+  border-top:1px solid rgba(255,255,255,.06);
+  font-family:var(--mono); font-size:10px; font-weight:500;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--text-3);
+}
+.g-tz .ic{ width:12px; height:12px; }
+
+.actions{ padding:22px; display:flex; flex-direction:column; gap:12px; }
+.actions h2{ font-size:15.5px; font-weight:600; letter-spacing:-.01em; margin-bottom:2px; }
+.actions .a-sub{ font-size:12px; color:var(--text-3); margin-bottom:6px; }
+.act{
+  display:flex; align-items:center; gap:13px;
+  padding:15px 18px; border-radius:16px;
+  font-size:13.5px; font-weight:600;
+  transition:transform .35s var(--ease), background-color .3s ease,
+             border-color .3s ease, box-shadow .35s ease;
+}
+.act .ic{ width:17px; height:17px; }
+.act small{
+  display:block; font-size:10.5px; font-weight:400;
+  font-family:var(--mono); letter-spacing:.06em; color:inherit;
+  opacity:.65; margin-top:2px;
+}
+.act-solid{
+  background:#ececf1; color:#0a0a0e;
+}
+.act-solid:hover{
+  background:#fff; transform:translateY(-1px);
+  box-shadow:0 12px 28px -12px rgba(0,0,0,.7);
+}
+.act-ghost{
+  border:1px solid rgba(255,255,255,.13); color:#e4e4ea;
+}
+.act-ghost:hover{
+  background:rgba(255,255,255,.06);
+  border-color:rgba(255,255,255,.28);
+  transform:translateY(-1px);
+}
+
+/* ==========================================================================
+   CONTATOS — grid 1 / 2 / 4 colunas (sem overlap)
+   ========================================================================== */
+.quick-grid{
+  grid-column:span 12;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+}
+.quick{
+  display:flex; align-items:center; gap:14px;
+  padding:16px 18px;
+  border-radius:20px;
+}
+.q-icon{
+  width:42px; height:42px; flex:none;
+  display:grid; place-items:center;
+  border-radius:12px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.09);
+  color:#d9dae1;
+  transition:border-color .4s ease, color .4s ease;
+}
+.quick:hover .q-icon, .q-main:hover .q-icon{ border-color:rgba(167,139,250,.35); color:#f0effb; }
+.q-txt{ min-width:0; }
+.quick strong, .q-main strong{
+  display:block; font-size:14.5px; font-weight:600; color:#ededf1;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.quick em, .q-main em{
+  display:block; margin-top:2px;
+  font-style:normal; font-family:var(--mono); font-size:10.5px;
+  color:var(--text-3);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.q-arrow{
+  margin-left:auto; color:#63636e;
+  transition:transform .35s var(--ease), color .35s ease;
+}
+.quick:hover .q-arrow, .q-main:hover .q-arrow{ transform:translate(3px,-3px); color:#c9c9d4; }
+
+/* card dividido: ação principal + botão de copiar (sem overlap) */
+.quick.dual{ padding:0; overflow:hidden; }
+.q-main{
+  display:flex; align-items:center; gap:12px;
+  flex:1; min-width:0;
+  padding:16px 12px 16px 18px;
+}
+.q-copy{
+  flex:none; width:54px; align-self:stretch;
+  display:grid; place-items:center;
+  border-left:1px solid rgba(255,255,255,.08);
+  color:#84858f;
+  transition:color .35s ease, background-color .35s ease;
+}
+.q-copy:hover{ color:#f0effb; background:rgba(255,255,255,.045); }
+.q-copy .ic{ width:16px; height:16px; }
+
+/* ==========================================================================
+   PAINÉIS GRANDES (experiência + projetos)
+   ========================================================================== */
+.project{ padding:26px 28px 28px; }
+
+.panel-head{
+  display:flex; align-items:flex-start; gap:16px; flex-wrap:wrap;
+  margin-bottom:24px;
+}
+.p-badges{ display:flex; gap:8px; flex-wrap:wrap; }
+
+.badge{
+  display:inline-flex; align-items:center; gap:7px;
+  padding:6px 12px; border-radius:999px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.09);
+  font-family:var(--mono); font-size:10.5px; font-weight:500;
+  letter-spacing:.1em; text-transform:uppercase; color:#cbcbd5;
+}
+.bdot{ width:6px; height:6px; border-radius:50%; flex:none; }
+.b-violet{ background:var(--violet); }
+.b-blue  { background:var(--blue); }
+.b-rose  { background:var(--rose); }
+.b-green { background:var(--green); animation:soft-pulse 2s ease-in-out infinite; }
+
+/* ----- widgets ilustrativos ----- */
+.p-widget{
+  margin-left:auto; flex:none;
+  width:218px; padding:10px 12px 8px;
+  border-radius:14px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.08);
+  transform:rotate(-1.4deg);
+  transition:transform .45s var(--ease);
+}
+.project.alt .p-widget{ transform:rotate(1.6deg); }
+.p-widget:hover{ transform:rotate(0deg) scale(1.03); }
+.w-label{
+  display:block; margin-bottom:7px;
+  font-family:var(--mono); font-size:9px; font-weight:500;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--text-3);
+}
+.p-widget svg{ display:block; width:100%; height:auto; }
+
+/* widget: dispersão Risco × Retorno */
+.w-line{ stroke:rgba(255,255,255,.1); stroke-width:1; }
+.w-trend{ stroke:rgba(255,255,255,.16); stroke-width:1; stroke-dasharray:3 4; }
+.w-pt{ fill:rgba(255,255,255,.5); }
+.w-pt.v{ fill:rgba(167,139,250,.92); }
+.w-pt.b{ fill:rgba(96,165,250,.85); }
+.w-ring{
+  fill:none; stroke:rgba(167,139,250,.7); stroke-width:1;
+  transform-box:fill-box; transform-origin:center;
+  animation:ping 2.6s cubic-bezier(.2,.6,.35,1) infinite;
+}
+@keyframes ping{
+  0%        { transform:scale(.4); opacity:.9; }
+  75%,100%  { transform:scale(2.4); opacity:0; }
+}
+.w-axis{ font-family:var(--mono); font-size:7px; letter-spacing:.12em; fill:rgba(255,255,255,.32); }
+
+/* widget: sacola click-to-chat */
+.w-item{
+  display:flex; align-items:center; gap:8px;
+  padding:5px 0; font-size:11px; color:var(--text-2);
+}
+.w-item + .w-item{ border-top:1px solid rgba(255,255,255,.06); }
+.w-swatch{ width:6px; height:6px; border-radius:2px; background:rgba(255,255,255,.28); flex:none; }
+.w-item b{ margin-left:auto; font-family:var(--mono); font-size:10px; font-weight:600; color:#d9dae1; }
+.w-cta{
+  display:flex; align-items:center; gap:7px;
+  margin-top:7px; padding-top:8px;
+  border-top:1px solid rgba(255,255,255,.08);
+  font-family:var(--mono); font-size:9.5px; letter-spacing:.04em;
+  color:#5fdcae;
+}
+.w-cta .ic{ width:12px; height:12px; }
+
+/* widget: malha de voo (aerolevantamento) */
+.w-contour{ fill:none; stroke:rgba(255,255,255,.055); stroke-width:1; }
+.w-flight{ fill:none; stroke:rgba(255,255,255,.16); stroke-width:1; stroke-dasharray:4 4; }
+.w-x{ stroke:rgba(255,255,255,.18); stroke-width:1; }
+.w-gcp{ fill:rgba(96,165,250,.9); }
+.w-gcp-ring{
+  fill:none; stroke:rgba(96,165,250,.55); stroke-width:1;
+  transform-box:fill-box; transform-origin:center;
+  animation:ping 2.8s cubic-bezier(.2,.6,.35,1) infinite;
+}
+.w-plane-a{ fill:rgba(196,181,253,.95); }
+.w-plane-b{ fill:rgba(147,197,253,.9); }
+
+/* ----- corpo: identidade + specs ----- */
+.project-body{
+  display:grid; grid-template-columns:5fr 7fr; gap:44px;
+}
+.project.alt .project-body{ grid-template-columns:7fr 5fr; }
+.project.alt .p-info{ order:2; }
+.exp-body{ display:grid; grid-template-columns:7fr 5fr; gap:44px; }
+
+.p-info{ display:flex; flex-direction:column; }
+
+.p-id{ display:flex; align-items:center; gap:15px; }
+.p-icon{
+  width:52px; height:52px; flex:none;
+  display:grid; place-items:center;
+  border-radius:16px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.09);
+  color:#d9dae1;
+}
+.p-icon .ic{ width:23px; height:23px; }
+.p-id h3{ font-size:21px; font-weight:600; letter-spacing:-.02em; line-height:1.2; }
+.p-tag{
+  margin-top:3px;
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--text-3);
+}
+
+.p-desc{
+  margin-top:18px;
+  font-size:14px; line-height:1.72; color:var(--text-2);
+}
+
+.p-stack{ display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
+.chip{
+  padding:6px 11px; border-radius:8px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.07);
+  font-family:var(--mono); font-size:11px; font-weight:500;
+  color:#c2c3cd;
+  transition:border-color .35s ease, color .35s ease, transform .35s var(--ease);
+  cursor:default;
+}
+.chip:hover{ border-color:rgba(167,139,250,.38); color:#eeedf6; }
+@media (hover:hover){ .chip:hover{ transform:translateY(-1px); } }
+.chip.core{ border-color:rgba(255,255,255,.15); color:#ececF2; }
+.chip.live{ border-color:rgba(52,211,153,.3); color:#d3f3e4; }
+
+.p-actions{
+  display:flex; flex-wrap:wrap; gap:12px;
+  margin-top:auto; padding-top:26px;
+}
+.btn{
+  display:inline-flex; align-items:center; gap:9px;
+  padding:12px 22px; border-radius:999px;
+  font-size:13.5px; font-weight:600; letter-spacing:.01em;
+  transition:transform .35s var(--ease), background-color .3s ease,
+             border-color .3s ease, box-shadow .35s ease;
+}
+.btn .ic{ width:15px; height:15px; transition:transform .35s var(--ease); }
+.btn-solid{ background:#ececf1; color:#0a0a0e; }
+.btn-solid:hover{
+  background:#fff; transform:translateY(-1px);
+  box-shadow:0 10px 26px -10px rgba(0,0,0,.65);
+}
+.btn-solid:hover .ic{ transform:translate(2px,-2px); }
+.btn-ghost{ border:1px solid rgba(255,255,255,.13); color:#e4e4ea; }
+.btn-ghost:hover{
+  background:rgba(255,255,255,.06);
+  border-color:rgba(255,255,255,.28);
+  transform:translateY(-1px);
+}
+
+/* ----- destaques de engenharia ----- */
+.spec-list li{
+  display:flex; gap:16px;
+  padding:13px 12px; margin:0 -12px;
+  border-radius:12px;
+  transition:background-color .3s ease;
+}
+.spec-list li + li{ border-top:1px solid rgba(255,255,255,.055); }
+.spec-list li:hover{ background:rgba(255,255,255,.03); }
+.spec-num{
+  font-family:var(--mono); font-size:11px; font-weight:600;
+  color:#5c5c67; padding-top:2px;
+  transition:color .3s ease;
+}
+.spec-list li:hover .spec-num{ color:var(--violet-2); }
+.spec-list strong{ display:block; font-size:13.5px; font-weight:600; color:#e9e9ee; }
+.spec-list p{ margin-top:2px; font-size:12.5px; line-height:1.6; color:var(--text-3); }
+.spec-list code{
+  font-family:var(--mono); font-size:11px;
+  background:rgba(255,255,255,.05); border-radius:4px; padding:1px 5px;
+  color:#c9c9d4;
+}
+
+/* ==========================================================================
+   EXPERIÊNCIA — timeline de cargos
+   ========================================================================== */
+.xp-wrap{ margin-top:24px; display:flex; flex-direction:column; }
+.xp{ display:flex; gap:18px; position:relative; padding-bottom:28px; }
+.xp:last-child{ padding-bottom:0; }
+.xp::before{
+  content:""; position:absolute; left:5px; top:20px; bottom:4px; width:1px;
+  background:linear-gradient(rgba(255,255,255,.16), rgba(255,255,255,.05));
+}
+.xp:last-child::before{ display:none; }
+.xp-dot{
+  width:11px; height:11px; border-radius:50%;
+  background:rgba(255,255,255,.25);
+  margin-top:5px; flex:none;
+}
+.xp-dot.now{
+  background:var(--green);
+  box-shadow:0 0 12px rgba(52,211,153,.5);
+  animation:soft-pulse 2.6s ease-in-out infinite;
+}
+.xp-body{ min-width:0; }
+.xp-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.xp-head h4{ font-size:15px; font-weight:600; color:#ededf1; }
+.xp-body > p{
+  margin-top:6px;
+  font-size:13px; line-height:1.65; color:var(--text-3);
+}
+
+/* ----- contrato com progresso em tempo real ----- */
+.contract{
+  padding:18px;
+  border-radius:16px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.07);
+}
+.c-top{
+  display:flex; justify-content:space-between; align-items:baseline;
+  gap:12px; margin-bottom:13px;
+}
+.c-range{
+  font-family:var(--mono); font-size:11px; font-weight:500;
+  letter-spacing:.04em; color:#cbcbd5;
+}
+.c-len{ font-family:var(--mono); font-size:10px; color:var(--text-3); }
+.c-track{
+  height:6px; border-radius:99px;
+  background:rgba(255,255,255,.07);
+  overflow:hidden;
+}
+.c-fill{
+  height:100%; width:0%;
+  border-radius:99px;
+  background:linear-gradient(90deg, rgba(139,92,246,.9), rgba(96,165,250,.85));
+  box-shadow:0 0 12px rgba(139,92,246,.35);
+  transition:width 1.2s var(--ease);
+}
+.c-meta{
+  display:flex; justify-content:space-between; gap:12px;
+  margin-top:10px;
+  font-family:var(--mono); font-size:10.5px; color:var(--text-3);
+}
+.c-areas{ display:flex; flex-wrap:wrap; gap:8px; }
+
+/* ==========================================================================
+   FORMAÇÃO & ROBÓTICA — entradas com ícone
+   ========================================================================== */
+.skill{ padding:24px; }
+.skill header{ display:flex; align-items:center; gap:13px; }
+.skill h2{ font-size:15.5px; font-weight:600; letter-spacing:-.01em; }
+.sk-sub{ margin:14px 0 15px; font-size:12.5px; line-height:1.55; color:var(--text-3); }
+.skill .chips{ display:flex; flex-wrap:wrap; gap:8px; }
+
+.entries li{ display:flex; gap:14px; padding:14px 12px; margin:0 -12px; border-radius:12px; transition:background-color .3s ease; }
+.entries li + li{ border-top:1px solid rgba(255,255,255,.055); }
+.entries li:hover{ background:rgba(255,255,255,.03); }
+.e-ic{
+  width:38px; height:38px; flex:none;
+  display:grid; place-items:center; border-radius:11px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.09);
+  color:#d6d7de;
+}
+.e-ic .ic{ width:17px; height:17px; }
+.e-body{ min-width:0; flex:1; }
+.e-head{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; }
+.e-head h4{ font-size:14px; font-weight:600; color:#ededf1; }
+.dur{
+  font-family:var(--mono); font-size:10px; font-weight:500;
+  letter-spacing:.06em;
+  padding:4px 9px; border-radius:6px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.09);
+  color:#cbcbd5;
+}
+.inst{
+  margin-top:3px;
+  font-family:var(--mono); font-size:10px; font-weight:500;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--text-3);
+}
+.e-body > p:not(.inst){
+  margin-top:6px;
+  font-size:12.5px; line-height:1.6; color:var(--text-3);
+}
+
+/* ==========================================================================
+   RODAPÉ
+   ========================================================================== */
+.foot{
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  padding:18px 24px;
+  font-family:var(--mono); font-size:11px; color:var(--text-3);
+}
+.f-copy{
+  display:inline-flex; align-items:center; gap:8px;
+  margin:0 auto; padding:6px 12px; border-radius:8px;
+  font-family:var(--mono); font-size:11px; color:var(--text-3);
+  transition:color .3s ease, background-color .3s ease;
+}
+.f-copy:hover{ color:#e8e8ee; background:rgba(255,255,255,.05); }
+.f-copy .ic{ width:13px; height:13px; }
+.f-right{ display:inline-flex; align-items:center; gap:7px; }
+.f-right .ic{ width:13px; height:13px; }
+
+/* ==========================================================================
+   TOAST
+   ========================================================================== */
+.toast{
+  position:fixed; left:50%; bottom:26px; z-index:80;
+  display:flex; align-items:center; gap:10px;
+  max-width:calc(100vw - 40px);
+  padding:13px 20px; border-radius:14px;
+  background:rgba(22,22,29,.92);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  box-shadow:0 18px 44px -14px rgba(0,0,0,.8);
+  font-size:13px; font-weight:500; color:#e8e8ee;
+  transform:translate(-50%, 18px); opacity:0; pointer-events:none;
+  transition:transform .45s var(--ease), opacity .45s ease;
+}
+.toast.show{ transform:translate(-50%, 0); opacity:1; }
+.toast .ic{ width:16px; height:16px; color:var(--green); }
+
+/* ==========================================================================
+   REVELAÇÃO AO ROLAR (fade-in-up escalonado)
+   ========================================================================== */
+.reveal{
+  opacity:0; transform:translateY(26px);
+  transition:opacity .85s var(--ease) var(--d,0s),
+             transform .85s var(--ease) var(--d,0s);
+}
+.reveal.in{ opacity:1; transform:none; }
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+@media (max-width:960px){
+  .wrap{ padding:32px 18px; }
+  .bento{ gap:14px; }
+  .sp-3{ grid-column:span 6; }
+  .sp-4{ grid-column:span 6; }
+  .sp-5{ grid-column:span 12; }
+  .sp-7{ grid-column:span 12; }
+  .project-body, .project.alt .project-body, .exp-body{ grid-template-columns:1fr; gap:30px; }
+  .project.alt .p-info{ order:0; }
+  .metrics{ grid-template-columns:repeat(2, 1fr); }
+}
+
+@media (min-width:640px){
+  .quick-grid{ grid-template-columns:repeat(2, 1fr); }
+}
+@media (min-width:768px){
+  .quick-grid{ grid-template-columns:repeat(4, 1fr); }
+}
+
+@media (max-width:600px){
+  .bento > .cell{ grid-column:span 12; }
+  .wrap{ padding:26px 16px 30px; }
+  .profile{ padding:38px 22px 36px; }
+  .project{ padding:22px 20px 24px; }
+  .skill{ padding:22px 20px; }
+  .summary{ padding:22px 20px 20px; }
+  .geo, .actions, .terminal .t-body{ padding-inline:20px; }
+  .terminal .t-bar{ padding-inline:16px; }
+  .p-widget{ margin-left:0; }
+  .p-desc{ font-size:13.5px; }
+  .foot{ flex-direction:column; align-items:flex-start; gap:10px; }
+  .f-copy{ margin:0; }
+  .panel{ backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
+  .marquee-track > span{ font-size:10px; letter-spacing:.14em; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  *, *::before, *::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
+  .reveal{ opacity:1; transform:none; }
+  .spotlight{ display:none; }
+  #cursor-dot, #cursor-ring{ display:none; }
+  .marquee-track{ animation:none; flex-wrap:wrap; width:100%; }
+  .marquee-track > span{ padding:3px 0; }
+}
+</style>
+
+<noscript>
+<style>.reveal{ opacity:1; transform:none; }</style>
+</noscript>
+</head>
+<body>
+
+<!-- Barra de progresso de leitura -->
+<div id="progress" role="progressbar" aria-label="Progresso de leitura da página" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+
+<div class="ambient" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="spotlight" aria-hidden="true"></div>
+
+<!-- Cursor customizado (apenas pointer fino, ativado via JS) -->
+<div id="cursor-dot" aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
+
+<!-- Sprite de ícones (paths Lucide, 24x24, stroke) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-github" viewBox="0 0 24 24">
+      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+      <path d="M9 18c-4.51 2-5-2-7-2"/>
+    </symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+      <rect width="4" height="12" x="2" y="9"/>
+      <circle cx="4" cy="4" r="2"/>
+    </symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24">
+      <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24">
+      <rect width="20" height="16" x="2" y="4" rx="2"/>
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+    </symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24">
+      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+    </symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24">
+      <path d="M7 7h10v10"/><path d="M7 17 17 7"/>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="M20 6 9 17l-5-5"/>
+    </symbol>
+    <symbol id="i-map-pin" viewBox="0 0 24 24">
+      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/>
+      <circle cx="12" cy="10" r="3"/>
+    </symbol>
+    <symbol id="i-map" viewBox="0 0 24 24">
+      <path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/>
+      <path d="M15 5.764v15"/><path d="M9 3.236v15"/>
+    </symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24">
+      <rect width="20" height="14" x="2" y="3" rx="2"/>
+      <line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/>
+    </symbol>
+    <symbol id="i-server" viewBox="0 0 24 24">
+      <rect width="20" height="8" x="2" y="2" rx="2" ry="2"/>
+      <rect width="20" height="8" x="2" y="14" rx="2" ry="2"/>
+      <line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/>
+    </symbol>
+    <symbol id="i-trending-up" viewBox="0 0 24 24">
+      <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+      <polyline points="16 7 22 7 22 13"/>
+    </symbol>
+    <symbol id="i-shopping-bag" viewBox="0 0 24 24">
+      <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+      <line x1="3" x2="21" y1="6" y2="6"/>
+      <path d="M16 10a4 4 0 0 1-8 0"/>
+    </symbol>
+    <symbol id="i-graduation" viewBox="0 0 24 24">
+      <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/>
+      <path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
+    </symbol>
+    <symbol id="i-award" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="6"/>
+      <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+    </symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24">
+      <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>
+    </symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24">
+      <rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/>
+      <path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/>
+      <path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/>
+    </symbol>
+    <symbol id="i-bot" viewBox="0 0 24 24">
+      <path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/>
+      <path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>
+    </symbol>
+    <symbol id="i-circuit" viewBox="0 0 24 24">
+      <rect width="18" height="18" x="3" y="3" rx="2"/>
+      <path d="M11 9h4a2 2 0 0 0 2-2V3"/><circle cx="9" cy="9" r="2"/>
+      <path d="M7 21v-4a2 2 0 0 1 2-2h4"/><circle cx="15" cy="15" r="2"/>
+    </symbol>
+    <symbol id="i-languages" viewBox="0 0 24 24">
+      <path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/>
+      <path d="m22 22-5-10-5 10"/><path d="M14 18h6"/>
+    </symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24">
+      <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+      <rect width="20" height="14" x="2" y="6" rx="2"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10"/>
+      <polyline points="12 6 12 12 16 14"/>
+    </symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24">
+      <polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/>
+    </symbol>
+    <symbol id="i-file-down" viewBox="0 0 24 24">
+      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+      <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+      <path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main class="wrap">
+  <div class="bento">
+
+    <!-- ======================= PERFIL ======================= -->
+    <div class="cell sp-12 reveal" style="--d:0s">
+      <header class="panel profile tilt">
+        <div class="avatar">
+          <span class="avatar-halo" aria-hidden="true"></span>
+          <span class="avatar-ring" aria-hidden="true"></span>
+          <span class="avatar-core">MR</span>
+        </div>
+        <h1>Murilo Rogério <span class="soft">Carvalho da Conceição</span></h1>
+        <p class="roles">Desenvolvedor Full-Stack &nbsp;·&nbsp; Geotecnologia &amp; WebGIS &nbsp;·&nbsp; Robótica &amp; Automação</p>
+        <div class="pills">
+          <span class="pill status"><span class="dot" aria-hidden="true"></span>Disponível para Oportunidades em TI / Efetivação</span>
+          <span class="pill"><svg class="ic" aria-hidden="true"><use href="#i-graduation"/></svg>3º Ano do Ensino Médio · 17 Anos</span>
+          <span class="pill"><svg class="ic" aria-hidden="true"><use href="#i-languages"/></svg>Inglês Intermediário</span>
+        </div>
+      </header>
+    </div>
+
+    <!-- ======================= MARQUEE INFINITO ======================= -->
+    <div class="marquee reveal" style="--d:.06s" aria-label="Áreas de atuação">
+      <div class="marquee-track">
+        <span>Next.js 15 <i>✦</i></span><span>WebGIS &amp; PostgreSQL <i>✦</i></span><span>Full-Stack Development <i>✦</i></span><span>Automação &amp; Robótica <i>✦</i></span><span>Foco em Performance <i>✦</i></span><span>UI/UX Responsivo <i>✦</i></span>
+        <span aria-hidden="true">Next.js 15 <i>✦</i></span><span aria-hidden="true">WebGIS &amp; PostgreSQL <i>✦</i></span><span aria-hidden="true">Full-Stack Development <i>✦</i></span><span aria-hidden="true">Automação &amp; Robótica <i>✦</i></span><span aria-hidden="true">Foco em Performance <i>✦</i></span><span aria-hidden="true">UI/UX Responsivo <i>✦</i></span>
+      </div>
+    </div>
+
+    <!-- ======================= CONTATOS (grid 1 / 2 / 4) ======================= -->
+    <div class="quick-grid reveal" style="--d:.1s">
+
+      <a class="panel quick" href="https://github.com/Murilo-Rogerio" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Murilo Rogério">
+        <span class="q-icon"><svg class="ic"><use href="#i-github"/></svg></span>
+        <span class="q-txt"><strong>GitHub</strong><em>github.com/Murilo-Rogerio</em></span>
+        <svg class="ic q-arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+      </a>
+
+      <a class="panel quick" href="https://www.linkedin.com/in/murilo-rog%C3%A9rio-220133322" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Murilo Rogério">
+        <span class="q-icon"><svg class="ic"><use href="#i-linkedin"/></svg></span>
+        <span class="q-txt"><strong>LinkedIn</strong><em>/in/murilo-rogério</em></span>
+        <svg class="ic q-arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+      </a>
+
+      <div class="panel quick dual">
+        <a class="q-main" href="https://wa.me/5518998121327" target="_blank" rel="noopener noreferrer" aria-label="Abrir conversa no WhatsApp">
+          <span class="q-icon"><svg class="ic"><use href="#i-whatsapp"/></svg></span>
+          <span class="q-txt"><strong>WhatsApp</strong><em>(18) 99812-1327</em></span>
+          <svg class="ic q-arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+        </a>
+        <button class="q-copy" type="button" data-copy="(18) 99812-1327" aria-label="Copiar número de telefone">
+          <svg class="ic"><use href="#i-copy"/></svg>
+        </button>
+      </div>
+
+      <div class="panel quick dual">
+        <a class="q-main" href="mailto:murilo.rogerio.conceicao@gmail.com" aria-label="Enviar e-mail para Murilo Rogério">
+          <span class="q-icon"><svg class="ic"><use href="#i-mail"/></svg></span>
+          <span class="q-txt"><strong>E-mail</strong><em>murilo.rogerio.conceicao@gmail.com</em></span>
+          <svg class="ic q-arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+        </a>
+        <button class="q-copy" type="button" data-copy="murilo.rogerio.conceicao@gmail.com" aria-label="Copiar endereço de e-mail">
+          <svg class="ic"><use href="#i-copy"/></svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- ======================= RESUMO + FICHA ======================= -->
+    <div class="cell sp-7 reveal" style="--d:.08s">
+      <section class="panel summary tilt">
+        <div class="spec-head">Resumo Profissional</div>
+        <p>
+          Desenvolvedor de 17 anos com forte background em <strong>Robótica</strong>,
+          <strong>Engenharia de Software</strong> e <strong>Geoprocessamento</strong>.
+          Experiência prática na aplicação de soluções web robustas, automações,
+          arquiteturas modernas e sistemas <strong>WebGIS</strong> em ambiente corporativo.
+          Histórico acadêmico de excelência com diagnóstico de
+          <strong>Altas Habilidades / Superdotação</strong> e foco em aprendizado contínuo.
+        </p>
+        <div class="metrics">
+          <div class="metric">
+            <b><span data-count="15">0</span><em>+</em></b>
+            <span>meses de experiência corporativa (Engemap)</span>
+          </div>
+          <div class="metric">
+            <b><span data-count="4">0</span><em>+</em></b>
+            <span>anos em robótica &amp; automação</span>
+          </div>
+          <div class="metric">
+            <b><span data-count="2">0</span></b>
+            <span>aplicações em produção</span>
+          </div>
+          <div class="metric">
+            <b><span data-count="100">0</span><em>%</em></b>
+            <span>histórico escolar com notas máximas</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="cell sp-5 reveal" style="--d:.14s">
+      <section class="panel ficha tilt">
+        <header>
+          <span class="sk-icon"><svg class="ic"><use href="#i-languages"/></svg></span>
+          <h2>Ficha Técnica</h2>
+        </header>
+        <dl>
+          <div class="frow"><dt>Idade</dt><dd>17 anos</dd></div>
+          <div class="frow"><dt>Escolaridade</dt><dd>3º ano EM · conclusão 2026</dd></div>
+          <div class="frow"><dt>Idiomas</dt><dd>PT nativo · EN intermediário</dd></div>
+          <div class="frow"><dt>Domínio</dt><dd>Full-Stack · WebGIS · Automação</dd></div>
+          <div class="frow"><dt>Aprendizado</dt><dd>AH/SD · absorção acelerada</dd></div>
+          <div class="frow"><dt>Experiência</dt><dd>Engemap · Produção, WebGIS &amp; RH</dd></div>
+        </dl>
+      </section>
+    </div>
+
+    <!-- ======================= TERMINAL + LOCALIZAÇÃO/AÇÕES ======================= -->
+    <div class="cell sp-7 reveal" style="--d:.08s">
+      <section class="panel terminal tilt" aria-label="Configuração do desenvolvedor em TypeScript">
+        <div class="t-bar">
+          <span class="t-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="t-name">murilo.config.ts</span>
+        </div>
+        <div class="t-body"><div class="t-row"><span class="t-ln">1</span><span class="t-code"><span class="tk-com">// murilo.config.ts</span></span></div><div class="t-row"><span class="t-ln">2</span><span class="t-code"><span class="tk-kw">export const</span> developer <span class="tk-pun">=</span> <span class="tk-pun">{</span></span></div><div class="t-row"><span class="t-ln">3</span><span class="t-code">  <span class="tk-prop">name</span><span class="tk-pun">:</span> <span class="tk-str">"Murilo Rogério"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">4</span><span class="t-code">  <span class="tk-prop">age</span><span class="tk-pun">:</span> <span class="tk-num">17</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">5</span><span class="t-code">  <span class="tk-prop">role</span><span class="tk-pun">:</span> <span class="tk-str">"Full-Stack Developer"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">6</span><span class="t-code">  <span class="tk-prop">location</span><span class="tk-pun">:</span> <span class="tk-str">"Assis, SP · BR"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">7</span><span class="t-code">  <span class="tk-prop">stack</span><span class="tk-pun">:</span> <span class="tk-pun">{</span></span></div><div class="t-row"><span class="t-ln">8</span><span class="t-code">    <span class="tk-prop">frontend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"Next.js 15"</span><span class="tk-pun">,</span> <span class="tk-str">"React 19"</span><span class="tk-pun">,</span> <span class="tk-str">"TS"</span><span class="tk-pun">],</span></span></div><div class="t-row"><span class="t-ln">9</span><span class="t-code">    <span class="tk-prop">backend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"Node"</span><span class="tk-pun">,</span> <span class="tk-str">"Supabase"</span><span class="tk-pun">,</span> <span class="tk-str">"PG"</span><span class="tk-pun">],</span></span></div><div class="t-row"><span class="t-ln">10</span><span class="t-code">    <span class="tk-prop">geo</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"WebGIS"</span><span class="tk-pun">,</span> <span class="tk-str">"AutoCAD"</span><span class="tk-pun">],</span></span></div><div class="t-row"><span class="t-ln">11</span><span class="t-code">  <span class="tk-pun">},</span></span></div><div class="t-row"><span class="t-ln">12</span><span class="t-code">  <span class="tk-prop">status</span><span class="tk-pun">:</span> <span class="tk-str">"open-to-work"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">13</span><span class="t-code"><span class="tk-pun">}</span> <span class="tk-kw">satisfies</span> Developer<span class="tk-pun">;</span> <span class="t-caret" aria-hidden="true"></span></span></div></div>
+      </section>
+    </div>
+
+    <div class="cell sp-5 reveal" style="--d:.14s">
+      <div class="stack">
+
+        <!-- Widget de localização + relógio BRT -->
+        <section class="panel geo tilt" aria-label="Localização e horário local">
+          <header>
+            <span class="sk-icon"><svg class="ic"><use href="#i-map-pin"/></svg></span>
+            <div>
+              <h2>Assis, SP</h2>
+              <p class="g-sub">São Paulo · Brasil</p>
+            </div>
+          </header>
+          <div class="clock">
+            <span id="clock-time">--:--:--</span> <small id="clock-mer">BRT</small>
+          </div>
+          <p class="g-date" id="clock-date">—</p>
+          <p class="g-tz">
+            <svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>
+            BRT · UTC−3 · fuso America/Sao_Paulo
+          </p>
+        </section>
+
+        <!-- Widget de ações rápidas -->
+        <section class="panel actions tilt" aria-label="Ações rápidas">
+          <h2>Ações Rápidas</h2>
+          <p class="a-sub">Um clique para o próximo passo.</p>
+          <button class="act act-solid" type="button" id="cv-btn">
+            <svg class="ic" aria-hidden="true"><use href="#i-file-down"/></svg>
+            <span>Baixar Currículo PDF
+              <small>versão imprimível · A4</small>
+            </span>
+          </button>
+          <a class="act act-ghost" href="https://wa.me/5518998121327" target="_blank" rel="noopener noreferrer">
+            <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+            <span>WhatsApp Direct
+              <small>(18) 99812-1327</small>
+            </span>
+          </a>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- ======================= EXPERIÊNCIA — ENGEMAP ======================= -->
+    <div class="cell sp-12 reveal" style="--d:.08s">
+      <article class="panel project tilt" id="engemap">
+        <div class="panel-head">
+          <div class="p-badges">
+            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Atual</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Jovem Aprendiz</span>
+            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>WebGIS</span>
+          </div>
+          <div class="p-widget" aria-hidden="true">
+            <span class="w-label">Aerolevantamento · Malha de Voo</span>
+            <svg id="survey-svg" viewBox="0 0 220 150">
+              <path class="w-contour" d="M30 120 C 20 95, 60 88, 55 62 C 50 38, 90 40, 96 20"/>
+              <path class="w-contour" d="M52 128 C 44 104, 80 98, 76 74 C 72 52, 108 54, 114 34"/>
+              <path class="w-contour" d="M150 130 C 160 108, 140 96, 156 78 C 170 62, 152 50, 166 34"/>
+              <path class="w-x" d="M36 14 v6 M33 17 h6"/>
+              <path class="w-x" d="M188 134 v6 M185 137 h6"/>
+              <path id="flight-a" class="w-flight" d="M14 26 C 70 18, 150 34, 206 26"/>
+              <path id="flight-b" class="w-flight" d="M14 58 C 70 50, 150 66, 206 58"/>
+              <path id="flight-c" class="w-flight" d="M14 90 C 70 82, 150 98, 206 90"/>
+              <path id="flight-d" class="w-flight" d="M14 122 C 70 114, 150 130, 206 122"/>
+              <circle class="w-pt" cx="14" cy="26" r="2"/><circle class="w-pt" cx="206" cy="26" r="2"/>
+              <circle class="w-pt" cx="14" cy="58" r="2"/><circle class="w-pt" cx="206" cy="58" r="2"/>
+              <circle class="w-pt" cx="14" cy="90" r="2"/><circle class="w-pt" cx="206" cy="90" r="2"/>
+              <circle class="w-pt" cx="14" cy="122" r="2"/><circle class="w-pt" cx="206" cy="122" r="2"/>
+              <circle class="w-gcp" cx="112" cy="74" r="3"/>
+              <circle class="w-gcp-ring" cx="112" cy="74" r="4"/>
+              <g>
+                <path class="w-plane-a" d="M9 0 L-6 -5 L-2 0 L-6 5 Z"/>
+                <animateMotion dur="11s" repeatCount="indefinite" rotate="auto">
+                  <mpath href="#flight-b"/>
+                </animateMotion>
+              </g>
+              <g>
+                <path class="w-plane-b" d="M7 0 L-5 -4.4 L-1.8 0 L-5 4.4 Z"/>
+                <animateMotion dur="7.5s" begin="-3s" repeatCount="indefinite" rotate="auto">
+                  <mpath href="#flight-d"/>
+                </animateMotion>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="exp-body">
+          <div class="p-info">
+            <div class="p-id">
+              <span class="p-icon"><svg class="ic"><use href="#i-briefcase"/></svg></span>
+              <div>
+                <h3>Engemap</h3>
+                <p class="p-tag">Engenharia &amp; Aerolevantamento</p>
+              </div>
+            </div>
+
+            <div class="xp-wrap">
+              <article class="xp">
+                <span class="xp-dot now" aria-hidden="true"></span>
+                <div class="xp-body">
+                  <div class="xp-head">
+                    <h4>Jovem Aprendiz — Produção &amp; WebGIS</h4>
+                    <span class="chip live">Atual</span>
+                  </div>
+                  <p>
+                    Atuação direta no setor de produção utilizando sistemas WebGIS,
+                    tratamento de dados geoespaciais e suporte técnico aos fluxos
+                    cartográficos e de aerolevantamento.
+                  </p>
+                </div>
+              </article>
+
+              <article class="xp">
+                <span class="xp-dot" aria-hidden="true"></span>
+                <div class="xp-body">
+                  <div class="xp-head">
+                    <h4>Jovem Aprendiz — Auxiliar Pessoal no RH</h4>
+                    <span class="chip">10 meses</span>
+                  </div>
+                  <p>
+                    Gestão de processos internos, organização documental e suporte
+                    operacional ao departamento pessoal.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="p-specs">
+            <div class="spec-head">Contrato de Aprendizagem</div>
+            <div class="contract">
+              <div class="c-top">
+                <span class="c-range">Out/2025 → Nov/2026</span>
+                <span class="c-len">15 meses</span>
+              </div>
+              <div class="c-track" role="progressbar" aria-label="Progresso do contrato de aprendizagem" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="c-bar">
+                <div class="c-fill" id="c-fill"></div>
+              </div>
+              <div class="c-meta">
+                <span id="c-pct">0%</span>
+                <span id="c-days">—</span>
+              </div>
+            </div>
+
+            <div class="spec-head" style="margin-top:24px">Setores de Atuação</div>
+            <div class="c-areas">
+              <span class="chip core">Produção &amp; WebGIS</span>
+              <span class="chip">RH · Departamento Pessoal</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- ======================= PROJETO 1 — NOSSO FLUXO ======================= -->
+    <div class="cell sp-12 reveal" style="--d:.08s">
+      <article class="panel project tilt" id="nossofluxo">
+        <div class="panel-head">
+          <div class="p-badges">
+            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>Next.js 15</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>React 19</span>
+            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>TypeScript</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Supabase</span>
+            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Fintech</span>
+          </div>
+          <div class="p-widget" aria-hidden="true">
+            <span class="w-label">Risco × Retorno · ao vivo</span>
+            <svg viewBox="0 0 200 118">
+              <line class="w-line"  x1="10" y1="98" x2="190" y2="98"/>
+              <line class="w-line"  x1="18" y1="8"  x2="18" y2="98"/>
+              <line class="w-trend" x1="26" y1="88" x2="180" y2="22"/>
+              <circle class="w-pt"   cx="42"  cy="74" r="3"/>
+              <circle class="w-pt v" cx="64"  cy="60" r="3"/>
+              <circle class="w-pt"   cx="86"  cy="68" r="3"/>
+              <circle class="w-pt b" cx="100" cy="46" r="3"/>
+              <circle class="w-ring" cx="120" cy="52" r="5"/>
+              <circle class="w-pt v" cx="120" cy="52" r="3.5"/>
+              <circle class="w-pt"   cx="142" cy="38" r="3"/>
+              <circle class="w-pt b" cx="158" cy="44" r="3"/>
+              <circle class="w-pt v" cx="170" cy="26" r="3"/>
+              <text class="w-axis" x="190" y="112" text-anchor="end">RISCO</text>
+              <text class="w-axis" transform="rotate(-90 10 52)" x="10" y="52" text-anchor="middle">RETORNO</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="project-body">
+          <div class="p-info">
+            <div class="p-id">
+              <span class="p-icon"><svg class="ic"><use href="#i-trending-up"/></svg></span>
+              <div>
+                <h3>Nosso Fluxo</h3>
+                <p class="p-tag">Gestão Financeira Pessoal</p>
+              </div>
+            </div>
+            <p class="p-desc">
+              Aplicação Full-Stack completa para gestão de finanças pessoais: entradas, gastos,
+              parcelamentos, patrimônio e investimentos — do orçamento mensal à carteira de
+              FIIs e ações com cotações automáticas.
+            </p>
+            <div class="p-stack" aria-label="Stack complementar">
+              <span class="chip">Tailwind CSS</span>
+              <span class="chip">Framer Motion</span>
+              <span class="chip">Recharts</span>
+              <span class="chip">PostgreSQL RLS</span>
+              <span class="chip">BrasilAPI</span>
+              <span class="chip">brapi.dev</span>
+              <span class="chip">Vercel</span>
+            </div>
+            <div class="p-actions">
+              <a class="btn btn-solid" href="https://nossofluxo.vercel.app" target="_blank" rel="noopener noreferrer">
+                Ver projeto ao vivo
+                <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+              </a>
+              <a class="btn btn-ghost" href="https://github.com/Murilo-Rogerio/Murilo-Rogerio-controle-financeiro-pessoal" target="_blank" rel="noopener noreferrer">
+                <svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>
+                Código-fonte
+              </a>
+            </div>
+          </div>
+
+          <div class="p-specs">
+            <div class="spec-head">Destaques de Engenharia</div>
+            <ol class="spec-list">
+              <li>
+                <span class="spec-num">01</span>
+                <div>
+                  <strong>CDI em tempo real</strong>
+                  <p>Taxa consumida via BrasilAPI com cache otimizado de 1h e fallback gracioso contra indisponibilidade.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">02</span>
+                <div>
+                  <strong>Monitoramento de FIIs e Ações</strong>
+                  <p>Cotações automáticas via brapi.dev com gráfico de dispersão Risco × Retorno renderizado em Recharts.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">03</span>
+                <div>
+                  <strong>Motor de Recorrência puro</strong>
+                  <p><code>lib/recurrence.ts</code> projeta parcelamentos futuros no banco sem duplicar linhas.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">04</span>
+                <div>
+                  <strong>Open Finance + Segurança em 3 camadas</strong>
+                  <p>Arquitetura com adapters Pluggy/Belvo, Middleware de sessão, Layout Protegido e RLS no PostgreSQL.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- ======================= PROJETO 2 — VIVI BOTY ======================= -->
+    <div class="cell sp-12 reveal" style="--d:.08s">
+      <article class="panel project alt tilt" id="viviboty">
+        <div class="panel-head">
+          <div class="p-badges">
+            <span class="badge"><span class="bdot b-rose" aria-hidden="true"></span>JavaScript ES6+</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Tailwind CSS</span>
+            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>Supabase Auth/RLS</span>
+            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>E-commerce</span>
+          </div>
+          <div class="p-widget" aria-hidden="true">
+            <span class="w-label">Sacola · Click-to-Chat</span>
+            <div class="w-item"><span class="w-swatch"></span>Perfume Noir · 50ml <b>R$ 189</b></div>
+            <div class="w-item"><span class="w-swatch"></span>Sérum Facial · 30ml <b>R$ 96</b></div>
+            <div class="w-cta">
+              <svg class="ic"><use href="#i-whatsapp"/></svg>
+              Enviar pedido no WhatsApp
+            </div>
+          </div>
+        </div>
+
+        <div class="project-body">
+          <div class="p-info">
+            <div class="p-id">
+              <span class="p-icon"><svg class="ic"><use href="#i-shopping-bag"/></svg></span>
+              <div>
+                <h3>Vivi Boty</h3>
+                <p class="p-tag">Vitrine Digital &amp; Catálogo E-commerce</p>
+              </div>
+            </div>
+            <p class="p-desc">
+              Plataforma de catálogo digital para o segmento de beleza e perfumaria,
+              transformando vendas físicas em digitais com pedidos integrados diretamente
+              ao WhatsApp da vendedora.
+            </p>
+            <div class="p-stack" aria-label="Stack complementar">
+              <span class="chip">HTML5 Semântico</span>
+              <span class="chip">CSS3</span>
+              <span class="chip">Supabase Storage</span>
+              <span class="chip">Font Awesome</span>
+              <span class="chip">Google Fonts</span>
+              <span class="chip">Vercel</span>
+            </div>
+            <div class="p-actions">
+              <a class="btn btn-solid" href="https://vivicarvalhoboty.com.br" target="_blank" rel="noopener noreferrer">
+                Ver projeto ao vivo
+                <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+              </a>
+              <a class="btn btn-ghost" href="https://github.com/Murilo-Rogerio/Vivi-Boty" target="_blank" rel="noopener noreferrer">
+                <svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>
+                Código-fonte
+              </a>
+            </div>
+          </div>
+
+          <div class="p-specs">
+            <div class="spec-head">Destaques de Engenharia</div>
+            <ol class="spec-list">
+              <li>
+                <span class="spec-num">01</span>
+                <div>
+                  <strong>Funil de vendas click-to-chat</strong>
+                  <p>Catálogo digital que gera pedidos dinâmicos formatados e enviados direto para o WhatsApp da vendedora.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">02</span>
+                <div>
+                  <strong>Painel administrativo privado</strong>
+                  <p><code>#/admin</code> protegido por Supabase Auth + RLS: CRUD de produtos, upload de imagens no Storage (limite 5MB) e controle de estoque.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">03</span>
+                <div>
+                  <strong>Proteção nativa</strong>
+                  <p>Defesa contra XSS e SQL Injection em uma arquitetura SPA leve e de alto desempenho.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- ======================= FORMAÇÃO & CONQUISTAS ======================= -->
+    <div class="cell sp-5 reveal" style="--d:.06s">
+      <section class="panel skill tilt">
+        <header>
+          <span class="sk-icon"><svg class="ic"><use href="#i-graduation"/></svg></span>
+          <h2>Formação &amp; Conquistas</h2>
+        </header>
+        <p class="sk-sub">Base acadêmica sólida e reconhecimentos formais.</p>
+        <ul class="entries">
+          <li>
+            <span class="e-ic"><svg class="ic"><use href="#i-graduation"/></svg></span>
+            <div class="e-body">
+              <div class="e-head"><h4>Ensino Médio</h4><span class="dur">2026</span></div>
+              <p class="inst">3º ano · cursando</p>
+              <p>Cursando o 3º ano do Ensino Médio, com conclusão prevista para 2026.</p>
+            </div>
+          </li>
+          <li>
+            <span class="e-ic"><svg class="ic"><use href="#i-award"/></svg></span>
+            <div class="e-body">
+              <div class="e-head"><h4>Certificado de Aluno Destaque</h4><span class="dur">Destaque</span></div>
+              <p class="inst">Desempenho escolar</p>
+              <p>Histórico impecável: notas máximas, sem reprovações ou advertências ao longo da trajetória escolar.</p>
+            </div>
+          </li>
+          <li>
+            <span class="e-ic"><svg class="ic"><use href="#i-zap"/></svg></span>
+            <div class="e-body">
+              <div class="e-head"><h4>Altas Habilidades / Superdotação</h4><span class="dur">AH/SD</span></div>
+              <p class="inst">Diagnóstico formal</p>
+              <p>Capacidade de aprendizagem acelerada e alta facilidade na absorção de novos conteúdos e tecnologias.</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- ======================= ROBÓTICA & PROTOTIPAGEM ======================= -->
+    <div class="cell sp-7 reveal" style="--d:.12s">
+      <section class="panel skill tilt">
+        <header>
+          <span class="sk-icon"><svg class="ic"><use href="#i-bot"/></svg></span>
+          <h2>Robótica &amp; Prototipagem</h2>
+        </header>
+        <p class="sk-sub">Trajetória prática em eletrônica, lógica e sistemas embarcados — a raiz da engenharia.</p>
+        <ul class="entries">
+          <li>
+            <span class="e-ic"><svg class="ic"><use href="#i-cpu"/></svg></span>
+            <div class="e-body">
+              <div class="e-head"><h4>Arduino</h4><span class="dur">3–4 anos</span></div>
+              <p class="inst">CEDET</p>
+              <p>Experiência prática contínua em lógica de programação, sensores, atuadores e prototipagem eletrônica.</p>
+            </div>
+          </li>
+          <li>
+            <span class="e-ic"><svg class="ic"><use href="#i-bot"/></svg></span>
+            <div class="e-body">
+              <div class="e-head"><h4>Lego Mindstorms EV3</h4><span class="dur">6 meses</span></div>
+              <p class="inst">FEMA</p>
+              <p>Desenvolvimento de algoritmos de navegação e resolução de desafios de engenharia.</p>
+            </div>
+          </li>
+          <li>
+            <span class="e-ic"><svg class="ic"><use href="#i-circuit"/></svg></span>
+            <div class="e-body">
+              <div class="e-head"><h4>Micro:bit</h4><span class="dur">6 meses</span></div>
+              <p class="inst">SESI</p>
+              <p>Aulas e prática em lógica de blocos e fundamentos de sistemas embarcados.</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- ======================= STACK TÉCNICA ======================= -->
+    <div class="cell sp-5 reveal" style="--d:.06s">
+      <section class="panel skill tilt">
+        <header>
+          <span class="sk-icon"><svg class="ic"><use href="#i-monitor"/></svg></span>
+          <h2>Frontend &amp; Web</h2>
+        </header>
+        <p class="sk-sub">Interfaces de alta performance com arquitetura de componentes.</p>
+        <ul class="chips">
+          <li class="chip core">TypeScript</li>
+          <li class="chip core">React</li>
+          <li class="chip core">Next.js 15</li>
+          <li class="chip">JavaScript ES6+</li>
+          <li class="chip">HTML5 Semântico</li>
+          <li class="chip">CSS3</li>
+          <li class="chip">Tailwind CSS</li>
+          <li class="chip">Framer Motion</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="cell sp-4 reveal" style="--d:.11s">
+      <section class="panel skill tilt">
+        <header>
+          <span class="sk-icon"><svg class="ic"><use href="#i-server"/></svg></span>
+          <h2>Backend &amp; Cloud</h2>
+        </header>
+        <p class="sk-sub">APIs, autenticação, modelagem e regras no banco.</p>
+        <ul class="chips">
+          <li class="chip core">Node.js</li>
+          <li class="chip core">Supabase</li>
+          <li class="chip">Python</li>
+          <li class="chip">PostgreSQL</li>
+          <li class="chip">Auth · RLS · Storage</li>
+          <li class="chip">REST APIs</li>
+          <li class="chip">Vercel</li>
+          <li class="chip">Git / GitHub</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="cell sp-3 reveal" style="--d:.16s">
+      <section class="panel skill tilt">
+        <header>
+          <span class="sk-icon"><svg class="ic"><use href="#i-map"/></svg></span>
+          <h2>Geotecnologia &amp; Hardware</h2>
+        </header>
+        <p class="sk-sub">Dados geoespaciais, CAD e sistemas embarcados.</p>
+        <ul class="chips">
+          <li class="chip core">WebGIS</li>
+          <li class="chip core">AutoCAD</li>
+          <li class="chip">Arduino</li>
+          <li class="chip">Micro:bit</li>
+          <li class="chip">Lego EV3</li>
+          <li class="chip">Linux</li>
+          <li class="chip">GitHub Codespaces</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- ======================= RODAPÉ ======================= -->
+    <div class="cell sp-12 reveal" style="--d:.05s">
+      <footer class="panel foot">
+        <span>© <span id="year">2025</span> Murilo Rogério Carvalho da Conceição</span>
+        <button class="f-copy" type="button" data-copy="murilo.rogerio.conceicao@gmail.com" aria-label="Copiar endereço de e-mail">
+          <svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>
+          murilo.rogerio.conceicao@gmail.com
+        </button>
+        <span class="f-right"><svg class="ic" aria-hidden="true"><use href="#i-map-pin"/></svg>Assis, SP · Brasil</span>
+      </footer>
+    </div>
+
+  </div>
+</main>
+
+<!-- Toast de feedback -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>
+  <span id="toast-msg"></span>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var finePointer  = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  /* =====================================================
+     1. ANO AUTOMÁTICO DO RODAPÉ
+     ===================================================== */
+  var yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  /* =====================================================
+     2. SCROLL REVEAL (fade-in-up escalonado)
+     ===================================================== */
+  var revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && !reduceMotion) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* =====================================================
+     3. BARRA DE PROGRESSO DE LEITURA (topo fixo)
+     ===================================================== */
+  var progressEl = document.getElementById("progress");
+  var progressPending = false;
+
+  function updateProgress() {
+    progressPending = false;
+    if (!progressEl) return;
+    var doc = document.documentElement;
+    var max = (doc.scrollHeight - window.innerHeight);
+    var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+    if (pct < 0) pct = 0;
+    if (pct > 100) pct = 100;
+    progressEl.style.width = pct.toFixed(2) + "%";
+    progressEl.setAttribute("aria-valuenow", String(Math.round(pct)));
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!progressPending) {
+      progressPending = true;
+      requestAnimationFrame(updateProgress);
+    }
+  }, { passive: true });
+  updateProgress();
+
+  /* =====================================================
+     4. BRILHO INTERNO QUE SEGUE O CURSOR (por card)
+     ===================================================== */
+  if (finePointer) {
+    document.querySelectorAll(".panel").forEach(function (card) {
+      card.addEventListener("pointermove", function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", (e.clientX - r.left).toFixed(1) + "px");
+        card.style.setProperty("--my", (e.clientY - r.top).toFixed(1) + "px");
+      }, { passive: true });
+    });
+  }
+
+  /* =====================================================
+     5. TILT 3D (rotateX / rotateY) nos cards .tilt — só desktop
+     ===================================================== */
+  if (finePointer && !reduceMotion) {
+    document.querySelectorAll(".tilt").forEach(function (card) {
+      card.addEventListener("pointermove", function (e) {
+        var r = card.getBoundingClientRect();
+        if (r.width < 1 || r.height < 1) return;
+        var px = (e.clientX - r.left) / r.width  - 0.5;   /* -0.5 .. 0.5 */
+        var py = (e.clientY - r.top)  / r.height - 0.5;
+        card.style.setProperty("--ry", (px * 5).toFixed(2) + "deg");  /* extremidade direita gira p/ direita */
+        card.style.setProperty("--rx", (py * -5).toFixed(2) + "deg"); /* extremidade inferior inclina p/ frente */
+      }, { passive: true });
+      card.addEventListener("pointerleave", function () {
+        card.style.setProperty("--rx", "0deg");
+        card.style.setProperty("--ry", "0deg");
+      });
+    });
+  }
+
+  /* =====================================================
+     6. SPOTLIGHT GLOBAL COM INTERPOLAÇÃO SUAVE
+     ===================================================== */
+  var spot = document.querySelector(".spotlight");
+  if (spot && finePointer && !reduceMotion) {
+    var tx = window.innerWidth / 2, ty = window.innerHeight * 0.3;
+    var cx = tx, cy = ty, active = false;
+
+    window.addEventListener("pointermove", function (e) {
+      tx = e.clientX; ty = e.clientY;
+      if (!active) { active = true; cx = tx; cy = ty; spot.classList.add("on"); }
+    }, { passive: true });
+
+    (function loop() {
+      cx += (tx - cx) * 0.09;
+      cy += (ty - cy) * 0.09;
+      spot.style.transform = "translate3d(" + (cx - 300) + "px," + (cy - 300) + "px,0)";
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  /* =====================================================
+     7. CURSOR CUSTOMIZADO — ponto + anel roxo (desktop)
+     ===================================================== */
+  var dot  = document.getElementById("cursor-dot");
+  var ring = document.getElementById("cursor-ring");
+
+  if (dot && ring && finePointer && !reduceMotion) {
+    document.documentElement.classList.add("cursor-on");
+
+    var mx = -100, my = -100;        /* posição real do mouse  */
+    var rx = -100, ry = -100;        /* posição do anel (lerp) */
+    var cursorShown = false;
+
+    document.addEventListener("pointermove", function (e) {
+      mx = e.clientX; my = e.clientY;
+      dot.style.setProperty("--x", mx + "px");
+      dot.style.setProperty("--y", my + "px");
+      if (!cursorShown) {
+        cursorShown = true;
+        rx = mx; ry = my;
+        document.documentElement.classList.add("cursor-live");
+      }
+    }, { passive: true });
+
+    document.addEventListener("mouseleave", function () {
+      cursorShown = false;
+      document.documentElement.classList.remove("cursor-live");
+    });
+    document.addEventListener("mouseenter", function () {
+      cursorShown = true;
+      document.documentElement.classList.add("cursor-live");
+    });
+
+    /* anel expande sobre elementos interativos */
+    document.addEventListener("mouseover", function (e) {
+      if (!e.target || !e.target.closest) return;
+      var hit = e.target.closest("a, button, .chip, [data-copy]");
+      ring.classList.toggle("link", !!hit);
+    }, { passive: true });
+
+    (function cursorLoop() {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      ring.style.setProperty("--x", rx.toFixed(1) + "px");
+      ring.style.setProperty("--y", ry.toFixed(1) + "px");
+      requestAnimationFrame(cursorLoop);
+    })();
+  }
+
+  /* =====================================================
+     8. CONTADORES ANIMADOS (count-up no viewport)
+     ===================================================== */
+  function animateCount(el) {
+    var target = parseFloat(el.getAttribute("data-count"));
+    if (isNaN(target)) return;
+    if (reduceMotion) { el.textContent = String(target); return; }
+
+    var dur = 1500 + Math.min(target * 8, 500); /* números maiores demoram um pouco mais */
+    var t0 = null;
+
+    function frame(t) {
+      if (t0 === null) t0 = t;
+      var p = Math.min((t - t0) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3); /* easeOutCubic */
+      el.textContent = String(Math.round(target * eased));
+      if (p < 1) requestAnimationFrame(frame);
+      else el.textContent = String(target);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  var counters = document.querySelectorAll("[data-count]");
+  if ("IntersectionObserver" in window) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          cio.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(function (el) { cio.observe(el); });
+  } else {
+    counters.forEach(animateCount);
+  }
+
+  /* =====================================================
+     9. RELÓGIO DIGITAL — Assis, SP (BRT · UTC−3)
+     ===================================================== */
+  var clockTime = document.getElementById("clock-time");
+  var clockDate = document.getElementById("clock-date");
+
+  var timeFmt = null, dateFmt = null;
+  try {
+    timeFmt = new Intl.DateTimeFormat("pt-BR", {
+      timeZone: "America/Sao_Paulo",
+      hour: "2-digit", minute: "2-digit", second: "2-digit",
+      hour12: false
+    });
+    dateFmt = new Intl.DateTimeFormat("pt-BR", {
+      timeZone: "America/Sao_Paulo",
+      weekday: "long", day: "numeric", month: "short"
+    });
+  } catch (e) { /* fallback silencioso */ }
+
+  function tickClock() {
+    if (!clockTime) return;
+    var now = new Date();
+    if (timeFmt) {
+      clockTime.textContent = timeFmt.format(now);
+    } else {
+      clockTime.textContent = now.toLocaleTimeString("pt-BR");
+    }
+    if (clockDate && dateFmt) {
+      clockDate.textContent = dateFmt.format(now);
+    }
+  }
+  tickClock();
+  setInterval(tickClock, 1000);
+
+  /* =====================================================
+     10. PAUSAR AVIÕES SMIL SE MOVIMENTO REDUZIDO
+     ===================================================== */
+  var survey = document.getElementById("survey-svg");
+  if (survey && reduceMotion && typeof survey.pauseAnimations === "function") {
+    survey.pauseAnimations();
+  }
+
+  /* =====================================================
+     11. PROGRESSO DO CONTRATO (calculado em tempo real)
+     ===================================================== */
+  var fillEl = document.getElementById("c-fill");
+  var pctEl  = document.getElementById("c-pct");
+  var daysEl = document.getElementById("c-days");
+  var barEl  = document.getElementById("c-bar");
+  if (fillEl && pctEl && daysEl) {
+    var DAY   = 86400000;
+    var start = new Date(2025, 9, 1).getTime();   /* 1 de Outubro de 2025   */
+    var end   = new Date(2026, 10, 30).getTime(); /* 30 de Novembro de 2026 */
+    var now   = Date.now();
+    var pct, text;
+
+    if (now <= start) {
+      pct = 0;
+      text = "inicia em " + Math.ceil((start - now) / DAY) + " dias";
+    } else if (now >= end) {
+      pct = 100;
+      text = "contrato concluído";
+    } else {
+      pct = (now - start) / (end - start) * 100;
+      var done = Math.floor((now - start) / DAY);
+      var left = Math.ceil((end - now) / DAY);
+      text = done + " dias decorridos · " + left + " restantes";
+    }
+
+    pctEl.textContent = Math.round(pct) + "%";
+    daysEl.textContent = text;
+    if (barEl) barEl.setAttribute("aria-valuenow", String(Math.round(pct)));
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        fillEl.style.width = pct.toFixed(2) + "%";
+      });
+    });
+  }
+
+  /* =====================================================
+     12. TOAST + COPY TO CLIPBOARD
+     ===================================================== */
+  var toast = document.getElementById("toast");
+  var toastMsg = document.getElementById("toast-msg");
+  var toastTimer = null;
+
+  function showToast(msg) {
+    if (!toast || !toastMsg) return;
+    toastMsg.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove("show"); }, 2800);
+  }
+
+  function legacyCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    return ok;
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).then(function () { return true; })
+        .catch(function () { return legacyCopy(text); });
+    }
+    return Promise.resolve(legacyCopy(text));
+  }
+
+  document.querySelectorAll("[data-copy]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var value = btn.getAttribute("data-copy");
+      copyText(value).then(function (ok) {
+        showToast(ok ? "Copiado: " + value : "Não foi possível copiar — " + value);
+      });
+    });
+  });
+
+  /* =====================================================
+     13. BAIXAR CURRÍCULO PDF — documento A4 imprimível
+     ===================================================== */
+  var cvBtn = document.getElementById("cv-btn");
+  if (cvBtn) {
+    cvBtn.addEventListener("click", function () {
+      var w = window.open("", "_blank");
+
+      if (!w) {
+        showToast("O navegador bloqueou a janela — permita pop-ups para baixar o PDF");
+        return;
+      }
+
+      var cvHtml = [
+        "<!DOCTYPE html><html lang='pt-BR'><head><meta charset='UTF-8'>",
+        "<title>Currículo — Murilo Rogério Carvalho da Conceição</title>",
+        "<style>",
+        "  *{margin:0;padding:0;box-sizing:border-box}",
+        "  body{font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;background:#f2f2f4;padding:28px 12px;font-size:12.5px;line-height:1.55}",
+        "  .sheet{max-width:780px;margin:0 auto;background:#fff;padding:46px 52px;border-radius:6px}",
+        "  h1{font-size:24px;letter-spacing:-.02em}",
+        "  .tag{color:#555;margin-top:4px;font-size:13px}",
+        "  .contact{margin-top:10px;font-size:11.5px;color:#444}",
+        "  .contact a{color:#4338ca;text-decoration:none}",
+        "  hr{border:none;border-top:2px solid #1a1a1a;margin:22px 0 14px}",
+        "  h2{font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:#4338ca;margin:20px 0 8px}",
+        "  .item{margin-bottom:12px}",
+        "  .item h3{font-size:13px}",
+        "  .item .meta{font-size:11px;color:#666;margin:2px 0 4px}",
+        "  ul{margin-left:16px}",
+        "  li{margin-bottom:3px}",
+        "  .grid{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}",
+        "  .btn-print{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#4338ca;color:#fff;border:none;padding:12px 26px;border-radius:99px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.25)}",
+        "  @media print{body{background:#fff;padding:0}.sheet{padding:0;border-radius:0;max-width:none}.btn-print{display:none}hr{border-top:1px solid #999}}",
+        "  @page{size:A4;margin:16mm}",
+        "</style></head><body>",
+        "<div class='sheet'>",
+        "  <h1>Murilo Rogério Carvalho da Conceição</h1>",
+        "  <p class='tag'>Desenvolvedor Full-Stack · Geotecnologia &amp; WebGIS · Robótica &amp; Automação</p>",
+        "  <p class='contact'>",
+        "    Assis, SP — Brasil &nbsp;·&nbsp; ",
+        "    <a href='mailto:murilo.rogerio.conceicao@gmail.com'>murilo.rogerio.conceicao@gmail.com</a> &nbsp;·&nbsp; ",
+        "    WhatsApp: (18) 99812-1327 &nbsp;·&nbsp; ",
+        "    <a href='https://github.com/Murilo-Rogerio'>github.com/Murilo-Rogerio</a> &nbsp;·&nbsp; ",
+        "    <a href='https://www.linkedin.com/in/murilo-rog%C3%A9rio-220133322'>LinkedIn</a>",
+        "  </p>",
+        "  <hr>",
+        "  <h2>Resumo Profissional</h2>",
+        "  <p>Desenvolvedor de 17 anos com forte background em Robótica, Engenharia de Software e Geoprocessamento. Experiência prática na aplicação de soluções web robustas, automações, arquiteturas modernas e sistemas WebGIS em ambiente corporativo. Histórico acadêmico de excelência com diagnóstico de Altas Habilidades / Superdotação e foco em aprendizado contínuo.</p>",
+        "  <h2>Experiência Profissional</h2>",
+        "  <div class='item'>",
+        "    <h3>Engemap — Engenharia e Aerolevantamento · Jovem Aprendiz (Produção &amp; WebGIS)</h3>",
+        "    <p class='meta'>Atual · Atuação no setor de produção com sistemas WebGIS</p>",
+        "    <ul><li>Tratamento de dados geoespaciais e suporte técnico a fluxos cartográficos e de aerolevantamento.</li></ul>",
+        "  </div>",
+        "  <div class='item'>",
+        "    <h3>Engemap — Jovem Aprendiz (Auxiliar Pessoal no Recursos Humanos)</h3>",
+        "    <p class='meta'>10 meses · Cargo anterior</p>",
+        "    <ul><li>Gestão de processos internos, organização documental e suporte operacional ao departamento pessoal.</li></ul>",
+        "  </div>",
+        "  <p class='meta'><strong>Contrato de aprendizagem:</strong> 15 meses (Outubro/2025 a Novembro/2026).</p>",
+        "  <h2>Projetos</h2>",
+        "  <div class='item'>",
+        "    <h3>Nosso Fluxo — Gestão Financeira Pessoal (Full-Stack · Fintech)</h3>",
+        "    <p class='meta'><a href='https://nossofluxo.vercel.app'>nossofluxo.vercel.app</a> · <a href='https://github.com/Murilo-Rogerio/Murilo-Rogerio-controle-financeiro-pessoal'>Repositório</a></p>",
+        "    <ul>",
+        "      <li>Gestão completa de finanças: entradas, gastos, parcelamentos, patrimônio e investimentos.</li>",
+        "      <li>Taxa CDI em tempo real via BrasilAPI (cache 1h + fallback); monitoramento de FIIs/Ações via brapi.dev com dispersão Risco × Retorno.</li>",
+        "      <li>Motor de recorrência puro sem duplicação de linhas; arquitetura pronta para Open Finance (Pluggy/Belvo).</li>",
+        "      <li>Segurança em 3 camadas: Middleware, Layout Protegido e RLS no PostgreSQL.</li>",
+        "      <li>Stack: Next.js 15, React 19, TypeScript (strict), Tailwind, Supabase, Framer Motion, Recharts, Vercel.</li>",
+        "    </ul>",
+        "  </div>",
+        "  <div class='item'>",
+        "    <h3>Vivi Boty — Vitrine Digital &amp; Catálogo E-commerce</h3>",
+        "    <p class='meta'><a href='https://vivicarvalhoboty.com.br'>vivicarvalhoboty.com.br</a> · <a href='https://github.com/Murilo-Rogerio/Vivi-Boty'>Repositório</a></p>",
+        "    <ul>",
+        "      <li>Catálogo digital para beleza e perfumaria com funil click-to-chat integrado ao WhatsApp.</li>",
+        "      <li>Painel administrativo privado (#/admin) com Supabase Auth + RLS: CRUD, estoque, uploads (5MB) e dashboard.</li>",
+        "      <li>Proteção nativa contra XSS e SQL Injection; SPA leve de alto desempenho.</li>",
+        "      <li>Stack: JavaScript ES6+, HTML5, Tailwind CSS, Supabase (Postgres, Auth, Storage, RLS), Vercel.</li>",
+        "    </ul>",
+        "  </div>",
+        "  <h2>Formação &amp; Conquistas</h2>",
+        "  <ul>",
+        "    <li>Cursando o 3º Ano do Ensino Médio — conclusão em 2026.</li>",
+        "    <li>Certificado de Aluno Destaque: histórico com notas máximas, sem reprovações ou advertências.</li>",
+        "    <li>Diagnóstico de Altas Habilidades / Superdotação (AH/SD): aprendizagem acelerada.</li>",
+        "    <li>Inglês intermediário — compreensão técnica e conversação rápida.</li>",
+        "  </ul>",
+        "  <h2>Robótica &amp; Projetos Práticos</h2>",
+        "  <ul>",
+        "    <li>Robótica com Arduino (CEDET) — 3 a 4 anos: lógica, sensores, atuadores e prototipagem eletrônica.</li>",
+        "    <li>Lego Mindstorms EV3 (FEMA) — 6 meses: algoritmos de navegação e desafios de engenharia.</li>",
+        "    <li>Micro:bit (SESI) — 6 meses: lógica de blocos e sistemas embarcados.</li>",
+        "  </ul>",
+        "  <div class='grid'>",
+        "    <div>",
+        "      <h2>Competências Técnicas</h2>",
+        "      <ul>",
+        "        <li><strong>Frontend:</strong> TypeScript, JavaScript ES6+, React, Next.js 15, HTML5, CSS3, Tailwind, Framer Motion.</li>",
+        "        <li><strong>Backend &amp; Cloud:</strong> Node.js, Python, Supabase (PostgreSQL, Auth, RLS, Storage), REST APIs, Vercel, Git/GitHub.</li>",
+        "      </ul>",
+        "    </div>",
+        "    <div>",
+        "      <h2>Geotecnologia &amp; Hardware</h2>",
+        "      <ul>",
+        "        <li>WebGIS, AutoCAD, Arduino, Micro:bit, Lego EV3.</li>",
+        "        <li>Linux, GitHub Codespaces.</li>",
+        "      </ul>",
+        "    </div>",
+        "  </div>",
+        "</div>",
+        "<button class='btn-print' onclick='window.print()'>Imprimir / Salvar como PDF</button>",
+        "<scr", "ipt>window.onload=function(){setTimeout(function(){window.print();},450);};<\/scr", "ipt>",
+        "</body></html>"
+      ].join("");
+
+      w.document.open();
+      w.document.write(cvHtml);
+      w.document.close();
+      w.document.title = "Currículo — Murilo Rogério Carvalho da Conceição";
+
+      showToast("Currículo aberto em nova aba — Imprimir → Salvar como PDF");
+    });
+  }
+})();
+</script>
+</body>
+</html>
