@@ -57,6 +57,6 @@ O objetivo principal deste projeto é apresentar meu perfil profissional e técn
 ├── README.md         # Documentação do repositório
 ```
 
-##📝 Licença
+## 📝 Licença
 
 ### Este projeto está sob a licença MIT. Sinta-se à vontade para utilizar a estrutura como inspiração para o seu próprio portfólio.
