@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#08080a">
-<meta name="description" content="Portfólio e currículo interativo de Murilo Rogério Carvalho da Conceição — Desenvolvedor Full-Stack, Geotecnologia & WebGIS, Robótica & Automação.">
-<title>Murilo Rogério — Porifólio e Curriculo</title>
+<meta name="description" content="Portfólio de Murilo Rogério Carvalho da Conceição — Estudante de TI, Geotecnologia, WebGIS e Robótica.">
+<title>Murilo Rogério — Portfólio</title>
 <link rel="icon" type="image/jpeg" href="https://ifqbuhrhmefqiwrpzvsh.supabase.co/storage/v1/object/public/site-assets/url.jpeg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -230,6 +230,12 @@ html.cursor-live #cursor-ring.link{
   border:1px solid rgba(255,255,255,.07);
   display:grid; place-items:center;
   font-weight:600; font-size:29px; letter-spacing:.03em; color:#eef0f4;
+  padding:0; overflow:hidden;
+}
+.avatar-core img{
+  width:100%; height:100%;
+  object-fit:cover; border-radius:50%;
+  display:block;
 }
 @keyframes ring-spin{ to{ transform:rotate(360deg); } }
 
@@ -1012,16 +1018,17 @@ html.cursor-live #cursor-ring.link{
 <main class="wrap">
   <div class="bento">
 
-    <!-- ======================= PERFIL ======================= -->
     <div class="cell sp-12 reveal" style="--d:0s">
       <header class="panel profile tilt">
         <div class="avatar">
           <span class="avatar-halo" aria-hidden="true"></span>
           <span class="avatar-ring" aria-hidden="true"></span>
-          <span class="avatar-core">MR</span>
+          <span class="avatar-core">
+            <img src="https://ifqbuhrhmefqiwrpzvsh.supabase.co/storage/v1/object/public/site-assets/Capa.jpeg" alt="Murilo Rogério">
+          </span>
         </div>
         <h1>Murilo Rogério <span class="soft">Carvalho da Conceição</span></h1>
-        <p class="roles">Desenvolvedor Full-Stack &nbsp;·&nbsp; Geotecnologia &amp; WebGIS &nbsp;·&nbsp; Robótica &amp; Automação</p>
+        <p class="roles">Estudante de TI &nbsp;·&nbsp; Geotecnologia &amp; WebGIS &nbsp;·&nbsp; Robótica &amp; Automação</p>
         <div class="pills">
           <span class="pill status"><span class="dot" aria-hidden="true"></span>Disponível para Oportunidades em TI / Efetivação</span>
           <span class="pill"><svg class="ic" aria-hidden="true"><use href="#i-graduation"/></svg>3º Ano do Ensino Médio · 17 Anos</span>
@@ -1030,10 +1037,10 @@ html.cursor-live #cursor-ring.link{
       </header>
     </div>
 
-    <div class="marquee reveal" style="--d:.06s" aria-label="Áreas de atuação">
+    <div class="marquee reveal" style="--d:.06s" aria-label="Tecnologias">
       <div class="marquee-track">
-        <span>Next.js 15 <i>✦</i></span><span>WebGIS &amp; PostgreSQL <i>✦</i></span><span>Full-Stack Development <i>✦</i></span><span>Automação &amp; Robótica <i>✦</i></span><span>Foco em Performance <i>✦</i></span><span>UI/UX Responsivo <i>✦</i></span>
-        <span aria-hidden="true">Next.js 15 <i>✦</i></span><span aria-hidden="true">WebGIS &amp; PostgreSQL <i>✦</i></span><span aria-hidden="true">Full-Stack Development <i>✦</i></span><span aria-hidden="true">Automação &amp; Robótica <i>✦</i></span><span aria-hidden="true">Foco em Performance <i>✦</i></span><span aria-hidden="true">UI/UX Responsivo <i>✦</i></span>
+        <span>Next.js 15 <i>✦</i></span><span>WebGIS &amp; PostgreSQL <i>✦</i></span><span>TypeScript <i>✦</i></span><span>Tailwind CSS <i>✦</i></span><span>Git &amp; GitHub <i>✦</i></span><span>REST APIs <i>✦</i></span>
+        <span aria-hidden="true">Next.js 15 <i>✦</i></span><span aria-hidden="true">WebGIS &amp; PostgreSQL <i>✦</i></span><span aria-hidden="true">TypeScript <i>✦</i></span><span aria-hidden="true">Tailwind CSS <i>✦</i></span><span aria-hidden="true">Git &amp; GitHub <i>✦</i></span><span aria-hidden="true">REST APIs <i>✦</i></span>
       </div>
     </div>
 
@@ -1079,12 +1086,11 @@ html.cursor-live #cursor-ring.link{
       <section class="panel summary tilt">
         <div class="spec-head">Resumo Profissional</div>
         <p>
-          Desenvolvedor de 17 anos com forte background em <strong>Robótica</strong>,
-          <strong>Engenharia de Software</strong> e <strong>Geoprocessamento</strong>.
-          Experiência prática na aplicação de soluções web robustas, automações,
-          arquiteturas modernas e sistemas <strong>WebGIS</strong> em ambiente corporativo.
-          Histórico acadêmico de excelência com diagnóstico de
-          <strong>Altas Habilidades / Superdotação</strong> e foco em aprendizado contínuo.
+          Estudante de 17 anos construindo base prática em <strong>Robótica</strong>,
+          <strong>Desenvolvimento de Software</strong> e <strong>Geoprocessamento</strong>.
+          Atuação corporativa como Jovem Aprendiz aplicando soluções web, automações e sistemas <strong>WebGIS</strong>.
+          Histórico acadêmico com diagnóstico de
+          <strong>Altas Habilidades / Superdotação</strong>, preparando-me para o ingresso no Ensino Superior em TI.
         </p>
         <div class="metrics">
           <div class="metric">
@@ -1117,21 +1123,20 @@ html.cursor-live #cursor-ring.link{
           <div class="frow"><dt>Idade</dt><dd>17 anos</dd></div>
           <div class="frow"><dt>Escolaridade</dt><dd>3º ano EM · conclusão 2026</dd></div>
           <div class="frow"><dt>Idiomas</dt><dd>PT nativo · EN intermediário</dd></div>
-          <div class="frow"><dt>Domínio</dt><dd>Full-Stack · WebGIS · Automação</dd></div>
-          <div class="frow"><dt>Aprendizado</dt><dd>AH/SD · absorção acelerada</dd></div>
-          <div class="frow"><dt>Experiência</dt><dd>Engemap · Produção, WebGIS &amp; RH</dd></div>
+          <div class="frow"><dt>Foco</dt><dd>Dev Web · WebGIS · Automação</dd></div>
+          <div class="frow"><dt>Perfil</dt><dd>AH/SD · rápida assimilação</dd></div>
+          <div class="frow"><dt>Experiência</dt><dd>Engemap · RH &amp; Produção/WebGIS</dd></div>
         </dl>
       </section>
     </div>
 
-    
     <div class="cell sp-7 reveal" style="--d:.08s">
-      <section class="panel terminal tilt" aria-label="Configuração do desenvolvedor em TypeScript">
+      <section class="panel terminal tilt" aria-label="Configuração em TypeScript">
         <div class="t-bar">
           <span class="t-dots" aria-hidden="true"><i></i><i></i><i></i></span>
           <span class="t-name">murilo.config.ts</span>
         </div>
-        <div class="t-body"><div class="t-row"><span class="t-ln">1</span><span class="t-code"><span class="tk-com">// murilo.config.ts</span></span></div><div class="t-row"><span class="t-ln">2</span><span class="t-code"><span class="tk-kw">export const</span> developer <span class="tk-pun">=</span> <span class="tk-pun">{</span></span></div><div class="t-row"><span class="t-ln">3</span><span class="t-code">  <span class="tk-prop">name</span><span class="tk-pun">:</span> <span class="tk-str">"Murilo Rogério"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">4</span><span class="t-code">  <span class="tk-prop">age</span><span class="tk-pun">:</span> <span class="tk-num">17</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">5</span><span class="t-code">  <span class="tk-prop">role</span><span class="tk-pun">:</span> <span class="tk-str">"Full-Stack Developer"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">6</span><span class="t-code">  <span class="tk-prop">location</span><span class="tk-pun">:</span> <span class="tk-str">"Assis, SP · BR"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">7</span><span class="t-code">  <span class="tk-prop">stack</span><span class="tk-pun">:</span> <span class="tk-pun">{</span></span></div><div class="t-row"><span class="t-ln">8</span><span class="t-code">    <span class="tk-prop">frontend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"Next.js 15"</span><span class="tk-pun">,</span> <span class="tk-str">"React 19"</span><span class="tk-pun">,</span> <span class="tk-str">"TS"</span><span class="tk-pun">],</span></span></div><div class="t-row"><span class="t-ln">9</span><span class="t-code">    <span class="tk-prop">backend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"Node"</span><span class="tk-pun">,</span> <span class="tk-str">"Supabase"</span><span class="tk-pun">,</span> <span class="tk-str">"PG"</span><span class="tk-pun">],</span></span></div><div class="t-row"><span class="t-ln">10</span><span class="t-code">    <span class="tk-prop">geo</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"WebGIS"</span><span class="tk-pun">,</span> <span class="tk-str">"AutoCAD"</span><span class="tk-pun">],</span></span></div><div class="t-row"><span class="t-ln">11</span><span class="t-code">  <span class="tk-pun">},</span></span></div><div class="t-row"><span class="t-ln">12</span><span class="t-code">  <span class="tk-prop">status</span><span class="tk-pun">:</span> <span class="tk-str">"open-to-work"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">13</span><span class="t-code"><span class="tk-pun">}</span> <span class="tk-kw">satisfies</span> Developer<span class="tk-pun">;</span> <span class="t-caret" aria-hidden="true"></span></span></div></div>
+        <div class="t-body"><div class="t-row"><span class="t-ln">1</span><span class="t-code"><span class="tk-com">// murilo.config.ts</span></span></div><div class="t-row"><span class="t-ln">2</span><span class="t-code"><span class="tk-kw">export const</span> config <span class="tk-pun">=</span> <span class="tk-pun">{</span></span></div><div class="t-row"><span class="t-ln">3</span><span class="t-code">  <span class="tk-prop">name</span><span class="tk-pun">:</span> <span class="tk-str">"Murilo Rogério"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">4</span><span class="t-code">  <span class="tk-prop">age</span><span class="tk-pun">:</span> <span class="tk-num">17</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">5</span><span class="t-code">  <span class="tk-prop">role</span><span class="tk-pun">:</span> <span class="tk-str">"Estudante & Aspirante a Dev"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">6</span><span class="t-code">  <span class="tk-prop">location</span><span class="tk-pun">:</span> <span class="tk-str">"Assis, SP · BR"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">7</span><span class="t-code">  <span class="tk-prop">stack</span><span class="tk-pun">:</span> <span class="tk-pun">{</span></span></div><div class="t-row"><span class="t-ln">8</span><span class="t-code">    <span class="tk-prop">frontend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"Next.js 15"</span><span class="tk-pun">,</span> <span class="tk-str">"React 19"</span><span class="tk-pun">,</span> <span class="tk-str">"TS"</span><span class="tk-pun">],</span></span></div><div class="t-row"><span class="t-ln">9</span><span class="t-code">    <span class="tk-prop">backend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"Node"</span><span class="tk-pun">,</span> <span class="tk-str">"Supabase"</span><span class="tk-pun">,</span> <span class="tk-str">"PG"</span><span class="tk-pun">],</span></span></div><div class="t-row"><span class="t-ln">10</span><span class="t-code">    <span class="tk-prop">geo</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"WebGIS"</span><span class="tk-pun">,</span> <span class="tk-str">"AutoCAD"</span><span class="tk-pun">],</span></span></div><div class="t-row"><span class="t-ln">11</span><span class="t-code">  <span class="tk-pun">},</span></span></div><div class="t-row"><span class="t-ln">12</span><span class="t-code">  <span class="tk-prop">status</span><span class="tk-pun">:</span> <span class="tk-str">"open-to-work"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">13</span><span class="t-code"><span class="tk-pun">}</span><span class="tk-pun">;</span> <span class="t-caret" aria-hidden="true"></span></span></div></div>
       </section>
     </div>
 
@@ -1158,7 +1163,7 @@ html.cursor-live #cursor-ring.link{
 
         <section class="panel actions tilt" aria-label="Ações rápidas">
           <h2>Ações Rápidas</h2>
-          <p class="a-sub">Um clique para o próximo passo.</p>
+          <p class="a-sub">Acesso direto ao currículo e contato.</p>
           <button class="act act-solid" type="button" id="cv-btn">
             <svg class="ic" aria-hidden="true"><use href="#i-file-down"/></svg>
             <span>Baixar Currículo PDF
@@ -1237,9 +1242,7 @@ html.cursor-live #cursor-ring.link{
                     <span class="chip live">Atual</span>
                   </div>
                   <p>
-                    Atuação direta no setor de produção utilizando sistemas WebGIS,
-                    tratamento de dados geoespaciais e suporte técnico aos fluxos
-                    cartográficos e de aerolevantamento.
+                    Transferido para o setor de Produção devido à readequação de demanda interna no RH, dando continuidade ao mesmo contrato de aprendizagem. Atuação no tratamento de dados geoespaciais, suporte a fluxos cartográficos e utilização de sistemas WebGIS.
                   </p>
                 </div>
               </article>
@@ -1252,8 +1255,7 @@ html.cursor-live #cursor-ring.link{
                     <span class="chip">10 meses</span>
                   </div>
                   <p>
-                    Gestão de processos internos, organização documental e suporte
-                    operacional ao departamento pessoal.
+                    Início do contrato de 15 meses no Recursos Humanos. Atuação na gestão de processos internos, organização documental e rotinas do departamento pessoal, até ser remanejado por alteração de demanda do setor.
                   </p>
                 </div>
               </article>
@@ -1265,7 +1267,7 @@ html.cursor-live #cursor-ring.link{
             <div class="contract">
               <div class="c-top">
                 <span class="c-range">Out/2025 → Nov/2026</span>
-                <span class="c-len">15 meses</span>
+                <span class="c-len">15 meses (Unificado)</span>
               </div>
               <div class="c-track" role="progressbar" aria-label="Progresso do contrato de aprendizagem" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="c-bar">
                 <div class="c-fill" id="c-fill"></div>
@@ -1278,7 +1280,7 @@ html.cursor-live #cursor-ring.link{
 
             <div class="spec-head" style="margin-top:24px">Setores de Atuação</div>
             <div class="c-areas">
-              <span class="chip core">Produção &amp; WebGIS</span>
+              <span class="chip core">Produção &amp; WebGIS (Atual)</span>
               <span class="chip">RH · Departamento Pessoal</span>
             </div>
           </div>
@@ -1286,7 +1288,6 @@ html.cursor-live #cursor-ring.link{
       </article>
     </div>
 
-    <!-- ======================= PROJETO 1 — NOSSO FLUXO ======================= -->
     <div class="cell sp-12 reveal" style="--d:.08s">
       <article class="panel project tilt" id="nossofluxo">
         <div class="panel-head">
@@ -1328,7 +1329,7 @@ html.cursor-live #cursor-ring.link{
               </div>
             </div>
             <p class="p-desc">
-              Aplicação Full-Stack completa para gestão de finanças pessoais: entradas, gastos,
+              Aplicação Web completa para gestão de finanças pessoais: entradas, gastos,
               parcelamentos, patrimônio e investimentos — do orçamento mensal à carteira de
               FIIs e ações com cotações automáticas.
             </p>
@@ -1354,7 +1355,7 @@ html.cursor-live #cursor-ring.link{
           </div>
 
           <div class="p-specs">
-            <div class="spec-head">Destaques de Engenharia</div>
+            <div class="spec-head">Destaques da Aplicação</div>
             <ol class="spec-list">
               <li>
                 <span class="spec-num">01</span>
@@ -1390,7 +1391,6 @@ html.cursor-live #cursor-ring.link{
       </article>
     </div>
 
-    <!-- ======================= PROJETO 2 — VIVI BOTY ======================= -->
     <div class="cell sp-12 reveal" style="--d:.08s">
       <article class="panel project alt tilt" id="viviboty">
         <div class="panel-head">
@@ -1446,7 +1446,7 @@ html.cursor-live #cursor-ring.link{
           </div>
 
           <div class="p-specs">
-            <div class="spec-head">Destaques de Engenharia</div>
+            <div class="spec-head">Destaques da Aplicação</div>
             <ol class="spec-list">
               <li>
                 <span class="spec-num">01</span>
@@ -1475,7 +1475,6 @@ html.cursor-live #cursor-ring.link{
       </article>
     </div>
 
-    <!-- ======================= FORMAÇÃO & CONQUISTAS ======================= -->
     <div class="cell sp-5 reveal" style="--d:.06s">
       <section class="panel skill tilt">
         <header>
@@ -1505,21 +1504,20 @@ html.cursor-live #cursor-ring.link{
             <div class="e-body">
               <div class="e-head"><h4>Altas Habilidades / Superdotação</h4><span class="dur">AH/SD</span></div>
               <p class="inst">Diagnóstico formal</p>
-              <p>Capacidade de aprendizagem acelerada e alta facilidade na absorção de novos conteúdos e tecnologias.</p>
+              <p>Capacidade de aprendizagem acelerada e facilidade na absorção de novos conteúdos e tecnologias.</p>
             </div>
           </li>
         </ul>
       </section>
     </div>
 
-    <!-- ======================= ROBÓTICA & PROTOTIPAGEM ======================= -->
     <div class="cell sp-7 reveal" style="--d:.12s">
       <section class="panel skill tilt">
         <header>
           <span class="sk-icon"><svg class="ic"><use href="#i-bot"/></svg></span>
           <h2>Robótica &amp; Prototipagem</h2>
         </header>
-        <p class="sk-sub">Trajetória prática em eletrônica, lógica e sistemas embarcados — a raiz da engenharia.</p>
+        <p class="sk-sub">Trajetória prática em eletrônica, lógica e sistemas embarcados.</p>
         <ul class="entries">
           <li>
             <span class="e-ic"><svg class="ic"><use href="#i-cpu"/></svg></span>
@@ -1534,7 +1532,7 @@ html.cursor-live #cursor-ring.link{
             <div class="e-body">
               <div class="e-head"><h4>Lego Mindstorms EV3</h4><span class="dur">6 meses</span></div>
               <p class="inst">FEMA</p>
-              <p>Desenvolvimento de algoritmos de navegação e resolução de desafios de engenharia.</p>
+              <p>Desenvolvimento de algoritmos de navegação e resolução de desafios práticos.</p>
             </div>
           </li>
           <li>
@@ -1549,7 +1547,6 @@ html.cursor-live #cursor-ring.link{
       </section>
     </div>
 
-    <!-- ======================= STACK TÉCNICA ======================= -->
     <div class="cell sp-5 reveal" style="--d:.06s">
       <section class="panel skill tilt">
         <header>
@@ -1609,10 +1606,9 @@ html.cursor-live #cursor-ring.link{
       </section>
     </div>
 
-    <!-- ======================= RODAPÉ ======================= -->
     <div class="cell sp-12 reveal" style="--d:.05s">
       <footer class="panel foot">
-        <span>© <span id="year">2025</span> Murilo Rogério Carvalho da Conceição</span>
+        <span>© <span id="year">2026</span> Murilo Rogério Carvalho da Conceição</span>
         <button class="f-copy" type="button" data-copy="murilo.rogerio.conceicao@gmail.com" aria-label="Copiar endereço de e-mail">
           <svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>
           murilo.rogerio.conceicao@gmail.com
@@ -1624,7 +1620,6 @@ html.cursor-live #cursor-ring.link{
   </div>
 </main>
 
-<!-- Toast de feedback -->
 <div class="toast" id="toast" role="status" aria-live="polite">
   <svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>
   <span id="toast-msg"></span>
@@ -1637,15 +1632,11 @@ html.cursor-live #cursor-ring.link{
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var finePointer  = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-  /* =====================================================
-     1. ANO AUTOMÁTICO DO RODAPÉ
-     ===================================================== */
+  // Ano no rodape
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  /* =====================================================
-     2. SCROLL REVEAL (fade-in-up escalonado)
-     ===================================================== */
+  // Scroll reveal
   var revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !reduceMotion) {
     var io = new IntersectionObserver(function (entries) {
@@ -1661,9 +1652,7 @@ html.cursor-live #cursor-ring.link{
     revealEls.forEach(function (el) { el.classList.add("in"); });
   }
 
-  /* =====================================================
-     3. BARRA DE PROGRESSO DE LEITURA (topo fixo)
-     ===================================================== */
+  // Barra de progresso
   var progressEl = document.getElementById("progress");
   var progressPending = false;
 
@@ -1687,9 +1676,7 @@ html.cursor-live #cursor-ring.link{
   }, { passive: true });
   updateProgress();
 
-  /* =====================================================
-     4. BRILHO INTERNO QUE SEGUE O CURSOR (por card)
-     ===================================================== */
+  // Efeito de brilho nos cards
   if (finePointer) {
     document.querySelectorAll(".panel").forEach(function (card) {
       card.addEventListener("pointermove", function (e) {
@@ -1700,18 +1687,16 @@ html.cursor-live #cursor-ring.link{
     });
   }
 
-  /* =====================================================
-     5. TILT 3D (rotateX / rotateY) nos cards .tilt — só desktop
-     ===================================================== */
+  // Tilt 3D
   if (finePointer && !reduceMotion) {
     document.querySelectorAll(".tilt").forEach(function (card) {
       card.addEventListener("pointermove", function (e) {
         var r = card.getBoundingClientRect();
         if (r.width < 1 || r.height < 1) return;
-        var px = (e.clientX - r.left) / r.width  - 0.5;   /* -0.5 .. 0.5 */
+        var px = (e.clientX - r.left) / r.width  - 0.5;
         var py = (e.clientY - r.top)  / r.height - 0.5;
-        card.style.setProperty("--ry", (px * 5).toFixed(2) + "deg");  /* extremidade direita gira p/ direita */
-        card.style.setProperty("--rx", (py * -5).toFixed(2) + "deg"); /* extremidade inferior inclina p/ frente */
+        card.style.setProperty("--ry", (px * 5).toFixed(2) + "deg");
+        card.style.setProperty("--rx", (py * -5).toFixed(2) + "deg");
       }, { passive: true });
       card.addEventListener("pointerleave", function () {
         card.style.setProperty("--rx", "0deg");
@@ -1720,9 +1705,7 @@ html.cursor-live #cursor-ring.link{
     });
   }
 
-  /* =====================================================
-     6. SPOTLIGHT GLOBAL COM INTERPOLAÇÃO SUAVE
-     ===================================================== */
+  // Spotlight
   var spot = document.querySelector(".spotlight");
   if (spot && finePointer && !reduceMotion) {
     var tx = window.innerWidth / 2, ty = window.innerHeight * 0.3;
@@ -1741,17 +1724,15 @@ html.cursor-live #cursor-ring.link{
     })();
   }
 
-  /* =====================================================
-     7. CURSOR CUSTOMIZADO — ponto + anel roxo (desktop)
-     ===================================================== */
+  // Cursor customizado
   var dot  = document.getElementById("cursor-dot");
   var ring = document.getElementById("cursor-ring");
 
   if (dot && ring && finePointer && !reduceMotion) {
     document.documentElement.classList.add("cursor-on");
 
-    var mx = -100, my = -100;        /* posição real do mouse  */
-    var rx = -100, ry = -100;        /* posição do anel (lerp) */
+    var mx = -100, my = -100;
+    var rx = -100, ry = -100;
     var cursorShown = false;
 
     document.addEventListener("pointermove", function (e) {
@@ -1774,7 +1755,6 @@ html.cursor-live #cursor-ring.link{
       document.documentElement.classList.add("cursor-live");
     });
 
-    /* anel expande sobre elementos interativos */
     document.addEventListener("mouseover", function (e) {
       if (!e.target || !e.target.closest) return;
       var hit = e.target.closest("a, button, .chip, [data-copy]");
@@ -1790,21 +1770,19 @@ html.cursor-live #cursor-ring.link{
     })();
   }
 
-  /* =====================================================
-     8. CONTADORES ANIMADOS (count-up no viewport)
-     ===================================================== */
+  // Animacao dos numeros
   function animateCount(el) {
     var target = parseFloat(el.getAttribute("data-count"));
     if (isNaN(target)) return;
     if (reduceMotion) { el.textContent = String(target); return; }
 
-    var dur = 1500 + Math.min(target * 8, 500); /* números maiores demoram um pouco mais */
+    var dur = 1500 + Math.min(target * 8, 500);
     var t0 = null;
 
     function frame(t) {
       if (t0 === null) t0 = t;
       var p = Math.min((t - t0) / dur, 1);
-      var eased = 1 - Math.pow(1 - p, 3); /* easeOutCubic */
+      var eased = 1 - Math.pow(1 - p, 3);
       el.textContent = String(Math.round(target * eased));
       if (p < 1) requestAnimationFrame(frame);
       else el.textContent = String(target);
@@ -1827,9 +1805,7 @@ html.cursor-live #cursor-ring.link{
     counters.forEach(animateCount);
   }
 
-  /* =====================================================
-     9. RELÓGIO DIGITAL — Assis, SP (BRT · UTC−3)
-     ===================================================== */
+  // Relogio digital
   var clockTime = document.getElementById("clock-time");
   var clockDate = document.getElementById("clock-date");
 
@@ -1844,7 +1820,7 @@ html.cursor-live #cursor-ring.link{
       timeZone: "America/Sao_Paulo",
       weekday: "long", day: "numeric", month: "short"
     });
-  } catch (e) { /* fallback silencioso */ }
+  } catch (e) {}
 
   function tickClock() {
     if (!clockTime) return;
@@ -1861,25 +1837,21 @@ html.cursor-live #cursor-ring.link{
   tickClock();
   setInterval(tickClock, 1000);
 
-  /* =====================================================
-     10. PAUSAR AVIÕES SMIL SE MOVIMENTO REDUZIDO
-     ===================================================== */
+  // Animacao SVG
   var survey = document.getElementById("survey-svg");
   if (survey && reduceMotion && typeof survey.pauseAnimations === "function") {
     survey.pauseAnimations();
   }
 
-  /* =====================================================
-     11. PROGRESSO DO CONTRATO (calculado em tempo real)
-     ===================================================== */
+  // Progresso do contrato
   var fillEl = document.getElementById("c-fill");
   var pctEl  = document.getElementById("c-pct");
   var daysEl = document.getElementById("c-days");
   var barEl  = document.getElementById("c-bar");
   if (fillEl && pctEl && daysEl) {
     var DAY   = 86400000;
-    var start = new Date(2025, 9, 1).getTime();   /* 1 de Outubro de 2025   */
-    var end   = new Date(2026, 10, 30).getTime(); /* 30 de Novembro de 2026 */
+    var start = new Date(2025, 9, 1).getTime();
+    var end   = new Date(2026, 10, 30).getTime();
     var now   = Date.now();
     var pct, text;
 
@@ -1907,9 +1879,7 @@ html.cursor-live #cursor-ring.link{
     });
   }
 
-  /* =====================================================
-     12. TOAST + COPY TO CLIPBOARD
-     ===================================================== */
+  // Toast e Copiar
   var toast = document.getElementById("toast");
   var toastMsg = document.getElementById("toast-msg");
   var toastTimer = null;
@@ -1953,16 +1923,14 @@ html.cursor-live #cursor-ring.link{
     });
   });
 
-  /* =====================================================
-     13. BAIXAR CURRÍCULO PDF — documento A4 imprimível
-     ===================================================== */
+  // Gerador de PDF
   var cvBtn = document.getElementById("cv-btn");
   if (cvBtn) {
     cvBtn.addEventListener("click", function () {
       var w = window.open("", "_blank");
 
       if (!w) {
-        showToast("O navegador bloqueou a janela — permita pop-ups para baixar o PDF");
+        showToast("Permita pop-ups no navegador para visualizar o PDF");
         return;
       }
 
@@ -1991,7 +1959,7 @@ html.cursor-live #cursor-ring.link{
         "</style></head><body>",
         "<div class='sheet'>",
         "  <h1>Murilo Rogério Carvalho da Conceição</h1>",
-        "  <p class='tag'>Desenvolvedor Full-Stack · Geotecnologia &amp; WebGIS · Robótica &amp; Automação</p>",
+        "  <p class='tag'>Estudante de TI · Geotecnologia &amp; WebGIS · Robótica &amp; Automação</p>",
         "  <p class='contact'>",
         "    Assis, SP — Brasil &nbsp;·&nbsp; ",
         "    <a href='mailto:murilo.rogerio.conceicao@gmail.com'>murilo.rogerio.conceicao@gmail.com</a> &nbsp;·&nbsp; ",
@@ -2001,29 +1969,29 @@ html.cursor-live #cursor-ring.link{
         "  </p>",
         "  <hr>",
         "  <h2>Resumo Profissional</h2>",
-        "  <p>Desenvolvedor de 17 anos com forte background em Robótica, Engenharia de Software e Geoprocessamento. Experiência prática na aplicação de soluções web robustas, automações, arquiteturas modernas e sistemas WebGIS em ambiente corporativo. Histórico acadêmico de excelência com diagnóstico de Altas Habilidades / Superdotação e foco em aprendizado contínuo.</p>",
+        "  <p>Estudante de 17 anos construindo base prática em Robótica, Desenvolvimento de Software e Geoprocessamento. Atuação corporativa como Jovem Aprendiz aplicando soluções web, automações e sistemas WebGIS. Histórico acadêmico com diagnóstico de Altas Habilidades / Superdotação, preparando-me para o ingresso no Ensino Superior em TI.</p>",
         "  <h2>Experiência Profissional</h2>",
         "  <div class='item'>",
         "    <h3>Engemap — Engenharia e Aerolevantamento · Jovem Aprendiz (Produção &amp; WebGIS)</h3>",
-        "    <p class='meta'>Atual · Atuação no setor de produção com sistemas WebGIS</p>",
+        "    <p class='meta'>Atual · Transferido para Produção/WebGIS mantendo o mesmo contrato de 15 meses devido à readequação de demanda no setor de RH.</p>",
         "    <ul><li>Tratamento de dados geoespaciais e suporte técnico a fluxos cartográficos e de aerolevantamento.</li></ul>",
         "  </div>",
         "  <div class='item'>",
         "    <h3>Engemap — Jovem Aprendiz (Auxiliar Pessoal no Recursos Humanos)</h3>",
-        "    <p class='meta'>10 meses · Cargo anterior</p>",
-        "    <ul><li>Gestão de processos internos, organização documental e suporte operacional ao departamento pessoal.</li></ul>",
+        "    <p class='meta'>~10 meses · Início do contrato de aprendizagem de 15 meses</p>",
+        "    <ul><li>Gestão de processos internos, organização documental e suporte operacional ao departamento pessoal antes do remanejamento por demanda.</li></ul>",
         "  </div>",
-        "  <p class='meta'><strong>Contrato de aprendizagem:</strong> 15 meses (Outubro/2025 a Novembro/2026).</p>",
+        "  <p class='meta'><strong>Contrato de aprendizagem:</strong> 15 meses unificado (Outubro/2025 a Novembro/2026).</p>",
         "  <h2>Projetos</h2>",
         "  <div class='item'>",
-        "    <h3>Nosso Fluxo — Gestão Financeira Pessoal (Full-Stack · Fintech)</h3>",
+        "    <h3>Nosso Fluxo — Gestão Financeira Pessoal (Web App · Fintech)</h3>",
         "    <p class='meta'><a href='https://nossofluxo.vercel.app'>nossofluxo.vercel.app</a> · <a href='https://github.com/Murilo-Rogerio/Murilo-Rogerio-controle-financeiro-pessoal'>Repositório</a></p>",
         "    <ul>",
         "      <li>Gestão completa de finanças: entradas, gastos, parcelamentos, patrimônio e investimentos.</li>",
         "      <li>Taxa CDI em tempo real via BrasilAPI (cache 1h + fallback); monitoramento de FIIs/Ações via brapi.dev com dispersão Risco × Retorno.</li>",
         "      <li>Motor de recorrência puro sem duplicação de linhas; arquitetura pronta para Open Finance (Pluggy/Belvo).</li>",
         "      <li>Segurança em 3 camadas: Middleware, Layout Protegido e RLS no PostgreSQL.</li>",
-        "      <li>Stack: Next.js 15, React 19, TypeScript (strict), Tailwind, Supabase, Framer Motion, Recharts, Vercel.</li>",
+        "      <li>Stack: Next.js 15, React 19, TypeScript, Tailwind, Supabase, Framer Motion, Recharts, Vercel.</li>",
         "    </ul>",
         "  </div>",
         "  <div class='item'>",
@@ -2040,7 +2008,7 @@ html.cursor-live #cursor-ring.link{
         "  <ul>",
         "    <li>Cursando o 3º Ano do Ensino Médio — conclusão em 2026.</li>",
         "    <li>Certificado de Aluno Destaque: histórico com notas máximas, sem reprovações ou advertências.</li>",
-        "    <li>Diagnóstico de Altas Habilidades / Superdotação (AH/SD): aprendizagem acelerada.</li>",
+        "    <li>Diagnóstico de Altas Habilidades / Superdotação (AH/SD).</li>",
         "    <li>Inglês intermediário — compreensão técnica e conversação rápida.</li>",
         "  </ul>",
         "  <h2>Robótica &amp; Projetos Práticos</h2>",
@@ -2076,7 +2044,7 @@ html.cursor-live #cursor-ring.link{
       w.document.close();
       w.document.title = "Currículo — Murilo Rogério Carvalho da Conceição";
 
-      showToast("Currículo aberto em nova aba — Imprimir → Salvar como PDF");
+      showToast("Currículo gerado em nova aba");
     });
   }
 })();
