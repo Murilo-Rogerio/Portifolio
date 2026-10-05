@@ -124,6 +124,53 @@ html.cursor-live #cursor-ring.link{
   #cursor-dot, #cursor-ring{ display:none; }
 }
 
+/* BARRAS FLUTUANTES NAS LATERAIS PARA MONITORES LARGOS */
+.side-rail{
+  position:fixed; top:50%; transform:translateY(-50%);
+  z-index:50; display:none; flex-direction:column; gap:16px;
+  padding:14px 10px; border-radius:99px;
+  background:rgba(255,255,255,.022); border:1px solid rgba(255,255,255,.06);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  box-shadow:0 12px 32px -12px rgba(0,0,0,.5);
+}
+.side-rail.left{ left:32px; }
+.side-rail.right{ right:32px; border-radius:20px; padding:18px 12px; align-items:center; }
+
+@media (min-width: 1280px){
+  .side-rail{ display:flex; }
+}
+
+.rail-item{
+  position:relative; width:9px; height:9px; border-radius:50%;
+  background:rgba(255,255,255,.2); transition:all .35s var(--ease);
+  display:block;
+}
+.rail-item:hover, .rail-item.active{
+  background:var(--violet-2); transform:scale(1.5);
+  box-shadow:0 0 12px rgba(167,139,250,.7);
+}
+.rail-item .tooltip{
+  position:absolute; left:22px; top:50%; transform:translateY(-50%);
+  padding:4px 10px; border-radius:6px; background:rgba(18,18,24,.92);
+  border:1px solid rgba(255,255,255,.1); font-family:var(--mono); font-size:10px;
+  white-space:nowrap; color:var(--text); opacity:0; pointer-events:none;
+  transition:opacity .25s ease, transform .25s ease;
+}
+.rail-item:hover .tooltip{ opacity:1; transform:translateY(-50%) translateX(4px); }
+
+.rail-geo{
+  writing-mode:vertical-rl; text-transform:uppercase;
+  font-family:var(--mono); font-size:9.5px; letter-spacing:.18em;
+  color:var(--text-3); transform:rotate(180deg); opacity:.75;
+}
+.rail-btn{
+  margin-top:14px; width:28px; height:28px; border-radius:50%;
+  display:grid; place-items:center; background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08); color:var(--text-2);
+  transition:all .3s ease;
+}
+.rail-btn:hover{ background:rgba(255,255,255,.1); color:#fff; transform:translateY(-2px); }
+
 .ic{
   width:18px; height:18px; flex:none;
   fill:none; stroke:currentColor; stroke-width:2;
@@ -913,6 +960,25 @@ html.cursor-live #cursor-ring.link{
 <div id="cursor-dot" aria-hidden="true"></div>
 <div id="cursor-ring" aria-hidden="true"></div>
 
+<!-- NAVEGAÇÃO LATERAL (ESQUERDA) -->
+<nav class="side-rail left" aria-label="Navegação por seções">
+  <a href="#perfil" class="rail-item active" data-sec="perfil"><span class="tooltip">Perfil</span></a>
+  <a href="#summary" class="rail-item" data-sec="summary"><span class="tooltip">Resumo</span></a>
+  <a href="#engemap" class="rail-item" data-sec="engemap"><span class="tooltip">Engemap</span></a>
+  <a href="#nossofluxo" class="rail-item" data-sec="nossofluxo"><span class="tooltip">Nosso Fluxo</span></a>
+  <a href="#viviboty" class="rail-item" data-sec="viviboty"><span class="tooltip">Vivi Boty</span></a>
+  <a href="#formacao" class="rail-item" data-sec="formacao"><span class="tooltip">Formação &amp; Robótica</span></a>
+  <a href="#skills" class="rail-item" data-sec="skills"><span class="tooltip">Skills</span></a>
+</nav>
+
+<!-- TELEMETRIA LATERAL (DIREITA) -->
+<aside class="side-rail right" aria-label="Telemetria e atalhos">
+  <div class="rail-geo">22°39'25"S 50°24'43"W · ELEV 520M</div>
+  <button type="button" class="rail-btn" id="rail-back-top" title="Voltar ao topo" aria-label="Voltar ao topo">
+    <svg class="ic" style="width:14px; height:14px;"><use href="#i-arrow-up-right" style="transform:rotate(-45deg); display:block;"/></svg>
+  </button>
+</aside>
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="i-github" viewBox="0 0 24 24">
@@ -1019,7 +1085,7 @@ html.cursor-live #cursor-ring.link{
   <div class="bento">
 
     <div class="cell sp-12 reveal" style="--d:0s">
-      <header class="panel profile tilt">
+      <header class="panel profile tilt" id="perfil">
         <div class="avatar">
           <span class="avatar-halo" aria-hidden="true"></span>
           <span class="avatar-ring" aria-hidden="true"></span>
@@ -1083,7 +1149,7 @@ html.cursor-live #cursor-ring.link{
     </div>
 
     <div class="cell sp-7 reveal" style="--d:.08s">
-      <section class="panel summary tilt">
+      <section class="panel summary tilt" id="summary">
         <div class="spec-head">Resumo Profissional</div>
         <p>
           Estudante de 17 anos construindo base prática em <strong>Robótica</strong>,
@@ -1475,7 +1541,7 @@ html.cursor-live #cursor-ring.link{
       </article>
     </div>
 
-    <div class="cell sp-5 reveal" style="--d:.06s">
+    <div class="cell sp-5 reveal" style="--d:.06s" id="formacao">
       <section class="panel skill tilt">
         <header>
           <span class="sk-icon"><svg class="ic"><use href="#i-graduation"/></svg></span>
@@ -1547,7 +1613,7 @@ html.cursor-live #cursor-ring.link{
       </section>
     </div>
 
-    <div class="cell sp-5 reveal" style="--d:.06s">
+    <div class="cell sp-5 reveal" style="--d:.06s" id="skills">
       <section class="panel skill tilt">
         <header>
           <span class="sk-icon"><svg class="ic"><use href="#i-monitor"/></svg></span>
@@ -1652,7 +1718,7 @@ html.cursor-live #cursor-ring.link{
     revealEls.forEach(function (el) { el.classList.add("in"); });
   }
 
-  // Barra de progresso
+  // Barra de progresso de leitura
   var progressEl = document.getElementById("progress");
   var progressPending = false;
 
@@ -1675,6 +1741,34 @@ html.cursor-live #cursor-ring.link{
     }
   }, { passive: true });
   updateProgress();
+
+  // Scrollspy para a barra lateral esquerda
+  var railLinks = document.querySelectorAll('.rail-item');
+  var targetSecs = document.querySelectorAll('#perfil, #summary, #engemap, #nossofluxo, #viviboty, #formacao, #skills');
+
+  function updateScrollspy() {
+    var scrollPos = window.scrollY + 250;
+    targetSecs.forEach(function(sec) {
+      var id = sec.getAttribute('id');
+      if (!id) return;
+      var top = sec.offsetTop;
+      var height = sec.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + height) {
+        railLinks.forEach(function(link) {
+          link.classList.toggle('active', link.getAttribute('data-sec') === id);
+        });
+      }
+    });
+  }
+  window.addEventListener('scroll', updateScrollspy, { passive: true });
+
+  // Botao Voltar ao topo na barra direita
+  var backTopBtn = document.getElementById('rail-back-top');
+  if (backTopBtn) {
+    backTopBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
   // Efeito de brilho nos cards
   if (finePointer) {
