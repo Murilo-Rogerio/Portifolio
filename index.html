@@ -124,7 +124,6 @@ html.cursor-live #cursor-ring.link{
   #cursor-dot, #cursor-ring{ display:none; }
 }
 
-/* BARRAS FLUTUANTES NAS LATERAIS PARA MONITORES LARGOS */
 .side-rail{
   position:fixed; top:50%; transform:translateY(-50%);
   z-index:50; display:none; flex-direction:column; gap:16px;
@@ -960,10 +959,10 @@ html.cursor-live #cursor-ring.link{
 <div id="cursor-dot" aria-hidden="true"></div>
 <div id="cursor-ring" aria-hidden="true"></div>
 
-<!-- NAVEGAÇÃO LATERAL (ESQUERDA) -->
 <nav class="side-rail left" aria-label="Navegação por seções">
   <a href="#perfil" class="rail-item active" data-sec="perfil"><span class="tooltip">Perfil</span></a>
   <a href="#summary" class="rail-item" data-sec="summary"><span class="tooltip">Resumo</span></a>
+  <a href="#arca" class="rail-item" data-sec="arca"><span class="tooltip">Arca</span></a>
   <a href="#engemap" class="rail-item" data-sec="engemap"><span class="tooltip">Engemap</span></a>
   <a href="#nossofluxo" class="rail-item" data-sec="nossofluxo"><span class="tooltip">Nosso Fluxo</span></a>
   <a href="#viviboty" class="rail-item" data-sec="viviboty"><span class="tooltip">Vivi Boty</span></a>
@@ -971,7 +970,6 @@ html.cursor-live #cursor-ring.link{
   <a href="#skills" class="rail-item" data-sec="skills"><span class="tooltip">Skills</span></a>
 </nav>
 
-<!-- TELEMETRIA LATERAL (DIREITA) -->
 <aside class="side-rail right" aria-label="Telemetria e atalhos">
   <div class="rail-geo">22°39'25"S 50°24'43"W · ELEV 520M</div>
   <button type="button" class="rail-btn" id="rail-back-top" title="Voltar ao topo" aria-label="Voltar ao topo">
@@ -1078,6 +1076,11 @@ html.cursor-live #cursor-ring.link{
       <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
       <path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/>
     </symbol>
+    <symbol id="i-archive" viewBox="0 0 24 24">
+      <polyline points="21 8 21 21 3 21 3 8"/>
+      <rect width="22" height="5" x="1" y="3"/>
+      <line x1="10" x2="14" y1="12" y2="12"/>
+    </symbol>
   </defs>
 </svg>
 
@@ -1105,8 +1108,8 @@ html.cursor-live #cursor-ring.link{
 
     <div class="marquee reveal" style="--d:.06s" aria-label="Tecnologias">
       <div class="marquee-track">
-        <span>Next.js 15 <i>✦</i></span><span>WebGIS &amp; PostgreSQL <i>✦</i></span><span>TypeScript <i>✦</i></span><span>Tailwind CSS <i>✦</i></span><span>Git &amp; GitHub <i>✦</i></span><span>REST APIs <i>✦</i></span>
-        <span aria-hidden="true">Next.js 15 <i>✦</i></span><span aria-hidden="true">WebGIS &amp; PostgreSQL <i>✦</i></span><span aria-hidden="true">TypeScript <i>✦</i></span><span aria-hidden="true">Tailwind CSS <i>✦</i></span><span aria-hidden="true">Git &amp; GitHub <i>✦</i></span><span aria-hidden="true">REST APIs <i>✦</i></span>
+        <span>React 18 &amp; PWA <i>✦</i></span><span>Next.js 15 <i>✦</i></span><span>WebGIS &amp; PostgreSQL <i>✦</i></span><span>TypeScript <i>✦</i></span><span>Tailwind CSS <i>✦</i></span><span>Git &amp; GitHub <i>✦</i></span><span>REST APIs <i>✦</i></span>
+        <span aria-hidden="true">React 18 &amp; PWA <i>✦</i></span><span aria-hidden="true">Next.js 15 <i>✦</i></span><span aria-hidden="true">WebGIS &amp; PostgreSQL <i>✦</i></span><span aria-hidden="true">TypeScript <i>✦</i></span><span aria-hidden="true">Tailwind CSS <i>✦</i></span><span aria-hidden="true">Git &amp; GitHub <i>✦</i></span><span aria-hidden="true">REST APIs <i>✦</i></span>
       </div>
     </div>
 
@@ -1168,7 +1171,7 @@ html.cursor-live #cursor-ring.link{
             <span>anos em robótica &amp; automação</span>
           </div>
           <div class="metric">
-            <b><span data-count="2">0</span></b>
+            <b><span data-count="3">0</span></b>
             <span>aplicações em produção</span>
           </div>
           <div class="metric">
@@ -1202,7 +1205,7 @@ html.cursor-live #cursor-ring.link{
           <span class="t-dots" aria-hidden="true"><i></i><i></i><i></i></span>
           <span class="t-name">murilo.config.ts</span>
         </div>
-        <div class="t-body"><div class="t-row"><span class="t-ln">1</span><span class="t-code"><span class="tk-com">// murilo.config.ts</span></span></div><div class="t-row"><span class="t-ln">2</span><span class="t-code"><span class="tk-kw">export const</span> config <span class="tk-pun">=</span> <span class="tk-pun">{</span></span></div><div class="t-row"><span class="t-ln">3</span><span class="t-code">  <span class="tk-prop">name</span><span class="tk-pun">:</span> <span class="tk-str">"Murilo Rogério"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">4</span><span class="t-code">  <span class="tk-prop">age</span><span class="tk-pun">:</span> <span class="tk-num">17</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">5</span><span class="t-code">  <span class="tk-prop">role</span><span class="tk-pun">:</span> <span class="tk-str">"Estudante & Aspirante a Dev"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">6</span><span class="t-code">  <span class="tk-prop">location</span><span class="tk-pun">:</span> <span class="tk-str">"Assis, SP · BR"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">7</span><span class="t-code">  <span class="tk-prop">stack</span><span class="tk-pun">:</span> <span class="tk-pun">{</span></span></div><div class="t-row"><span class="t-ln">8</span><span class="t-code">    <span class="tk-prop">frontend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"Next.js 15"</span><span class="tk-pun">,</span> <span class="tk-str">"React 19"</span><span class="tk-pun">,</span> <span class="tk-str">"TS"</span><span class="tk-pun">],</span></span></div><div class="t-row"><span class="t-ln">9</span><span class="t-code">    <span class="tk-prop">backend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"Node"</span><span class="tk-pun">,</span> <span class="tk-str">"Supabase"</span><span class="tk-pun">,</span> <span class="tk-str">"PG"</span><span class="tk-pun">],</span></span></div><div class="t-row"><span class="t-ln">10</span><span class="t-code">    <span class="tk-prop">geo</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"WebGIS"</span><span class="tk-pun">,</span> <span class="tk-str">"AutoCAD"</span><span class="tk-pun">],</span></span></div><div class="t-row"><span class="t-ln">11</span><span class="t-code">  <span class="tk-pun">},</span></span></div><div class="t-row"><span class="t-ln">12</span><span class="t-code">  <span class="tk-prop">status</span><span class="tk-pun">:</span> <span class="tk-str">"open-to-work"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">13</span><span class="t-code"><span class="tk-pun">}</span><span class="tk-pun">;</span> <span class="t-caret" aria-hidden="true"></span></span></div></div>
+        <div class="t-body"><div class="t-row"><span class="t-ln">1</span><span class="t-code"><span class="tk-com"></span></span></div><div class="t-row"><span class="t-ln">2</span><span class="t-code"><span class="tk-kw">export const</span> config <span class="tk-pun">=</span> <span class="tk-pun">{</span></span></div><div class="t-row"><span class="t-ln">3</span><span class="t-code">  <span class="tk-prop">name</span><span class="tk-pun">:</span> <span class="tk-str">"Murilo Rogério"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">4</span><span class="t-code">  <span class="tk-prop">age</span><span class="tk-pun">:</span> <span class="tk-num">17</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">5</span><span class="t-code">  <span class="tk-prop">role</span><span class="tk-pun">:</span> <span class="tk-str">"Estudante & Aspirante a Dev"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">6</span><span class="t-code">  <span class="tk-prop">location</span><span class="tk-pun">:</span> <span class="tk-str">"Assis, SP · BR"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">7</span><span class="t-code">  <span class="tk-prop">stack</span><span class="tk-pun">:</span> <span class="tk-pun">{</span></span></div><div class="t-row"><span class="t-ln">8</span><span class="t-code">    <span class="tk-prop">frontend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"React 18"</span><span class="tk-pun">,</span> <span class="tk-str">"Next.js 15"</span><span class="tk-pun">,</span> <span class="tk-str">"TS"</span><span class="tk-pun">,</span> <span class="tk-str">"PWA"</span><span class="tk-pun">],</span></span></div><div class="t-row"><span class="t-ln">9</span><span class="t-code">    <span class="tk-prop">backend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"Node"</span><span class="tk-pun">,</span> <span class="tk-str">"Supabase"</span><span class="tk-pun">,</span> <span class="tk-str">"PG"</span><span class="tk-pun">],</span></span></div><div class="t-row"><span class="t-ln">10</span><span class="t-code">    <span class="tk-prop">geo</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"WebGIS"</span><span class="tk-pun">,</span> <span class="tk-str">"AutoCAD"</span><span class="tk-pun">],</span></span></div><div class="t-row"><span class="t-ln">11</span><span class="t-code">  <span class="tk-pun">},</span></span></div><div class="t-row"><span class="t-ln">12</span><span class="t-code">  <span class="tk-prop">status</span><span class="tk-pun">:</span> <span class="tk-str">"open-to-work"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">13</span><span class="t-code"><span class="tk-pun">}</span><span class="tk-pun">;</span> <span class="t-caret" aria-hidden="true"></span></span></div></div>
       </section>
     </div>
 
@@ -1245,6 +1248,103 @@ html.cursor-live #cursor-ring.link{
         </section>
 
       </div>
+    </div>
+
+    <div class="cell sp-12 reveal" style="--d:.08s">
+      <article class="panel project tilt" id="arca">
+        <div class="panel-head">
+          <div class="p-badges">
+            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>React 18</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>TypeScript</span>
+            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>Vite</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Tailwind CSS</span>
+            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Supabase RLS</span>
+            <span class="badge"><span class="bdot b-rose" aria-hidden="true"></span>PWA / Share Target</span>
+          </div>
+          <div class="p-widget" aria-hidden="true">
+            <span class="w-label">Organização &amp; Mídias</span>
+            <svg viewBox="0 0 200 118">
+              <rect x="15" y="15" width="170" height="88" rx="8" class="w-line" fill="rgba(255,255,255,0.02)"/>
+              <rect x="25" y="25" width="60" height="40" rx="4" class="w-line" fill="rgba(139,92,246,0.15)"/>
+              <line x1="95" y1="30" x2="170" y2="30" class="w-line"/>
+              <line x1="95" y1="42" x2="150" y2="42" class="w-line"/>
+              <line x1="25" y1="75" x2="170" y2="75" class="w-line"/>
+              <circle cx="35" cy="88" r="4" class="w-pt v"/>
+              <circle cx="55" cy="88" r="4" class="w-pt b"/>
+              <circle cx="75" cy="88" r="4" class="w-pt"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="project-body">
+          <div class="p-info">
+            <div class="p-id">
+              <span class="p-icon"><svg class="ic"><use href="#i-archive"/></svg></span>
+              <div>
+                <h3>Arca</h3>
+                <p class="p-tag">Organização Pessoal &amp; Bloco de Notas PWA</p>
+              </div>
+            </div>
+            <p class="p-desc">
+              App de organização pessoal pensado primeiramente para o celular. Guarda notas rápidas, listas de tarefas com atualização otimista, acompanhamento de rotina e links/mídias (TikTok e YouTube) capturados via Web Share Target com metadados via oEmbed.
+            </p>
+            <div class="p-stack" aria-label="Stack complementar">
+              <span class="chip core">PWA Instalável</span>
+              <span class="chip">Web Share Target</span>
+              <span class="chip">oEmbed Auto-Fetch</span>
+              <span class="chip">Compressão Canvas Client-Side</span>
+              <span class="chip">Supabase Auth &amp; Storage</span>
+              <span class="chip">PostgreSQL RLS</span>
+              <span class="chip">Framer Motion</span>
+              <span class="chip">Vercel</span>
+            </div>
+            <div class="p-actions">
+              <a class="btn btn-solid" href="https://arcaik-notes.vercel.app/" target="_blank" rel="noopener noreferrer">
+                Acessar o app
+                <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+              </a>
+              <a class="btn btn-ghost" href="https://github.com/Murilo-Rogerio/Arcaik" target="_blank" rel="noopener noreferrer">
+                <svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>
+                Código-fonte
+              </a>
+            </div>
+          </div>
+
+          <div class="p-specs">
+            <div class="spec-head">Destaques da Aplicação</div>
+            <ol class="spec-list">
+              <li>
+                <span class="spec-num">01</span>
+                <div>
+                  <strong>Web Share Target &amp; oEmbed Nativo</strong>
+                  <p>Integração com a folha de compartilhamento nativa do Android para arquivar vídeos do TikTok/YouTube buscando títulos e miniaturas automaticamente.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">02</span>
+                <div>
+                  <strong>Compressão Client-Side &amp; Upload em 2 Etapas</strong>
+                  <p>Fotos otimizadas diretamente via canvas (~300 KB) antes do upload, com rollback automático no Storage se o registro do banco falhar.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">03</span>
+                <div>
+                  <strong>Segurança no Banco (RLS) &amp; URLs Assinadas</strong>
+                  <p>Proteção com Row Level Security no Postgres e bucket privado no Storage com URLs assinadas válidas por 24 horas.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">04</span>
+                <div>
+                  <strong>Navegação Offline &amp; Service Worker Manual</strong>
+                  <p>Estratégia Network-First sustentando rotas offline e atualizações otimistas na UI com rollback garantido em caso de recusa no servidor.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </article>
     </div>
 
     <div class="cell sp-12 reveal" style="--d:.08s">
@@ -1622,13 +1722,14 @@ html.cursor-live #cursor-ring.link{
         <p class="sk-sub">Interfaces de alta performance com arquitetura de componentes.</p>
         <ul class="chips">
           <li class="chip core">TypeScript</li>
-          <li class="chip core">React</li>
+          <li class="chip core">React 18</li>
           <li class="chip core">Next.js 15</li>
           <li class="chip">JavaScript ES6+</li>
           <li class="chip">HTML5 Semântico</li>
           <li class="chip">CSS3</li>
           <li class="chip">Tailwind CSS</li>
           <li class="chip">Framer Motion</li>
+          <li class="chip">PWA / Service Worker</li>
         </ul>
       </section>
     </div>
@@ -1698,11 +1799,9 @@ html.cursor-live #cursor-ring.link{
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var finePointer  = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-  // Ano no rodape
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  // Scroll reveal
   var revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !reduceMotion) {
     var io = new IntersectionObserver(function (entries) {
@@ -1718,7 +1817,6 @@ html.cursor-live #cursor-ring.link{
     revealEls.forEach(function (el) { el.classList.add("in"); });
   }
 
-  // Barra de progresso de leitura
   var progressEl = document.getElementById("progress");
   var progressPending = false;
 
@@ -1742,9 +1840,8 @@ html.cursor-live #cursor-ring.link{
   }, { passive: true });
   updateProgress();
 
-  // Scrollspy para a barra lateral esquerda
   var railLinks = document.querySelectorAll('.rail-item');
-  var targetSecs = document.querySelectorAll('#perfil, #summary, #engemap, #nossofluxo, #viviboty, #formacao, #skills');
+  var targetSecs = document.querySelectorAll('#perfil, #summary, #arca, #engemap, #nossofluxo, #viviboty, #formacao, #skills');
 
   function updateScrollspy() {
     var scrollPos = window.scrollY + 250;
@@ -1762,7 +1859,6 @@ html.cursor-live #cursor-ring.link{
   }
   window.addEventListener('scroll', updateScrollspy, { passive: true });
 
-  // Botao Voltar ao topo na barra direita
   var backTopBtn = document.getElementById('rail-back-top');
   if (backTopBtn) {
     backTopBtn.addEventListener('click', function() {
@@ -1770,7 +1866,6 @@ html.cursor-live #cursor-ring.link{
     });
   }
 
-  // Efeito de brilho nos cards
   if (finePointer) {
     document.querySelectorAll(".panel").forEach(function (card) {
       card.addEventListener("pointermove", function (e) {
@@ -1781,7 +1876,6 @@ html.cursor-live #cursor-ring.link{
     });
   }
 
-  // Tilt 3D
   if (finePointer && !reduceMotion) {
     document.querySelectorAll(".tilt").forEach(function (card) {
       card.addEventListener("pointermove", function (e) {
@@ -1799,7 +1893,6 @@ html.cursor-live #cursor-ring.link{
     });
   }
 
-  // Spotlight
   var spot = document.querySelector(".spotlight");
   if (spot && finePointer && !reduceMotion) {
     var tx = window.innerWidth / 2, ty = window.innerHeight * 0.3;
@@ -1818,7 +1911,6 @@ html.cursor-live #cursor-ring.link{
     })();
   }
 
-  // Cursor customizado
   var dot  = document.getElementById("cursor-dot");
   var ring = document.getElementById("cursor-ring");
 
@@ -1864,7 +1956,6 @@ html.cursor-live #cursor-ring.link{
     })();
   }
 
-  // Animacao dos numeros
   function animateCount(el) {
     var target = parseFloat(el.getAttribute("data-count"));
     if (isNaN(target)) return;
@@ -1899,7 +1990,6 @@ html.cursor-live #cursor-ring.link{
     counters.forEach(animateCount);
   }
 
-  // Relogio digital
   var clockTime = document.getElementById("clock-time");
   var clockDate = document.getElementById("clock-date");
 
@@ -1931,13 +2021,11 @@ html.cursor-live #cursor-ring.link{
   tickClock();
   setInterval(tickClock, 1000);
 
-  // Animacao SVG
   var survey = document.getElementById("survey-svg");
   if (survey && reduceMotion && typeof survey.pauseAnimations === "function") {
     survey.pauseAnimations();
   }
 
-  // Progresso do contrato
   var fillEl = document.getElementById("c-fill");
   var pctEl  = document.getElementById("c-pct");
   var daysEl = document.getElementById("c-days");
@@ -1973,7 +2061,6 @@ html.cursor-live #cursor-ring.link{
     });
   }
 
-  // Toast e Copiar
   var toast = document.getElementById("toast");
   var toastMsg = document.getElementById("toast-msg");
   var toastTimer = null;
@@ -2017,7 +2104,6 @@ html.cursor-live #cursor-ring.link{
     });
   });
 
-  // Gerador de PDF
   var cvBtn = document.getElementById("cv-btn");
   if (cvBtn) {
     cvBtn.addEventListener("click", function () {
@@ -2047,7 +2133,7 @@ html.cursor-live #cursor-ring.link{
         "  ul{margin-left:16px}",
         "  li{margin-bottom:3px}",
         "  .grid{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}",
-        "  .btn-print{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#4338ca;color:#fff;border:none;padding:12px 26px;border-radius:99px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.25)}",
+        "  .btn-print{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#4338ca;color:#fff;border:none;padding:12px 26px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.25)}",
         "  @media print{body{background:#fff;padding:0}.sheet{padding:0;border-radius:0;max-width:none}.btn-print{display:none}hr{border-top:1px solid #999}}",
         "  @page{size:A4;margin:16mm}",
         "</style></head><body>",
@@ -2077,6 +2163,17 @@ html.cursor-live #cursor-ring.link{
         "  </div>",
         "  <p class='meta'><strong>Contrato de aprendizagem:</strong> 15 meses unificado (Outubro/2025 a Novembro/2026).</p>",
         "  <h2>Projetos</h2>",
+        "  <div class='item'>",
+        "    <h3>Arca — Organização Pessoal &amp; Bloco de Notas PWA</h3>",
+        "    <p class='meta'><a href='https://arcaik-notes.vercel.app/'>arcaik-notes.vercel.app</a> · <a href='https://github.com/Murilo-Rogerio/Arcaik'>Repositório</a></p>",
+        "    <ul>",
+        "      <li>App de organização mobile com notas, tarefas, rotinas diárias e compartilhamento de mídias/links.</li>",
+        "      <li>Web Share Target nativo para salvar TikTok/YouTube com extração automática de metadados via oEmbed.</li>",
+        "      <li>Compressão client-side de imagens (~300 KB) e upload em duas etapas com rollback automático.</li>",
+        "      <li>Segurança garantida via RLS no Postgres, URLs assinadas e navegação offline com Service Worker.</li>",
+        "      <li>Stack: React 18, TypeScript, Vite, Tailwind CSS, Supabase (Auth, RLS, Storage), Framer Motion, Vercel.</li>",
+        "    </ul>",
+        "  </div>",
         "  <div class='item'>",
         "    <h3>Nosso Fluxo — Gestão Financeira Pessoal (Web App · Fintech)</h3>",
         "    <p class='meta'><a href='https://nossofluxo.vercel.app'>nossofluxo.vercel.app</a> · <a href='https://github.com/Murilo-Rogerio/Murilo-Rogerio-controle-financeiro-pessoal'>Repositório</a></p>",
@@ -2115,7 +2212,7 @@ html.cursor-live #cursor-ring.link{
         "    <div>",
         "      <h2>Competências Técnicas</h2>",
         "      <ul>",
-        "        <li><strong>Frontend:</strong> TypeScript, JavaScript ES6+, React, Next.js 15, HTML5, CSS3, Tailwind, Framer Motion.</li>",
+        "        <li><strong>Frontend:</strong> TypeScript, JavaScript ES6+, React 18, Next.js 15, HTML5, CSS3, Tailwind, Framer Motion, PWA.</li>",
         "        <li><strong>Backend &amp; Cloud:</strong> Node.js, Python, Supabase (PostgreSQL, Auth, RLS, Storage), REST APIs, Vercel, Git/GitHub.</li>",
         "      </ul>",
         "    </div>",
