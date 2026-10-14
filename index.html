@@ -4,8 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#08080a">
-<meta name="description" content="Portfólio de Murilo Rogério Carvalho da Conceição — Estudante de TI, Geotecnologia, WebGIS e Robótica.">
-<title>Murilo Rogério — Portfólio</title>
+<meta name="description" content="Portfólio profissional de Murilo Rogério Carvalho da Conceição — Estudante de TI, Geotecnologia, WebGIS e Robótica.">
+<meta property="og:title" content="Murilo Rogério — Portfólio & Currículo">
+<meta property="og:description" content="Estudante de TI, Geotecnologia, WebGIS e Robótica. Conheça meus projetos de alta performance e trajetória profissional.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://murilorogerio.dev">
+<meta property="og:image" content="https://ifqbuhrhmefqiwrpzvsh.supabase.co/storage/v1/object/public/site-assets/Capa.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<title>Murilo Rogério — Portfólio & Currículo</title>
 <link rel="icon" type="image/jpeg" href="https://ifqbuhrhmefqiwrpzvsh.supabase.co/storage/v1/object/public/site-assets/url.jpeg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,39 +20,72 @@
 
 <style>
 :root{
-  --bg:        #08080a;
-  --surface:   rgba(255,255,255,.032);
-  --surface-2: rgba(255,255,255,.05);
-  --line:      rgba(255,255,255,.08);
-  --line-2:    rgba(255,255,255,.15);
-  --text:      #f2f2f5;
-  --text-2:    #babbc5;
-  --text-3:    #8a8b96;
-  --violet:    #8b5cf6;
-  --violet-2:  #a78bfa;
-  --indigo:    #6366f1;
-  --blue:      #60a5fa;
-  --green:     #34d399;
-  --rose:      #e8b0cd;
-  --font:      'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --mono:      'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-  --ease:      cubic-bezier(.22,.9,.32,1);
+  --base-fz:     15px;
+  --bg:          #08080a;
+  --surface:     rgba(255,255,255,.032);
+  --surface-2:   rgba(255,255,255,.05);
+  --line:        rgba(255,255,255,.08);
+  --line-2:      rgba(255,255,255,.15);
+  --text:        #f2f2f5;
+  --text-2:      #babbc5;
+  --text-3:      #8a8b96;
+  --violet:      #8b5cf6;
+  --violet-2:    #a78bfa;
+  --indigo:      #6366f1;
+  --blue:        #60a5fa;
+  --green:       #34d399;
+  --rose:        #e8b0cd;
+  --font:        'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono:        'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease:        cubic-bezier(.22,.9,.32,1);
+}
+
+html.theme-light{
+  --bg:          #f3f4f6;
+  --surface:     rgba(0,0,0,.03);
+  --surface-2:   rgba(0,0,0,.05);
+  --line:        rgba(0,0,0,.1);
+  --line-2:      rgba(0,0,0,.2);
+  --text:        #111827;
+  --text-2:      #374151;
+  --text-3:      #6b7280;
+  --violet:      #7c3aed;
+  --violet-2:    #8b5cf6;
+  --blue:        #2563eb;
+  --green:       #059669;
+}
+
+html.theme-contrast{
+  --bg:          #000000;
+  --surface:     #121212;
+  --surface-2:   #1a1a1a;
+  --line:        #ffffff;
+  --line-2:      #ffffff;
+  --text:        #ffffff;
+  --text-2:      #ffff00;
+  --text-3:      #00ffff;
+  --violet:      #bf5af2;
+  --violet-2:    #ff00ff;
+  --blue:        #00ffff;
+  --green:       #00ff00;
 }
 
 *{ margin:0; padding:0; box-sizing:border-box; }
 
-html{ color-scheme:dark; scroll-behavior:smooth; overflow-x:hidden; }
+html{ color-scheme:dark; scroll-behavior:smooth; overflow-x:hidden; font-size: var(--base-fz); }
+html.theme-light{ color-scheme:light; }
 
 body{
   background:var(--bg);
   color:var(--text);
   font-family:var(--font);
-  font-size:15px;
+  font-size: 1rem;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
   overflow-x:hidden;
   min-height:100vh;
+  transition: background-color .3s ease, color .3s ease;
 }
 
 ::selection{ background:rgba(139,92,246,.35); color:#fff; }
@@ -63,6 +102,15 @@ button{ font:inherit; color:inherit; background:none; border:none; cursor:pointe
 :focus-visible{ outline:2px solid rgba(167,139,250,.7); outline-offset:3px; border-radius:6px; }
 
 html.cursor-on, html.cursor-on *{ cursor:none !important; }
+
+html.no-effects .spotlight,
+html.no-effects #cursor-dot,
+html.no-effects #cursor-ring { display:none !important; }
+
+html.no-effects .panel {
+  transform: none !important;
+  transition: background-color .3s ease, border-color .3s ease !important;
+}
 
 #progress{
   position:fixed; top:0; left:0; z-index:70;
@@ -128,7 +176,7 @@ html.cursor-live #cursor-ring.link{
   position:fixed; top:50%; transform:translateY(-50%);
   z-index:50; display:none; flex-direction:column; gap:16px;
   padding:14px 10px; border-radius:99px;
-  background:rgba(255,255,255,.022); border:1px solid rgba(255,255,255,.06);
+  background:var(--surface); border:1px solid var(--line);
   backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
   box-shadow:0 12px 32px -12px rgba(0,0,0,.5);
 }
@@ -144,14 +192,15 @@ html.cursor-live #cursor-ring.link{
   background:rgba(255,255,255,.2); transition:all .35s var(--ease);
   display:block;
 }
+html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
 .rail-item:hover, .rail-item.active{
   background:var(--violet-2); transform:scale(1.5);
   box-shadow:0 0 12px rgba(167,139,250,.7);
 }
 .rail-item .tooltip{
   position:absolute; left:22px; top:50%; transform:translateY(-50%);
-  padding:4px 10px; border-radius:6px; background:rgba(18,18,24,.92);
-  border:1px solid rgba(255,255,255,.1); font-family:var(--mono); font-size:10px;
+  padding:4px 10px; border-radius:6px; background:var(--surface-2);
+  border:1px solid var(--line); font-family:var(--mono); font-size:.7rem;
   white-space:nowrap; color:var(--text); opacity:0; pointer-events:none;
   transition:opacity .25s ease, transform .25s ease;
 }
@@ -159,16 +208,103 @@ html.cursor-live #cursor-ring.link{
 
 .rail-geo{
   writing-mode:vertical-rl; text-transform:uppercase;
-  font-family:var(--mono); font-size:9.5px; letter-spacing:.18em;
+  font-family:var(--mono); font-size:.65rem; letter-spacing:.18em;
   color:var(--text-3); transform:rotate(180deg); opacity:.75;
 }
 .rail-btn{
   margin-top:14px; width:28px; height:28px; border-radius:50%;
-  display:grid; place-items:center; background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.08); color:var(--text-2);
+  display:grid; place-items:center; background:var(--surface-2);
+  border:1px solid var(--line); color:var(--text-2);
   transition:all .3s ease;
 }
-.rail-btn:hover{ background:rgba(255,255,255,.1); color:#fff; transform:translateY(-2px); }
+.rail-btn:hover{ background:var(--surface); color:var(--text); transform:translateY(-2px); }
+
+/* Accessibility Panel */
+.accessibility-trigger {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--violet);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 24px rgba(139,92,246,.4);
+  cursor: pointer;
+  transition: transform .3s var(--ease), background .3s ease;
+  border: 1px solid rgba(255,255,255,.2);
+}
+.accessibility-trigger:hover {
+  transform: scale(1.08);
+}
+.accessibility-panel {
+  position: fixed;
+  bottom: 84px;
+  right: 24px;
+  z-index: 100;
+  width: 280px;
+  padding: 20px;
+  border-radius: 20px;
+  background: var(--bg);
+  border: 1px solid var(--line-2);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px) scale(0.95);
+  transition: opacity .3s var(--ease), transform .3s var(--ease);
+}
+.accessibility-panel.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+.accessibility-panel h3 {
+  font-size: .95rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+}
+.accessibility-section {
+  margin-bottom: 14px;
+}
+.accessibility-section label {
+  display: block;
+  font-family: var(--mono);
+  font-size: .7rem;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 6px;
+  letter-spacing: .08em;
+}
+.accessibility-buttons {
+  display: flex;
+  gap: 6px;
+}
+.accessibility-buttons button {
+  flex: 1;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-size: .75rem;
+  font-weight: 500;
+  color: var(--text-2);
+  text-align: center;
+  transition: all .2s ease;
+}
+.accessibility-buttons button.active {
+  background: var(--violet);
+  color: #fff;
+  border-color: var(--violet-2);
+}
 
 .ic{
   width:18px; height:18px; flex:none;
@@ -241,7 +377,7 @@ html.cursor-live #cursor-ring.link{
 }
 
 @supports not (backdrop-filter:blur(1px)){
-  .panel{ background:rgba(18,18,24,.86); }
+  .panel{ background:var(--bg); }
 }
 
 .profile{
@@ -275,7 +411,7 @@ html.cursor-live #cursor-ring.link{
   background:#0c0c10;
   border:1px solid rgba(255,255,255,.07);
   display:grid; place-items:center;
-  font-weight:600; font-size:29px; letter-spacing:.03em; color:#eef0f4;
+  font-weight:600; font-size:1.9rem; letter-spacing:.03em; color:#eef0f4;
   padding:0; overflow:hidden;
 }
 .avatar-core img{
@@ -286,14 +422,14 @@ html.cursor-live #cursor-ring.link{
 @keyframes ring-spin{ to{ transform:rotate(360deg); } }
 
 .profile h1{
-  font-size:clamp(25px, 4.4vw, 35px);
+  font-size:clamp(1.6rem, 4.4vw, 2.3rem);
   font-weight:600; letter-spacing:-.03em; line-height:1.18;
 }
-.profile h1 .soft{ font-weight:400; color:#b9bac6; }
+.profile h1 .soft{ font-weight:400; color:var(--text-3); }
 
 .roles{
   margin-top:11px;
-  font-family:var(--mono); font-size:11px; font-weight:500;
+  font-family:var(--mono); font-size:.73rem; font-weight:500;
   letter-spacing:.13em; text-transform:uppercase;
   color:var(--text-3);
 }
@@ -305,15 +441,15 @@ html.cursor-live #cursor-ring.link{
 .pill{
   display:inline-flex; align-items:center; gap:8px;
   padding:8px 15px; border-radius:999px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.09);
-  font-size:12.5px; font-weight:500; color:#d9dae1;
+  background:var(--surface);
+  border:1px solid var(--line);
+  font-size:.83rem; font-weight:500; color:var(--text-2);
 }
-.pill .ic{ width:14px; height:14px; color:#9a9baa; }
+.pill .ic{ width:14px; height:14px; color:var(--text-3); }
 .pill.status{
   background:rgba(52,211,153,.08);
   border-color:rgba(52,211,153,.24);
-  color:#d3f3e4;
+  color:var(--green);
 }
 .pill.status .dot{
   width:8px; height:8px; border-radius:50%; flex:none;
@@ -331,8 +467,8 @@ html.cursor-live #cursor-ring.link{
   grid-column:span 12;
   overflow:hidden;
   padding:15px 0;
-  border-top:1px solid rgba(255,255,255,.07);
-  border-bottom:1px solid rgba(255,255,255,.07);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
   -webkit-mask:linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
           mask:linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
 }
@@ -346,25 +482,25 @@ html.cursor-live #cursor-ring.link{
   display:inline-flex; align-items:center; gap:14px;
   padding-right:14px;
   white-space:nowrap;
-  font-family:var(--mono); font-size:11.5px; font-weight:500;
+  font-family:var(--mono); font-size:.77rem; font-weight:500;
   letter-spacing:.18em; text-transform:uppercase;
   color:var(--text-2);
 }
 .marquee-track > span i{
   font-style:normal; color:var(--violet-2);
-  font-size:12px;
+  font-size:.8rem;
 }
 @keyframes marquee{ to{ transform:translateX(-50%); } }
 
 .spec-head{
   display:flex; align-items:center; gap:14px;
   margin-bottom:10px;
-  font-family:var(--mono); font-size:10px; font-weight:500;
+  font-family:var(--mono); font-size:.66rem; font-weight:500;
   letter-spacing:.16em; text-transform:uppercase; color:var(--text-3);
 }
 .spec-head::after{
   content:""; flex:1; height:1px;
-  background:linear-gradient(90deg, rgba(255,255,255,.13), rgba(255,255,255,.02));
+  background:linear-gradient(90deg, var(--line), transparent);
 }
 
 .summary{
@@ -373,9 +509,9 @@ html.cursor-live #cursor-ring.link{
 }
 .summary p{
   margin-top:14px;
-  font-size:14.5px; line-height:1.8; color:var(--text-2);
+  font-size:.97rem; line-height:1.8; color:var(--text-2);
 }
-.summary p strong{ font-weight:500; color:#e7e7ec; }
+.summary p strong{ font-weight:500; color:var(--text); }
 
 .metrics{
   display:grid; grid-template-columns:repeat(4, 1fr);
@@ -385,20 +521,20 @@ html.cursor-live #cursor-ring.link{
 .metric{
   padding:14px 14px 12px;
   border-radius:14px;
-  background:rgba(255,255,255,.028);
-  border:1px solid rgba(255,255,255,.06);
+  background:var(--surface);
+  border:1px solid var(--line);
 }
 .metric b{
   display:block;
-  font-family:var(--mono); font-size:clamp(22px, 3vw, 28px);
-  font-weight:600; letter-spacing:-.02em; color:#ececf2;
+  font-family:var(--mono); font-size:clamp(1.4rem, 3vw, 1.8rem);
+  font-weight:600; letter-spacing:-.02em; color:var(--text);
   font-variant-numeric:tabular-nums;
   line-height:1.1;
 }
 .metric b em{ font-style:normal; color:var(--violet-2); }
 .metric span{
   display:block; margin-top:6px;
-  font-size:10.5px; line-height:1.45; color:var(--text-3);
+  font-size:.7rem; line-height:1.45; color:var(--text-3);
 }
 
 .ficha{ padding:24px; display:flex; flex-direction:column; }
@@ -406,57 +542,69 @@ html.cursor-live #cursor-ring.link{
 .sk-icon{
   width:38px; height:38px; flex:none;
   display:grid; place-items:center; border-radius:11px;
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.09);
-  color:#d6d7de;
+  background:var(--surface);
+  border:1px solid var(--line);
+  color:var(--text-2);
 }
-.ficha h2{ font-size:15.5px; font-weight:600; letter-spacing:-.01em; }
+.ficha h2{ font-size:1.03rem; font-weight:600; letter-spacing:-.01em; }
 .frow{
   display:flex; justify-content:space-between; align-items:baseline;
   gap:16px; padding:11px 0;
 }
-.frow + .frow{ border-top:1px solid rgba(255,255,255,.055); }
+.frow + .frow{ border-top:1px solid var(--line); }
 .frow dt{
-  font-family:var(--mono); font-size:9.5px; font-weight:500;
+  font-family:var(--mono); font-size:.63rem; font-weight:500;
   letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); flex:none;
 }
-.frow dd{ font-size:13px; color:#d5d6de; text-align:right; }
+.frow dd{ font-size:.86rem; color:var(--text-2); text-align:right; }
 
+/* Interactive Terminal with Tabs */
 .terminal{ padding:0; overflow:hidden; display:flex; flex-direction:column; }
 .t-bar{
-  display:flex; align-items:center; gap:8px;
-  padding:13px 18px;
-  border-bottom:1px solid rgba(255,255,255,.07);
-  background:rgba(255,255,255,.025);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 18px;
+  border-bottom:1px solid var(--line);
+  background:var(--surface);
 }
+.t-bar-left { display: flex; align-items: center; gap: 8px; }
 .t-dots{ display:flex; gap:6px; }
 .t-dots i{
   width:9px; height:9px; border-radius:50%;
   background:rgba(255,255,255,.14);
 }
 .t-dots i:first-child{ background:rgba(255,255,255,.22); }
-.t-name{
-  margin-left:6px;
-  font-family:var(--mono); font-size:10.5px; font-weight:500;
-  letter-spacing:.08em; color:var(--text-3);
+.t-tabs{
+  display: flex; gap: 6px;
+}
+.t-tab{
+  padding: 4px 10px; border-radius: 6px;
+  font-family: var(--mono); font-size: .68rem;
+  color: var(--text-3); background: transparent;
+  border: 1px solid transparent; cursor: pointer;
+  transition: all .2s ease;
+}
+.t-tab.active{
+  color: var(--text); background: var(--surface-2);
+  border-color: var(--line);
 }
 .t-body{
   padding:18px 20px 20px;
   overflow-x:auto;
-  font-family:var(--mono); font-size:12px; line-height:1.85;
+  font-family:var(--mono); font-size:.8rem; line-height:1.85;
+  min-height: 260px;
 }
 .t-row{ display:flex; gap:18px; white-space:pre; }
 .t-ln{
   width:2ch; flex:none; text-align:right;
-  color:#4c4d57; user-select:none;
+  color:var(--text-3); user-select:none; opacity: .6;
 }
-.t-code{ color:#b9bac6; }
+.t-code{ color:var(--text-2); }
 .tk-kw  { color:#c4b5fd; }
 .tk-prop{ color:#93c5fd; }
 .tk-str { color:#9ce0b0; }
 .tk-num { color:#f0b6d0; }
-.tk-com { color:#63646f; font-style:italic; }
-.tk-pun { color:#8a8b96; }
+.tk-com { color:var(--text-3); font-style:italic; }
+.tk-pun { color:var(--text-3); }
 .t-caret{
   display:inline-block; width:7px; height:15px;
   background:rgba(196,181,253,.85); vertical-align:-2px;
@@ -465,64 +613,64 @@ html.cursor-live #cursor-ring.link{
 
 .geo{ padding:22px; display:flex; flex-direction:column; }
 .geo header{ display:flex; align-items:center; gap:13px; }
-.geo h2{ font-size:15.5px; font-weight:600; letter-spacing:-.01em; }
+.geo h2{ font-size:1.03rem; font-weight:600; letter-spacing:-.01em; }
 .geo .g-sub{
   margin-top:3px;
-  font-family:var(--mono); font-size:10px; letter-spacing:.12em;
+  font-family:var(--mono); font-size:.66rem; letter-spacing:.12em;
   text-transform:uppercase; color:var(--text-3);
 }
 .clock{
   margin-top:16px;
-  font-family:var(--mono); font-size:clamp(28px, 4vw, 34px);
-  font-weight:600; letter-spacing:.02em; color:#ececf2;
+  font-family:var(--mono); font-size:clamp(1.8rem, 4vw, 2.2rem);
+  font-weight:600; letter-spacing:.02em; color:var(--text);
   font-variant-numeric:tabular-nums;
   line-height:1.1;
 }
 .clock small{
-  font-size:13px; font-weight:500; color:var(--violet-2);
+  font-size:.86rem; font-weight:500; color:var(--violet-2);
 }
 .g-date{
   margin-top:7px;
-  font-size:12px; color:var(--text-3);
+  font-size:.8rem; color:var(--text-3);
 }
 .g-tz{
   display:inline-flex; align-items:center; gap:7px;
   margin-top:14px; padding-top:14px;
-  border-top:1px solid rgba(255,255,255,.06);
-  font-family:var(--mono); font-size:10px; font-weight:500;
+  border-top:1px solid var(--line);
+  font-family:var(--mono); font-size:.66rem; font-weight:500;
   letter-spacing:.12em; text-transform:uppercase; color:var(--text-3);
 }
 .g-tz .ic{ width:12px; height:12px; }
 
 .actions{ padding:22px; display:flex; flex-direction:column; gap:12px; }
-.actions h2{ font-size:15.5px; font-weight:600; letter-spacing:-.01em; margin-bottom:2px; }
-.actions .a-sub{ font-size:12px; color:var(--text-3); margin-bottom:6px; }
+.actions h2{ font-size:1.03rem; font-weight:600; letter-spacing:-.01em; margin-bottom:2px; }
+.actions .a-sub{ font-size:.8rem; color:var(--text-3); margin-bottom:6px; }
 .act{
   display:flex; align-items:center; gap:13px;
   padding:15px 18px; border-radius:16px;
-  font-size:13.5px; font-weight:600;
+  font-size:.9rem; font-weight:600;
   transition:transform .35s var(--ease), background-color .3s ease,
              border-color .3s ease, box-shadow .35s ease;
 }
 .act .ic{ width:17px; height:17px; }
 .act small{
-  display:block; font-size:10.5px; font-weight:400;
+  display:block; font-size:.7rem; font-weight:400;
   font-family:var(--mono); letter-spacing:.06em; color:inherit;
   opacity:.65; margin-top:2px;
 }
 .act-solid{
-  background:#ececf1; color:#0a0a0e;
+  background:var(--text); color:var(--bg);
 }
 .act-solid:hover{
-  background:#fff; transform:translateY(-1px);
+  opacity:.9; transform:translateY(-1px);
   box-shadow:0 12px 28px -12px rgba(0,0,0,.7);
 }
 .act-ghost{
-  border:1px solid rgba(255,255,255,.13); color:#e4e4ea;
+  border:1px solid var(--line-2); color:var(--text);
 }
 .act-ghost:hover{
-  background:rgba(255,255,255,.06);
-  border-color:rgba(255,255,255,.28);
+  background:var(--surface);
+  border-color:var(--text-3);
   transform:translateY(-1px);
 }
 
@@ -541,28 +689,28 @@ html.cursor-live #cursor-ring.link{
   width:42px; height:42px; flex:none;
   display:grid; place-items:center;
   border-radius:12px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.09);
-  color:#d9dae1;
+  background:var(--surface);
+  border:1px solid var(--line);
+  color:var(--text-2);
   transition:border-color .4s ease, color .4s ease;
 }
-.quick:hover .q-icon, .q-main:hover .q-icon{ border-color:rgba(167,139,250,.35); color:#f0effb; }
+.quick:hover .q-icon, .q-main:hover .q-icon{ border-color:var(--violet-2); color:var(--text); }
 .q-txt{ min-width:0; }
 .quick strong, .q-main strong{
-  display:block; font-size:14.5px; font-weight:600; color:#ededf1;
+  display:block; font-size:.97rem; font-weight:600; color:var(--text);
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
 .quick em, .q-main em{
   display:block; margin-top:2px;
-  font-style:normal; font-family:var(--mono); font-size:10.5px;
+  font-style:normal; font-family:var(--mono); font-size:.7rem;
   color:var(--text-3);
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
 .q-arrow{
-  margin-left:auto; color:#63636e;
+  margin-left:auto; color:var(--text-3);
   transition:transform .35s var(--ease), color .35s ease;
 }
-.quick:hover .q-arrow, .q-main:hover .q-arrow{ transform:translate(3px,-3px); color:#c9c9d4; }
+.quick:hover .q-arrow, .q-main:hover .q-arrow{ transform:translate(3px,-3px); color:var(--text); }
 
 .quick.dual{ padding:0; overflow:hidden; }
 .q-main{
@@ -573,11 +721,11 @@ html.cursor-live #cursor-ring.link{
 .q-copy{
   flex:none; width:54px; align-self:stretch;
   display:grid; place-items:center;
-  border-left:1px solid rgba(255,255,255,.08);
-  color:#84858f;
+  border-left:1px solid var(--line);
+  color:var(--text-3);
   transition:color .35s ease, background-color .35s ease;
 }
-.q-copy:hover{ color:#f0effb; background:rgba(255,255,255,.045); }
+.q-copy:hover{ color:var(--text); background:var(--surface); }
 .q-copy .ic{ width:16px; height:16px; }
 
 .project{ padding:26px 28px 28px; }
@@ -591,10 +739,10 @@ html.cursor-live #cursor-ring.link{
 .badge{
   display:inline-flex; align-items:center; gap:7px;
   padding:6px 12px; border-radius:999px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.09);
-  font-family:var(--mono); font-size:10.5px; font-weight:500;
-  letter-spacing:.1em; text-transform:uppercase; color:#cbcbd5;
+  background:var(--surface);
+  border:1px solid var(--line);
+  font-family:var(--mono); font-size:.7rem; font-weight:500;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--text-2);
 }
 .bdot{ width:6px; height:6px; border-radius:50%; flex:none; }
 .b-violet{ background:var(--violet); }
@@ -606,8 +754,8 @@ html.cursor-live #cursor-ring.link{
   margin-left:auto; flex:none;
   width:218px; padding:10px 12px 8px;
   border-radius:14px;
-  background:rgba(255,255,255,.035);
-  border:1px solid rgba(255,255,255,.08);
+  background:var(--surface);
+  border:1px solid var(--line);
   transform:rotate(-1.4deg);
   transition:transform .45s var(--ease);
 }
@@ -615,18 +763,18 @@ html.cursor-live #cursor-ring.link{
 .p-widget:hover{ transform:rotate(0deg) scale(1.03); }
 .w-label{
   display:block; margin-bottom:7px;
-  font-family:var(--mono); font-size:9px; font-weight:500;
+  font-family:var(--mono); font-size:.6rem; font-weight:500;
   letter-spacing:.14em; text-transform:uppercase; color:var(--text-3);
 }
 .p-widget svg{ display:block; width:100%; height:auto; }
 
-.w-line{ stroke:rgba(255,255,255,.1); stroke-width:1; }
-.w-trend{ stroke:rgba(255,255,255,.16); stroke-width:1; stroke-dasharray:3 4; }
-.w-pt{ fill:rgba(255,255,255,.5); }
-.w-pt.v{ fill:rgba(167,139,250,.92); }
-.w-pt.b{ fill:rgba(96,165,250,.85); }
+.w-line{ stroke:var(--line-2); stroke-width:1; }
+.w-trend{ stroke:var(--text-3); stroke-width:1; stroke-dasharray:3 4; }
+.w-pt{ fill:var(--text-3); }
+.w-pt.v{ fill:var(--violet-2); }
+.w-pt.b{ fill:var(--blue); }
 .w-ring{
-  fill:none; stroke:rgba(167,139,250,.7); stroke-width:1;
+  fill:none; stroke:var(--violet-2); stroke-width:1;
   transform-box:fill-box; transform-origin:center;
   animation:ping 2.6s cubic-bezier(.2,.6,.35,1) infinite;
 }
@@ -634,35 +782,35 @@ html.cursor-live #cursor-ring.link{
   0%        { transform:scale(.4); opacity:.9; }
   75%,100%  { transform:scale(2.4); opacity:0; }
 }
-.w-axis{ font-family:var(--mono); font-size:7px; letter-spacing:.12em; fill:rgba(255,255,255,.32); }
+.w-axis{ font-family:var(--mono); font-size:.46rem; letter-spacing:.12em; fill:var(--text-3); }
 
 .w-item{
   display:flex; align-items:center; gap:8px;
-  padding:5px 0; font-size:11px; color:var(--text-2);
+  padding:5px 0; font-size:.73rem; color:var(--text-2);
 }
-.w-item + .w-item{ border-top:1px solid rgba(255,255,255,.06); }
-.w-swatch{ width:6px; height:6px; border-radius:2px; background:rgba(255,255,255,.28); flex:none; }
-.w-item b{ margin-left:auto; font-family:var(--mono); font-size:10px; font-weight:600; color:#d9dae1; }
+.w-item + .w-item{ border-top:1px solid var(--line); }
+.w-swatch{ width:6px; height:6px; border-radius:2px; background:var(--text-3); flex:none; }
+.w-item b{ margin-left:auto; font-family:var(--mono); font-size:.66rem; font-weight:600; color:var(--text); }
 .w-cta{
   display:flex; align-items:center; gap:7px;
   margin-top:7px; padding-top:8px;
-  border-top:1px solid rgba(255,255,255,.08);
-  font-family:var(--mono); font-size:9.5px; letter-spacing:.04em;
-  color:#5fdcae;
+  border-top:1px solid var(--line);
+  font-family:var(--mono); font-size:.63rem; letter-spacing:.04em;
+  color:var(--green);
 }
 .w-cta .ic{ width:12px; height:12px; }
 
-.w-contour{ fill:none; stroke:rgba(255,255,255,.055); stroke-width:1; }
-.w-flight{ fill:none; stroke:rgba(255,255,255,.16); stroke-width:1; stroke-dasharray:4 4; }
-.w-x{ stroke:rgba(255,255,255,.18); stroke-width:1; }
-.w-gcp{ fill:rgba(96,165,250,.9); }
+.w-contour{ fill:none; stroke:var(--line); stroke-width:1; }
+.w-flight{ fill:none; stroke:var(--text-3); stroke-width:1; stroke-dasharray:4 4; }
+.w-x{ stroke:var(--text-3); stroke-width:1; }
+.w-gcp{ fill:var(--blue); }
 .w-gcp-ring{
-  fill:none; stroke:rgba(96,165,250,.55); stroke-width:1;
+  fill:none; stroke:var(--blue); stroke-width:1;
   transform-box:fill-box; transform-origin:center;
   animation:ping 2.8s cubic-bezier(.2,.6,.35,1) infinite;
 }
-.w-plane-a{ fill:rgba(196,181,253,.95); }
-.w-plane-b{ fill:rgba(147,197,253,.9); }
+.w-plane-a{ fill:var(--violet-2); }
+.w-plane-b{ fill:var(--blue); }
 
 .project-body{
   display:grid; grid-template-columns:5fr 7fr; gap:44px;
@@ -678,37 +826,37 @@ html.cursor-live #cursor-ring.link{
   width:52px; height:52px; flex:none;
   display:grid; place-items:center;
   border-radius:16px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.09);
-  color:#d9dae1;
+  background:var(--surface);
+  border:1px solid var(--line);
+  color:var(--text-2);
 }
 .p-icon .ic{ width:23px; height:23px; }
-.p-id h3{ font-size:21px; font-weight:600; letter-spacing:-.02em; line-height:1.2; }
+.p-id h3{ font-size:1.4rem; font-weight:600; letter-spacing:-.02em; line-height:1.2; }
 .p-tag{
   margin-top:3px;
-  font-family:var(--mono); font-size:10.5px; letter-spacing:.12em;
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.12em;
   text-transform:uppercase; color:var(--text-3);
 }
 
 .p-desc{
   margin-top:18px;
-  font-size:14px; line-height:1.72; color:var(--text-2);
+  font-size:.93rem; line-height:1.72; color:var(--text-2);
 }
 
 .p-stack{ display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
 .chip{
   padding:6px 11px; border-radius:8px;
-  background:rgba(255,255,255,.035);
-  border:1px solid rgba(255,255,255,.07);
-  font-family:var(--mono); font-size:11px; font-weight:500;
-  color:#c2c3cd;
+  background:var(--surface);
+  border:1px solid var(--line);
+  font-family:var(--mono); font-size:.73rem; font-weight:500;
+  color:var(--text-2);
   transition:border-color .35s ease, color .35s ease, transform .35s var(--ease);
   cursor:default;
 }
-.chip:hover{ border-color:rgba(167,139,250,.38); color:#eeedf6; }
+.chip:hover{ border-color:var(--violet-2); color:var(--text); }
 @media (hover:hover){ .chip:hover{ transform:translateY(-1px); } }
-.chip.core{ border-color:rgba(255,255,255,.15); color:#ececF2; }
-.chip.live{ border-color:rgba(52,211,153,.3); color:#d3f3e4; }
+.chip.core{ border-color:var(--line-2); color:var(--text); }
+.chip.live{ border-color:rgba(52,211,153,.3); color:var(--green); }
 
 .p-actions{
   display:flex; flex-wrap:wrap; gap:12px;
@@ -717,21 +865,21 @@ html.cursor-live #cursor-ring.link{
 .btn{
   display:inline-flex; align-items:center; gap:9px;
   padding:12px 22px; border-radius:999px;
-  font-size:13.5px; font-weight:600; letter-spacing:.01em;
+  font-size:.9rem; font-weight:600; letter-spacing:.01em;
   transition:transform .35s var(--ease), background-color .3s ease,
              border-color .3s ease, box-shadow .35s ease;
 }
 .btn .ic{ width:15px; height:15px; transition:transform .35s var(--ease); }
-.btn-solid{ background:#ececf1; color:#0a0a0e; }
+.btn-solid{ background:var(--text); color:var(--bg); }
 .btn-solid:hover{
-  background:#fff; transform:translateY(-1px);
+  opacity:.9; transform:translateY(-1px);
   box-shadow:0 10px 26px -10px rgba(0,0,0,.65);
 }
 .btn-solid:hover .ic{ transform:translate(2px,-2px); }
-.btn-ghost{ border:1px solid rgba(255,255,255,.13); color:#e4e4ea; }
+.btn-ghost{ border:1px solid var(--line-2); color:var(--text); }
 .btn-ghost:hover{
-  background:rgba(255,255,255,.06);
-  border-color:rgba(255,255,255,.28);
+  background:var(--surface);
+  border-color:var(--text);
   transform:translateY(-1px);
 }
 
@@ -741,20 +889,20 @@ html.cursor-live #cursor-ring.link{
   border-radius:12px;
   transition:background-color .3s ease;
 }
-.spec-list li + li{ border-top:1px solid rgba(255,255,255,.055); }
-.spec-list li:hover{ background:rgba(255,255,255,.03); }
+.spec-list li + li{ border-top:1px solid var(--line); }
+.spec-list li:hover{ background:var(--surface); }
 .spec-num{
-  font-family:var(--mono); font-size:11px; font-weight:600;
-  color:#5c5c67; padding-top:2px;
+  font-family:var(--mono); font-size:.73rem; font-weight:600;
+  color:var(--text-3); padding-top:2px;
   transition:color .3s ease;
 }
 .spec-list li:hover .spec-num{ color:var(--violet-2); }
-.spec-list strong{ display:block; font-size:13.5px; font-weight:600; color:#e9e9ee; }
-.spec-list p{ margin-top:2px; font-size:12.5px; line-height:1.6; color:var(--text-3); }
+.spec-list strong{ display:block; font-size:.9rem; font-weight:600; color:var(--text); }
+.spec-list p{ margin-top:2px; font-size:.83rem; line-height:1.6; color:var(--text-3); }
 .spec-list code{
-  font-family:var(--mono); font-size:11px;
-  background:rgba(255,255,255,.05); border-radius:4px; padding:1px 5px;
-  color:#c9c9d4;
+  font-family:var(--mono); font-size:.73rem;
+  background:var(--surface); border-radius:4px; padding:1px 5px;
+  color:var(--text-2);
 }
 
 .xp-wrap{ margin-top:24px; display:flex; flex-direction:column; }
@@ -762,12 +910,12 @@ html.cursor-live #cursor-ring.link{
 .xp:last-child{ padding-bottom:0; }
 .xp::before{
   content:""; position:absolute; left:5px; top:20px; bottom:4px; width:1px;
-  background:linear-gradient(rgba(255,255,255,.16), rgba(255,255,255,.05));
+  background:linear-gradient(var(--line-2), var(--line));
 }
 .xp:last-child::before{ display:none; }
 .xp-dot{
   width:11px; height:11px; border-radius:50%;
-  background:rgba(255,255,255,.25);
+  background:var(--text-3);
   margin-top:5px; flex:none;
 }
 .xp-dot.now{
@@ -777,30 +925,30 @@ html.cursor-live #cursor-ring.link{
 }
 .xp-body{ min-width:0; }
 .xp-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-.xp-head h4{ font-size:15px; font-weight:600; color:#ededf1; }
+.xp-head h4{ font-size:1rem; font-weight:600; color:var(--text); }
 .xp-body > p{
   margin-top:6px;
-  font-size:13px; line-height:1.65; color:var(--text-3);
+  font-size:.86rem; line-height:1.65; color:var(--text-3);
 }
 
 .contract{
   padding:18px;
   border-radius:16px;
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(255,255,255,.07);
+  background:var(--surface);
+  border:1px solid var(--line);
 }
 .c-top{
   display:flex; justify-content:space-between; align-items:baseline;
   gap:12px; margin-bottom:13px;
 }
 .c-range{
-  font-family:var(--mono); font-size:11px; font-weight:500;
-  letter-spacing:.04em; color:#cbcbd5;
+  font-family:var(--mono); font-size:.73rem; font-weight:500;
+  letter-spacing:.04em; color:var(--text-2);
 }
-.c-len{ font-family:var(--mono); font-size:10px; color:var(--text-3); }
+.c-len{ font-family:var(--mono); font-size:.66rem; color:var(--text-3); }
 .c-track{
   height:6px; border-radius:99px;
-  background:rgba(255,255,255,.07);
+  background:var(--line);
   overflow:hidden;
 }
 .c-fill{
@@ -813,74 +961,74 @@ html.cursor-live #cursor-ring.link{
 .c-meta{
   display:flex; justify-content:space-between; gap:12px;
   margin-top:10px;
-  font-family:var(--mono); font-size:10.5px; color:var(--text-3);
+  font-family:var(--mono); font-size:.7rem; color:var(--text-3);
 }
 .c-areas{ display:flex; flex-wrap:wrap; gap:8px; }
 
 .skill{ padding:24px; }
 .skill header{ display:flex; align-items:center; gap:13px; }
-.skill h2{ font-size:15.5px; font-weight:600; letter-spacing:-.01em; }
-.sk-sub{ margin:14px 0 15px; font-size:12.5px; line-height:1.55; color:var(--text-3); }
+.skill h2{ font-size:1.03rem; font-weight:600; letter-spacing:-.01em; }
+.sk-sub{ margin:14px 0 15px; font-size:.83rem; line-height:1.55; color:var(--text-3); }
 .skill .chips{ display:flex; flex-wrap:wrap; gap:8px; }
 
 .entries li{ display:flex; gap:14px; padding:14px 12px; margin:0 -12px; border-radius:12px; transition:background-color .3s ease; }
-.entries li + li{ border-top:1px solid rgba(255,255,255,.055); }
-.entries li:hover{ background:rgba(255,255,255,.03); }
+.entries li + li{ border-top:1px solid var(--line); }
+.entries li:hover{ background:var(--surface); }
 .e-ic{
   width:38px; height:38px; flex:none;
   display:grid; place-items:center; border-radius:11px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.09);
-  color:#d6d7de;
+  background:var(--surface);
+  border:1px solid var(--line);
+  color:var(--text-2);
 }
 .e-ic .ic{ width:17px; height:17px; }
 .e-body{ min-width:0; flex:1; }
 .e-head{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; }
-.e-head h4{ font-size:14px; font-weight:600; color:#ededf1; }
+.e-head h4{ font-size:.93rem; font-weight:600; color:var(--text); }
 .dur{
-  font-family:var(--mono); font-size:10px; font-weight:500;
+  font-family:var(--mono); font-size:.66rem; font-weight:500;
   letter-spacing:.06em;
   padding:4px 9px; border-radius:6px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.09);
-  color:#cbcbd5;
+  background:var(--surface);
+  border:1px solid var(--line);
+  color:var(--text-2);
 }
 .inst{
   margin-top:3px;
-  font-family:var(--mono); font-size:10px; font-weight:500;
+  font-family:var(--mono); font-size:.66rem; font-weight:500;
   letter-spacing:.1em; text-transform:uppercase; color:var(--text-3);
 }
 .e-body > p:not(.inst){
   margin-top:6px;
-  font-size:12.5px; line-height:1.6; color:var(--text-3);
+  font-size:.83rem; line-height:1.6; color:var(--text-3);
 }
 
 .foot{
   display:flex; align-items:center; gap:14px; flex-wrap:wrap;
   padding:18px 24px;
-  font-family:var(--mono); font-size:11px; color:var(--text-3);
+  font-family:var(--mono); font-size:.73rem; color:var(--text-3);
 }
 .f-copy{
   display:inline-flex; align-items:center; gap:8px;
   margin:0 auto; padding:6px 12px; border-radius:8px;
-  font-family:var(--mono); font-size:11px; color:var(--text-3);
+  font-family:var(--mono); font-size:.73rem; color:var(--text-3);
   transition:color .3s ease, background-color .3s ease;
 }
-.f-copy:hover{ color:#e8e8ee; background:rgba(255,255,255,.05); }
+.f-copy:hover{ color:var(--text); background:var(--surface); }
 .f-copy .ic{ width:13px; height:13px; }
 .f-right{ display:inline-flex; align-items:center; gap:7px; }
 .f-right .ic{ width:13px; height:13px; }
 
 .toast{
-  position:fixed; left:50%; bottom:26px; z-index:80;
+  position:fixed; left:50%; bottom:26px; z-index:110;
   display:flex; align-items:center; gap:10px;
   max-width:calc(100vw - 40px);
   padding:13px 20px; border-radius:14px;
-  background:rgba(22,22,29,.92);
-  border:1px solid rgba(255,255,255,.12);
+  background:var(--bg);
+  border:1px solid var(--line-2);
   backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
   box-shadow:0 18px 44px -14px rgba(0,0,0,.8);
-  font-size:13px; font-weight:500; color:#e8e8ee;
+  font-size:.86rem; font-weight:500; color:var(--text);
   transform:translate(-50%, 18px); opacity:0; pointer-events:none;
   transition:transform .45s var(--ease), opacity .45s ease;
 }
@@ -923,11 +1071,11 @@ html.cursor-live #cursor-ring.link{
   .geo, .actions, .terminal .t-body{ padding-inline:20px; }
   .terminal .t-bar{ padding-inline:16px; }
   .p-widget{ margin-left:0; }
-  .p-desc{ font-size:13.5px; }
+  .p-desc{ font-size:.9rem; }
   .foot{ flex-direction:column; align-items:flex-start; gap:10px; }
   .f-copy{ margin:0; }
   .panel{ backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
-  .marquee-track > span{ font-size:10px; letter-spacing:.14em; }
+  .marquee-track > span{ font-size:.66rem; letter-spacing:.14em; }
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -962,20 +1110,46 @@ html.cursor-live #cursor-ring.link{
 <nav class="side-rail left" aria-label="Navegação por seções">
   <a href="#perfil" class="rail-item active" data-sec="perfil"><span class="tooltip">Perfil</span></a>
   <a href="#summary" class="rail-item" data-sec="summary"><span class="tooltip">Resumo</span></a>
-  <a href="#arca" class="rail-item" data-sec="arca"><span class="tooltip">Arca</span></a>
   <a href="#engemap" class="rail-item" data-sec="engemap"><span class="tooltip">Engemap</span></a>
+  <a href="#arca" class="rail-item" data-sec="arca"><span class="tooltip">Arca</span></a>
   <a href="#nossofluxo" class="rail-item" data-sec="nossofluxo"><span class="tooltip">Nosso Fluxo</span></a>
   <a href="#viviboty" class="rail-item" data-sec="viviboty"><span class="tooltip">Vivi Boty</span></a>
   <a href="#formacao" class="rail-item" data-sec="formacao"><span class="tooltip">Formação &amp; Robótica</span></a>
-  <a href="#skills" class="rail-item" data-sec="skills"><span class="tooltip">Skills</span></a>
 </nav>
 
 <aside class="side-rail right" aria-label="Telemetria e atalhos">
   <div class="rail-geo">22°39'25"S 50°24'43"W · ELEV 520M</div>
+  <button type="button" class="rail-btn" id="rail-motion-toggle" title="Modo Minimalista (Ativar/Desativar Efeitos)" aria-label="Alternar Efeitos">
+    <svg class="ic" style="width:14px; height:14px;"><use href="#i-zap"/></svg>
+  </button>
   <button type="button" class="rail-btn" id="rail-back-top" title="Voltar ao topo" aria-label="Voltar ao topo">
     <svg class="ic" style="width:14px; height:14px;"><use href="#i-arrow-up-right" style="transform:rotate(-45deg); display:block;"/></svg>
   </button>
 </aside>
+
+<!-- Botão e Painel Flutuante de Acessibilidade -->
+<button type="button" class="accessibility-trigger" id="a11y-trigger" aria-label="Abrir Opções de Acessibilidade">
+  <svg class="ic"><use href="#i-languages"/></svg>
+</button>
+<div class="accessibility-panel" id="a11y-panel" role="region" aria-label="Painel de Acessibilidade">
+  <h3>Acessibilidade &amp; Tema</h3>
+  <div class="accessibility-section">
+    <label>Tema da Página</label>
+    <div class="accessibility-buttons">
+      <button type="button" class="a11y-theme active" data-theme="dark">Escuro</button>
+      <button type="button" class="a11y-theme" data-theme="light">Claro</button>
+      <button type="button" class="a11y-theme" data-theme="contrast">Contraste</button>
+    </div>
+  </div>
+  <div class="accessibility-section">
+    <label>Tamanho da Fonte</label>
+    <div class="accessibility-buttons">
+      <button type="button" class="a11y-size active" data-size="15px">Padrão</button>
+      <button type="button" class="a11y-size" data-size="17px">Grande</button>
+      <button type="button" class="a11y-size" data-size="19px">Extra G</button>
+    </div>
+  </div>
+</div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -1200,12 +1374,20 @@ html.cursor-live #cursor-ring.link{
     </div>
 
     <div class="cell sp-7 reveal" style="--d:.08s">
-      <section class="panel terminal tilt" aria-label="Configuração em TypeScript">
+      <section class="panel terminal tilt" aria-label="Terminal Interativo">
         <div class="t-bar">
-          <span class="t-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="t-name">murilo.config.ts</span>
+          <div class="t-bar-left">
+            <span class="t-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <div class="t-tabs">
+              <button class="t-tab active" data-tab="config">murilo.config.ts</button>
+              <button class="t-tab" data-tab="trajetoria">trajetoria.ts</button>
+              <button class="t-tab" data-tab="stack">stack.ts</button>
+            </div>
+          </div>
         </div>
-        <div class="t-body"><div class="t-row"><span class="t-ln">1</span><span class="t-code"><span class="tk-com"></span></span></div><div class="t-row"><span class="t-ln">2</span><span class="t-code"><span class="tk-kw">export const</span> config <span class="tk-pun">=</span> <span class="tk-pun">{</span></span></div><div class="t-row"><span class="t-ln">3</span><span class="t-code">  <span class="tk-prop">name</span><span class="tk-pun">:</span> <span class="tk-str">"Murilo Rogério"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">4</span><span class="t-code">  <span class="tk-prop">age</span><span class="tk-pun">:</span> <span class="tk-num">17</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">5</span><span class="t-code">  <span class="tk-prop">role</span><span class="tk-pun">:</span> <span class="tk-str">"Estudante & Aspirante a Dev"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">6</span><span class="t-code">  <span class="tk-prop">location</span><span class="tk-pun">:</span> <span class="tk-str">"Assis, SP · BR"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">7</span><span class="t-code">  <span class="tk-prop">stack</span><span class="tk-pun">:</span> <span class="tk-pun">{</span></span></div><div class="t-row"><span class="t-ln">8</span><span class="t-code">    <span class="tk-prop">frontend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"React 18"</span><span class="tk-pun">,</span> <span class="tk-str">"Next.js 15"</span><span class="tk-pun">,</span> <span class="tk-str">"TS"</span><span class="tk-pun">,</span> <span class="tk-str">"PWA"</span><span class="tk-pun">],</span></span></div><div class="t-row"><span class="t-ln">9</span><span class="t-code">    <span class="tk-prop">backend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"Node"</span><span class="tk-pun">,</span> <span class="tk-str">"Supabase"</span><span class="tk-pun">,</span> <span class="tk-str">"PG"</span><span class="tk-pun">],</span></span></div><div class="t-row"><span class="t-ln">10</span><span class="t-code">    <span class="tk-prop">geo</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"WebGIS"</span><span class="tk-pun">,</span> <span class="tk-str">"AutoCAD"</span><span class="tk-pun">],</span></span></div><div class="t-row"><span class="t-ln">11</span><span class="t-code">  <span class="tk-pun">},</span></span></div><div class="t-row"><span class="t-ln">12</span><span class="t-code">  <span class="tk-prop">status</span><span class="tk-pun">:</span> <span class="tk-str">"open-to-work"</span><span class="tk-pun">,</span></span></div><div class="t-row"><span class="t-ln">13</span><span class="t-code"><span class="tk-pun">}</span><span class="tk-pun">;</span> <span class="t-caret" aria-hidden="true"></span></span></div></div>
+        <div class="t-body" id="terminal-content">
+          <!-- Conteúdo inserido dinamicamente via JS -->
+        </div>
       </section>
     </div>
 
@@ -1236,7 +1418,7 @@ html.cursor-live #cursor-ring.link{
           <button class="act act-solid" type="button" id="cv-btn">
             <svg class="ic" aria-hidden="true"><use href="#i-file-down"/></svg>
             <span>Baixar Currículo PDF
-              <small>versão imprimível · A4</small>
+              <small>versão executiva · A4</small>
             </span>
           </button>
           <a class="act act-ghost" href="https://wa.me/5518998121327" target="_blank" rel="noopener noreferrer">
@@ -1250,7 +1432,6 @@ html.cursor-live #cursor-ring.link{
       </div>
     </div>
 
-    <!-- ENGEMAP SECTION BEFORE ARCA -->
     <div class="cell sp-12 reveal" style="--d:.08s">
       <article class="panel project tilt" id="engemap">
         <div class="panel-head">
@@ -1358,7 +1539,6 @@ html.cursor-live #cursor-ring.link{
       </article>
     </div>
 
-    <!-- ARCA SECTION BELOW ENGEMAP -->
     <div class="cell sp-12 reveal" style="--d:.08s">
       <article class="panel project tilt" id="arca">
         <div class="panel-head">
@@ -1715,7 +1895,7 @@ html.cursor-live #cursor-ring.link{
       </section>
     </div>
 
-    <div class="cell sp-5 reveal" style="--d:.06s" id="skills">
+    <div class="cell sp-5 reveal" style="--d:.06s">
       <section class="panel skill tilt">
         <header>
           <span class="sk-icon"><svg class="ic"><use href="#i-monitor"/></svg></span>
@@ -1843,7 +2023,7 @@ html.cursor-live #cursor-ring.link{
   updateProgress();
 
   var railLinks = document.querySelectorAll('.rail-item');
-  var targetSecs = document.querySelectorAll('#perfil, #summary, #engemap, #arca, #nossofluxo, #viviboty, #formacao, #skills');
+  var targetSecs = document.querySelectorAll('#perfil, #summary, #engemap, #arca, #nossofluxo, #viviboty, #formacao');
 
   function updateScrollspy() {
     var scrollPos = window.scrollY + 250;
@@ -1868,9 +2048,112 @@ html.cursor-live #cursor-ring.link{
     });
   }
 
+  var motionToggle = document.getElementById('rail-motion-toggle');
+  if (motionToggle) {
+    motionToggle.addEventListener('click', function() {
+      var isOff = document.documentElement.classList.toggle('no-effects');
+      showToast(isOff ? "Modo Minimalista ativado" : "Efeitos visuais ativados");
+    });
+  }
+
+  /* Acessibilidade: Painel & Configurações */
+  var a11yTrigger = document.getElementById('a11y-trigger');
+  var a11yPanel = document.getElementById('a11y-panel');
+
+  if (a11yTrigger && a11yPanel) {
+    a11yTrigger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      a11yPanel.classList.toggle('open');
+    });
+    document.addEventListener('click', function(e) {
+      if (!a11yPanel.contains(e.target) && !a11yTrigger.contains(e.target)) {
+        a11yPanel.classList.remove('open');
+      }
+    });
+  }
+
+  document.querySelectorAll('.a11y-theme').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.a11y-theme').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var theme = btn.getAttribute('data-theme');
+      document.documentElement.classList.remove('theme-light', 'theme-contrast');
+      if (theme === 'light') document.documentElement.classList.add('theme-light');
+      if (theme === 'contrast') document.documentElement.classList.add('theme-contrast');
+      showToast("Tema alterado para: " + btn.textContent);
+    });
+  });
+
+  document.querySelectorAll('.a11y-size').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.a11y-size').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var size = btn.getAttribute('data-size');
+      document.documentElement.style.setProperty('--base-fz', size);
+      showToast("Tamanho da fonte ajustado");
+    });
+  });
+
+  /* Terminal Interativo com Abas em Português */
+  var terminalSnippets = {
+    config: [
+      '<span class="tk-kw">export const</span> config <span class="tk-pun">=</span> <span class="tk-pun">{</span>',
+      '  <span class="tk-prop">nome</span><span class="tk-pun">:</span> <span class="tk-str">"Murilo Rogério"</span><span class="tk-pun">,</span>',
+      '  <span class="tk-prop">idade</span><span class="tk-pun">:</span> <span class="tk-num">17</span><span class="tk-pun">,</span>',
+      '  <span class="tk-prop">cargo</span><span class="tk-pun">:</span> <span class="tk-str">"Estudante & Aspirante a Dev"</span><span class="tk-pun">,</span>',
+      '  <span class="tk-prop">local</span><span class="tk-pun">:</span> <span class="tk-str">"Assis, SP · BR"</span><span class="tk-pun">,</span>',
+      '  <span class="tk-prop">tecnologias</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>',
+      '    <span class="tk-prop">frontend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"React 18"</span><span class="tk-pun">,</span> <span class="tk-str">"Next.js 15"</span><span class="tk-pun">,</span> <span class="tk-str">"TS"</span><span class="tk-pun">,</span> <span class="tk-str">"PWA"</span><span class="tk-pun">],</span>',
+      '    <span class="tk-prop">backend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"Node"</span><span class="tk-pun">,</span> <span class="tk-str">"Supabase"</span><span class="tk-pun">,</span> <span class="tk-str">"PostgreSQL"</span><span class="tk-pun">],</span>',
+      '    <span class="tk-prop">geotecnologia</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"WebGIS"</span><span class="tk-pun">,</span> <span class="tk-str">"AutoCAD"</span><span class="tk-pun">],</span>',
+      '  <span class="tk-pun">},</span>',
+      '  <span class="tk-prop">status</span><span class="tk-pun">:</span> <span class="tk-str">"disponivel-efetivacao"</span><span class="tk-pun">,</span>',
+      '<span class="tk-pun">}</span><span class="tk-pun">;</span> <span class="t-caret" aria-hidden="true"></span>'
+    ],
+    trajetoria: [
+      '<span class="tk-com">// Trajetória profissional e acadêmica resumida</span>',
+      '<span class="tk-kw">export class</span> <span class="tk-prop">TrajetoriaProfissional</span> <span class="tk-pun">{</span>',
+      '  <span class="tk-prop">ensinoMedio</span> <span class="tk-pun">=</span> <span class="tk-str">"Escola Dr. Clybas (3º Ano - 2026)"</span><span class="tk-pun">;</span>',
+      '  <span class="tk-prop">experienciaAtual</span> <span class="tk-pun">=</span> <span class="tk-str">"Engemap (Produção & WebGIS)"</span><span class="tk-pun">;</span>',
+      '  <span class="tk-prop">perfilCognitivo</span> <span class="tk-pun">=</span> <span class="tk-str">"Altas Habilidades / Superdotação (AH/SD)"</span><span class="tk-pun">;</span>',
+      '  <span class="tk-prop">objetivo</span> <span class="tk-pun">=</span> <span class="tk-str">"Desenvolvimento Full-Stack & Geoprocessamento"</span><span class="tk-pun">;</span>',
+      '<span class="tk-pun">}</span>'
+    ],
+    stack: [
+      '<span class="tk-com">// Stack principal de projetos e ferramentas</span>',
+      '<span class="tk-kw">const</span> <span class="tk-prop">stackPrincipal</span> <span class="tk-pun">=</span> <span class="tk-pun">{</span>',
+      '  <span class="tk-prop">linguagens</span><span class="tk-pun">:</span> <span class="tk-str">"TypeScript, JavaScript, Python"</span><span class="tk-pun">,</span>',
+      '  <span class="tk-prop">frameworks</span><span class="tk-pun">:</span> <span class="tk-str">"React 18, Next.js 15, Tailwind CSS"</span><span class="tk-pun">,</span>',
+      '  <span class="tk-prop">bancoDeDados</span><span class="tk-pun">:</span> <span class="tk-str">"Supabase, PostgreSQL com RLS"</span><span class="tk-pun">,</span>',
+      '  <span class="tk-prop">automacao</span><span class="tk-pun">:</span> <span class="tk-str">"Arduino, Micro:bit, Robótica"</span><span class="tk-pun">,</span>',
+      '<span class="tk-pun">}</span><span class="tk-pun">;</span>'
+    ]
+  };
+
+  function renderTerminalTab(tabKey) {
+    var container = document.getElementById('terminal-content');
+    if (!container) return;
+    var lines = terminalSnippets[tabKey] || terminalSnippets.config;
+    var html = '';
+    for (var i = 0; i < lines.length; i++) {
+      html += '<div class="t-row"><span class="t-ln">' + (i + 1) + '</span><span class="t-code">' + lines[i] + '</span></div>';
+    }
+    container.innerHTML = html;
+  }
+
+  document.querySelectorAll('.t-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.t-tab').forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      renderTerminalTab(tab.getAttribute('data-tab'));
+    });
+  });
+  renderTerminalTab('config');
+
   if (finePointer) {
     document.querySelectorAll(".panel").forEach(function (card) {
       card.addEventListener("pointermove", function (e) {
+        if (document.documentElement.classList.contains('no-effects')) return;
         var r = card.getBoundingClientRect();
         card.style.setProperty("--mx", (e.clientX - r.left).toFixed(1) + "px");
         card.style.setProperty("--my", (e.clientY - r.top).toFixed(1) + "px");
@@ -1881,6 +2164,7 @@ html.cursor-live #cursor-ring.link{
   if (finePointer && !reduceMotion) {
     document.querySelectorAll(".tilt").forEach(function (card) {
       card.addEventListener("pointermove", function (e) {
+        if (document.documentElement.classList.contains('no-effects')) return;
         var r = card.getBoundingClientRect();
         if (r.width < 1 || r.height < 1) return;
         var px = (e.clientX - r.left) / r.width  - 0.5;
@@ -1901,6 +2185,7 @@ html.cursor-live #cursor-ring.link{
     var cx = tx, cy = ty, active = false;
 
     window.addEventListener("pointermove", function (e) {
+      if (document.documentElement.classList.contains('no-effects')) return;
       tx = e.clientX; ty = e.clientY;
       if (!active) { active = true; cx = tx; cy = ty; spot.classList.add("on"); }
     }, { passive: true });
@@ -1924,6 +2209,7 @@ html.cursor-live #cursor-ring.link{
     var cursorShown = false;
 
     document.addEventListener("pointermove", function (e) {
+      if (document.documentElement.classList.contains('no-effects')) return;
       mx = e.clientX; my = e.clientY;
       dot.style.setProperty("--x", mx + "px");
       dot.style.setProperty("--y", my + "px");
@@ -2023,11 +2309,6 @@ html.cursor-live #cursor-ring.link{
   tickClock();
   setInterval(tickClock, 1000);
 
-  var survey = document.getElementById("survey-svg");
-  if (survey && reduceMotion && typeof survey.pauseAnimations === "function") {
-    survey.pauseAnimations();
-  }
-
   var fillEl = document.getElementById("c-fill");
   var pctEl  = document.getElementById("c-pct");
   var daysEl = document.getElementById("c-days");
@@ -2106,6 +2387,7 @@ html.cursor-live #cursor-ring.link{
     });
   });
 
+  /* Geração do Currículo PDF (SEM links de acesso e SEM GitHub/LinkedIn no currículo impresso) */
   var cvBtn = document.getElementById("cv-btn");
   if (cvBtn) {
     cvBtn.addEventListener("click", function () {
@@ -2118,126 +2400,104 @@ html.cursor-live #cursor-ring.link{
 
       var cvHtml = [
         "<!DOCTYPE html><html lang='pt-BR'><head><meta charset='UTF-8'>",
-        "<title>Currículo — Murilo Rogério Carvalho da Conceição</title>",
+        "<title>Currículo Executivo — Murilo Rogério Carvalho da Conceição</title>",
         "<style>",
         "  *{margin:0;padding:0;box-sizing:border-box}",
-        "  body{font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;background:#f2f2f4;padding:28px 12px;font-size:12.5px;line-height:1.55}",
-        "  .sheet{max-width:780px;margin:0 auto;background:#fff;padding:46px 52px;border-radius:6px}",
-        "  h1{font-size:24px;letter-spacing:-.02em}",
-        "  .tag{color:#555;margin-top:4px;font-size:13px}",
-        "  .contact{margin-top:10px;font-size:11.5px;color:#444}",
-        "  .contact a{color:#4338ca;text-decoration:none}",
-        "  hr{border:none;border-top:2px solid #1a1a1a;margin:22px 0 14px}",
-        "  h2{font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:#4338ca;margin:20px 0 8px}",
-        "  .item{margin-bottom:12px}",
-        "  .item h3{font-size:13px}",
-        "  .item .meta{font-size:11px;color:#666;margin:2px 0 4px}",
-        "  ul{margin-left:16px}",
-        "  li{margin-bottom:3px}",
-        "  .grid{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}",
-        "  .btn-print{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#4338ca;color:#fff;border:none;padding:12px 26px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.25)}",
-        "  @media print{body{background:#fff;padding:0}.sheet{padding:0;border-radius:0;max-width:none}.btn-print{display:none}hr{border-top:1px solid #999}}",
-        "  @page{size:A4;margin:16mm}",
+        "  body{font-family:'Segoe UI',Helvetica,Arial,sans-serif;color:#111827;background:#fff;padding:40px;font-size:13px;line-height:1.6}",
+        "  .sheet{max-width:800px;margin:0 auto}",
+        "  header{border-bottom:2px solid #4f46e5;padding-bottom:18px;margin-bottom:22px}",
+        "  h1{font-size:26px;font-weight:700;color:#111827;letter-spacing:-.02em}",
+        "  .tag{color:#4f46e5;font-weight:600;margin-top:4px;font-size:13.5px}",
+        "  .contact{margin-top:8px;font-size:12px;color:#4b5563}",
+        "  .contact a{color:#4f46e5;text-decoration:none}",
+        "  h2{font-size:12px;text-transform:uppercase;letter-spacing:.15em;color:#4f46e5;margin:24px 0 10px;border-bottom:1px solid #e5e7eb;padding-bottom:4px;font-weight:700}",
+        "  .item{margin-bottom:14px}",
+        "  .item h3{font-size:14px;font-weight:600;color:#1f2937}",
+        "  .item .meta{font-size:11.5px;color:#6b7280;margin:2px 0 6px}",
+        "  ul{margin-left:18px}",
+        "  li{margin-bottom:4px;color:#374151}",
+        "  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:10px}",
+        "  .btn-print{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#4f46e5;color:#fff;border:none;padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 10px 25px rgba(79,70,229,.3);transition:background .2s}",
+        "  .btn-print:hover{background:#4338ca}",
+        "  @media print{body{padding:0}.btn-print{display:none}}",
+        "  @page{size:A4;margin:18mm}",
         "</style></head><body>",
         "<div class='sheet'>",
-        "  <h1>Murilo Rogério Carvalho da Conceição</h1>",
-        "  <p class='tag'>Estudante de TI · Geotecnologia &amp; WebGIS · Robótica &amp; Automação</p>",
-        "  <p class='contact'>",
-        "    Assis, SP — Brasil &nbsp;·&nbsp; ",
-        "    <a href='mailto:murilo.rogerio.conceicao@gmail.com'>murilo.rogerio.conceicao@gmail.com</a> &nbsp;·&nbsp; ",
-        "    WhatsApp: (18) 99812-1327 &nbsp;·&nbsp; ",
-        "    <a href='https://github.com/Murilo-Rogerio'>github.com/Murilo-Rogerio</a> &nbsp;·&nbsp; ",
-        "    <a href='https://www.linkedin.com/in/murilo-rog%C3%A9rio-220133322'>LinkedIn</a>",
-        "  </p>",
-        "  <hr>",
+        "  <header>",
+        "    <h1>Murilo Rogério Carvalho da Conceição</h1>",
+        "    <div class='tag'>Estudante de TI · Geotecnologia &amp; WebGIS · Robótica &amp; Automação</div>",
+        "    <div class='contact'>",
+        "      Assis, SP · Brasil &nbsp;·&nbsp; ",
+        "      <a href='mailto:murilo.rogerio.conceicao@gmail.com'>murilo.rogerio.conceicao@gmail.com</a> &nbsp;·&nbsp; ",
+        "      WhatsApp: (18) 99812-1327",
+        "    </div>",
+        "  </header>",
         "  <h2>Resumo Profissional</h2>",
-        "  <p>Estudante de 17 anos construindo base prática em Robótica, Desenvolvimento de Software e Geoprocessamento. Atuação corporativa como Jovem Aprendiz aplicando soluções web, automações e sistemas WebGIS. Histórico acadêmico com diagnóstico de Altas Habilidades / Superdotação, preparando-me para o ingresso no Ensino Superior em TI.</p>",
+        "  <p>Estudante de 17 anos com sólida base prática em Desenvolvimento de Software Full-Stack, Geoprocessamento e Sistemas Embarcados. Atuação corporativa em engenharia e aerolevantamento (Engemap) integrando automações e WebGIS. Histórico acadêmico de excelência com diagnóstico de Altas Habilidades / Superdotação (AH/SD).</p>",
         "  <h2>Experiência Profissional</h2>",
         "  <div class='item'>",
-        "    <h3>Engemap — Engenharia e Aerolevantamento · Jovem Aprendiz (Produção &amp; WebGIS)</h3>",
-        "    <p class='meta'>Atual · Transferido para Produção/WebGIS mantendo o mesmo contrato de 15 meses devido à readequação de demanda no setor de RH.</p>",
-        "    <ul><li>Tratamento de dados geoespaciais e suporte técnico a fluxos cartográficos e de aerolevantamento.</li></ul>",
+        "    <h3>Engemap — Engenharia e Aerolevantamento</h3>",
+        "    <p class='meta'>Jovem Aprendiz · Outubro/2025 a Novembro/2026 (Contrato Unificado de 15 Meses)</p>",
+        "    <ul>",
+        "      <li><strong>Produção &amp; WebGIS (Atual):</strong> Tratamento de dados geoespaciais, suporte técnico a fluxos cartográficos e operação de sistemas WebGIS em resposta a readequações de demanda interna.</li>",
+        "      <li><strong>Recursos Humanos:</strong> Gestão de processos internos, organização documental e suporte operacional ao departamento pessoal.</li>",
+        "    </ul>",
         "  </div>",
-        "  <div class='item'>",
-        "    <h3>Engemap — Jovem Aprendiz (Auxiliar Pessoal no Recursos Humanos)</h3>",
-        "    <p class='meta'>~10 meses · Início do contrato de aprendizagem de 15 meses</p>",
-        "    <ul><li>Gestão de processos internos, organização documental e suporte operacional ao departamento pessoal antes do remanejamento por demanda.</li></ul>",
-        "  </div>",
-        "  <p class='meta'><strong>Contrato de aprendizagem:</strong> 15 meses unificado (Outubro/2025 a Novembro/2026).</p>",
-        "  <h2>Projetos</h2>",
+        "  <h2>Projetos em Destaque</h2>",
         "  <div class='item'>",
         "    <h3>Arca — Organização Pessoal &amp; Bloco de Notas PWA</h3>",
-        "    <p class='meta'><a href='https://arcaik-notes.vercel.app/'>arcaik-notes.vercel.app</a> · <a href='https://github.com/Murilo-Rogerio/Arcaik'>Repositório</a></p>",
-        "    <ul>",
-        "      <li>App de organização mobile com notas, tarefas, rotinas diárias e compartilhamento de mídias/links.</li>",
-        "      <li>Web Share Target nativo para salvar TikTok/YouTube com extração automática de metadados via oEmbed.</li>",
-        "      <li>Compressão client-side de imagens (~300 KB) e upload em duas etapas com rollback automático.</li>",
-        "      <li>Segurança garantida via RLS no Postgres, URLs assinadas e navegação offline com Service Worker.</li>",
-        "      <li>Stack: React 18, TypeScript, Vite, Tailwind CSS, Supabase (Auth, RLS, Storage), Framer Motion, Vercel.</li>",
-        "    </ul>",
+        "    <p class='meta'>React 18, TypeScript, Vite, Tailwind CSS, Supabase RLS, Web Share Target</p>",
+        "    <ul><li>App mobile com captura de mídias (TikTok/YouTube) via Web Share Target, oEmbed automático, compressão client-side e RLS no PostgreSQL.</li></ul>",
         "  </div>",
         "  <div class='item'>",
-        "    <h3>Nosso Fluxo — Gestão Financeira Pessoal (Web App · Fintech)</h3>",
-        "    <p class='meta'><a href='https://nossofluxo.vercel.app'>nossofluxo.vercel.app</a> · <a href='https://github.com/Murilo-Rogerio/Murilo-Rogerio-controle-financeiro-pessoal'>Repositório</a></p>",
-        "    <ul>",
-        "      <li>Gestão completa de finanças: entradas, gastos, parcelamentos, patrimônio e investimentos.</li>",
-        "      <li>Taxa CDI em tempo real via BrasilAPI (cache 1h + fallback); monitoramento de FIIs/Ações via brapi.dev com dispersão Risco × Retorno.</li>",
-        "      <li>Motor de recorrência puro sem duplicação de linhas; arquitetura pronta para Open Finance (Pluggy/Belvo).</li>",
-        "      <li>Segurança em 3 camadas: Middleware, Layout Protegido e RLS no PostgreSQL.</li>",
-        "      <li>Stack: Next.js 15, React 19, TypeScript, Tailwind, Supabase, Framer Motion, Recharts, Vercel.</li>",
-        "    </ul>",
+        "    <h3>Nosso Fluxo — Gestão Financeira Pessoal (Fintech)</h3>",
+        "    <p class='meta'>Next.js 15, React 19, TypeScript, Supabase, BrasilAPI, Recharts</p>",
+        "    <ul><li>Plataforma completa de finanças com CDI em tempo real, cotações de FIIs/Ações, gráfico Risco × Retorno e motor de recorrência.</li></ul>",
         "  </div>",
         "  <div class='item'>",
-        "    <h3>Vivi Boty — Vitrine Digital &amp; Catálogo E-commerce</h3>",
-        "    <p class='meta'><a href='https://vivicarvalhoboty.com.br'>vivicarvalhoboty.com.br</a> · <a href='https://github.com/Murilo-Rogerio/Vivi-Boty'>Repositório</a></p>",
-        "    <ul>",
-        "      <li>Catálogo digital para beleza e perfumaria com funil click-to-chat integrado ao WhatsApp.</li>",
-        "      <li>Painel administrativo privado (#/admin) protegido por Supabase Auth + RLS: CRUD, estoque, uploads (5MB) e dashboard.</li>",
-        "      <li>Proteção nativa contra XSS e SQL Injection; SPA leve de alto desempenho.</li>",
-        "      <li>Stack: JavaScript ES6+, HTML5, Tailwind CSS, Supabase (Postgres, Auth, Storage, RLS), Vercel.</li>",
-        "    </ul>",
+        "    <h3>Vivi Boty — Vitrine Digital &amp; E-commerce</h3>",
+        "    <p class='meta'>JavaScript ES6+, Tailwind CSS, Supabase Auth/RLS</p>",
+        "    <ul><li>Catálogo digital com funil click-to-chat para WhatsApp e painel administrativo protegido por autenticação e RLS.</li></ul>",
         "  </div>",
         "  <h2>Formação &amp; Conquistas</h2>",
         "  <ul>",
-        "    <li>Cursando o 3º Ano do Ensino Médio — conclusão em 2026.</li>",
-        "    <li>Certificado de Aluno Destaque: histórico com notas máximas, sem reprovações ou advertências.</li>",
-        "    <li>Diagnóstico de Altas Habilidades / Superdotação (AH/SD).</li>",
-        "    <li>Inglês intermediário — compreensão técnica e conversação rápida.</li>",
+        "    <li>Ensino Médio: 3º ano na Escola Dr. Clybas (Conclusão em 2026).</li>",
+        "    <li>Aluno Destaque: Histórico impecável com notas máximas e reconhecimento acadêmico.</li>",
+        "    <li>Diagnóstico formal de Altas Habilidades / Superdotação (AH/SD) com alta capacidade analítica.</li>",
+        "    <li>Inglês Intermediário (leitura técnica e conversação).</li>",
         "  </ul>",
-        "  <h2>Robótica &amp; Projetos Práticos</h2>",
+        "  <h2>Robótica &amp; Prototipagem</h2>",
         "  <ul>",
-        "    <li>Robótica com Arduino (CEDET) — 3 a 4 anos: lógica, sensores, atuadores e prototipagem eletrônica.</li>",
-        "    <li>Lego Mindstorms EV3 (FEMA) — 6 meses: algoritmos de navegação e desafios de engenharia.</li>",
-        "    <li>Micro:bit (SESI) — 6 meses: lógica de blocos e sistemas embarcados.</li>",
+        "    <li>Arduino (CEDET) — 3 a 4 anos de experiência em lógica, sensores e atuadores.</li>",
+        "    <li>Lego Mindstorms EV3 (FEMA) &amp; Micro:bit (SESI) — Algoritmos de navegação e sistemas embarcados.</li>",
         "  </ul>",
         "  <div class='grid'>",
         "    <div>",
-        "      <h2>Competências Técnicas</h2>",
+        "      <h2>Stack Tecnológica</h2>",
         "      <ul>",
-        "        <li><strong>Frontend:</strong> TypeScript, JavaScript ES6+, React 18, Next.js 15, HTML5, CSS3, Tailwind, Framer Motion, PWA.</li>",
-        "        <li><strong>Backend &amp; Cloud:</strong> Node.js, Python, Supabase (PostgreSQL, Auth, RLS, Storage), REST APIs, Vercel, Git/GitHub.</li>",
+        "        <li><strong>Frontend:</strong> React, Next.js, TypeScript, Tailwind, PWA</li>",
+        "        <li><strong>Backend:</strong> Node.js, Python, Supabase, PostgreSQL, RLS</li>",
         "      </ul>",
         "    </div>",
         "    <div>",
-        "      <h2>Geotecnologia &amp; Hardware</h2>",
+        "      <h2>Geotecnologia &amp; Ferramentas</h2>",
         "      <ul>",
-        "        <li>WebGIS, AutoCAD, Arduino, Micro:bit, Lego EV3.</li>",
-        "        <li>Linux, GitHub Codespaces.</li>",
+        "        <li>WebGIS, AutoCAD, Git/GitHub, Vercel</li>",
+        "        <li>Linux, GitHub Codespaces</li>",
         "      </ul>",
         "    </div>",
         "  </div>",
         "</div>",
-        "<button class='btn-print' onclick='window.print()'>Imprimir / Salvar como PDF</button>",
-        "<script>window.onload=function(){setTimeout(function(){window.print();},450);};<\/script>",
+        "<button class='btn-print' onclick='window.print()'>Imprimir / Salvar PDF Executivo</button>",
         "</body></html>"
       ].join("");
 
       w.document.open();
       w.document.write(cvHtml);
       w.document.close();
-      w.document.title = "Currículo — Murilo Rogério Carvalho da Conceição";
+      w.document.title = "Currículo Executivo — Murilo Rogério Carvalho da Conceição";
 
-      showToast("Currículo gerado em nova aba");
+      showToast("Currículo executivo gerado em nova aba");
     });
   }
 })();
