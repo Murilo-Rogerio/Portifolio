@@ -1250,103 +1250,7 @@ html.cursor-live #cursor-ring.link{
       </div>
     </div>
 
-    <div class="cell sp-12 reveal" style="--d:.08s">
-      <article class="panel project tilt" id="arca">
-        <div class="panel-head">
-          <div class="p-badges">
-            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>React 18</span>
-            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>TypeScript</span>
-            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>Vite</span>
-            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Tailwind CSS</span>
-            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Supabase RLS</span>
-            <span class="badge"><span class="bdot b-rose" aria-hidden="true"></span>PWA / Share Target</span>
-          </div>
-          <div class="p-widget" aria-hidden="true">
-            <span class="w-label">Organização &amp; Mídias</span>
-            <svg viewBox="0 0 200 118">
-              <rect x="15" y="15" width="170" height="88" rx="8" class="w-line" fill="rgba(255,255,255,0.02)"/>
-              <rect x="25" y="25" width="60" height="40" rx="4" class="w-line" fill="rgba(139,92,246,0.15)"/>
-              <line x1="95" y1="30" x2="170" y2="30" class="w-line"/>
-              <line x1="95" y1="42" x2="150" y2="42" class="w-line"/>
-              <line x1="25" y1="75" x2="170" y2="75" class="w-line"/>
-              <circle cx="35" cy="88" r="4" class="w-pt v"/>
-              <circle cx="55" cy="88" r="4" class="w-pt b"/>
-              <circle cx="75" cy="88" r="4" class="w-pt"/>
-            </svg>
-          </div>
-        </div>
-
-        <div class="project-body">
-          <div class="p-info">
-            <div class="p-id">
-              <span class="p-icon"><svg class="ic"><use href="#i-archive"/></svg></span>
-              <div>
-                <h3>Arca</h3>
-                <p class="p-tag">Organização Pessoal &amp; Bloco de Notas PWA</p>
-              </div>
-            </div>
-            <p class="p-desc">
-              App de organização pessoal pensado primeiramente para o celular. Guarda notas rápidas, listas de tarefas com atualização otimista, acompanhamento de rotina e links/mídias (TikTok e YouTube) capturados via Web Share Target com metadados via oEmbed.
-            </p>
-            <div class="p-stack" aria-label="Stack complementar">
-              <span class="chip core">PWA Instalável</span>
-              <span class="chip">Web Share Target</span>
-              <span class="chip">oEmbed Auto-Fetch</span>
-              <span class="chip">Compressão Canvas Client-Side</span>
-              <span class="chip">Supabase Auth &amp; Storage</span>
-              <span class="chip">PostgreSQL RLS</span>
-              <span class="chip">Framer Motion</span>
-              <span class="chip">Vercel</span>
-            </div>
-            <div class="p-actions">
-              <a class="btn btn-solid" href="https://arcaik-notes.vercel.app/" target="_blank" rel="noopener noreferrer">
-                Acessar o app
-                <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
-              </a>
-              <a class="btn btn-ghost" href="https://github.com/Murilo-Rogerio/Arcaik" target="_blank" rel="noopener noreferrer">
-                <svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>
-                Código-fonte
-              </a>
-            </div>
-          </div>
-
-          <div class="p-specs">
-            <div class="spec-head">Destaques da Aplicação</div>
-            <ol class="spec-list">
-              <li>
-                <span class="spec-num">01</span>
-                <div>
-                  <strong>Web Share Target &amp; oEmbed Nativo</strong>
-                  <p>Integração com a folha de compartilhamento nativa do Android para arquivar vídeos do TikTok/YouTube buscando títulos e miniaturas automaticamente.</p>
-                </div>
-              </li>
-              <li>
-                <span class="spec-num">02</span>
-                <div>
-                  <strong>Compressão Client-Side &amp; Upload em 2 Etapas</strong>
-                  <p>Fotos otimizadas diretamente via canvas (~300 KB) antes do upload, com rollback automático no Storage se o registro do banco falhar.</p>
-                </div>
-              </li>
-              <li>
-                <span class="spec-num">03</span>
-                <div>
-                  <strong>Segurança no Banco (RLS) &amp; URLs Assinadas</strong>
-                  <p>Proteção com Row Level Security no Postgres e bucket privado no Storage com URLs assinadas válidas por 24 horas.</p>
-                </div>
-              </li>
-              <li>
-                <span class="spec-num">04</span>
-                <div>
-                  <strong>Navegação Offline &amp; Service Worker Manual</strong>
-                  <p>Estratégia Network-First sustentando rotas offline e atualizações otimistas na UI com rollback garantido em caso de recusa no servidor.</p>
-                </div>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </article>
-    </div>
-
+    <!-- ENGEMAP SECTION BEFORE ARCA -->
     <div class="cell sp-12 reveal" style="--d:.08s">
       <article class="panel project tilt" id="engemap">
         <div class="panel-head">
@@ -1449,6 +1353,104 @@ html.cursor-live #cursor-ring.link{
               <span class="chip core">Produção &amp; WebGIS (Atual)</span>
               <span class="chip">RH · Departamento Pessoal</span>
             </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- ARCA SECTION BELOW ENGEMAP -->
+    <div class="cell sp-12 reveal" style="--d:.08s">
+      <article class="panel project tilt" id="arca">
+        <div class="panel-head">
+          <div class="p-badges">
+            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>React 18</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>TypeScript</span>
+            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>Vite</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Tailwind CSS</span>
+            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Supabase RLS</span>
+            <span class="badge"><span class="bdot b-rose" aria-hidden="true"></span>PWA / Share Target</span>
+          </div>
+          <div class="p-widget" aria-hidden="true">
+            <span class="w-label">Organização &amp; Mídias</span>
+            <svg viewBox="0 0 200 118">
+              <rect x="15" y="15" width="170" height="88" rx="8" class="w-line" fill="rgba(255,255,255,0.02)"/>
+              <rect x="25" y="25" width="60" height="40" rx="4" class="w-line" fill="rgba(139,92,246,0.15)"/>
+              <line x1="95" y1="30" x2="170" y2="30" class="w-line"/>
+              <line x1="95" y1="42" x2="150" y2="42" class="w-line"/>
+              <line x1="25" y1="75" x2="170" y2="75" class="w-line"/>
+              <circle cx="35" cy="88" r="4" class="w-pt v"/>
+              <circle cx="55" cy="88" r="4" class="w-pt b"/>
+              <circle cx="75" cy="88" r="4" class="w-pt"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="project-body">
+          <div class="p-info">
+            <div class="p-id">
+              <span class="p-icon"><svg class="ic"><use href="#i-archive"/></svg></span>
+              <div>
+                <h3>Arca</h3>
+                <p class="p-tag">Organização Pessoal &amp; Bloco de Notas PWA</p>
+              </div>
+            </div>
+            <p class="p-desc">
+              App de organização pessoal pensado primeiramente para o celular. Guarda notas rápidas, listas de tarefas com atualização otimista, acompanhamento de rotina e links/mídias (TikTok e YouTube) capturados via Web Share Target com metadados via oEmbed.
+            </p>
+            <div class="p-stack" aria-label="Stack complementar">
+              <span class="chip core">PWA Instalável</span>
+              <span class="chip">Web Share Target</span>
+              <span class="chip">oEmbed Auto-Fetch</span>
+              <span class="chip">Compressão Canvas Client-Side</span>
+              <span class="chip">Supabase Auth &amp; Storage</span>
+              <span class="chip">PostgreSQL RLS</span>
+              <span class="chip">Framer Motion</span>
+              <span class="chip">Vercel</span>
+            </div>
+            <div class="p-actions">
+              <a class="btn btn-solid" href="https://arcaik-notes.vercel.app/" target="_blank" rel="noopener noreferrer">
+                Acessar o app
+                <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+              </a>
+              <a class="btn btn-ghost" href="https://github.com/Murilo-Rogerio/Arcaik" target="_blank" rel="noopener noreferrer">
+                <svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>
+                Código-fonte
+              </a>
+            </div>
+          </div>
+
+          <div class="p-specs">
+            <div class="spec-head">Destaques da Aplicação</div>
+            <ol class="spec-list">
+              <li>
+                <span class="spec-num">01</span>
+                <div>
+                  <strong>Web Share Target &amp; oEmbed Nativo</strong>
+                  <p>Integração com a folha de compartilhamento nativa do Android para arquivar vídeos do TikTok/YouTube buscando títulos e miniaturas automaticamente.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">02</span>
+                <div>
+                  <strong>Compressão Client-Side &amp; Upload em 2 Etapas</strong>
+                  <p>Fotos otimizadas diretamente via canvas (~300 KB) antes do upload, com rollback automático no Storage se o registro do banco falhar.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">03</span>
+                <div>
+                  <strong>Segurança no Banco (RLS) &amp; URLs Assinadas</strong>
+                  <p>Proteção com Row Level Security no Postgres e bucket privado no Storage com URLs assinadas válidas por 24 horas.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">04</span>
+                <div>
+                  <strong>Navegação Offline &amp; Service Worker Manual</strong>
+                  <p>Estratégia Network-First sustentando rotas offline e atualizações otimistas na UI com rollback garantido em caso de recusa no servidor.</p>
+                </div>
+              </li>
+            </ol>
           </div>
         </div>
       </article>
@@ -1841,7 +1843,7 @@ html.cursor-live #cursor-ring.link{
   updateProgress();
 
   var railLinks = document.querySelectorAll('.rail-item');
-  var targetSecs = document.querySelectorAll('#perfil, #summary, #arca, #engemap, #nossofluxo, #viviboty, #formacao, #skills');
+  var targetSecs = document.querySelectorAll('#perfil, #summary, #engemap, #arca, #nossofluxo, #viviboty, #formacao, #skills');
 
   function updateScrollspy() {
     var scrollPos = window.scrollY + 250;
@@ -2190,7 +2192,7 @@ html.cursor-live #cursor-ring.link{
         "    <p class='meta'><a href='https://vivicarvalhoboty.com.br'>vivicarvalhoboty.com.br</a> · <a href='https://github.com/Murilo-Rogerio/Vivi-Boty'>Repositório</a></p>",
         "    <ul>",
         "      <li>Catálogo digital para beleza e perfumaria com funil click-to-chat integrado ao WhatsApp.</li>",
-        "      <li>Painel administrativo privado (#/admin) com Supabase Auth + RLS: CRUD, estoque, uploads (5MB) e dashboard.</li>",
+        "      <li>Painel administrativo privado (#/admin) protegido por Supabase Auth + RLS: CRUD, estoque, uploads (5MB) e dashboard.</li>",
         "      <li>Proteção nativa contra XSS e SQL Injection; SPA leve de alto desempenho.</li>",
         "      <li>Stack: JavaScript ES6+, HTML5, Tailwind CSS, Supabase (Postgres, Auth, Storage, RLS), Vercel.</li>",
         "    </ul>",
@@ -2226,7 +2228,7 @@ html.cursor-live #cursor-ring.link{
         "  </div>",
         "</div>",
         "<button class='btn-print' onclick='window.print()'>Imprimir / Salvar como PDF</button>",
-        "<scr", "ipt>window.onload=function(){setTimeout(function(){window.print();},450);};<\/scr", "ipt>",
+        "<script>window.onload=function(){setTimeout(function(){window.print();},450);};<\/script>",
         "</body></html>"
       ].join("");
 
