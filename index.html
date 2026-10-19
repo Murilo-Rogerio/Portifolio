@@ -1105,4 +1105,1404 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
 <div class="spotlight" aria-hidden="true"></div>
 
 <div id="cursor-dot" aria-hidden="true"></div>
-<div id
+<div id="cursor-ring" aria-hidden="true"></div>
+
+<nav class="side-rail left" aria-label="Navegação por seções">
+  <a href="#perfil" class="rail-item active" data-sec="perfil"><span class="tooltip">Perfil</span></a>
+  <a href="#summary" class="rail-item" data-sec="summary"><span class="tooltip">Resumo</span></a>
+  <a href="#engemap" class="rail-item" data-sec="engemap"><span class="tooltip">Engemap</span></a>
+  <a href="#arca" class="rail-item" data-sec="arca"><span class="tooltip">Arca</span></a>
+  <a href="#nossofluxo" class="rail-item" data-sec="nossofluxo"><span class="tooltip">Nosso Fluxo</span></a>
+  <a href="#viviboty" class="rail-item" data-sec="viviboty"><span class="tooltip">Vivi Boty</span></a>
+  <a href="#formacao" class="rail-item" data-sec="formacao"><span class="tooltip">Formação &amp; Robótica</span></a>
+</nav>
+
+<aside class="side-rail right" aria-label="Telemetria e atalhos">
+  <div class="rail-geo">22°39'25"S 50°24'43"W · ELEV 520M</div>
+  <button type="button" class="rail-btn" id="rail-motion-toggle" title="Modo Minimalista (Ativar/Desativar Efeitos)" aria-label="Alternar Efeitos">
+    <svg class="ic" style="width:14px; height:14px;"><use href="#i-zap"/></svg>
+  </button>
+  <button type="button" class="rail-btn" id="rail-back-top" title="Voltar ao topo" aria-label="Voltar ao topo">
+    <svg class="ic" style="width:14px; height:14px;"><use href="#i-arrow-up-right" style="transform:rotate(-45deg); display:block;"/></svg>
+  </button>
+</aside>
+
+<!-- Botão e Painel Flutuante de Acessibilidade -->
+<button type="button" class="accessibility-trigger" id="a11y-trigger" aria-label="Abrir Opções de Acessibilidade">
+  <svg class="ic"><use href="#i-languages"/></svg>
+</button>
+<div class="accessibility-panel" id="a11y-panel" role="region" aria-label="Painel de Acessibilidade">
+  <h3>Acessibilidade &amp; Tema</h3>
+  <div class="accessibility-section">
+    <label>Tema da Página</label>
+    <div class="accessibility-buttons">
+      <button type="button" class="a11y-theme active" data-theme="dark">Escuro</button>
+      <button type="button" class="a11y-theme" data-theme="light">Claro</button>
+      <button type="button" class="a11y-theme" data-theme="contrast">Contraste</button>
+    </div>
+  </div>
+  <div class="accessibility-section">
+    <label>Tamanho da Fonte</label>
+    <div class="accessibility-buttons">
+      <button type="button" class="a11y-size active" data-size="15px">Padrão</button>
+      <button type="button" class="a11y-size" data-size="17px">Grande</button>
+      <button type="button" class="a11y-size" data-size="19px">Extra G</button>
+    </div>
+  </div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-github" viewBox="0 0 24 24">
+      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+      <path d="M9 18c-4.51 2-5-2-7-2"/>
+    </symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+      <rect width="4" height="12" x="2" y="9"/>
+      <circle cx="4" cy="4" r="2"/>
+    </symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24">
+      <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24">
+      <rect width="20" height="16" x="2" y="4" rx="2"/>
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+    </symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24">
+      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+    </symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24">
+      <path d="M7 7h10v10"/><path d="M7 17 17 7"/>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="M20 6 9 17l-5-5"/>
+    </symbol>
+    <symbol id="i-map-pin" viewBox="0 0 24 24">
+      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/>
+      <circle cx="12" cy="10" r="3"/>
+    </symbol>
+    <symbol id="i-map" viewBox="0 0 24 24">
+      <path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/>
+      <path d="M15 5.764v15"/><path d="M9 3.236v15"/>
+    </symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24">
+      <rect width="20" height="14" x="2" y="3" rx="2"/>
+      <line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/>
+    </symbol>
+    <symbol id="i-server" viewBox="0 0 24 24">
+      <rect width="20" height="8" x="2" y="2" rx="2" ry="2"/>
+      <rect width="20" height="8" x="2" y="14" rx="2" ry="2"/>
+      <line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/>
+    </symbol>
+    <symbol id="i-trending-up" viewBox="0 0 24 24">
+      <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+      <polyline points="16 7 22 7 22 13"/>
+    </symbol>
+    <symbol id="i-shopping-bag" viewBox="0 0 24 24">
+      <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+      <line x1="3" x2="21" y1="6" y2="6"/>
+      <path d="M16 10a4 4 0 0 1-8 0"/>
+    </symbol>
+    <symbol id="i-graduation" viewBox="0 0 24 24">
+      <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/>
+      <path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
+    </symbol>
+    <symbol id="i-award" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="6"/>
+      <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+    </symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24">
+      <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>
+    </symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24">
+      <rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/>
+      <path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/>
+      <path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/>
+    </symbol>
+    <symbol id="i-bot" viewBox="0 0 24 24">
+      <path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/>
+      <path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>
+    </symbol>
+    <symbol id="i-circuit" viewBox="0 0 24 24">
+      <rect width="18" height="18" x="3" y="3" rx="2"/>
+      <path d="M11 9h4a2 2 0 0 0 2-2V3"/><circle cx="9" cy="9" r="2"/>
+      <path d="M7 21v-4a2 2 0 0 1 2-2h4"/><circle cx="15" cy="15" r="2"/>
+    </symbol>
+    <symbol id="i-languages" viewBox="0 0 24 24">
+      <path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/>
+      <path d="m22 22-5-10-5 10"/><path d="M14 18h6"/>
+    </symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24">
+      <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+      <rect width="20" height="14" x="2" y="6" rx="2"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10"/>
+      <polyline points="12 6 12 12 16 14"/>
+    </symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24">
+      <polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/>
+    </symbol>
+    <symbol id="i-file-down" viewBox="0 0 24 24">
+      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+      <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+      <path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/>
+    </symbol>
+    <symbol id="i-archive" viewBox="0 0 24 24">
+      <polyline points="21 8 21 21 3 21 3 8"/>
+      <rect width="22" height="5" x="1" y="3"/>
+      <line x1="10" x2="14" y1="12" y2="12"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main class="wrap">
+  <div class="bento">
+
+    <div class="cell sp-12 reveal" style="--d:0s">
+      <header class="panel profile tilt" id="perfil">
+        <div class="avatar">
+          <span class="avatar-halo" aria-hidden="true"></span>
+          <span class="avatar-ring" aria-hidden="true"></span>
+          <span class="avatar-core">
+            <img src="https://ifqbuhrhmefqiwrpzvsh.supabase.co/storage/v1/object/public/site-assets/Capa.jpeg" alt="Murilo Rogério">
+          </span>
+        </div>
+        <h1>Murilo Rogério <span class="soft">Carvalho da Conceição</span></h1>
+        <p class="roles">Estudante de TI &nbsp;·&nbsp; Geotecnologia &amp; WebGIS &nbsp;·&nbsp; Robótica &amp; Automação</p>
+        <div class="pills">
+          <span class="pill status"><span class="dot" aria-hidden="true"></span>Disponível para Oportunidades em TI / Efetivação</span>
+          <span class="pill"><svg class="ic" aria-hidden="true"><use href="#i-graduation"/></svg>3º Ano do Ensino Médio · <span class="dynamic-age">17</span> Anos</span>
+          <span class="pill"><svg class="ic" aria-hidden="true"><use href="#i-languages"/></svg>Inglês Intermediário</span>
+        </div>
+      </header>
+    </div>
+
+    <div class="marquee reveal" style="--d:.06s" aria-label="Tecnologias">
+      <div class="marquee-track">
+        <span>React 18 &amp; PWA <i>✦</i></span><span>Next.js 15 <i>✦</i></span><span>WebGIS &amp; PostgreSQL <i>✦</i></span><span>TypeScript <i>✦</i></span><span>Tailwind CSS <i>✦</i></span><span>Git &amp; GitHub <i>✦</i></span><span>REST APIs <i>✦</i></span>
+        <span aria-hidden="true">React 18 &amp; PWA <i>✦</i></span><span aria-hidden="true">Next.js 15 <i>✦</i></span><span aria-hidden="true">WebGIS &amp; PostgreSQL <i>✦</i></span><span aria-hidden="true">TypeScript <i>✦</i></span><span aria-hidden="true">Tailwind CSS <i>✦</i></span><span aria-hidden="true">Git &amp; GitHub <i>✦</i></span><span aria-hidden="true">REST APIs <i>✦</i></span>
+      </div>
+    </div>
+
+    <div class="quick-grid reveal" style="--d:.1s">
+
+      <a class="panel quick" href="https://github.com/Murilo-Rogerio" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Murilo Rogério">
+        <span class="q-icon"><svg class="ic"><use href="#i-github"/></svg></span>
+        <span class="q-txt"><strong>GitHub</strong><em>github.com/Murilo-Rogerio</em></span>
+        <svg class="ic q-arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+      </a>
+
+      <a class="panel quick" href="https://www.linkedin.com/in/murilo-rog%C3%A9rio-220133322" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Murilo Rogério">
+        <span class="q-icon"><svg class="ic"><use href="#i-linkedin"/></svg></span>
+        <span class="q-txt"><strong>LinkedIn</strong><em>/in/murilo-rogério</em></span>
+        <svg class="ic q-arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+      </a>
+
+      <div class="panel quick dual">
+        <a class="q-main" href="https://wa.me/5518998121327" target="_blank" rel="noopener noreferrer" aria-label="Abrir conversa no WhatsApp">
+          <span class="q-icon"><svg class="ic"><use href="#i-whatsapp"/></svg></span>
+          <span class="q-txt"><strong>WhatsApp</strong><em>(18) 99812-1327</em></span>
+          <svg class="ic q-arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+        </a>
+        <button class="q-copy" type="button" data-copy="(18) 99812-1327" aria-label="Copiar número de telefone">
+          <svg class="ic"><use href="#i-copy"/></svg>
+        </button>
+      </div>
+
+      <div class="panel quick dual">
+        <a class="q-main" href="mailto:murilo.rogerio.conceicao@gmail.com" aria-label="Enviar e-mail para Murilo Rogério">
+          <span class="q-icon"><svg class="ic"><use href="#i-mail"/></svg></span>
+          <span class="q-txt"><strong>E-mail</strong><em>murilo.rogerio.conceicao@gmail.com</em></span>
+          <svg class="ic q-arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+        </a>
+        <button class="q-copy" type="button" data-copy="murilo.rogerio.conceicao@gmail.com" aria-label="Copiar endereço de e-mail">
+          <svg class="ic"><use href="#i-copy"/></svg>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="cell sp-7 reveal" style="--d:.08s">
+      <section class="panel summary tilt" id="summary">
+        <div class="spec-head">Resumo Profissional</div>
+        <p>
+          Estudante com sólida base técnica em <strong>Robótica</strong>,
+          <strong>Desenvolvimento Full-Stack</strong> e <strong>Geoprocessamento</strong>.
+          Atuação corporativa como Jovem Aprendiz provendo adaptação rápida em transições entre RH e sistemas de engenharia (<strong>WebGIS</strong>).
+          Histórico de excelência acadêmica com diagnóstico de
+          <strong>Altas Habilidades / Superdotação (AH/SD)</strong>, combinando abstração sistêmica de projetos lógicos com rigor técnico.
+        </p>
+        <div class="metrics">
+          <div class="metric">
+            <b><span data-count="15">0</span><em>+</em></b>
+            <span>meses de vivência corporativa (Engemap)</span>
+          </div>
+          <div class="metric">
+            <b><span data-count="4">0</span><em>+</em></b>
+            <span>anos moldando base em robótica e sistemas</span>
+          </div>
+          <div class="metric">
+            <b><span data-count="3">0</span></b>
+            <span>sistemas robustos operando em produção</span>
+          </div>
+          <div class="metric">
+            <b><span data-count="100">0</span><em>%</em></b>
+            <span>aproveitamento com distinção escolar máxima</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="cell sp-5 reveal" style="--d:.14s">
+      <section class="panel ficha tilt">
+        <header>
+          <span class="sk-icon"><svg class="ic"><use href="#i-languages"/></svg></span>
+          <h2>Ficha Técnica</h2>
+        </header>
+        <dl>
+          <div class="frow"><dt>Idade</dt><dd><span class="dynamic-age">17</span> anos</dd></div>
+          <div class="frow"><dt>Escolaridade</dt><dd>3º ano EM · conclusão 2026</dd></div>
+          <div class="frow"><dt>Idiomas</dt><dd>PT nativo · EN intermediário</dd></div>
+          <div class="frow"><dt>Foco Técnico</dt><dd>Dev Web · WebGIS · Automação</dd></div>
+          <div class="frow"><dt>Perfil</dt><dd>AH/SD · rápida assimilação lógica</dd></div>
+          <div class="frow"><dt>Background</dt><dd>Engemap · Transição fluida p/ Produção</dd></div>
+        </dl>
+      </section>
+    </div>
+
+    <div class="cell sp-7 reveal" style="--d:.08s">
+      <section class="panel terminal tilt" aria-label="Terminal Interativo">
+        <div class="t-bar">
+          <div class="t-bar-left">
+            <span class="t-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <div class="t-tabs">
+              <button class="t-tab active" data-tab="config">murilo.config.ts</button>
+              <button class="t-tab" data-tab="trajetoria">trajetoria.ts</button>
+              <button class="t-tab" data-tab="stack">stack.ts</button>
+            </div>
+          </div>
+        </div>
+        <div class="t-body" id="terminal-content">
+          <!-- Conteúdo inserido dinamicamente via JS -->
+        </div>
+      </section>
+    </div>
+
+    <div class="cell sp-5 reveal" style="--d:.14s">
+      <div class="stack">
+
+        <section class="panel geo tilt" aria-label="Localização e horário local">
+          <header>
+            <span class="sk-icon"><svg class="ic"><use href="#i-map-pin"/></svg></span>
+            <div>
+              <h2>Assis, SP</h2>
+              <p class="g-sub">São Paulo · Brasil</p>
+            </div>
+          </header>
+          <div class="clock">
+            <span id="clock-time">--:--:--</span> <small id="clock-mer">BRT</small>
+          </div>
+          <p class="g-date" id="clock-date">—</p>
+          <p class="g-tz">
+            <svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>
+            BRT · UTC−3 · fuso America/Sao_Paulo
+          </p>
+        </section>
+
+        <section class="panel actions tilt" aria-label="Ações rápidas">
+          <h2>Ações Rápidas</h2>
+          <p class="a-sub">Acesso direto ao resumo executivo.</p>
+          <button class="act act-solid" type="button" id="cv-btn">
+            <svg class="ic" aria-hidden="true"><use href="#i-file-down"/></svg>
+            <span>Baixar Currículo PDF
+              <small>geração de layout executivo de alta leitura</small>
+            </span>
+          </button>
+          <a class="act act-ghost" href="https://wa.me/5518998121327" target="_blank" rel="noopener noreferrer">
+            <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+            <span>WhatsApp Direct
+              <small>(18) 99812-1327</small>
+            </span>
+          </a>
+        </section>
+
+      </div>
+    </div>
+
+    <div class="cell sp-12 reveal" style="--d:.08s">
+      <article class="panel project tilt" id="engemap">
+        <div class="panel-head">
+          <div class="p-badges">
+            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Atual</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Jovem Aprendiz</span>
+            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>WebGIS</span>
+          </div>
+          <div class="p-widget" aria-hidden="true">
+            <span class="w-label">Aerolevantamento · Malha de Voo</span>
+            <svg id="survey-svg" viewBox="0 0 220 150">
+              <path class="w-contour" d="M30 120 C 20 95, 60 88, 55 62 C 50 38, 90 40, 96 20"/>
+              <path class="w-contour" d="M52 128 C 44 104, 80 98, 76 74 C 72 52, 108 54, 114 34"/>
+              <path class="w-contour" d="M150 130 C 160 108, 140 96, 156 78 C 170 62, 152 50, 166 34"/>
+              <path class="w-x" d="M36 14 v6 M33 17 h6"/>
+              <path class="w-x" d="M188 134 v6 M185 137 h6"/>
+              <path id="flight-a" class="w-flight" d="M14 26 C 70 18, 150 34, 206 26"/>
+              <path id="flight-b" class="w-flight" d="M14 58 C 70 50, 150 66, 206 58"/>
+              <path id="flight-c" class="w-flight" d="M14 90 C 70 82, 150 98, 206 90"/>
+              <path id="flight-d" class="w-flight" d="M14 122 C 70 114, 150 130, 206 122"/>
+              <circle class="w-pt" cx="14" cy="26" r="2"/><circle class="w-pt" cx="206" cy="26" r="2"/>
+              <circle class="w-pt" cx="14" cy="58" r="2"/><circle class="w-pt" cx="206" cy="58" r="2"/>
+              <circle class="w-pt" cx="14" cy="90" r="2"/><circle class="w-pt" cx="206" cy="90" r="2"/>
+              <circle class="w-pt" cx="14" cy="122" r="2"/><circle class="w-pt" cx="206" cy="122" r="2"/>
+              <circle class="w-gcp" cx="112" cy="74" r="3"/>
+              <circle class="w-gcp-ring" cx="112" cy="74" r="4"/>
+              <g>
+                <path class="w-plane-a" d="M9 0 L-6 -5 L-2 0 L-6 5 Z"/>
+                <animateMotion dur="11s" repeatCount="indefinite" rotate="auto">
+                  <mpath href="#flight-b"/>
+                </animateMotion>
+              </g>
+              <g>
+                <path class="w-plane-b" d="M7 0 L-5 -4.4 L-1.8 0 L-5 4.4 Z"/>
+                <animateMotion dur="7.5s" begin="-3s" repeatCount="indefinite" rotate="auto">
+                  <mpath href="#flight-d"/>
+                </animateMotion>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="exp-body">
+          <div class="p-info">
+            <div class="p-id">
+              <span class="p-icon"><svg class="ic"><use href="#i-briefcase"/></svg></span>
+              <div>
+                <h3>Engemap</h3>
+                <p class="p-tag">Engenharia &amp; Aerolevantamento</p>
+              </div>
+            </div>
+
+            <div class="xp-wrap">
+              <article class="xp">
+                <span class="xp-dot now" aria-hidden="true"></span>
+                <div class="xp-body">
+                  <div class="xp-head">
+                    <h4>Jovem Aprendiz — Produção &amp; WebGIS</h4>
+                    <span class="chip live">Atual</span>
+                  </div>
+                  <p>
+                    Transição fluida para o setor de Produção motivada por adequação de demanda interna no RH da empresa. Rápida curva de aprendizado no tratamento direto de dados geoespaciais, suprindo necessidades cartográficas através de sistemas WebGIS.
+                  </p>
+                </div>
+              </article>
+
+              <article class="xp">
+                <span class="xp-dot" aria-hidden="true"></span>
+                <div class="xp-body">
+                  <div class="xp-head">
+                    <h4>Jovem Aprendiz — Auxiliar Pessoal no RH</h4>
+                    <span class="chip">10 meses</span>
+                  </div>
+                  <p>
+                    Gestão meticulosa de processos internos, organização documental e suporte seguro a rotinas do departamento pessoal, garantindo estabilidade operacional até ser remanejado por exigências da própria organização.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="p-specs">
+            <div class="spec-head">Contrato de Aprendizagem</div>
+            <div class="contract">
+              <div class="c-top">
+                <span class="c-range">Out/2025 → Nov/2026</span>
+                <span class="c-len">15 meses (Unificado)</span>
+              </div>
+              <div class="c-track" role="progressbar" aria-label="Progresso do contrato de aprendizagem" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="c-bar">
+                <div class="c-fill" id="c-fill"></div>
+              </div>
+              <div class="c-meta">
+                <span id="c-pct">0%</span>
+                <span id="c-days">—</span>
+              </div>
+            </div>
+
+            <div class="spec-head" style="margin-top:24px">Setores de Atuação</div>
+            <div class="c-areas">
+              <span class="chip core">Produção &amp; WebGIS (Atual)</span>
+              <span class="chip">RH · Departamento Pessoal</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="cell sp-12 reveal" style="--d:.08s">
+      <article class="panel project tilt" id="arca">
+        <div class="panel-head">
+          <div class="p-badges">
+            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>React 18</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>TypeScript</span>
+            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>Vite</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Tailwind CSS</span>
+            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Supabase RLS</span>
+            <span class="badge"><span class="bdot b-rose" aria-hidden="true"></span>PWA / Share Target</span>
+          </div>
+          <div class="p-widget" aria-hidden="true">
+            <span class="w-label">Organização &amp; Mídias</span>
+            <svg viewBox="0 0 200 118">
+              <rect x="15" y="15" width="170" height="88" rx="8" class="w-line" fill="rgba(255,255,255,0.02)"/>
+              <rect x="25" y="25" width="60" height="40" rx="4" class="w-line" fill="rgba(139,92,246,0.15)"/>
+              <line x1="95" y1="30" x2="170" y2="30" class="w-line"/>
+              <line x1="95" y1="42" x2="150" y2="42" class="w-line"/>
+              <line x1="25" y1="75" x2="170" y2="75" class="w-line"/>
+              <circle cx="35" cy="88" r="4" class="w-pt v"/>
+              <circle cx="55" cy="88" r="4" class="w-pt b"/>
+              <circle cx="75" cy="88" r="4" class="w-pt"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="project-body">
+          <div class="p-info">
+            <div class="p-id">
+              <span class="p-icon"><svg class="ic"><use href="#i-archive"/></svg></span>
+              <div>
+                <h3>Arca</h3>
+                <p class="p-tag">Organização Pessoal &amp; Bloco de Notas PWA</p>
+              </div>
+            </div>
+            <p class="p-desc">
+              PWA de alta performance para organização pessoal e bookmarking. Criado para mitigar o atrito de salvar referências rapidamente no mobile, implementando captura nativa via Web Share Target (TikTok/YouTube) e garantindo integridade de dados por sincronização offline-first com atualização otimista.
+            </p>
+            <div class="p-stack" aria-label="Stack complementar">
+              <span class="chip core">PWA Instalável</span>
+              <span class="chip">Web Share Target</span>
+              <span class="chip">oEmbed Auto-Fetch</span>
+              <span class="chip">Compressão Canvas Client-Side</span>
+              <span class="chip">Supabase Auth &amp; Storage</span>
+              <span class="chip">PostgreSQL RLS</span>
+              <span class="chip">Framer Motion</span>
+              <span class="chip">Vercel</span>
+            </div>
+            <div class="p-actions">
+              <a class="btn btn-solid" href="https://arcaik-notes.vercel.app/" target="_blank" rel="noopener noreferrer">
+                Acessar o app
+                <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+              </a>
+              <a class="btn btn-ghost" href="https://github.com/Murilo-Rogerio/Arcaik" target="_blank" rel="noopener noreferrer">
+                <svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>
+                Código-fonte
+              </a>
+            </div>
+          </div>
+
+          <div class="p-specs">
+            <div class="spec-head">Destaques Arquiteturais</div>
+            <ol class="spec-list">
+              <li>
+                <span class="spec-num">01</span>
+                <div>
+                  <strong>Web Share Target &amp; oEmbed Nativo</strong>
+                  <p>Integração com a folha de compartilhamento nativa do Android para arquivar vídeos do TikTok/YouTube consumindo metadados automaticamente.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">02</span>
+                <div>
+                  <strong>Compressão Client-Side &amp; Resiliência de Upload</strong>
+                  <p>Imagens otimizadas diretamente via canvas reduzindo o payload de rede substancialmente, com tratativa de rollback automático no banco em caso de failovers do Storage.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">03</span>
+                <div>
+                  <strong>Segurança no Banco (RLS) &amp; URLs Assinadas</strong>
+                  <p>Controle estrito de vazamento de dados assegurado com Row Level Security (RLS) no Postgres, além do uso de buckets privados provendo acessos efêmeros validados (24h).</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">04</span>
+                <div>
+                  <strong>Navegação Offline com Atualizações Otimistas</strong>
+                  <p>Estratégia avançada de Service Worker guiada em rede sustentando mutações falsas velozes para UX perfeita, protegidas por invalidações no core state se o servidor cuspir erros.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="cell sp-12 reveal" style="--d:.08s">
+      <article class="panel project tilt" id="nossofluxo">
+        <div class="panel-head">
+          <div class="p-badges">
+            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>Next.js 15</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>React 19</span>
+            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>TypeScript</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Supabase</span>
+            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Fintech</span>
+          </div>
+          <div class="p-widget" aria-hidden="true">
+            <span class="w-label">Risco × Retorno · ao vivo</span>
+            <svg viewBox="0 0 200 118">
+              <line class="w-line"  x1="10" y1="98" x2="190" y2="98"/>
+              <line class="w-line"  x1="18" y1="8"  x2="18" y2="98"/>
+              <line class="w-trend" x1="26" y1="88" x2="180" y2="22"/>
+              <circle class="w-pt"   cx="42"  cy="74" r="3"/>
+              <circle class="w-pt v" cx="64"  cy="60" r="3"/>
+              <circle class="w-pt"   cx="86"  cy="68" r="3"/>
+              <circle class="w-pt b" cx="100" cy="46" r="3"/>
+              <circle class="w-ring" cx="120" cy="52" r="5"/>
+              <circle class="w-pt v" cx="120" cy="52" r="3.5"/>
+              <circle class="w-pt"   cx="142" cy="38" r="3"/>
+              <circle class="w-pt b" cx="158" cy="44" r="3"/>
+              <circle class="w-pt v" cx="170" cy="26" r="3"/>
+              <text class="w-axis" x="190" y="112" text-anchor="end">RISCO</text>
+              <text class="w-axis" transform="rotate(-90 10 52)" x="10" y="52" text-anchor="middle">RETORNO</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="project-body">
+          <div class="p-info">
+            <div class="p-id">
+              <span class="p-icon"><svg class="ic"><use href="#i-trending-up"/></svg></span>
+              <div>
+                <h3>Nosso Fluxo</h3>
+                <p class="p-tag">Plataforma Fintech de Controle Patrimonial</p>
+              </div>
+            </div>
+            <p class="p-desc">
+              Produto Fintech completo projetado para sanar ineficiências em modelagens de planilhas de terceiros. Integra consumo real-time de juros básicos (CDI/BrasilAPI) e ativos B3 para entrega de panoramas automatizados através de um motor de recursão autoral sem duplicação de dados.
+            </p>
+            <div class="p-stack" aria-label="Stack complementar">
+              <span class="chip">Tailwind CSS</span>
+              <span class="chip">Framer Motion</span>
+              <span class="chip">Recharts</span>
+              <span class="chip">PostgreSQL RLS</span>
+              <span class="chip">BrasilAPI</span>
+              <span class="chip">brapi.dev</span>
+              <span class="chip">Vercel</span>
+            </div>
+            <div class="p-actions">
+              <a class="btn btn-solid" href="https://nossofluxo.vercel.app" target="_blank" rel="noopener noreferrer">
+                Ver projeto ao vivo
+                <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+              </a>
+              <a class="btn btn-ghost" href="https://github.com/Murilo-Rogerio/Murilo-Rogerio-controle-financeiro-pessoal" target="_blank" rel="noopener noreferrer">
+                <svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>
+                Código-fonte
+              </a>
+            </div>
+          </div>
+
+          <div class="p-specs">
+            <div class="spec-head">Destaques Arquiteturais</div>
+            <ol class="spec-list">
+              <li>
+                <span class="spec-num">01</span>
+                <div>
+                  <strong>Consumo Dinâmico de CDI</strong>
+                  <p>Taxa alimentada via BrasilAPI e mitigada por estratégia robusta de cache de 1h, incluindo fallback seguro prevenindo o colapso do app na ausência de provedor.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">02</span>
+                <div>
+                  <strong>Monitoramento Estratégico (Recharts)</strong>
+                  <p>Processamento server-side de cotações FIIs/Ações com visualização complexa plotando clusters de risco versos retorno sem engasgos pesados em client.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">03</span>
+                <div>
+                  <strong>Motor Lógico de Recorrência</strong>
+                  <p>Construção da lógica customizada <code>lib/recurrence.ts</code> responsável por prever saídas de caixa contínuas eliminando a poluição desnecessária do PostgreSQL com repetições vazias.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">04</span>
+                <div>
+                  <strong>Postura de Segurança em Camadas</strong>
+                  <p>Sessões interceptadas no Middleware com barreiras de layout injetadas na fundação das permissões do RLS.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="cell sp-12 reveal" style="--d:.08s">
+      <article class="panel project alt tilt" id="viviboty">
+        <div class="panel-head">
+          <div class="p-badges">
+            <span class="badge"><span class="bdot b-rose" aria-hidden="true"></span>JavaScript ES6+</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Tailwind CSS</span>
+            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>Supabase Auth/RLS</span>
+            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>E-commerce</span>
+          </div>
+          <div class="p-widget" aria-hidden="true">
+            <span class="w-label">Sacola · Click-to-Chat</span>
+            <div class="w-item"><span class="w-swatch"></span>Perfume Noir · 50ml <b>R$ 189</b></div>
+            <div class="w-item"><span class="w-swatch"></span>Sérum Facial · 30ml <b>R$ 96</b></div>
+            <div class="w-cta">
+              <svg class="ic"><use href="#i-whatsapp"/></svg>
+              Enviar pedido no WhatsApp
+            </div>
+          </div>
+        </div>
+
+        <div class="project-body">
+          <div class="p-info">
+            <div class="p-id">
+              <span class="p-icon"><svg class="ic"><use href="#i-shopping-bag"/></svg></span>
+              <div>
+                <h3>Vivi Boty</h3>
+                <p class="p-tag">Vitrine Digital &amp; Catálogo de E-commerce</p>
+              </div>
+            </div>
+            <p class="p-desc">
+              Solução B2C desenhada especificamente para converter vendas físicas estagnadas em negócios contínuos no formato digital, alicerçando um funil com zero-friction conduzindo sacolas orgânicas direto para o canal de fechamento via chat.
+            </p>
+            <div class="p-stack" aria-label="Stack complementar">
+              <span class="chip">HTML5 Semântico</span>
+              <span class="chip">CSS3</span>
+              <span class="chip">Supabase Storage</span>
+              <span class="chip">Font Awesome</span>
+              <span class="chip">Google Fonts</span>
+              <span class="chip">Vercel</span>
+            </div>
+            <div class="p-actions">
+              <a class="btn btn-solid" href="https://vivicarvalhoboty.com.br" target="_blank" rel="noopener noreferrer">
+                Ver projeto ao vivo
+                <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+              </a>
+              <a class="btn btn-ghost" href="https://github.com/Murilo-Rogerio/Vivi-Boty" target="_blank" rel="noopener noreferrer">
+                <svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>
+                Código-fonte
+              </a>
+            </div>
+          </div>
+
+          <div class="p-specs">
+            <div class="spec-head">Destaques Arquiteturais</div>
+            <ol class="spec-list">
+              <li>
+                <span class="spec-num">01</span>
+                <div>
+                  <strong>Engenharia de Conversão (Click-to-chat)</strong>
+                  <p>Implementação customizada para interpretar objetos em sessão, mapear carrinhos de produtos complexos e encapsular dados de checkout em URI strings de redirecionamento do WhatsApp.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">02</span>
+                <div>
+                  <strong>Dashboard Restrito à Stakeholders</strong>
+                  <p>A interface do produto acopla painel <code>#/admin</code> completamente encriptado em Auth Supabase e selado por Row Level Security garantindo edição CRUD autônoma em ponta a ponta pelo lojista.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">03</span>
+                <div>
+                  <strong>Segurança Transacional Blindada</strong>
+                  <p>Mitigação fundamental bloqueando tentativas baratas de XSS ou injeção de scripts no DOM geradas por inputs nocivos.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="cell sp-5 reveal" style="--d:.06s" id="formacao">
+      <section class="panel skill tilt">
+        <header>
+          <span class="sk-icon"><svg class="ic"><use href="#i-graduation"/></svg></span>
+          <h2>Formação &amp; Conquistas</h2>
+        </header>
+        <p class="sk-sub">Base analítica amparada por diagnóstico formal.</p>
+        <ul class="entries">
+          <li>
+            <span class="e-ic"><svg class="ic"><use href="#i-graduation"/></svg></span>
+            <div class="e-body">
+              <div class="e-head"><h4>Ensino Médio</h4><span class="dur">2026</span></div>
+              <p class="inst">3º ano · cursando</p>
+              <p>Escola Dr. Clybas. Conclusão projetada para manter histórico inabalável.</p>
+            </div>
+          </li>
+          <li>
+            <span class="e-ic"><svg class="ic"><use href="#i-award"/></svg></span>
+            <div class="e-body">
+              <div class="e-head"><h4>Certificado de Aluno Destaque</h4><span class="dur">Destaque</span></div>
+              <p class="inst">Aproveitamento Absoluto</p>
+              <p>Consistência e rigor validados com a ausência sumária de infrações ou reprovações no trajeto educacional.</p>
+            </div>
+          </li>
+          <li>
+            <span class="e-ic"><svg class="ic"><use href="#i-zap"/></svg></span>
+            <div class="e-body">
+              <div class="e-head"><h4>Altas Habilidades (AH/SD)</h4><span class="dur">AH/SD</span></div>
+              <p class="inst">Laudo de Alta Assimilação</p>
+              <p>Diagnóstico atestando processamento massivo de lógicas não triviais, evidenciando adaptação voraz frente a complexidade técnica no dia a dia.</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="cell sp-7 reveal" style="--d:.12s">
+      <section class="panel skill tilt">
+        <header>
+          <span class="sk-icon"><svg class="ic"><use href="#i-bot"/></svg></span>
+          <h2>Robótica &amp; Prototipagem Lógica</h2>
+        </header>
+        <p class="sk-sub">Manipulação cirúrgica de fluxos, eletrônica e código embarcado.</p>
+        <ul class="entries">
+          <li>
+            <span class="e-ic"><svg class="ic"><use href="#i-cpu"/></svg></span>
+            <div class="e-body">
+              <div class="e-head"><h4>Arduino (C++)</h4><span class="dur">3–4 anos</span></div>
+              <p class="inst">Fundação CEDET</p>
+              <p>Tradução de abstrações algorítmicas em atuadores e sensores de precisão, desenvolvendo resiliência fundamental com escassez de memória.</p>
+            </div>
+          </li>
+          <li>
+            <span class="e-ic"><svg class="ic"><use href="#i-bot"/></svg></span>
+            <div class="e-body">
+              <div class="e-head"><h4>Lego Mindstorms EV3</h4><span class="dur">6 meses</span></div>
+              <p class="inst">Campus FEMA</p>
+              <p>Lógica rotacional focada em calibragem contínua e mitigação de falsos positivos na malha do sistema físico de navegação.</p>
+            </div>
+          </li>
+          <li>
+            <span class="e-ic"><svg class="ic"><use href="#i-circuit"/></svg></span>
+            <div class="e-body">
+              <div class="e-head"><h4>Micro:bit</h4><span class="dur">6 meses</span></div>
+              <p class="inst">Polos SESI</p>
+              <p>Operação focada em blocos e triggers com amostragem real-time validando conceitos iniciais de telemetria.</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="cell sp-5 reveal" style="--d:.06s">
+      <section class="panel skill tilt">
+        <header>
+          <span class="sk-icon"><svg class="ic"><use href="#i-monitor"/></svg></span>
+          <h2>Frontend &amp; Arquitetura Visual</h2>
+        </header>
+        <p class="sk-sub">UI/UX pautada em state-management sólido.</p>
+        <ul class="chips">
+          <li class="chip core">TypeScript</li>
+          <li class="chip core">React 18</li>
+          <li class="chip core">Next.js 15</li>
+          <li class="chip">JavaScript ES6+</li>
+          <li class="chip">HTML5 Semântico</li>
+          <li class="chip">CSS3</li>
+          <li class="chip">Tailwind CSS</li>
+          <li class="chip">Framer Motion</li>
+          <li class="chip">PWA / Service Worker</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="cell sp-4 reveal" style="--d:.11s">
+      <section class="panel skill tilt">
+        <header>
+          <span class="sk-icon"><svg class="ic"><use href="#i-server"/></svg></span>
+          <h2>Backend, Data &amp; Autenticação</h2>
+        </header>
+        <p class="sk-sub">Operações protegidas focando em segurança intrínseca de rotas.</p>
+        <ul class="chips">
+          <li class="chip core">Node.js</li>
+          <li class="chip core">Supabase</li>
+          <li class="chip">Python</li>
+          <li class="chip">PostgreSQL</li>
+          <li class="chip">Auth · RLS · Storage</li>
+          <li class="chip">REST APIs</li>
+          <li class="chip">Vercel</li>
+          <li class="chip">Git / GitHub</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="cell sp-3 reveal" style="--d:.16s">
+      <section class="panel skill tilt">
+        <header>
+          <span class="sk-icon"><svg class="ic"><use href="#i-map"/></svg></span>
+          <h2>Geotecnologia &amp; Infraestrutura</h2>
+        </header>
+        <p class="sk-sub">Pipeline de controle topológico.</p>
+        <ul class="chips">
+          <li class="chip core">WebGIS</li>
+          <li class="chip core">AutoCAD</li>
+          <li class="chip">Arduino</li>
+          <li class="chip">Micro:bit</li>
+          <li class="chip">Lego EV3</li>
+          <li class="chip">Linux</li>
+          <li class="chip">GitHub Codespaces</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="cell sp-12 reveal" style="--d:.05s">
+      <footer class="panel foot">
+        <span>© <span id="year">2026</span> Murilo Rogério Carvalho da Conceição</span>
+        <button class="f-copy" type="button" data-copy="murilo.rogerio.conceicao@gmail.com" aria-label="Copiar endereço de e-mail">
+          <svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>
+          murilo.rogerio.conceicao@gmail.com
+        </button>
+        <span class="f-right"><svg class="ic" aria-hidden="true"><use href="#i-map-pin"/></svg>Assis, SP · Brasil</span>
+      </footer>
+    </div>
+
+  </div>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>
+  <span id="toast-msg"></span>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* SCRIPT DINÂMICO PARA IDADE (Porque ter portfólio desatualizado é feio pra caramba) */
+  var currentAge = 17;
+  try {
+    var today = new Date();
+    var birthDate = new Date('2009-01-04T00:00:00');
+    currentAge = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        currentAge--;
+    }
+  } catch(e) {}
+  document.querySelectorAll('.dynamic-age').forEach(function(el){ el.textContent = currentAge; });
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var finePointer  = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  var yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  var revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && !reduceMotion) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  var progressEl = document.getElementById("progress");
+  var progressPending = false;
+
+  function updateProgress() {
+    progressPending = false;
+    if (!progressEl) return;
+    var doc = document.documentElement;
+    var max = (doc.scrollHeight - window.innerHeight);
+    var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+    if (pct < 0) pct = 0;
+    if (pct > 100) pct = 100;
+    progressEl.style.width = pct.toFixed(2) + "%";
+    progressEl.setAttribute("aria-valuenow", String(Math.round(pct)));
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!progressPending) {
+      progressPending = true;
+      requestAnimationFrame(updateProgress);
+    }
+  }, { passive: true });
+  updateProgress();
+
+  var railLinks = document.querySelectorAll('.rail-item');
+  var targetSecs = document.querySelectorAll('#perfil, #summary, #engemap, #arca, #nossofluxo, #viviboty, #formacao');
+
+  function updateScrollspy() {
+    var scrollPos = window.scrollY + 250;
+    targetSecs.forEach(function(sec) {
+      var id = sec.getAttribute('id');
+      if (!id) return;
+      var top = sec.offsetTop;
+      var height = sec.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + height) {
+        railLinks.forEach(function(link) {
+          link.classList.toggle('active', link.getAttribute('data-sec') === id);
+        });
+      }
+    });
+  }
+  window.addEventListener('scroll', updateScrollspy, { passive: true });
+
+  var backTopBtn = document.getElementById('rail-back-top');
+  if (backTopBtn) {
+    backTopBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  var motionToggle = document.getElementById('rail-motion-toggle');
+  if (motionToggle) {
+    motionToggle.addEventListener('click', function() {
+      var isOff = document.documentElement.classList.toggle('no-effects');
+      showToast(isOff ? "Modo Minimalista ativado" : "Efeitos visuais ativados");
+    });
+  }
+
+  /* Acessibilidade: Painel & Configurações */
+  var a11yTrigger = document.getElementById('a11y-trigger');
+  var a11yPanel = document.getElementById('a11y-panel');
+
+  if (a11yTrigger && a11yPanel) {
+    a11yTrigger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      a11yPanel.classList.toggle('open');
+    });
+    document.addEventListener('click', function(e) {
+      if (!a11yPanel.contains(e.target) && !a11yTrigger.contains(e.target)) {
+        a11yPanel.classList.remove('open');
+      }
+    });
+  }
+
+  document.querySelectorAll('.a11y-theme').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.a11y-theme').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var theme = btn.getAttribute('data-theme');
+      document.documentElement.classList.remove('theme-light', 'theme-contrast');
+      if (theme === 'light') document.documentElement.classList.add('theme-light');
+      if (theme === 'contrast') document.documentElement.classList.add('theme-contrast');
+      showToast("Tema alterado para: " + btn.textContent);
+    });
+  });
+
+  document.querySelectorAll('.a11y-size').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.a11y-size').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var size = btn.getAttribute('data-size');
+      document.documentElement.style.setProperty('--base-fz', size);
+      showToast("Tamanho da fonte ajustado");
+    });
+  });
+
+  /* Terminal Interativo com Abas em Português */
+  var terminalSnippets = {
+    config: [
+      '<span class="tk-kw">export const</span> config <span class="tk-pun">=</span> <span class="tk-pun">{</span>',
+      '  <span class="tk-prop">nome</span><span class="tk-pun">:</span> <span class="tk-str">"Murilo Rogério"</span><span class="tk-pun">,</span>',
+      '  <span class="tk-prop">idade</span><span class="tk-pun">:</span> <span class="tk-num">' + currentAge + '</span><span class="tk-pun">,</span>',
+      '  <span class="tk-prop">cargo</span><span class="tk-pun">:</span> <span class="tk-str">"Engenharia de Software & WebGIS"</span><span class="tk-pun">,</span>',
+      '  <span class="tk-prop">local</span><span class="tk-pun">:</span> <span class="tk-str">"Assis, SP · BR"</span><span class="tk-pun">,</span>',
+      '  <span class="tk-prop">tecnologias</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>',
+      '    <span class="tk-prop">frontend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"React 18"</span><span class="tk-pun">,</span> <span class="tk-str">"Next.js 15"</span><span class="tk-pun">,</span> <span class="tk-str">"TS"</span><span class="tk-pun">,</span> <span class="tk-str">"PWA"</span><span class="tk-pun">],</span>',
+      '    <span class="tk-prop">backend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"Node"</span><span class="tk-pun">,</span> <span class="tk-str">"Supabase"</span><span class="tk-pun">,</span> <span class="tk-str">"PostgreSQL"</span><span class="tk-pun">],</span>',
+      '    <span class="tk-prop">geotecnologia</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"WebGIS"</span><span class="tk-pun">,</span> <span class="tk-str">"AutoCAD"</span><span class="tk-pun">],</span>',
+      '  <span class="tk-pun">},</span>',
+      '  <span class="tk-prop">status</span><span class="tk-pun">:</span> <span class="tk-str">"disponivel-efetivacao"</span><span class="tk-pun">,</span>',
+      '<span class="tk-pun">}</span><span class="tk-pun">;</span> <span class="t-caret" aria-hidden="true"></span>'
+    ],
+    trajetoria: [
+      '<span class="tk-com">// Trajetória profissional e acadêmica condensada</span>',
+      '<span class="tk-kw">export class</span> <span class="tk-prop">TrajetoriaProfissional</span> <span class="tk-pun">{</span>',
+      '  <span class="tk-prop">ensinoMedio</span> <span class="tk-pun">=</span> <span class="tk-str">"Escola Dr. Clybas (3º Ano - 2026)"</span><span class="tk-pun">;</span>',
+      '  <span class="tk-prop">experienciaAtual</span> <span class="tk-pun">=</span> <span class="tk-str">"Engemap (Produção & WebGIS)"</span><span class="tk-pun">;</span>',
+      '  <span class="tk-prop">perfilCognitivo</span> <span class="tk-pun">=</span> <span class="tk-str">"Altas Habilidades / Superdotação (AH/SD)"</span><span class="tk-pun">;</span>',
+      '  <span class="tk-prop">objetivo</span> <span class="tk-pun">=</span> <span class="tk-str">"Desenvolvimento Full-Stack & Soluções Geoespaciais"</span><span class="tk-pun">;</span>',
+      '<span class="tk-pun">}</span>'
+    ],
+    stack: [
+      '<span class="tk-com">// Base arquitetural para ecossistemas sustentáveis</span>',
+      '<span class="tk-kw">const</span> <span class="tk-prop">stackPrincipal</span> <span class="tk-pun">=</span> <span class="tk-pun">{</span>',
+      '  <span class="tk-prop">linguagens</span><span class="tk-pun">:</span> <span class="tk-str">"TypeScript, JavaScript, Python"</span><span class="tk-pun">,</span>',
+      '  <span class="tk-prop">frameworks</span><span class="tk-pun">:</span> <span class="tk-str">"React 18, Next.js 15, Tailwind CSS"</span><span class="tk-pun">,</span>',
+      '  <span class="tk-prop">seguranca</span><span class="tk-pun">:</span> <span class="tk-str">"Supabase Auth, PostgreSQL RLS"</span><span class="tk-pun">,</span>',
+      '  <span class="tk-prop">automacao</span><span class="tk-pun">:</span> <span class="tk-str">"Arduino, Micro:bit, Algoritmos Embarcados"</span><span class="tk-pun">,</span>',
+      '<span class="tk-pun">}</span><span class="tk-pun">;</span>'
+    ]
+  };
+
+  function renderTerminalTab(tabKey) {
+    var container = document.getElementById('terminal-content');
+    if (!container) return;
+    var lines = terminalSnippets[tabKey] || terminalSnippets.config;
+    var html = '';
+    for (var i = 0; i < lines.length; i++) {
+      html += '<div class="t-row"><span class="t-ln">' + (i + 1) + '</span><span class="t-code">' + lines[i] + '</span></div>';
+    }
+    container.innerHTML = html;
+  }
+
+  document.querySelectorAll('.t-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.t-tab').forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      renderTerminalTab(tab.getAttribute('data-tab'));
+    });
+  });
+  renderTerminalTab('config');
+
+  if (finePointer) {
+    document.querySelectorAll(".panel").forEach(function (card) {
+      card.addEventListener("pointermove", function (e) {
+        if (document.documentElement.classList.contains('no-effects')) return;
+        var r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", (e.clientX - r.left).toFixed(1) + "px");
+        card.style.setProperty("--my", (e.clientY - r.top).toFixed(1) + "px");
+      }, { passive: true });
+    });
+  }
+
+  if (finePointer && !reduceMotion) {
+    document.querySelectorAll(".tilt").forEach(function (card) {
+      card.addEventListener("pointermove", function (e) {
+        if (document.documentElement.classList.contains('no-effects')) return;
+        var r = card.getBoundingClientRect();
+        if (r.width < 1 || r.height < 1) return;
+        var px = (e.clientX - r.left) / r.width  - 0.5;
+        var py = (e.clientY - r.top)  / r.height - 0.5;
+        card.style.setProperty("--ry", (px * 5).toFixed(2) + "deg");
+        card.style.setProperty("--rx", (py * -5).toFixed(2) + "deg");
+      }, { passive: true });
+      card.addEventListener("pointerleave", function () {
+        card.style.setProperty("--rx", "0deg");
+        card.style.setProperty("--ry", "0deg");
+      });
+    });
+  }
+
+  var spot = document.querySelector(".spotlight");
+  if (spot && finePointer && !reduceMotion) {
+    var tx = window.innerWidth / 2, ty = window.innerHeight * 0.3;
+    var cx = tx, cy = ty, active = false;
+
+    window.addEventListener("pointermove", function (e) {
+      if (document.documentElement.classList.contains('no-effects')) return;
+      tx = e.clientX; ty = e.clientY;
+      if (!active) { active = true; cx = tx; cy = ty; spot.classList.add("on"); }
+    }, { passive: true });
+
+    (function loop() {
+      cx += (tx - cx) * 0.09;
+      cy += (ty - cy) * 0.09;
+      spot.style.transform = "translate3d(" + (cx - 300) + "px," + (cy - 300) + "px,0)";
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  var dot  = document.getElementById("cursor-dot");
+  var ring = document.getElementById("cursor-ring");
+
+  if (dot && ring && finePointer && !reduceMotion) {
+    document.documentElement.classList.add("cursor-on");
+
+    var mx = -100, my = -100;
+    var rx = -100, ry = -100;
+    var cursorShown = false;
+
+    document.addEventListener("pointermove", function (e) {
+      if (document.documentElement.classList.contains('no-effects')) return;
+      mx = e.clientX; my = e.clientY;
+      dot.style.setProperty("--x", mx + "px");
+      dot.style.setProperty("--y", my + "px");
+      if (!cursorShown) {
+        cursorShown = true;
+        rx = mx; ry = my;
+        document.documentElement.classList.add("cursor-live");
+      }
+    }, { passive: true });
+
+    document.addEventListener("mouseleave", function () {
+      cursorShown = false;
+      document.documentElement.classList.remove("cursor-live");
+    });
+    document.addEventListener("mouseenter", function () {
+      cursorShown = true;
+      document.documentElement.classList.add("cursor-live");
+    });
+
+    document.addEventListener("mouseover", function (e) {
+      if (!e.target || !e.target.closest) return;
+      var hit = e.target.closest("a, button, .chip, [data-copy]");
+      ring.classList.toggle("link", !!hit);
+    }, { passive: true });
+
+    (function cursorLoop() {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      ring.style.setProperty("--x", rx.toFixed(1) + "px");
+      ring.style.setProperty("--y", ry.toFixed(1) + "px");
+      requestAnimationFrame(cursorLoop);
+    })();
+  }
+
+  function animateCount(el) {
+    var target = parseFloat(el.getAttribute("data-count"));
+    if (isNaN(target)) return;
+    if (reduceMotion) { el.textContent = String(target); return; }
+
+    var dur = 1500 + Math.min(target * 8, 500);
+    var t0 = null;
+
+    function frame(t) {
+      if (t0 === null) t0 = t;
+      var p = Math.min((t - t0) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = String(Math.round(target * eased));
+      if (p < 1) requestAnimationFrame(frame);
+      else el.textContent = String(target);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  var counters = document.querySelectorAll("[data-count]");
+  if ("IntersectionObserver" in window) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          cio.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(function (el) { cio.observe(el); });
+  } else {
+    counters.forEach(animateCount);
+  }
+
+  var clockTime = document.getElementById("clock-time");
+  var clockDate = document.getElementById("clock-date");
+
+  var timeFmt = null, dateFmt = null;
+  try {
+    timeFmt = new Intl.DateTimeFormat("pt-BR", {
+      timeZone: "America/Sao_Paulo",
+      hour: "2-digit", minute: "2-digit", second: "2-digit",
+      hour12: false
+    });
+    dateFmt = new Intl.DateTimeFormat("pt-BR", {
+      timeZone: "America/Sao_Paulo",
+      weekday: "long", day: "numeric", month: "short"
+    });
+  } catch (e) {}
+
+  function tickClock() {
+    if (!clockTime) return;
+    var now = new Date();
+    if (timeFmt) {
+      clockTime.textContent = timeFmt.format(now);
+    } else {
+      clockTime.textContent = now.toLocaleTimeString("pt-BR");
+    }
+    if (clockDate && dateFmt) {
+      clockDate.textContent = dateFmt.format(now);
+    }
+  }
+  tickClock();
+  setInterval(tickClock, 1000);
+
+  var fillEl = document.getElementById("c-fill");
+  var pctEl  = document.getElementById("c-pct");
+  var daysEl = document.getElementById("c-days");
+  var barEl  = document.getElementById("c-bar");
+  if (fillEl && pctEl && daysEl) {
+    var DAY   = 86400000;
+    var start = new Date(2025, 9, 1).getTime();
+    var end   = new Date(2026, 10, 30).getTime();
+    var now   = Date.now();
+    var pct, text;
+
+    if (now <= start) {
+      pct = 0;
+      text = "inicia em " + Math.ceil((start - now) / DAY) + " dias";
+    } else if (now >= end) {
+      pct = 100;
+      text = "contrato concluído";
+    } else {
+      pct = (now - start) / (end - start) * 100;
+      var done = Math.floor((now - start) / DAY);
+      var left = Math.ceil((end - now) / DAY);
+      text = done + " dias decorridos · " + left + " restantes";
+    }
+
+    pctEl.textContent = Math.round(pct) + "%";
+    daysEl.textContent = text;
+    if (barEl) barEl.setAttribute("aria-valuenow", String(Math.round(pct)));
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        fillEl.style.width = pct.toFixed(2) + "%";
+      });
+    });
+  }
+
+  var toast = document.getElementById("toast");
+  var toastMsg = document.getElementById("toast-msg");
+  var toastTimer = null;
+
+  function showToast(msg) {
+    if (!toast || !toastMsg) return;
+    toastMsg.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove("show"); }, 2800);
+  }
+
+  function legacyCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    return ok;
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).then(function () { return true; })
+        .catch(function () { return legacyCopy(text); });
+    }
+    return Promise.resolve(legacyCopy(text));
+  }
+
+  document.querySelectorAll("[data-copy]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var value = btn.getAttribute("data-copy");
+      copyText(value).then(function (ok) {
+        showToast(ok ? "Copiado: " + value : "Não foi possível copiar — " + value);
+      });
+    });
+  });
+
+  /* Geração do Currículo PDF Aprimorada — Sem firulas não profissionais */
+  var cvBtn = document.getElementById("cv-btn");
+  if (cvBtn) {
+    cvBtn.addEventListener("click", function () {
+      var w = window.open("", "_blank");
+
+      if (!w) {
+        showToast("Permita pop-ups no navegador para visualizar o PDF");
+        return;
+      }
+
+      var cvHtml = [
+        "<!DOCTYPE html><html lang='pt-BR'><head><meta charset='UTF-8'>",
+        "<title>Currículo Executivo — Murilo Rogério</title>",
+        "<style>",
+        "  *{margin:0;padding:0;box-sizing:border-box}",
+        "  body{font-family:'Inter', 'Segoe UI', Helvetica, sans-serif;color:#111827;background:#fff;padding:40px;font-size:13px;line-height:1.6}",
+        "  .sheet{max-width:800px;margin:0 auto}",
+        "  header{border-bottom:2px solid #6366f1;padding-bottom:18px;margin-bottom:22px}",
+        "  h1{font-size:26px;font-weight:700;color:#111827;letter-spacing:-.02em}",
+        "  .tag{color:#6366f1;font-weight:600;margin-top:4px;font-size:13.5px}",
+        "  .contact{margin-top:8px;font-size:12px;color:#4b5563}",
+        "  .contact a{color:#6366f1;text-decoration:none}",
+        "  h2{font-size:12px;text-transform:uppercase;letter-spacing:.15em;color:#6366f1;margin:24px 0 10px;border-bottom:1px solid #e5e7eb;padding-bottom:4px;font-weight:700}",
+        "  .item{margin-bottom:16px}",
+        "  .item h3{font-size:14px;font-weight:600;color:#1f2937}",
+        "  .item .meta{font-size:11.5px;color:#6b7280;margin:2px 0 6px}",
+        "  ul{margin-left:18px}",
+        "  li{margin-bottom:4px;color:#374151}",
+        "  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:10px}",
+        "  .btn-print{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#6366f1;color:#fff;border:none;padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 10px 25px rgba(99,102,241,.3);transition:background .2s}",
+        "  .btn-print:hover{background:#4f46e5}",
+        "  @media print{body{padding:0}.btn-print{display:none}}",
+        "  @page{size:A4;margin:18mm}",
+        "</style></head><body>",
+        "<div class='sheet'>",
+        "  <header>",
+        "    <h1>Murilo Rogério Carvalho da Conceição</h1>",
+        "    <div class='tag'>Estudante de TI · Engenharia de Software Full-Stack &amp; WebGIS</div>",
+        "    <div class='contact'>",
+        "      Assis, SP · Brasil &nbsp;·&nbsp; ",
+        "      <a href='mailto:murilo.rogerio.conceicao@gmail.com'>murilo.rogerio.conceicao@gmail.com</a> &nbsp;·&nbsp; ",
+        "      WhatsApp: (18) 99812-1327",
+        "    </div>",
+        "  </header>",
+        "  <h2>Resumo Executivo</h2>",
+        "  <p>Estudante de " + currentAge + " anos suportando arquiteturas técnicas em Desenvolvimento Web (Next.js/React), Geoprocessamento (WebGIS) e Sistemas Embarcados. Vivência corporativa em engenharia provando rápida adaptabilidade às pivotagens de departamento. Suportado por um diagnóstico formal de Altas Habilidades / Superdotação (AH/SD) voltado para rápido deep-learning técnico e entregas seguras.</p>",
+        "  <h2>Experiência Corporativa</h2>",
+        "  <div class='item'>",
+        "    <h3>Engemap — Engenharia e Aerolevantamento</h3>",
+        "    <p class='meta'>Jovem Aprendiz · Outubro/2025 a Novembro/2026</p>",
+        "    <ul>",
+        "      <li><strong>Produção &amp; WebGIS:</strong> Transição fluida de setor requisitada para preencher a demanda interna de operações. Responsável pelo refinamento direto e tratamento em larga escala de dados geoespaciais, além do uso ativo e suporte de sistemas cartográficos em WebGIS.</li>",
+        "      <li><strong>Recursos Humanos:</strong> Gerenciamento sólido de rotinas operacionais e processos rigorosos de departamento pessoal, com zelo pelo arquivamento documental sem perdas.</li>",
+        "    </ul>",
+        "  </div>",
+        "  <h2>Arquitetura e Projetos Pessoais</h2>",
+        "  <div class='item'>",
+        "    <h3>Arca — PWA de Alta Performance para Bookmarking</h3>",
+        "    <p class='meta'>React 18, TypeScript, Supabase (RLS & Storage), PWA Offline-First</p>",
+        "    <ul><li>Projetado para mitigar a latência do arquivamento mobile, com consumo nativo do Web Share Target. Desenvolveu compressão client-side (via Canvas) antes do upload, sincronização com mutações otimistas e proteção de dados reforçada via PostgreSQL RLS.</li></ul>",
+        "  </div>",
+        "  <div class='item'>",
+        "    <h3>Nosso Fluxo — Controle Patrimonial Fintech</h3>",
+        "    <p class='meta'>Next.js 15, PostgreSQL, Recharts, integrações BrasilAPI e brapi.dev</p>",
+        "    <ul><li>App full-stack modelado para extinguir a fricção de rastrear faturas. Incorpora um script recursivo customizado que emite parcelas sem poluir o DB original, processando dispersão de Risco × Retorno de FIIs/Ações com cotação atrelada ao juro básico.</li></ul>",
+        "  </div>",
+        "  <div class='item'>",
+        "    <h3>Vivi Boty — Vitrine B2C / E-commerce Digital</h3>",
+        "    <p class='meta'>Javascript ES6+, Tailwind CSS, Supabase Auth</p>",
+        "    <ul><li>Desenho e implementação de um funil digital com zero fricção de fechamento no WhatsApp. Conta com um painel de retaguarda (admin dashboard) validado severamente contra payloads maliciosos de XSS.</li></ul>",
+        "  </div>",
+        "  <h2>Formação &amp; Hardware Base</h2>",
+        "  <ul>",
+        "    <li><strong>Acadêmico:</strong> 3º ano do E.M (Escola Dr. Clybas - Prev. 2026). Detentor de Certificação de Aluno Destaque pelo aproveitamento contínuo e histórico nulo de reprovação escolar.</li>",
+        "    <li><strong>Robótica:</strong> 4 anos de especialização em componentes e C++ (Arduino via CEDET, Lego EV3 via FEMA, Micro:bit via SESI). Experiência fundamental contornando escassez de hardware.</li>",
+        "  </ul>",
+        "  <div class='grid'>",
+        "    <div>",
+        "      <h2>Linguagens &amp; Bibliotecas</h2>",
+        "      <ul>",
+        "        <li>TypeScript, JavaScript, Python</li>",
+        "        <li>Next.js, React, Tailwind CSS</li>",
+        "      </ul>",
+        "    </div>",
+        "    <div>",
+        "      <h2>Cloud &amp; Dados</h2>",
+        "      <ul>",
+        "        <li>Supabase, Node.js, PostgreSQL</li>",
+        "        <li>REST APIs, Vercel, WebGIS, AutoCAD</li>",
+        "      </ul>",
+        "    </div>",
+        "  </div>",
+        "</div>",
+        "<button class='btn-print' onclick='window.print()'>Imprimir / Salvar PDF Executivo</button>",
+        "</body></html>"
+      ].join("");
+
+      w.document.open();
+      w.document.write(cvHtml);
+      w.document.close();
+      w.document.title = "Currículo Executivo — Murilo Rogério";
+
+      showToast("Currículo executivo gerado em nova aba");
+    });
+  }
+})();
+</script>
+</body>
+</html>
