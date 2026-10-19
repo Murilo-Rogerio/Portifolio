@@ -14,6 +14,33 @@
 <title>Murilo Rogério — Portfólio & Currículo</title>
 <link rel="icon" type="image/jpeg" href="https://ifqbuhrhmefqiwrpzvsh.supabase.co/storage/v1/object/public/site-assets/url.jpeg">
 
+<!-- Otimização Avançada para IAs e Motores de Busca (Schema.org) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Murilo Rogério Carvalho da Conceição",
+  "jobTitle": "Engenharia de Software & WebGIS",
+  "url": "https://murilorogerio.dev",
+  "image": "https://ifqbuhrhmefqiwrpzvsh.supabase.co/storage/v1/object/public/site-assets/Capa.jpeg",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Assis",
+    "addressRegion": "SP",
+    "addressCountry": "BR"
+  },
+  "email": "murilo.rogerio.conceicao@gmail.com",
+  "telephone": "+5518998121327",
+  "sameAs": [
+    "https://github.com/Murilo-Rogerio",
+    "https://www.linkedin.com/in/murilo-rog%C3%A9rio-220133322"
+  ],
+  "knowsAbout": [
+    "React", "Next.js", "TypeScript", "WebGIS", "PostgreSQL", "Supabase", "Robótica", "Arduino"
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -1974,7 +2001,12 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
 (function () {
   "use strict";
 
-  /* SCRIPT DINÂMICO PARA IDADE (Porque ter portfólio desatualizado é feio pra caramba) */
+  /* EASTER EGG PARA TECH LEADS E RECRUTADORES CURIOSOS */
+  console.log("%c👋 Olá, Tech Lead / Recrutador(a)!", "color:#8b5cf6; font-size:20px; font-weight:bold;");
+  console.log("%cVi que você gosta de olhar debaixo do capô. O código-fonte deste portfólio está limpo, otimizado e sem frameworks pesados (Vanilla JS + CSS Customizado).", "font-size:14px;");
+  console.log("%cSe quiser bater um papo técnico, me chame no WhatsApp: (18) 99812-1327", "font-size:14px; color:#34d399; font-weight:bold;");
+
+  /* SCRIPT DINÂMICO PARA IDADE */
   var currentAge = 17;
   try {
     var today = new Date();
@@ -2103,7 +2135,7 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
     });
   });
 
-  /* Terminal Interativo com Abas em Português */
+  /* Terminal Interativo com Efeito Cascata Dinâmica */
   var terminalSnippets = {
     config: [
       '<span class="tk-kw">export const</span> config <span class="tk-pun">=</span> <span class="tk-pun">{</span>',
@@ -2143,11 +2175,31 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
     var container = document.getElementById('terminal-content');
     if (!container) return;
     var lines = terminalSnippets[tabKey] || terminalSnippets.config;
-    var html = '';
+    var htmlString = '';
+    
+    // Constrói as linhas primeiro
     for (var i = 0; i < lines.length; i++) {
-      html += '<div class="t-row"><span class="t-ln">' + (i + 1) + '</span><span class="t-code">' + lines[i] + '</span></div>';
+      htmlString += '<div class="t-row"><span class="t-ln">' + (i + 1) + '</span><span class="t-code">' + lines[i] + '</span></div>';
     }
-    container.innerHTML = html;
+    container.innerHTML = htmlString;
+
+    // Aplica o efeito de digitação em cascata
+    if(!reduceMotion){
+      var rows = container.querySelectorAll('.t-row');
+      rows.forEach(function(row, idx) {
+        row.style.opacity = '0';
+        row.style.transform = 'translateY(4px)';
+        row.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+        row.style.transitionDelay = (idx * 0.04) + 's';
+        
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            row.style.opacity = '1';
+            row.style.transform = 'translateY(0)';
+          });
+        });
+      });
+    }
   }
 
   document.querySelectorAll('.t-tab').forEach(function(tab) {
@@ -2396,7 +2448,7 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
     });
   });
 
-  /* Geração do Currículo PDF Aprimorada — Sem firulas não profissionais */
+  /* Geração do Currículo PDF Executivo */
   var cvBtn = document.getElementById("cv-btn");
   if (cvBtn) {
     cvBtn.addEventListener("click", function () {
