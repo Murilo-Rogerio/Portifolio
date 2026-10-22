@@ -49,7 +49,6 @@ O objetivo principal deste projeto é apresentar o meu perfil profissional e té
 - **Arca:** Bloco de notas e organização pessoal PWA com captura de mídias (TikTok/YouTube) via Web Share Target do Android, compressão de imagens no cliente e backend Supabase com RLS.
 - **Nosso Fluxo:** Gestão financeira pessoal completa com cotações automáticas de FIIs/Ações, projeção de recorrências e taxa CDI em tempo real via BrasilAPI.
 - **Vivi Boty:** Catálogo e-commerce e vitrine digital com funil de vendas integrado diretamente ao WhatsApp e painel administrativo privado.
-- **Flashcards 3D (Alura):** Aplicação interativa de estudo e memorização ativa com renderização e rotação 3D tridimensional, modo escuro nativo e acompanhamento de domínio de tópicos.
 
 ---
 
