@@ -128,6 +128,12 @@ button{ font:inherit; color:inherit; background:none; border:none; cursor:pointe
 
 :focus-visible{ outline:2px solid rgba(167,139,250,.7); outline-offset:3px; border-radius:6px; }
 
+html.cursor-on:not(.no-effects), html.cursor-on:not(.no-effects) *{ cursor:none !important; }
+
+html.no-effects .spotlight,
+html.no-effects #cursor-dot,
+html.no-effects #cursor-ring { display:none !important; }
+
 html.no-effects .panel {
   transform: none !important;
   transition: background-color .3s ease, border-color .3s ease !important;
@@ -153,6 +159,44 @@ html.no-effects .panel {
 .grain{
   position:fixed; inset:0; z-index:60; pointer-events:none; opacity:.028;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.spotlight{
+  position:fixed; top:0; left:0; z-index:40;
+  width:600px; height:600px; border-radius:50%;
+  pointer-events:none; mix-blend-mode:screen;
+  background:radial-gradient(circle, rgba(139,92,246,.075), rgba(56,130,246,.045) 42%, transparent 66%);
+  opacity:0; transition:opacity .8s ease;
+  will-change:transform;
+}
+.spotlight.on{ opacity:1; }
+
+#cursor-dot, #cursor-ring{
+  position:fixed; top:0; left:0; z-index:9999;
+  pointer-events:none; opacity:0;
+  border-radius:50%;
+  transition:opacity .4s ease;
+}
+#cursor-dot{
+  width:6px; height:6px;
+  background:#cbb8ff;
+  box-shadow:0 0 10px rgba(167,139,250,.7);
+  transform:translate3d(var(--x,-100px), var(--y,-100px), 0) translate(-50%,-50%);
+}
+#cursor-ring{
+  width:36px; height:36px;
+  border:1.5px solid rgba(167,139,250,.55);
+  transform:translate3d(var(--x,-100px), var(--y,-100px), 0) translate(-50%,-50%) scale(var(--s,1));
+  transition:opacity .4s ease, border-color .35s ease;
+}
+html.cursor-live #cursor-dot,
+html.cursor-live #cursor-ring{ opacity:1; }
+html.cursor-live #cursor-ring.link{
+  --s:1.65;
+  border-color:rgba(196,181,253,.9);
+}
+@media (pointer:coarse){
+  #cursor-dot, #cursor-ring{ display:none; }
 }
 
 .side-rail{
@@ -1068,6 +1112,8 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
     transition-duration:.01ms !important;
   }
   .reveal{ opacity:1; transform:none; }
+  .spotlight{ display:none; }
+  #cursor-dot, #cursor-ring{ display:none; }
   .marquee-track{ animation:none; flex-wrap:wrap; width:100%; }
   .marquee-track > span{ padding:3px 0; }
 }
@@ -1093,6 +1139,10 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
 
 <div class="ambient" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
+<div class="spotlight" aria-hidden="true"></div>
+
+<div id="cursor-dot" aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
 
 <nav class="side-rail left" aria-label="Navegação por seções">
   <a href="#perfil" class="rail-item active" data-sec="perfil"><span class="tooltip">Perfil</span></a>
@@ -2313,6 +2363,71 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
         card.style.setProperty("--ry", "0deg");
       });
     });
+  }
+
+  var spot = document.querySelector(".spotlight");
+  if (spot && finePointer && !reduceMotion) {
+    var tx = window.innerWidth / 2, ty = window.innerHeight * 0.3;
+    var cx = tx, cy = ty, active = false;
+
+    window.addEventListener("pointermove", function (e) {
+      if (document.documentElement.classList.contains('no-effects')) return;
+      tx = e.clientX; ty = e.clientY;
+      if (!active) { active = true; cx = tx; cy = ty; spot.classList.add("on"); }
+    }, { passive: true });
+
+    (function loop() {
+      cx += (tx - cx) * 0.09;
+      cy += (ty - cy) * 0.09;
+      spot.style.transform = "translate3d(" + (cx - 300) + "px," + (cy - 300) + "px,0)";
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  var dot  = document.getElementById("cursor-dot");
+  var ring = document.getElementById("cursor-ring");
+
+  if (dot && ring && finePointer && !reduceMotion) {
+    document.documentElement.classList.add("cursor-on");
+
+    var mx = -100, my = -100;
+    var rx = -100, ry = -100;
+    var cursorShown = false;
+
+    document.addEventListener("pointermove", function (e) {
+      if (document.documentElement.classList.contains('no-effects')) return;
+      mx = e.clientX; my = e.clientY;
+      dot.style.setProperty("--x", mx + "px");
+      dot.style.setProperty("--y", my + "px");
+      if (!cursorShown) {
+        cursorShown = true;
+        rx = mx; ry = my;
+        document.documentElement.classList.add("cursor-live");
+      }
+    }, { passive: true });
+
+    document.addEventListener("mouseleave", function () {
+      cursorShown = false;
+      document.documentElement.classList.remove("cursor-live");
+    });
+    document.addEventListener("mouseenter", function () {
+      cursorShown = true;
+      document.documentElement.classList.add("cursor-live");
+    });
+
+    document.addEventListener("mouseover", function (e) {
+      if (!e.target || !e.target.closest) return;
+      var hit = e.target.closest("a, button, .chip, [data-copy], .rail-item, input, textarea, select");
+      ring.classList.toggle("link", !!hit);
+    }, { passive: true });
+
+    (function cursorLoop() {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      ring.style.setProperty("--x", rx.toFixed(1) + "px");
+      ring.style.setProperty("--y", ry.toFixed(1) + "px");
+      requestAnimationFrame(cursorLoop);
+    })();
   }
 
   function animateCount(el) {
