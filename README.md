@@ -36,6 +36,9 @@ O objetivo principal deste projeto é apresentar o meu perfil profissional e té
 ## ⚡ Funcionalidades
 
 - 🗂️ **Bento Grid Layout:** Organização modular para perfis, experiências, habilidades e projetos.
+- 🎯 **Visão Rápida para Recrutadores:** Modal executivo com resumo de 30 segundos contendo disponibilidade, perfil cognitivo (AH/SD), diferenciais e stack principal.
+- 🔬 **Estudos de Caso Técnicos:** Modais com detalhamento aprofundado de cada projeto, abordando Desafio Técnico, Solução de Engenharia, Decisões de Arquitetura, Trade-offs e KPIs.
+- 🏷️ **Filtro Dinâmico de Projetos:** Filtragem instantânea por categoria (`Todos`, `WebGIS`, `Full-Stack`, `PWA / Mobile`).
 - 🧭 **Navegação & Scrollspy:** Barra lateral com indicação de seção ativa e retorno rápido ao topo.
 - 📊 **Barra de Progresso de Leitura:** Indicador no topo acompanhando a rolagem da página.
 - 📄 **Gerador de Currículo PDF:** Impressão e exportação dinâmica do currículo em formato A4 numa nova aba.

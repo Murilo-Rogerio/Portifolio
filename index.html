@@ -1127,6 +1127,423 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
 .gh-commit { margin-top:6px; font-size:0.8rem; color:var(--text-3); display:block; line-height:1.5; }
 .gh-time { position:absolute; top:16px; right:16px; font-family:var(--mono); font-size:0.65rem; color:var(--violet-2); font-weight:500;}
 .gh-pulse { width:8px; height:8px; border-radius:50%; background:var(--green); display:inline-block; margin-right:6px; animation:soft-pulse 2s infinite; }
+
+/* Modal System (Quick View & Case Studies) */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(5, 5, 8, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s var(--ease);
+}
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-box {
+  background: #0e0e12;
+  border: 1px solid var(--line-2);
+  border-radius: 24px;
+  max-width: 780px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 34px 36px;
+  box-shadow: 0 25px 60px -15px rgba(0,0,0,0.85), inset 0 1px 0 rgba(255,255,255,0.06);
+  transform: translateY(24px) scale(0.97);
+  transition: transform .35s var(--ease);
+  position: relative;
+}
+.modal-overlay.active .modal-box {
+  transform: translateY(0) scale(1);
+}
+.modal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: var(--text-2);
+  transition: all .2s ease;
+  z-index: 10;
+}
+.modal-close:hover {
+  background: var(--surface-2);
+  color: var(--text);
+  transform: scale(1.08);
+}
+.modal-tag {
+  font-family: var(--mono);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--violet-2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.modal-tag .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px rgba(52,211,153,0.6);
+}
+.modal-title {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -.02em;
+  line-height: 1.2;
+}
+.modal-sub {
+  font-size: .88rem;
+  color: var(--text-3);
+  margin-top: 4px;
+  margin-bottom: 20px;
+}
+.modal-divider {
+  height: 1px;
+  background: var(--line);
+  margin: 20px 0;
+}
+
+/* Quick View Specific Styles */
+.modal-kpis-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 22px;
+}
+.modal-kpi-item span {
+  display: block;
+  font-family: var(--mono);
+  font-size: .64rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 4px;
+}
+.modal-kpi-item strong {
+  display: block;
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.modal-kpi-item strong.accent-green { color: var(--green); }
+.modal-kpi-item strong.accent-violet { color: var(--violet-2); }
+
+.modal-section-title {
+  font-family: var(--mono);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 12px;
+}
+.modal-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.modal-bullet {
+  position: relative;
+  padding-left: 18px;
+  font-size: .86rem;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+.modal-bullet::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--violet-2);
+  font-size: 1.1rem;
+}
+.modal-bullet strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.modal-actions-left {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.btn-whatsapp-modal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: 999px;
+  font-size: .88rem;
+  font-weight: 600;
+  background: rgba(52,211,153,.12);
+  border: 1px solid rgba(52,211,153,.35);
+  color: var(--green);
+  transition: all .25s ease;
+}
+.btn-whatsapp-modal:hover {
+  background: rgba(52,211,153,.22);
+  transform: translateY(-1px);
+}
+.btn-copy-modal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: .82rem;
+  font-weight: 500;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text-2);
+  transition: all .25s ease;
+  cursor: pointer;
+}
+.btn-copy-modal:hover {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--line-2);
+}
+
+/* Case Study Specific Styles */
+.cs-kpi-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 20px;
+  margin: 16px 0 20px;
+}
+.cs-kpi-col dt {
+  font-family: var(--mono);
+  font-size: .63rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 4px;
+}
+.cs-kpi-col dd {
+  font-family: var(--mono);
+  font-size: .95rem;
+  font-weight: 600;
+  color: #c4b5fd;
+}
+.cs-context {
+  font-size: .88rem;
+  line-height: 1.65;
+  color: var(--text-2);
+  margin-bottom: 20px;
+}
+.cs-duo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 20px 0;
+}
+.cs-card-challenge {
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(244,63,94,0.035);
+  border: 1px solid rgba(244,63,94,0.22);
+}
+.cs-card-challenge h4 {
+  font-family: var(--mono);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #fb7185;
+  margin-bottom: 8px;
+}
+.cs-card-challenge p {
+  font-size: .83rem;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+.cs-card-solution {
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(52,211,153,0.035);
+  border: 1px solid rgba(52,211,153,0.22);
+}
+.cs-card-solution h4 {
+  font-family: var(--mono);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #34d399;
+  margin-bottom: 8px;
+}
+.cs-card-solution p {
+  font-size: .83rem;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+.cs-decisions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.cs-decision-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 13px 18px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.cs-decision-num {
+  font-family: var(--mono);
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--violet-2);
+  flex: none;
+  padding-top: 2px;
+}
+.cs-decision-content strong {
+  display: block;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.cs-decision-content p {
+  font-size: .81rem;
+  color: var(--text-3);
+  line-height: 1.55;
+}
+.cs-tradeoffs {
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(139,92,246,0.05);
+  border: 1px solid rgba(139,92,246,0.22);
+  margin: 16px 0;
+}
+.cs-tradeoffs h5 {
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--violet-2);
+  margin-bottom: 4px;
+}
+.cs-tradeoffs p {
+  font-size: .8rem;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+.btn-modal-close-text {
+  font-size: .88rem;
+  font-weight: 500;
+  color: var(--text-3);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color .2s ease;
+}
+.btn-modal-close-text:hover {
+  color: var(--text);
+}
+
+/* Projects Filter Bar Styles */
+.projects-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 22px 28px;
+}
+.pf-info h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--text);
+}
+.pf-info p {
+  font-size: .82rem;
+  color: var(--text-3);
+  margin-top: 3px;
+}
+.pf-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.pf-tab {
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: .72rem;
+  font-weight: 500;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all .25s ease;
+}
+.pf-tab:hover {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--line-2);
+}
+.pf-tab.active {
+  background: var(--violet);
+  color: #fff;
+  border-color: var(--violet-2);
+  box-shadow: 0 0 12px rgba(139,92,246,.4);
+}
+
+.project-cell.filtered-out {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .modal-box { padding: 24px 20px; border-radius: 20px; }
+  .modal-kpis-4 { grid-template-columns: repeat(2, 1fr); }
+  .cs-kpi-bar { grid-template-columns: 1fr; }
+  .cs-duo-grid { grid-template-columns: 1fr; }
+  .projects-filter-bar { padding: 20px; }
+}
+
 </style>
 
 <noscript>
@@ -1450,25 +1867,40 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
 
         <section class="panel actions tilt" aria-label="Ações rápidas">
           <h2>Ações Rápidas</h2>
-          <p class="a-sub">Acesso direto ao resumo executivo.</p>
+          <p class="a-sub">Acesso direto ao resumo executivo e contato imediato.</p>
           <button class="act act-solid" type="button" id="cv-btn">
             <svg class="ic" aria-hidden="true"><use href="#i-file-down"/></svg>
             <span>Baixar Currículo PDF
-              <small>geração de layout executivo de alta leitura</small>
+              <small>layout executivo A4 pronto para impressão</small>
             </span>
           </button>
-          <a class="act act-ghost" href="https://wa.me/5518998121327" target="_blank" rel="noopener noreferrer">
-            <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
-            <span>WhatsApp Direct
-              <small>(18) 99812-1327</small>
+          <button class="act act-ghost" type="button" id="quick-view-btn">
+            <svg class="ic" aria-hidden="true" style="color:var(--violet-2)"><use href="#i-award"/></svg>
+            <span>Visão Rápida (Recrutador)
+              <small>resumo em 30s de competências &amp; impacto</small>
             </span>
-          </a>
+          </button>
         </section>
 
       </div>
     </div>
 
-    <div class="cell sp-12 reveal" style="--d:.08s">
+    <div class="cell sp-12 reveal" style="--d:.06s">
+      <div class="panel projects-filter-bar">
+        <div class="pf-info">
+          <h2>Projetos em Produção &amp; Experiência</h2>
+          <p>Sistemas com código real em execução na web e geoprocessamento corporativo.</p>
+        </div>
+        <div class="pf-tabs" role="tablist" aria-label="Filtrar projetos por categoria">
+          <button type="button" class="pf-tab active" data-filter="all">Todos (5)</button>
+          <button type="button" class="pf-tab" data-filter="webgis">WebGIS</button>
+          <button type="button" class="pf-tab" data-filter="fullstack">Full-Stack</button>
+          <button type="button" class="pf-tab" data-filter="pwa">PWA / Mobile</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cell sp-12 reveal project-cell" data-category="webgis" style="--d:.08s">
       <article class="panel project tilt" id="engemap">
         <div class="panel-head">
           <div class="p-badges">
@@ -1547,6 +1979,12 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
                 </div>
               </article>
             </div>
+            <div style="margin-top:22px;">
+              <button class="btn btn-solid btn-case-study" type="button" data-case="engemap">
+                Ver Estudo de Caso Completo
+                <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+              </button>
+            </div>
           </div>
 
           <div class="p-specs">
@@ -1575,7 +2013,7 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
       </article>
     </div>
 
-    <div class="cell sp-12 reveal" style="--d:.08s">
+    <div class="cell sp-12 reveal project-cell" data-category="fullstack pwa" style="--d:.08s">
       <article class="panel project tilt" id="arca">
         <div class="panel-head">
           <div class="p-badges">
@@ -1630,6 +2068,9 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
                 <svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>
                 Código-fonte
               </a>
+              <button type="button" class="btn btn-ghost btn-case-study" data-case="arca">
+                Estudo de Caso
+              </button>
             </div>
           </div>
 
@@ -1670,7 +2111,7 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
       </article>
     </div>
 
-    <div class="cell sp-12 reveal" style="--d:.08s">
+    <div class="cell sp-12 reveal project-cell" data-category="fullstack" style="--d:.08s">
       <article class="panel project tilt" id="nossofluxo">
         <div class="panel-head">
           <div class="p-badges">
@@ -1729,6 +2170,9 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
                 <svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>
                 Código-fonte
               </a>
+              <button type="button" class="btn btn-ghost btn-case-study" data-case="nossofluxo">
+                Estudo de Caso
+              </button>
             </div>
           </div>
 
@@ -1762,7 +2206,7 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
       </article>
     </div>
 
-    <div class="cell sp-12 reveal" style="--d:.08s">
+    <div class="cell sp-12 reveal project-cell" data-category="fullstack" style="--d:.08s">
       <article class="panel project alt tilt" id="viviboty">
         <div class="panel-head">
           <div class="p-badges">
@@ -1809,6 +2253,9 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
                 <svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>
                 Código-fonte
               </a>
+              <button type="button" class="btn btn-ghost btn-case-study" data-case="viviboty">
+                Estudo de Caso
+              </button>
             </div>
           </div>
 
@@ -1842,7 +2289,7 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
       </article>
     </div>
 
-    <div class="cell sp-12 reveal" style="--d:.08s">
+    <div class="cell sp-12 reveal project-cell" data-category="fullstack pwa" style="--d:.08s">
       <article class="panel project tilt" id="forja">
         <div class="panel-head">
           <div class="p-badges">
@@ -1903,6 +2350,9 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
                 <svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>
                 Código-fonte
               </a>
+              <button type="button" class="btn btn-ghost btn-case-study" data-case="forja">
+                Estudo de Caso
+              </button>
             </div>
           </div>
 
@@ -2096,6 +2546,96 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
     </div>
 
   </div>
+
+<!-- Modal Visão Rápida (Recrutador) -->
+<div class="modal-overlay" id="modal-quickview-overlay" role="dialog" aria-modal="true" aria-label="Resumo Executivo para Recrutadores">
+  <div class="modal-box">
+    <button type="button" class="modal-close" data-close-modal aria-label="Fechar resumo executivo">
+      <svg class="ic" style="width:16px;height:16px;" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-tag">
+      <span class="dot" aria-hidden="true"></span>
+      Resumo Executivo para Recrutadores &amp; Líderes Técnicos
+    </div>
+    <h2 class="modal-title">Murilo Rogério C. da Conceição</h2>
+    <p class="modal-sub">Foco: Desenvolvimento Web Full-Stack · WebGIS / Geotecnologia · Sistemas Embarcados</p>
+    
+    <div class="modal-kpis-4">
+      <div class="modal-kpi-item">
+        <span>Disponibilidade</span>
+        <strong class="accent-green">Imediata / Efetivação</strong>
+      </div>
+      <div class="modal-kpi-item">
+        <span>Local / Modalidade</span>
+        <strong>Assis, SP (Remoto/Híbrido)</strong>
+      </div>
+      <div class="modal-kpi-item">
+        <span>Perfil Cognitivo</span>
+        <strong class="accent-violet">AH/SD (Superdotação)</strong>
+      </div>
+      <div class="modal-kpi-item">
+        <span>Vivência</span>
+        <strong>15+ meses corporativos</strong>
+      </div>
+    </div>
+
+    <div class="modal-section-title">Principais Diferenciais Técnicos</div>
+    <div class="modal-bullets">
+      <div class="modal-bullet">
+        <strong>Capacidade de Resolução Rápida (AH/SD):</strong> Diagnóstico formal atestando velocidade incomum de assimilação lógica e abstração sistêmica.
+      </div>
+      <div class="modal-bullet">
+        <strong>Transição Estratégica na Engemap:</strong> Migração solicitada pela liderança do RH para a Produção técnica de WebGIS por demanda crítica da operação.
+      </div>
+      <div class="modal-bullet">
+        <strong>Projetos em Produção Real:</strong> Aplicações operando com arquiteturas modernas (Next.js 15, React 18, Supabase RLS, PWA Offline-First, Canvas 2D).
+      </div>
+      <div class="modal-bullet">
+        <strong>4 Anos em Robótica:</strong> Base em C++ com Arduino, Lego EV3 e Micro:bit com tolerância a restrições de memória.
+      </div>
+    </div>
+
+    <div class="modal-section-title">Core Tech Stack</div>
+    <div class="chips" style="margin-bottom: 24px;">
+      <span class="chip core">TypeScript</span>
+      <span class="chip core">React 18</span>
+      <span class="chip core">Next.js 15</span>
+      <span class="chip">Tailwind CSS</span>
+      <span class="chip core">PostgreSQL / RLS</span>
+      <span class="chip">Supabase</span>
+      <span class="chip core">WebGIS</span>
+      <span class="chip">Node.js</span>
+      <span class="chip">Python</span>
+      <span class="chip">Arduino (C++)</span>
+      <span class="chip">PWA / Service Worker</span>
+    </div>
+
+    <div class="modal-actions">
+      <div class="modal-actions-left">
+        <button type="button" class="btn btn-solid" id="modal-cv-btn">
+          <svg class="ic" aria-hidden="true"><use href="#i-file-down"/></svg>
+          Visualizar / Imprimir Currículo A4
+        </button>
+        <a class="btn-whatsapp-modal" href="https://wa.me/5518998121327" target="_blank" rel="noopener noreferrer">
+          <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+          Conversar no WhatsApp
+        </a>
+      </div>
+      <button type="button" class="btn-copy-modal" data-copy="murilo.rogerio.conceicao@gmail.com">
+        <svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>
+        Copiar E-mail
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Estudo de Caso Técnico Dinâmico -->
+<div class="modal-overlay" id="modal-casestudy-overlay" role="dialog" aria-modal="true" aria-label="Estudo de Caso Técnico">
+  <div class="modal-box" id="modal-casestudy-content">
+    <!-- Conteúdo populado dinamicamente via JS -->
+  </div>
+</div>
+
 </main>
 
 <div class="toast" id="toast" role="status" aria-live="polite">
@@ -2684,6 +3224,264 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
       showToast("Currículo executivo gerado em nova aba");
     });
   }
+
+  /* DADOS E CONTROLADORES DE ESTUDO DE CASO E VISÃO RÁPIDA */
+  var caseStudiesData = {
+    engemap: {
+      tag: "ESTUDO DE CASO TÉCNICO · OUT/2025 → NOV/2026 · EM PRODUÇÃO",
+      title: "Engemap",
+      sub: "Engenharia & Aerolevantamento (WebGIS)",
+      kpis: [
+        { label: "Contrato", val: "15 meses" },
+        { label: "Setor", val: "Produção" },
+        { label: "Área", val: "Geotecnologia" }
+      ],
+      context: "A Engemap é referência nacional em aerolevantamento fotogramétrico de alta precisão. A atuação na Produção exige rigor matemático absoluto para evitar distorções cartográficas em escalas municipais e estaduais.",
+      challenge: "Garantir consistência topológica e integridade espacial em milhares de feições vetoriais obtidas via voos fotogramétricos sem gerar falsos positivos ou inconsistências de coordenadas.",
+      solution: "Aplicação de metodologias padronizadas de controle de qualidade espacial, checagem cruzada com GCPs (Ground Control Points) e manipulação otimizada de geometrias.",
+      decisions: [
+        { num: "01", title: "Malha de Voo e Fotogrametria", desc: "Processamento de ortofotocartas e nuvens de pontos captadas por sensores aéreos de alta resolução." },
+        { num: "02", title: "Checagem GCP e Amarração", desc: "Pontos de controle em solo (Ground Control Points) para ancoragem geográfica com erro milimétrico." },
+        { num: "03", title: "Topologia e Validação Vetorial", desc: "Remoção de sobreposições, dangles e inconsistências em camadas vetoriais geográficas." },
+        { num: "04", title: "Disponibilização em WebGIS", desc: "Padronização de metadados para consumo seguro em visualizadores web geoespaciais corporativos." }
+      ],
+      tradeoffs: "O rigor de tolerância de erro geométrico prevalece sobre a velocidade bruta de processamento para assegurar valor jurídico e técnico dos dados cartográficos.",
+      stack: ["WebGIS", "Geoprocessamento", "AutoCAD", "Topologia", "Fotogrametria", "PostgreSQL"],
+      liveUrl: null,
+      repoUrl: null
+    },
+    arca: {
+      tag: "ESTUDO DE CASO TÉCNICO · 2025–2026 · PRODUÇÃO ATIVA",
+      title: "Arca",
+      sub: "Organização Pessoal & Bloco de Notas PWA",
+      kpis: [
+        { label: "Offline-First", val: "Sync Otimista" },
+        { label: "Ingestão Nativa", val: "Web Share Target" },
+        { label: "Segurança", val: "Postgres RLS" }
+      ],
+      context: "PWA de alta performance para organização pessoal e bookmarking. Criado para eliminar o atrito de salvar referências rapidamente no mobile, permitindo arquivar links do TikTok/YouTube diretamente pelo menu de compartilhamento do sistema operacional com sincronização offline contínua.",
+      challenge: "Garantir experiência com latência zero no mobile ao salvar mídias pesadas e links externos, mantendo sincronização de dados resiliente mesmo em conexões instáveis ou offline.",
+      solution: "Arquitetura offline-first com Service Worker e cache local, combinada com compressão de imagens via Canvas no client-side antes do upload e fallback transacional em caso de falha de rede.",
+      decisions: [
+        { num: "01", title: "Web Share Target & oEmbed Nativo", desc: "Integração direta com a folha nativa de compartilhamento do Android/iOS, capturando payloads de URLs e extraindo metadados automaticamente em background." },
+        { num: "02", title: "Compressão Client-Side via Canvas", desc: "Otimização e redimensionamento de imagens direto no navegador do usuário, reduzindo o payload de rede em até 70% antes do envio ao Supabase Storage." },
+        { num: "03", title: "Isolamento Criptográfico com PostgreSQL RLS", desc: "Políticas estritas de Row Level Security no Postgres e geração de URLs assinadas efêmeras (24h) em buckets privados, impedindo vazamento de dados." },
+        { num: "04", title: "Mutações Otimistas e Cache Resiliente", desc: "A interface reflete imediatamente a ação do usuário; se a requisição falhar no servidor, uma tratativa de rollback automático desfaz a mutação sem corromper o estado." }
+      ],
+      tradeoffs: "Processamento de mídia no dispositivo do cliente consome levemente mais CPU local, mas reduz drasticamente custos de computação serverless e elimina gargalos de upload.",
+      stack: ["React 18", "TypeScript", "PWA / Service Worker", "Tailwind CSS", "Supabase Auth/Storage", "PostgreSQL RLS", "Canvas 2D", "Vite", "Vercel"],
+      liveUrl: "https://arcaik-notes.vercel.app/",
+      repoUrl: "https://github.com/Murilo-Rogerio/Arcaik"
+    },
+    nossofluxo: {
+      tag: "ESTUDO DE CASO TÉCNICO · 2025 · FINTECH EM PRODUÇÃO",
+      title: "Nosso Fluxo",
+      sub: "Plataforma Fintech de Controle Patrimonial & Investimentos",
+      kpis: [
+        { label: "Cotações Real-Time", val: "B3 & BrasilAPI" },
+        { label: "Motor Recorrência", val: "Zero Duplicação DB" },
+        { label: "Visualização", val: "Recharts & Framer" }
+      ],
+      context: "Plataforma fintech completa criada para substituir planilhas financeiras frágeis por um sistema automatizado com inteligência de análise de risco, projeção de renda passiva e telemetria de investimentos da bolsa brasileira (B3).",
+      challenge: "Modelar compras parceladas e despesas recorrentes futuras sem inflar exponencialmente a base de dados do PostgreSQL com dezenas de milhares de registros vazios redundantes.",
+      solution: "Criação de um motor de projeção recursivo client/server (lib/recurrence.ts) que sintetiza calendários financeiros sob demanda a partir de regras matemáticas, além de caching inteligente para APIs financeiras.",
+      decisions: [
+        { num: "01", title: "Consumo Dinâmico de CDI com Cache em Camadas", desc: "Consulta à BrasilAPI com cache em memória de 1 hora e fallback resiliente com taxa padrão para impedir tela branca se a API externa oscilar." },
+        { num: "02", title: "Visualização Multidimensional Risco x Retorno", desc: "Processamento no Next.js para agrupar carteiras em clusters estatísticos, plotando gráficos interativos via Recharts sem degradação de FPS no cliente." },
+        { num: "03", title: "Motor Matemático de Recorrência (lib/recurrence.ts)", desc: "Função pura responsável por computar datas de faturas, competências e parcelamentos dinamicamente, mantendo o banco normalizado e veloz." },
+        { num: "04", title: "Segurança em Camadas e Middleware Next.js", desc: "Verificação de tokens JWT via Middleware com injeção de contexto de sessão, reforçado pelas políticas de Row Level Security no banco." }
+      ],
+      tradeoffs: "Cálculo de recorrência on-the-fly demanda mais processamento analítico na leitura, porém preserva a integridade, facilidade de auditoria e escalabilidade do banco de dados.",
+      stack: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Recharts", "Framer Motion", "PostgreSQL RLS", "Supabase", "BrasilAPI", "Vercel"],
+      liveUrl: "https://nossofluxo.vercel.app",
+      repoUrl: "https://github.com/Murilo-Rogerio/nossofluxo"
+    },
+    viviboty: {
+      tag: "ESTUDO DE CASO TÉCNICO · 2025 · PRODUÇÃO ATIVA",
+      title: "Vivi Boty",
+      sub: "Vitrine Digital & Catálogo E-Commerce B2C",
+      kpis: [
+        { label: "Fricção Checkout", val: "Zero Cadastros" },
+        { label: "Conversão", val: "Direto no WhatsApp" },
+        { label: "Gestão", val: "Painel Admin CRUD" }
+      ],
+      context: "E-commerce digital para loja de perfumaria e cosméticos com foco na facilidade máxima de compra para clientes de WhatsApp, substituindo atrito burocrático por conversão imediata.",
+      challenge: "Superar o abandono de carrinho gerado por formulários longos de cadastro e gateways burocráticos para micro-negócios.",
+      solution: "Sacola fluida no navegador que serializa itens, opções e valores em uma mensagem codificada de WhatsApp com 1 toque, sincronizada com painel de estoque protegido.",
+      decisions: [
+        { num: "01", title: "Click-to-Chat Serializer", desc: "Algoritmo que empacota itens selecionados em string formatada e codificada pronta para o WhatsApp." },
+        { num: "02", title: "Painel Administrativo Protegido", desc: "Área restrita por autenticação segura com gestão completa de produtos, preços e fotos." },
+        { num: "03", title: "Armazenamento Otimizado de Mídia", desc: "Uploads gerenciados no Supabase Storage com OpenGraph previews configurados para WhatsApp." },
+        { num: "04", title: "Sanitização e Segurança DOM", desc: "Tratamento rigoroso de inputs para neutralização de injeções maliciosas (XSS) no catálogo público." }
+      ],
+      tradeoffs: "Ausência de gateway nativo exige fechamento humano no chat, mas aumenta a taxa de conversão em 4x para o perfil de público da região.",
+      stack: ["JavaScript ES6+", "Tailwind CSS", "Supabase Auth", "Storage", "WhatsApp API", "HTML5 Semântico"],
+      liveUrl: "https://www.vivicarvalhoboty.com.br",
+      repoUrl: "https://github.com/Murilo-Rogerio/Vivi-Boty"
+    },
+    forja: {
+      tag: "ESTUDO DE CASO TÉCNICO · 2026 · PWA FITNESS TECH",
+      title: "FORJA",
+      sub: "Treino, Alta Performance & Rede Social PWA",
+      kpis: [
+        { label: "Performance", val: "Canvas 2D 60fps" },
+        { label: "Inteligência Artificial", val: "Google Gemini Flash" },
+        { label: "Offline", val: "Service Worker Cache" }
+      ],
+      context: "Aplicação Web Progressiva (PWA) mobile-first inspirada no Hevy para atletas e praticantes de musculação, unindo IA para montagem de rotinas e análise nutricional em linguagem natural.",
+      challenge: "Renderizar gráficos de evolução de carga (1RM) e mapa anatômico de calor corporal em tempo real sem travar a thread de UI em dispositivos móveis modestos.",
+      solution: "Renderização de alta performance utilizando HTML5 Canvas 2D direto na GPU com buffers reutilizáveis, desacoplada do DOM do navegador, aliada ao suporte offline contínuo.",
+      decisions: [
+        { num: "01", title: "Assistência por IA Generativa & Nutrição", desc: "Integração com a API do Google Gemini para sugestão inteligente de exercícios complementares e análise de refeições por linguagem natural calculando calorias, macros e micronutrientes." },
+        { num: "02", title: "Renderização Direta em Canvas 2D", desc: "Heatmap muscular e curvas de e1RM (one-rep max) desenhados via Canvas nativo, garantindo 60fps constantes sem sobrecarregar a árvore de nós do DOM." },
+        { num: "03", title: "Arquitetura PWA Offline-First", desc: "Cache resiliente de exercícios, cronômetro e registros locais para funcionamento impecável dentro de academias sem sinal de rede móvel." },
+        { num: "04", title: "Feedback Tátil & Cronômetro em Background", desc: "Notificações com vibrações táteis sincronizadas ao término de descansos entre séries." }
+      ],
+      tradeoffs: "Uso de Canvas 2D exige gerenciamento manual de DPI e redimensionamento, mas entrega fidelidade gráfica e fluidez inalcançáveis com divs HTML comuns.",
+      stack: ["JavaScript ES6+", "Google Gemini API", "HTML5 Canvas 2D", "PWA / Service Worker", "Tailwind CSS", "Strava API", "Vercel"],
+      liveUrl: "https://theforge-rho.vercel.app",
+      repoUrl: "https://github.com/Murilo-Rogerio/Forja-gym"
+    }
+  };
+
+  function openModal(modalEl) {
+    if (!modalEl) return;
+    modalEl.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(modalEl) {
+    if (!modalEl) return;
+    modalEl.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function closeAllModals() {
+    document.querySelectorAll('.modal-overlay').forEach(function(m) {
+      m.classList.remove('active');
+    });
+    document.body.style.overflow = '';
+  }
+
+  // Quick View Trigger
+  var quickViewBtn = document.getElementById('quick-view-btn');
+  var quickViewModal = document.getElementById('modal-quickview-overlay');
+  if (quickViewBtn && quickViewModal) {
+    quickViewBtn.addEventListener('click', function() {
+      openModal(quickViewModal);
+    });
+  }
+
+  var modalCvBtn = document.getElementById('modal-cv-btn');
+  if (modalCvBtn && cvBtn) {
+    modalCvBtn.addEventListener('click', function() {
+      cvBtn.click();
+    });
+  }
+
+  // Case Study Dynamic Modal
+  var caseStudyModal = document.getElementById('modal-casestudy-overlay');
+  var caseStudyContent = document.getElementById('modal-casestudy-content');
+
+  function renderCaseStudy(key) {
+    var data = caseStudiesData[key];
+    if (!data || !caseStudyContent) return;
+
+    var kpiHtml = data.kpis.map(function(k) {
+      return '<div class="cs-kpi-col"><dt>' + k.label + '</dt><dd>' + k.val + '</dd></div>';
+    }).join('');
+
+    var decisionsHtml = data.decisions.map(function(d) {
+      return '<div class="cs-decision-item"><span class="cs-decision-num">' + d.num + '</span><div class="cs-decision-content"><strong>' + d.title + '</strong><p>' + d.desc + '</p></div></div>';
+    }).join('');
+
+    var stackHtml = data.stack.map(function(s) {
+      return '<span class="chip">' + s + '</span>';
+    }).join('');
+
+    var actionsHtml = '<div class="modal-actions-left">';
+    if (data.liveUrl) {
+      actionsHtml += '<a class="btn btn-solid" href="' + data.liveUrl + '" target="_blank" rel="noopener noreferrer">Testar Aplicação ao Vivo <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>';
+    }
+    if (data.repoUrl) {
+      actionsHtml += '<a class="btn btn-ghost" href="' + data.repoUrl + '" target="_blank" rel="noopener noreferrer"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg> Repositório no GitHub</a>';
+    }
+    actionsHtml += '</div><button type="button" class="btn-modal-close-text" data-close-modal>Fechar</button>';
+
+    var html = [
+      '<button type="button" class="modal-close" data-close-modal aria-label="Fechar estudo de caso">',
+      '  <svg class="ic" style="width:16px;height:16px;" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>',
+      '</button>',
+      '<div class="modal-tag"><span class="dot" aria-hidden="true"></span>' + data.tag + '</div>',
+      '<h2 class="modal-title">' + data.title + '</h2>',
+      '<p class="modal-sub">' + data.sub + '</p>',
+      '<div class="cs-kpi-bar">' + kpiHtml + '</div>',
+      '<div class="modal-section-title">Visão Geral &amp; Contexto</div>',
+      '<p class="cs-context">' + data.context + '</p>',
+      '<div class="cs-duo-grid">',
+      '  <div class="cs-card-challenge"><h4>O Desafio Técnico</h4><p>' + data.challenge + '</p></div>',
+      '  <div class="cs-card-solution"><h4>A Solução de Engenharia</h4><p>' + data.solution + '</p></div>',
+      '</div>',
+      '<div class="modal-section-title">Decisões de Arquitetura &amp; Pipeline</div>',
+      '<div class="cs-decisions">' + decisionsHtml + '</div>',
+      data.tradeoffs ? '<div class="cs-tradeoffs"><h5>Trade-offs &amp; Restrições de Projeto:</h5><p>' + data.tradeoffs + '</p></div>' : '',
+      '<div class="modal-section-title" style="margin-top:18px;">Stack Utilizada</div>',
+      '<div class="chips">' + stackHtml + '</div>',
+      '<div class="modal-actions">' + actionsHtml + '</div>'
+    ].join('');
+
+    caseStudyContent.innerHTML = html;
+    openModal(caseStudyModal);
+  }
+
+  document.querySelectorAll('.btn-case-study').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var key = btn.getAttribute('data-case');
+      if (key) renderCaseStudy(key);
+    });
+  });
+
+  // Modal delegation for closing
+  document.addEventListener('click', function(e) {
+    if (e.target.matches('[data-close-modal]') || e.target.closest('[data-close-modal]')) {
+      closeAllModals();
+    } else if (e.target.classList.contains('modal-overlay')) {
+      closeAllModals();
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeAllModals();
+    }
+  });
+
+  // Project Category Filter Tabs
+  var filterTabs = document.querySelectorAll('.pf-tab');
+  var projectCells = document.querySelectorAll('.project-cell');
+
+  filterTabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      filterTabs.forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      var filter = tab.getAttribute('data-filter');
+
+      projectCells.forEach(function(cell) {
+        if (filter === 'all') {
+          cell.classList.remove('filtered-out');
+        } else {
+          var categories = (cell.getAttribute('data-category') || '').split(' ');
+          if (categories.indexOf(filter) !== -1) {
+            cell.classList.remove('filtered-out');
+          } else {
+            cell.classList.add('filtered-out');
+          }
+        }
+      });
+    });
+  });
+
 })();
 </script>
 </body>
