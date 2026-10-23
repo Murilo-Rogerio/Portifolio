@@ -52,10 +52,10 @@ O objetivo principal deste projeto é apresentar o meu perfil profissional e té
 ## 🚀 Projetos em Destaque
 
 - **Engemap (WebGIS & AutoCAD):** Mapeamento Móvel de ativos em nível de solo ("Street View" da Engemap: placas, postes Wi-Fi, placas solares) e vetorização em AutoCAD com imagens de drones para traçado geométrico de eixo e bordas de rodovias (14º → 15º mês de contrato).
-- **Arca:** Bloco de notas e organização pessoal PWA com captura de mídias (TikTok/YouTube) via Web Share Target do Android, compressão de imagens no cliente e backend Supabase com RLS.
-- **Nosso Fluxo:** Gestão financeira pessoal completa com cotações automáticas de FIIs/Ações, projeção de recorrências e taxa CDI em tempo real via BrasilAPI.
-- **Vivi Boty:** Catálogo e-commerce e vitrine digital com funil de vendas integrado diretamente ao WhatsApp e painel administrativo privado.
-- **FORJA:** Plataforma PWA de alta performance e mini rede social fitness inspirada no Hevy, com montagem de treinos por IA generativa (Google Gemini), contador de macros e 9 micronutrientes por linguagem natural, heatmap anatômico corporal em vermelho neon e gráficos de 1RM em Canvas 2D.
+- **[Arca](https://github.com/Murilo-Rogerio/Arcaik)** ([Demo](https://arcaik-notes.vercel.app/)): Bloco de notas e organização pessoal PWA com captura de mídias (TikTok/YouTube) via Web Share Target do Android, compressão de imagens no cliente e backend Supabase com RLS.
+- **[Nosso Fluxo](https://github.com/Murilo-Rogerio/nossofluxo)** ([Demo](https://nossofluxo.vercel.app)): Gestão financeira pessoal completa com cotações automáticas de FIIs/Ações, projeção de recorrências e taxa CDI em tempo real via BrasilAPI.
+- **[Vivi Boty](https://github.com/Murilo-Rogerio/Vivi-Boty)** ([Demo](https://www.vivicarvalhoboty.com.br/)): Catálogo e-commerce e vitrine digital com funil de vendas integrado diretamente ao WhatsApp e painel administrativo privado.
+- **[FORJA](https://github.com/Murilo-Rogerio/Forja-gym)** ([Demo](https://theforge-rho.vercel.app)): Plataforma PWA de alta performance e mini rede social fitness inspirada no Hevy, com montagem de treinos por IA generativa (Google Gemini), contador de macros e 9 micronutrientes por linguagem natural, heatmap anatômico corporal em vermelho neon e gráficos de 1RM em Canvas 2D.
 
 ---
 
@@ -75,6 +75,34 @@ O objetivo principal deste projeto é apresentar o meu perfil profissional e té
 ├── index.html         # Estrutura principal, estilos e scripts unificados
 └── README.md          # Documentação do repositório
 ```
+
+---
+
+## 💻 Como Executar Localmente
+
+### Pré-requisitos
+- Navegador web moderno (Chrome, Edge, Firefox, Safari)
+- Servidor estático local simples (ex.: Live Server do VS Code, `npx serve` ou Python `http.server`)
+
+### Passo a Passo
+
+1. **Clone o repositório:**
+```bash
+git clone https://github.com/Murilo-Rogerio/Portifolio.git
+cd Portifolio
+```
+
+2. **Inicie um servidor estático local:**
+```bash
+# Com Python:
+python -m http.server 8000
+
+# Ou com Node.js:
+npx serve .
+```
+
+3. **Acesse no navegador:**
+Abra `http://localhost:8000` (ou a porta informada pelo seu servidor local).
 
 ---
 
