@@ -51,7 +51,7 @@ O objetivo principal deste projeto é apresentar o meu perfil profissional e té
 
 ## 🚀 Projetos em Destaque
 
-- **Engemap (WebGIS):** Suporte técnico a fluxos cartográficos, aerolevantamento e tratamento de dados geoespaciais.
+- **Engemap (WebGIS & AutoCAD):** Mapeamento Móvel de ativos em nível de solo ("Street View" da Engemap: placas, postes Wi-Fi, placas solares) e vetorização em AutoCAD com imagens de drones para traçado geométrico de eixo e bordas de rodovias (14º → 15º mês de contrato).
 - **Arca:** Bloco de notas e organização pessoal PWA com captura de mídias (TikTok/YouTube) via Web Share Target do Android, compressão de imagens no cliente e backend Supabase com RLS.
 - **Nosso Fluxo:** Gestão financeira pessoal completa com cotações automáticas de FIIs/Ações, projeção de recorrências e taxa CDI em tempo real via BrasilAPI.
 - **Vivi Boty:** Catálogo e-commerce e vitrine digital com funil de vendas integrado diretamente ao WhatsApp e painel administrativo privado.
