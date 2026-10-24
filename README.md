@@ -55,7 +55,7 @@ O objetivo principal deste projeto é apresentar o meu perfil profissional e té
 - **[Arca](https://github.com/Murilo-Rogerio/Arcaik)** ([Demo](https://arcaik-notes.vercel.app/)): Bloco de notas e organização pessoal PWA com captura de mídias (TikTok/YouTube) via Web Share Target do Android, compressão de imagens no cliente e backend Supabase com RLS.
 - **[Nosso Fluxo](https://github.com/Murilo-Rogerio/nossofluxo)** ([Demo](https://nossofluxo.vercel.app)): Gestão financeira pessoal completa com cotações automáticas de FIIs/Ações, projeção de recorrências e taxa CDI em tempo real via BrasilAPI.
 - **[Vivi Carvalho Boty](https://github.com/Murilo-Rogerio/Vivi-Boty)** ([Demo](https://www.vivicarvalhoboty.com.br/)): Catálogo e-commerce e vitrine digital com funil de vendas integrado diretamente ao WhatsApp, extração multimodal de cosméticos via Google Gemini 3.8 Flash e painel administrativo com Edge Middleware.
-- **[FORJA](https://github.com/Murilo-Rogerio/Forja-gym)** ([Demo](https://theforge-rho.vercel.app)): Plataforma PWA de alta performance e mini rede social fitness inspirada no Hevy, com montagem de treinos por IA generativa (Google Gemini), contador de macros e 9 micronutrientes por linguagem natural, heatmap anatômico corporal em vermelho neon e gráficos de 1RM em Canvas 2D.
+- **[FORJA](https://github.com/Murilo-Rogerio/Forja-gym)** ([Demo](https://theforge-rho.vercel.app)): Plataforma PWA de alta performance e mini rede social fitness inspirada no Hevy, com AI Coach multifuncional (Google Gemini), contador de macros e 9 micronutrientes por linguagem natural, sincronização em nuvem e feed social em tempo real com Supabase, heatmap anatômico corporal em vermelho neon e gráficos de 1RM em Canvas 2D.
 
 ---
 
