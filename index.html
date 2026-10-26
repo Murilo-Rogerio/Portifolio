@@ -1156,11 +1156,78 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding: 34px 36px;
   box-shadow: 0 25px 60px -15px rgba(0,0,0,0.85), inset 0 1px 0 rgba(255,255,255,0.06);
   transform: translateY(24px) scale(0.97);
   transition: transform .35s var(--ease);
   position: relative;
+}
+
+/* Light Theme & Contrast Overrides for Modals */
+html.theme-light .modal-overlay {
+  background: rgba(15, 23, 42, 0.55);
+}
+html.theme-light .modal-box {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 25px 60px -15px rgba(0,0,0,0.22);
+}
+html.theme-light .cs-kpi-bar {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+html.theme-light .cs-card-challenge {
+  background: rgba(225, 29, 72, 0.05);
+  border-color: rgba(225, 29, 72, 0.22);
+}
+html.theme-light .cs-card-challenge h4 {
+  color: #be123c;
+}
+html.theme-light .cs-card-solution {
+  background: rgba(5, 150, 105, 0.05);
+  border-color: rgba(5, 150, 105, 0.22);
+}
+html.theme-light .cs-card-solution h4 {
+  color: #047857;
+}
+html.theme-light .cs-tradeoffs {
+  background: rgba(124, 58, 237, 0.05);
+  border-color: rgba(124, 58, 237, 0.22);
+}
+html.theme-light .cs-tradeoffs h5 {
+  color: #6d28d9;
+}
+html.theme-light .btn-whatsapp-modal {
+  background: rgba(5, 150, 105, 0.1);
+  border-color: rgba(5, 150, 105, 0.3);
+  color: #047857;
+}
+
+html.theme-contrast .modal-box {
+  background: #000000;
+  border: 2px solid #ffffff;
+}
+html.theme-contrast .cs-kpi-bar {
+  background: #111111;
+  border: 1px solid #ffffff;
+}
+html.theme-contrast .cs-card-challenge {
+  background: #000000;
+  border: 2px solid #ff0055;
+}
+html.theme-contrast .cs-card-solution {
+  background: #000000;
+  border: 2px solid #00ff00;
+}
+html.theme-contrast .cs-tradeoffs {
+  background: #000000;
+  border: 2px solid #00ffff;
+}
+html.theme-contrast .pf-tab.active {
+  background: #ffff00;
+  color: #000000;
+  border-color: #ffffff;
 }
 .modal-overlay.active .modal-box {
   transform: translateY(0) scale(1);
@@ -1363,7 +1430,7 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
   font-family: var(--mono);
   font-size: .95rem;
   font-weight: 600;
-  color: #c4b5fd;
+  color: var(--violet-2);
 }
 .cs-context {
   font-size: .88rem;
@@ -1532,6 +1599,9 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
   box-shadow: 0 0 12px rgba(139,92,246,.4);
 }
 
+.project-cell {
+  transition: opacity .35s var(--ease), transform .35s var(--ease);
+}
 .project-cell.filtered-out {
   display: none !important;
 }
@@ -1710,6 +1780,10 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
       <rect width="22" height="5" x="1" y="3"/>
       <line x1="10" x2="14" y1="12" y2="12"/>
     </symbol>
+    <symbol id="i-x" viewBox="0 0 24 24">
+      <line x1="18" y1="6" x2="6" y2="18"/>
+      <line x1="6" y1="6" x2="18" y2="18"/>
+    </symbol>
   </defs>
 </svg>
 
@@ -1722,7 +1796,7 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
           <span class="avatar-halo" aria-hidden="true"></span>
           <span class="avatar-ring" aria-hidden="true"></span>
           <span class="avatar-core">
-            <img src="https://ifqbuhrhmefqiwrpzvsh.supabase.co/storage/v1/object/public/site-assets/Capa.jpeg" alt="Murilo Rogério">
+            <img src="https://ifqbuhrhmefqiwrpzvsh.supabase.co/storage/v1/object/public/site-assets/Capa.jpeg" alt="Foto de perfil de Murilo Rogério" width="114" height="114" loading="eager" fetchpriority="high">
           </span>
         </div>
         <h1>Murilo Rogério <span class="soft">Carvalho da Conceição</span></h1>
@@ -1891,9 +1965,9 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
         </div>
         <div class="pf-tabs" role="tablist" aria-label="Filtrar projetos por categoria">
           <button type="button" class="pf-tab active" data-filter="all">Todos (5)</button>
-          <button type="button" class="pf-tab" data-filter="webgis">WebGIS</button>
-          <button type="button" class="pf-tab" data-filter="fullstack">Full-Stack</button>
-          <button type="button" class="pf-tab" data-filter="pwa">PWA / Mobile</button>
+          <button type="button" class="pf-tab" data-filter="webgis">WebGIS (1)</button>
+          <button type="button" class="pf-tab" data-filter="fullstack">Full-Stack (4)</button>
+          <button type="button" class="pf-tab" data-filter="pwa">PWA / Mobile (2)</button>
         </div>
       </div>
     </div>
@@ -2551,7 +2625,7 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
 <div class="modal-overlay" id="modal-quickview-overlay" role="dialog" aria-modal="true" aria-label="Resumo Executivo para Recrutadores">
   <div class="modal-box">
     <button type="button" class="modal-close" data-close-modal aria-label="Fechar resumo executivo">
-      <svg class="ic" style="width:16px;height:16px;" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      <svg class="ic" style="width:16px;height:16px;"><use href="#i-x"/></svg>
     </button>
     <div class="modal-tag">
       <span class="dot" aria-hidden="true"></span>
@@ -2668,20 +2742,30 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
   /* BUSCANDO GITHUB LIVE ACTIVITY */
   try {
     fetch('https://api.github.com/users/Murilo-Rogerio/events/public')
-      .then(r => r.json())
-      .then(data => {
-        if(!data || !Array.isArray(data)) return;
-        var pushes = data.filter(e => e.type === 'PushEvent');
-        if(pushes.length > 0) {
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (!data || !Array.isArray(data)) return;
+        var pushes = data.filter(function(e) { return e.type === 'PushEvent'; });
+        var repoEl = document.getElementById('gh-repo');
+        var commitEl = document.getElementById('gh-commit');
+        if (pushes.length > 0) {
           var last = pushes[0];
-          document.getElementById('gh-repo').textContent = last.repo.name.replace('Murilo-Rogerio/', '') + " (Commit)";
-          document.getElementById('gh-commit').textContent = '"' + last.payload.commits[0].message + '"';
+          if (repoEl && last.repo) repoEl.textContent = last.repo.name.replace('Murilo-Rogerio/', '') + " (Commit)";
+          if (commitEl) {
+            var msg = (last.payload && last.payload.commits && last.payload.commits[0] && last.payload.commits[0].message) 
+              ? last.payload.commits[0].message 
+              : 'Atualização de branch/repositório';
+            commitEl.textContent = '"' + msg + '"';
+          }
         } else {
-          document.getElementById('gh-commit').textContent = "Nenhum commit recente nas últimas 24h.";
-          document.getElementById('gh-repo').textContent = "@Murilo-Rogerio";
+          if (commitEl) commitEl.textContent = "Nenhum commit recente nas últimas 24h.";
+          if (repoEl) repoEl.textContent = "@Murilo-Rogerio";
         }
       })
-      .catch(e => { document.getElementById('gh-commit').textContent = "Sistema isolado no momento."; });
+      .catch(function(e) { 
+        var commitEl = document.getElementById('gh-commit');
+        if (commitEl) commitEl.textContent = "Sistema isolado no momento."; 
+      });
   } catch(e) {}
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -2730,6 +2814,21 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
 
   var railLinks = document.querySelectorAll('.rail-item');
   var targetSecs = document.querySelectorAll('#perfil, #summary, #engemap, #arca, #nossofluxo, #viviboty, #forja, #formacao');
+
+  railLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var targetId = link.getAttribute('data-sec');
+      var targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        var parentCell = targetEl.closest('.project-cell');
+        if (parentCell && parentCell.classList.contains('filtered-out')) {
+          // Reseta o filtro para 'all' se o projeto estiver oculto
+          var allTab = document.querySelector('.pf-tab[data-filter="all"]');
+          if (allTab) allTab.click();
+        }
+      }
+    });
+  });
 
   function updateScrollspy() {
     var scrollPos = window.scrollY + 250;
@@ -3345,16 +3444,26 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
     }
   };
 
+  var lastFocusedTrigger = null;
+
   function openModal(modalEl) {
     if (!modalEl) return;
+    lastFocusedTrigger = document.activeElement;
     modalEl.classList.add('active');
     document.body.style.overflow = 'hidden';
+    
+    // Foco acessível no botão fechar
+    var closeBtn = modalEl.querySelector('.modal-close');
+    if (closeBtn) closeBtn.focus();
   }
 
   function closeModal(modalEl) {
     if (!modalEl) return;
     modalEl.classList.remove('active');
     document.body.style.overflow = '';
+    if (lastFocusedTrigger && typeof lastFocusedTrigger.focus === 'function') {
+      lastFocusedTrigger.focus();
+    }
   }
 
   function closeAllModals() {
@@ -3362,6 +3471,9 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
       m.classList.remove('active');
     });
     document.body.style.overflow = '';
+    if (lastFocusedTrigger && typeof lastFocusedTrigger.focus === 'function') {
+      lastFocusedTrigger.focus();
+    }
   }
 
   // Quick View Trigger
@@ -3411,7 +3523,7 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
 
     var html = [
       '<button type="button" class="modal-close" data-close-modal aria-label="Fechar estudo de caso">',
-      '  <svg class="ic" style="width:16px;height:16px;" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>',
+      '  <svg class="ic" style="width:16px;height:16px;"><use href="#i-x"/></svg>',
       '</button>',
       '<div class="modal-tag"><span class="dot" aria-hidden="true"></span>' + data.tag + '</div>',
       '<h2 class="modal-title">' + data.title + '</h2>',
