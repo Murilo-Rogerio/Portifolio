@@ -128,7 +128,8 @@ button{ font:inherit; color:inherit; background:none; border:none; cursor:pointe
 
 :focus-visible{ outline:2px solid rgba(167,139,250,.7); outline-offset:3px; border-radius:6px; }
 
-html.cursor-on:not(.no-effects), html.cursor-on:not(.no-effects) *{ cursor:none !important; }
+/* Native hardware cursor active for instant 0ms response */
+html.cursor-on:not(.no-effects) *{ cursor:revert; }
 
 html.no-effects .spotlight,
 html.no-effects #cursor-dot,
@@ -172,29 +173,23 @@ html.no-effects .panel {
 }
 .spotlight.on{ opacity:1; }
 
-#cursor-dot, #cursor-ring{
-  position:fixed; top:0; left:0; z-index:9999;
+#cursor-ring{
+  position:fixed; top:0; left:0; z-index:9998;
   pointer-events:none; opacity:0;
   border-radius:50%;
+  width:32px; height:32px;
+  border:1.5px solid rgba(167,139,250,.65);
+  box-shadow:0 0 14px rgba(139,92,246,.25);
+  transform:translate3d(-100px,-100px,0) translate(-50%,-50%);
   will-change:transform;
-  transition:opacity .35s ease;
+  transition:opacity .3s ease, border-color .25s ease, width .25s ease, height .25s ease, box-shadow .25s ease;
 }
-#cursor-dot{
-  width:6px; height:6px;
-  background:#cbb8ff;
-  box-shadow:0 0 10px rgba(167,139,250,.7);
-  transform:translate3d(-100px,-100px,0) translate(-50%,-50%);
-}
-#cursor-ring{
-  width:36px; height:36px;
-  border:1.5px solid rgba(167,139,250,.55);
-  transform:translate3d(-100px,-100px,0) translate(-50%,-50%);
-  transition:opacity .35s ease, border-color .3s ease;
-}
-html.cursor-live #cursor-dot,
+#cursor-dot{ display:none !important; }
 html.cursor-live #cursor-ring{ opacity:1; }
 html.cursor-live #cursor-ring.link{
-  border-color:rgba(196,181,253,.9);
+  width:46px; height:46px;
+  border-color:rgba(196,181,253,.95);
+  box-shadow:0 0 20px rgba(167,139,250,.45);
 }
 @media (pointer:coarse){
   #cursor-dot, #cursor-ring{ display:none; }
@@ -368,7 +363,7 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.045);
-  transform:perspective(1100px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateZ(0) translateY(var(--lift,0px));
+  transform:perspective(1100px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateZ(0);
   will-change:transform;
   transition:
     transform .45s var(--ease),
@@ -396,10 +391,9 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
 
 @media (hover:hover){
   .panel:hover{
-    --lift:-4px;
     background-color:var(--surface-2);
     border-color:var(--line-2);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 26px 52px -26px rgba(0,0,0,.75);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 20px 48px -20px rgba(0,0,0,.75);
     transition:
       background-color .35s ease,
       border-color .35s ease,
@@ -1564,6 +1558,35 @@ html.theme-contrast .pf-tab.active {
   flex-wrap: wrap;
   gap: 16px;
   padding: 22px 28px;
+  transform: none !important;
+}
+
+.btn-case-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 13px;
+  border-radius: 999px;
+  background: rgba(139, 92, 246, 0.14);
+  border: 1px solid rgba(167, 139, 250, 0.45);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: .72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .25s ease;
+  white-space: nowrap;
+}
+.btn-case-badge:hover {
+  background: rgba(139, 92, 246, 0.32);
+  border-color: var(--violet-2);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 0 14px rgba(139, 92, 246, 0.4);
+}
+.btn-case-badge .ic {
+  width: 12px;
+  height: 12px;
 }
 .pf-info h2 {
   font-size: 1.15rem;
@@ -1943,7 +1966,7 @@ html.theme-contrast .pf-tab.active {
           </p>
         </section>
 
-        <section class="panel actions tilt" aria-label="Ações rápidas">
+        <section class="panel actions" aria-label="Ações rápidas" style="transform:none!important;">
           <h2>Ações Rápidas</h2>
           <p class="a-sub">Acesso direto ao resumo executivo e contato imediato.</p>
           <button class="act act-solid" type="button" id="cv-btn">
@@ -1985,6 +2008,12 @@ html.theme-contrast .pf-tab.active {
             <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>14º → 15º mês (Último mês)</span>
             <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>WebGIS &amp; AutoCAD</span>
             <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>Mapeamento Móvel &amp; Drone</span>
+          
+            <button type="button" class="btn-case-badge btn-case-study" data-case="engemap" aria-label="Abrir estudo de caso">
+              <svg class="ic" aria-hidden="true"><use href="#i-award"/></svg>
+              Estudo de Caso
+              <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+            </button>
           </div>
           <div class="p-widget" aria-hidden="true">
             <span class="w-label">Mapeamento Móvel &amp; Eixo Rodoviário</span>
@@ -2102,6 +2131,12 @@ html.theme-contrast .pf-tab.active {
             <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Tailwind CSS</span>
             <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Supabase RLS</span>
             <span class="badge"><span class="bdot b-rose" aria-hidden="true"></span>PWA / Share Target</span>
+          
+            <button type="button" class="btn-case-badge btn-case-study" data-case="arca" aria-label="Abrir estudo de caso">
+              <svg class="ic" aria-hidden="true"><use href="#i-award"/></svg>
+              Estudo de Caso
+              <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+            </button>
           </div>
           <div class="p-widget" aria-hidden="true">
             <span class="w-label">Organização &amp; Mídias</span>
@@ -2199,6 +2234,12 @@ html.theme-contrast .pf-tab.active {
             <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>TypeScript</span>
             <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Supabase</span>
             <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Fintech</span>
+          
+            <button type="button" class="btn-case-badge btn-case-study" data-case="nossofluxo" aria-label="Abrir estudo de caso">
+              <svg class="ic" aria-hidden="true"><use href="#i-award"/></svg>
+              Estudo de Caso
+              <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+            </button>
           </div>
           <div class="p-widget" aria-hidden="true">
             <span class="w-label">Risco × Retorno · ao vivo</span>
@@ -2294,6 +2335,12 @@ html.theme-contrast .pf-tab.active {
             <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Tailwind CSS</span>
             <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>Supabase Auth/RLS</span>
             <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>E-commerce</span>
+          
+            <button type="button" class="btn-case-badge btn-case-study" data-case="viviboty" aria-label="Abrir estudo de caso">
+              <svg class="ic" aria-hidden="true"><use href="#i-award"/></svg>
+              Estudo de Caso
+              <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+            </button>
           </div>
           <div class="p-widget" aria-hidden="true">
             <span class="w-label">Sacola · Click-to-Chat</span>
@@ -2379,6 +2426,12 @@ html.theme-contrast .pf-tab.active {
             <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>HTML5 Canvas 2D</span>
             <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Supabase Cloud</span>
             <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Strava API</span>
+          
+            <button type="button" class="btn-case-badge btn-case-study" data-case="forja" aria-label="Abrir estudo de caso">
+              <svg class="ic" aria-hidden="true"><use href="#i-award"/></svg>
+              Estudo de Caso
+              <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+            </button>
           </div>
           <div class="p-widget" aria-hidden="true">
             <span class="w-label">Treino &amp; Carga · e1RM ao vivo</span>
@@ -3095,10 +3148,9 @@ html.theme-contrast .pf-tab.active {
     }, { passive: true });
   }
 
-  var dot  = document.getElementById("cursor-dot");
   var ring = document.getElementById("cursor-ring");
 
-  if (dot && ring && finePointer && !reduceMotion) {
+  if (ring && finePointer && !reduceMotion) {
     document.documentElement.classList.add("cursor-on");
 
     var mx = -100, my = -100;
@@ -3110,15 +3162,15 @@ html.theme-contrast .pf-tab.active {
     function tickRing() {
       var dx = mx - rx;
       var dy = my - ry;
-      if (Math.abs(dx) > 0.15 || Math.abs(dy) > 0.15) {
-        rx += dx * 0.18;
-        ry += dy * 0.18;
-        ring.style.transform = "translate3d(" + rx.toFixed(1) + "px," + ry.toFixed(1) + "px,0) translate(-50%,-50%) scale(" + (isLink ? "1.65" : "1") + ")";
+      if (Math.abs(dx) > 0.2 || Math.abs(dy) > 0.2) {
+        rx += dx * 0.32;
+        ry += dy * 0.32;
+        ring.style.transform = "translate3d(" + rx.toFixed(1) + "px," + ry.toFixed(1) + "px,0) translate(-50%,-50%)";
         requestAnimationFrame(tickRing);
       } else {
         rx = mx;
         ry = my;
-        ring.style.transform = "translate3d(" + rx.toFixed(1) + "px," + ry.toFixed(1) + "px,0) translate(-50%,-50%) scale(" + (isLink ? "1.65" : "1") + ")";
+        ring.style.transform = "translate3d(" + rx.toFixed(1) + "px," + ry.toFixed(1) + "px,0) translate(-50%,-50%)";
         ringRunning = false;
       }
     }
@@ -3132,13 +3184,13 @@ html.theme-contrast .pf-tab.active {
 
     document.addEventListener("pointermove", function (e) {
       if (document.documentElement.classList.contains('no-effects')) return;
-      mx = e.clientX; my = e.clientY;
-      dot.style.transform = "translate3d(" + mx + "px," + my + "px,0) translate(-50%,-50%)";
+      mx = e.clientX;
+      my = e.clientY;
       if (!cursorShown) {
         cursorShown = true;
         rx = mx; ry = my;
         document.documentElement.classList.add("cursor-live");
-        ring.style.transform = "translate3d(" + rx.toFixed(1) + "px," + ry.toFixed(1) + "px,0) translate(-50%,-50%) scale(" + (isLink ? "1.65" : "1") + ")";
+        ring.style.transform = "translate3d(" + rx.toFixed(1) + "px," + ry.toFixed(1) + "px,0) translate(-50%,-50%)";
       }
       wakeRing();
     }, { passive: true });
@@ -3154,11 +3206,10 @@ html.theme-contrast .pf-tab.active {
 
     document.addEventListener("mouseover", function (e) {
       if (!e.target || !e.target.closest) return;
-      var hit = !!e.target.closest("a, button, .chip, [data-copy], .rail-item, input, textarea, select");
+      var hit = !!e.target.closest("a, button, .chip, [data-copy], .rail-item, input, textarea, select, .pf-tab");
       if (hit !== isLink) {
         isLink = hit;
         ring.classList.toggle("link", isLink);
-        wakeRing();
       }
     }, { passive: true });
   }
@@ -3309,13 +3360,9 @@ html.theme-contrast .pf-tab.active {
   /* Geração do Currículo PDF Executivo */
   var cvBtn = document.getElementById("cv-btn");
   if (cvBtn) {
-    cvBtn.addEventListener("click", function () {
-      var w = window.open("", "_blank");
-
-      if (!w) {
-        showToast("Permita pop-ups no navegador para visualizar o PDF");
-        return;
-      }
+    cvBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      try {
 
       var cvHtml = [
         "<!DOCTYPE html><html lang='pt-BR'><head><meta charset='UTF-8'>",
@@ -3410,14 +3457,24 @@ html.theme-contrast .pf-tab.active {
         "</body></html>"
       ].join("");
 
-      w.document.open();
-      w.document.write(cvHtml);
-      w.document.close();
-      w.document.title = "Currículo Executivo — Murilo Rogério";
-
-      showToast("Currículo executivo gerado em nova aba");
-    });
-  }
+      var blob = new Blob([cvHtml], { type: "text/html;charset=utf-8" });
+      var blobUrl = URL.createObjectURL(blob);
+      var win = window.open(blobUrl, "_blank");
+      if (!win || win.closed || typeof win.closed === "undefined") {
+        var a = document.createElement("a");
+        a.href = blobUrl;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() { a.remove(); }, 200);
+      }
+      showToast("Currículo executivo gerado com sucesso!");
+    } catch (err) {
+      showToast("Permita pop-ups no navegador para visualizar o PDF");
+    }
+  });
+}
 
   /* DADOS E CONTROLADORES DE ESTUDO DE CASO E VISÃO RÁPIDA */
   var caseStudiesData = {
@@ -3641,12 +3698,14 @@ html.theme-contrast .pf-tab.active {
     openModal(caseStudyModal);
   }
 
-  document.querySelectorAll('.btn-case-study').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
+  // Event delegation: garante que qualquer botão de estudo de caso funcione instantaneamente
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.btn-case-study');
+    if (btn) {
       e.preventDefault();
       var key = btn.getAttribute('data-case');
       if (key) renderCaseStudy(key);
-    });
+    }
   });
 
   // Modal delegation for closing
@@ -3669,10 +3728,13 @@ html.theme-contrast .pf-tab.active {
   var projectCells = document.querySelectorAll('.project-cell');
 
   filterTabs.forEach(function(tab) {
-    tab.addEventListener('click', function() {
+    tab.addEventListener('click', function(e) {
+      e.preventDefault();
+      var filter = tab.getAttribute('data-filter');
+      if (!filter) return;
+
       filterTabs.forEach(function(t) { t.classList.remove('active'); });
       tab.classList.add('active');
-      var filter = tab.getAttribute('data-filter');
 
       projectCells.forEach(function(cell) {
         if (filter === 'all') {
@@ -3686,6 +3748,12 @@ html.theme-contrast .pf-tab.active {
           }
         }
       });
+
+      // Invalida rects cacheados para que o tilt e luz usem posições precisas dos cards visíveis
+      document.querySelectorAll('.panel').forEach(function(c) { c._rect = null; });
+      if (typeof updateScrollspy === 'function') {
+        updateScrollspy();
+      }
     });
   });
 
