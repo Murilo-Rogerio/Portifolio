@@ -51,7 +51,7 @@ O objetivo principal deste projeto é apresentar o meu perfil profissional e té
 
 ## 🚀 Projetos em Destaque
 
-- **Engemap (WebGIS & AutoCAD):** Mapeamento Móvel de ativos em nível de solo ("Street View" da Engemap: placas, postes Wi-Fi, placas solares) e vetorização em AutoCAD com imagens de drones para traçado geométrico de eixo e bordas de rodovias (14º → 15º mês de contrato).
+- **Engemap (WebGIS & AutoCAD):** Mapeamento Móvel de ativos em nível de solo (visualizador 360°: placas, postes Wi-Fi, placas solares) e vetorização em AutoCAD com imagens de drones para traçado geométrico de eixo e bordas de rodovias (14º → 15º mês de contrato).
 - **[Arca](https://github.com/Murilo-Rogerio/Arcaik)** ([Demo](https://arcaik-notes.vercel.app/)): Bloco de notas e organização pessoal PWA com captura de mídias (TikTok/YouTube) via Web Share Target do Android, compressão de imagens no cliente e backend Supabase com RLS.
 - **[Nosso Fluxo](https://github.com/Murilo-Rogerio/nossofluxo)** ([Demo](https://nossofluxo.vercel.app)): Gestão financeira pessoal completa com cotações automáticas de FIIs/Ações, projeção de recorrências e taxa CDI em tempo real via BrasilAPI.
 - **[Vivi Carvalho Boty](https://github.com/Murilo-Rogerio/Vivi-Boty)** ([Demo](https://www.vivicarvalhoboty.com.br/)): Catálogo e-commerce e vitrine digital com funil de vendas integrado diretamente ao WhatsApp, extração multimodal de cosméticos via Google Gemini 3.8 Flash e painel administrativo com Edge Middleware.
