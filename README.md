@@ -2,7 +2,7 @@
 
 [![Status](https://img.shields.io/badge/Status-Ativo-brightgreen?style=flat-square)]()
 [![Tecnologias](https://img.shields.io/badge/Techs-HTML5%20%7C%20CSS3%20%7C%20JS%20Vanilla-blue?style=flat-square)]()
-[![Licença](https://img.shields.io/badge/Licen%C3%A7a-MIT-violet?style=flat-square)]()
+[![Licença](https://img.shields.io/badge/Licen%C3%A7a-MIT-violet?style=flat-square)](LICENSE)
 [![Deploy](https://img.shields.io/badge/Deploy-Vercel-black?logo=vercel&style=flat-square)](https://meuportifolio-pessoal.vercel.app/)
 
 Portfólio web moderno, de alto desempenho e totalmente responsivo, desenvolvido com arquitetura Bento Grid. O projeto reúne a minha trajetória acadêmica, experiências profissionais (como na Engemap Geoinformação), competências técnicas em **Desenvolvimento Full-Stack**, **Geotecnologia & WebGIS** e **Robótica/Automação**, além das minhas aplicações em produção.
