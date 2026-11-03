@@ -2,6 +2,8 @@
 
 [![Status](https://img.shields.io/badge/Status-Ativo-brightgreen?style=flat-square)]()
 [![Tecnologias](https://img.shields.io/badge/Techs-HTML5%20%7C%20CSS3%20%7C%20JS%20Vanilla-blue?style=flat-square)]()
+[![Design](https://img.shields.io/badge/Design-Bento%20Grid%20%7C%20Dark%20Mode-violet?style=flat-square)]()
+[![Acessibilidade](https://img.shields.io/badge/A11y-WCAG%202.1%20AA-success?style=flat-square)]()
 [![Licença](https://img.shields.io/badge/Licen%C3%A7a-MIT-violet?style=flat-square)](LICENSE)
 [![Deploy](https://img.shields.io/badge/Deploy-Vercel-black?logo=vercel&style=flat-square)](https://meuportifolio-pessoal.vercel.app/)
 
