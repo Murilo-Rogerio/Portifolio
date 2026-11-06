@@ -158,9 +158,7 @@ html.no-effects .panel {
 }
 
 .grain{
-  position:fixed; inset:0; z-index:60; pointer-events:none; opacity:.028;
-  transform:translateZ(0); will-change:opacity;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  display:none !important;
 }
 
 .spotlight{
@@ -170,6 +168,7 @@ html.no-effects .panel {
   background:radial-gradient(circle, rgba(139,92,246,.12), rgba(56,130,246,.06) 42%, transparent 70%);
   opacity:0; transition:opacity .8s ease;
   will-change:transform;
+  contain:strict;
 }
 .spotlight.on{ opacity:1; }
 
@@ -360,16 +359,16 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
   border-radius:24px;
   background:var(--surface);
   border:1px solid var(--line);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.045);
-  transform:perspective(1100px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateZ(0);
-  will-change:transform;
   transition:
-    transform .45s var(--ease),
-    background-color .35s ease,
-    border-color .35s ease,
-    box-shadow .35s ease;
+    transform .35s var(--ease),
+    background-color .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease;
+}
+
+.panel.tilt{
+  transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
 }
 
 .panel::before{
@@ -395,16 +394,20 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
     border-color:var(--line-2);
     box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 20px 48px -20px rgba(0,0,0,.75);
     transition:
-      background-color .35s ease,
-      border-color .35s ease,
-      box-shadow .35s ease;
+      background-color .3s ease,
+      border-color .3s ease,
+      box-shadow .3s ease;
+  }
+  .panel.tilt:hover{
+    will-change:transform;
+    transition:
+      transform .08s linear,
+      background-color .3s ease,
+      border-color .3s ease,
+      box-shadow .3s ease;
   }
   .panel:hover::before,
   .panel:hover::after{ opacity:1; }
-}
-
-@supports not (backdrop-filter:blur(1px)){
-  .panel{ background:var(--bg); }
 }
 
 .profile{
@@ -1101,7 +1104,6 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
   .p-desc{ font-size:.9rem; }
   .foot{ flex-direction:column; align-items:flex-start; gap:10px; }
   .f-copy{ margin:0; }
-  .panel{ backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
   .marquee-track > span{ font-size:.66rem; letter-spacing:.14em; }
 }
 
@@ -2079,12 +2081,12 @@ html.theme-contrast .ai-modal-col.ai {
       <section class="panel summary tilt" id="summary">
         <div class="spec-head">Resumo Profissional</div>
         <p>
-          Atuação corporativa na <strong>Engemap</strong> em Produção de <strong>WebGIS</strong> e <strong>AutoCAD</strong>: especialista em Mapeamento Móvel via visualizador 360° no WebGIS para cadastro de placas, postes Wi-Fi e placas solares, e vetorização de imagens de <strong>drones</strong> para traçado preciso do <strong>eixo e bordas de rodovias</strong>. Histórico com diagnóstico formal de <strong>Altas Habilidades / Superdotação (AH/SD)</strong>.
+          Atuação corporativa na <strong>Engemap</strong> em Produção de <strong>WebGIS</strong> e <strong>AutoCAD</strong>: especialista em Mapeamento Móvel via visualizador 360° no WebGIS para cadastro de placas, postes Wi-Fi e placas solares, e vetorização de imagens de <strong>drones</strong> para traçado preciso do <strong>eixo e bordas de rodovias</strong>. Contrato formal de 15 meses (15º e último mês · término em 19/11), com transição ágil para a Produção técnica por volta do 11º mês devido à baixa demanda de projetos externos. Histórico com diagnóstico formal de <strong>Altas Habilidades / Superdotação (AH/SD)</strong>.
         </p>
         <div class="metrics">
           <div class="metric">
-            <b><span data-count="14">0</span><em>º → 15º</em></b>
-            <span>mês de contrato corporativo (último mês)</span>
+            <b id="engemap-metric-num"><span data-count="15">0</span><em>º mês</em></b>
+            <span id="engemap-metric-label">último mês de contrato (encerra dia 19/11)</span>
           </div>
           <div class="metric">
             <b><span data-count="4">0</span><em>+</em></b>
@@ -2114,7 +2116,7 @@ html.theme-contrast .ai-modal-col.ai {
           <div class="frow"><dt>Modalidade</dt><dd>Remoto, Híbrido ou Presencial</dd></div>
           <div class="frow"><dt>Foco Técnico</dt><dd>WebGIS · AutoCAD · Dev Web</dd></div>
           <div class="frow"><dt>Perfil</dt><dd>AH/SD · rápida assimilação lógica</dd></div>
-          <div class="frow"><dt>Contrato</dt><dd>Engemap · 14º p/ 15º mês (Último mês)</dd></div>
+          <div class="frow"><dt>Contrato</dt><dd id="engemap-ficha-contrato">Engemap · 15 meses (15º mês · Encerra dia 19/11)</dd></div>
         </dl>
       </section>
     </div>
@@ -2197,7 +2199,7 @@ html.theme-contrast .ai-modal-col.ai {
       <article class="panel project tilt" id="engemap">
         <div class="panel-head">
           <div class="p-badges">
-            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>14º → 15º mês (Último mês)</span>
+            <span class="badge" id="engemap-badge"><span class="bdot b-green" aria-hidden="true"></span>Contrato de 15 meses · 15º mês (Encerra dia 19/11)</span>
             <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>WebGIS &amp; AutoCAD</span>
             <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>Mapeamento Móvel &amp; Drone</span>
           
@@ -2257,10 +2259,10 @@ html.theme-contrast .ai-modal-col.ai {
                 <div class="xp-body">
                   <div class="xp-head">
                     <h4>Jovem Aprendiz — Mapeamento Móvel &amp; CAD Rodoviário</h4>
-                    <span class="chip live">Atual · 14º → 15º mês</span>
+                    <span class="chip live" id="engemap-role-chip">Atual · Encerramento em 19/11/2026</span>
                   </div>
                   <p>
-                    Atuação técnica na Produção dividida em duas frentes de alta precisão: no <strong>WebGIS</strong>, utilizando o sistema de Mapeamento Móvel (visualizador 360°) para identificar e marcar no mapa ativos como placas de sinalização (especificações e tipos), postes de Wi-Fi e placas solares; no <strong>AutoCAD</strong>, processando mosaicos de imagens de <strong>drone</strong> para traçar com precisão milimétrica as linhas do <strong>eixo da rodovia</strong> e as <strong>linhas de borda</strong> da pista.
+                    Atuação técnica na Produção dividida em duas frentes de alta precisão: no <strong>WebGIS</strong>, utilizando o sistema de Mapeamento Móvel (visualizador 360°) para identificar e marcar no mapa ativos como placas de sinalização (especificações e tipos), postes de Wi-Fi e placas solares; no <strong>AutoCAD</strong>, processando mosaicos de imagens de <strong>drone</strong> para traçado preciso do <strong>eixo geométrico da rodovia</strong> e as <strong>linhas de borda</strong> da pista. Transição realizada por volta do 11º mês de contrato para suprir demandas técnicas de engenharia.
                   </p>
                 </div>
               </article>
@@ -2269,11 +2271,11 @@ html.theme-contrast .ai-modal-col.ai {
                 <span class="xp-dot" aria-hidden="true"></span>
                 <div class="xp-body">
                   <div class="xp-head">
-                    <h4>Jovem Aprendiz — Auxiliar Pessoal no RH</h4>
-                    <span class="chip">10 meses</span>
+                    <h4>Jovem Aprendiz — Auxiliar de Departamento Pessoal (RH)</h4>
+                    <span class="chip">1º ao 11º mês</span>
                   </div>
                   <p>
-                    Gestão meticulosa de processos internos, organização documental e suporte operacional ao departamento pessoal até a transição para a Produção técnica.
+                    Gestão meticulosa de processos internos, organização documental e suporte operacional ao departamento pessoal por ~11 meses, até a transição ágil para a Produção técnica motivada por baixa demanda e readequação estratégica de projetos.
                   </p>
                 </div>
               </article>
@@ -2290,8 +2292,8 @@ html.theme-contrast .ai-modal-col.ai {
             <div class="spec-head">Contrato de Aprendizagem</div>
             <div class="contract">
               <div class="c-top">
-                <span class="c-range">Out/2025 → Nov/2026</span>
-                <span class="c-len">14º → 15º mês (Último mês de contrato)</span>
+                <span class="c-range" id="engemap-range">Ago/2025 → 19/Nov/2026</span>
+                <span class="c-len" id="engemap-len">Contrato de 15 meses (15º mês · Encerramento em 19/11)</span>
               </div>
               <div class="c-track" role="progressbar" aria-label="Progresso do contrato de aprendizagem" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="c-bar">
                 <div class="c-fill" id="c-fill"></div>
@@ -2304,9 +2306,9 @@ html.theme-contrast .ai-modal-col.ai {
 
             <div class="spec-head" style="margin-top:24px">Setores de Atuação</div>
             <div class="c-areas">
-              <span class="chip core">Mapeamento Móvel (WebGIS)</span>
-              <span class="chip core">AutoCAD &amp; Drone (Atual)</span>
-              <span class="chip">RH · Depto Pessoal</span>
+              <span class="chip core">Produção: Mapeamento Móvel (WebGIS)</span>
+              <span class="chip core">Produção: AutoCAD &amp; Drone (11º ao 15º mês)</span>
+              <span class="chip">RH · Depto Pessoal (1º ao 11º mês)</span>
             </div>
           </div>
         </div>
@@ -2924,7 +2926,7 @@ html.theme-contrast .ai-modal-col.ai {
       </div>
       <div class="modal-kpi-item">
         <span>Vivência / Contrato</span>
-        <strong>14º → 15º mês (Último mês)</strong>
+        <strong id="quickview-kpi-contrato">Contrato 15 meses · 15º mês (Encerra 19/11)</strong>
       </div>
     </div>
 
@@ -2934,8 +2936,7 @@ html.theme-contrast .ai-modal-col.ai {
         <strong>Capacidade de Resolução Rápida (AH/SD):</strong> Diagnóstico formal atestando velocidade incomum de assimilação lógica e abstração sistêmica.
       </div>
       <div class="modal-bullet">
-        <strong>Atuação Técnica na Engemap:</strong> Mapeamento Móvel em WebGIS (visualizador 360° para cadastro de placas de trânsito, postes Wi-Fi e placas solares) e vetorização em AutoCAD com imagens de drone para traçado do eixo e bordas de rodovias.
-      </div>
+        <strong>Atuação Corporativa na Engemap (15 meses):</strong> Transição ágil no 11º mês para a Produção técnica (WebGIS 360° e AutoCAD com drones para traçado geométrico rodoviário) em virtude de baixa demanda no setor inicial, comprovando flexibilidade cognitiva e rápido domínio prático.</div>
       <div class="modal-bullet">
         <strong>Projetos em Produção Real:</strong> Aplicações operando com arquiteturas modernas (Next.js 15, React 18, Supabase RLS, PWA Offline-First, Canvas 2D).
       </div>
@@ -3140,16 +3141,20 @@ html.theme-contrast .ai-modal-col.ai {
 
   var progressEl = document.getElementById("progress");
   var progressPending = false;
+  var maxScroll = 1;
+
+  function updateMaxScroll() {
+    maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+  }
+  updateMaxScroll();
 
   function updateProgress() {
     progressPending = false;
     if (!progressEl) return;
-    var doc = document.documentElement;
-    var max = (doc.scrollHeight - window.innerHeight);
-    var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+    var pct = (window.scrollY / maxScroll) * 100;
     if (pct < 0) pct = 0;
     if (pct > 100) pct = 100;
-    progressEl.style.width = pct.toFixed(2) + "%";
+    progressEl.style.width = pct.toFixed(1) + "%";
     progressEl.setAttribute("aria-valuenow", String(Math.round(pct)));
   }
 
@@ -3164,6 +3169,22 @@ html.theme-contrast .ai-modal-col.ai {
   var railLinks = document.querySelectorAll('.rail-item');
   var targetSecs = document.querySelectorAll('#perfil, #summary, #engemap, #arca, #nossofluxo, #viviboty, #forja, #formacao');
 
+  var secOffsets = [];
+  function cacheSecOffsets() {
+    secOffsets = [];
+    targetSecs.forEach(function(sec) {
+      var id = sec.getAttribute('id');
+      if (id) {
+        secOffsets.push({
+          id: id,
+          top: sec.offsetTop,
+          height: sec.offsetHeight
+        });
+      }
+    });
+  }
+  cacheSecOffsets();
+
   railLinks.forEach(function(link) {
     link.addEventListener('click', function(e) {
       var targetId = link.getAttribute('data-sec');
@@ -3171,7 +3192,6 @@ html.theme-contrast .ai-modal-col.ai {
       if (targetEl) {
         var parentCell = targetEl.closest('.project-cell');
         if (parentCell && parentCell.classList.contains('filtered-out')) {
-          // Reseta o filtro para 'all' se o projeto estiver oculto
           var allTab = document.querySelector('.pf-tab[data-filter="all"]');
           if (allTab) allTab.click();
         }
@@ -3183,17 +3203,15 @@ html.theme-contrast .ai-modal-col.ai {
   function updateScrollspy() {
     scrollspyPending = false;
     var scrollPos = window.scrollY + 250;
-    targetSecs.forEach(function(sec) {
-      var id = sec.getAttribute('id');
-      if (!id) return;
-      var top = sec.offsetTop;
-      var height = sec.offsetHeight;
-      if (scrollPos >= top && scrollPos < top + height) {
+    for (var i = 0; i < secOffsets.length; i++) {
+      var item = secOffsets[i];
+      if (scrollPos >= item.top && scrollPos < item.top + item.height) {
         railLinks.forEach(function(link) {
-          link.classList.toggle('active', link.getAttribute('data-sec') === id);
+          link.classList.toggle('active', link.getAttribute('data-sec') === item.id);
         });
+        break;
       }
-    });
+    }
   }
   window.addEventListener('scroll', function() {
     if (!scrollspyPending) {
@@ -3275,7 +3293,7 @@ html.theme-contrast .ai-modal-col.ai {
       '<span class="tk-com">// Trajetória profissional e acadêmica condensada</span>',
       '<span class="tk-kw">export class</span> <span class="tk-prop">TrajetoriaProfissional</span> <span class="tk-pun">{</span>',
       '  <span class="tk-prop">ensinoMedio</span> <span class="tk-pun">=</span> <span class="tk-str">"Escola Dr. Clybas (3º Ano - 2026)"</span><span class="tk-pun">;</span>',
-      '  <span class="tk-prop">experienciaAtual</span> <span class="tk-pun">=</span> <span class="tk-str">"Engemap (14º → 15º mês · Mapeamento & CAD)"</span><span class="tk-pun">;</span>',
+      '  <span class="tk-prop">experienciaAtual</span> <span class="tk-pun">=</span> <span class="tk-str">"Engemap (15º mês · Encerra dia 19/11/2026)"</span><span class="tk-pun">;</span>',
       '  <span class="tk-prop">perfilCognitivo</span> <span class="tk-pun">=</span> <span class="tk-str">"Altas Habilidades / Superdotação (AH/SD)"</span><span class="tk-pun">;</span>',
       '  <span class="tk-prop">objetivo</span> <span class="tk-pun">=</span> <span class="tk-str">"Desenvolvimento Web & Soluções Geoespaciais"</span><span class="tk-pun">;</span>',
       '<span class="tk-pun">}</span>'
@@ -3346,14 +3364,14 @@ html.theme-contrast .ai-modal-col.ai {
         if (!r) return;
         var relX = curX - r.left;
         var relY = curY - r.top;
-        card.style.setProperty("--mx", relX.toFixed(1) + "px");
-        card.style.setProperty("--my", relY.toFixed(1) + "px");
+        card.style.setProperty("--mx", relX.toFixed(0) + "px");
+        card.style.setProperty("--my", relY.toFixed(0) + "px");
 
         if (isTilt && r.width > 0 && r.height > 0) {
           var px = (relX / r.width)  - 0.5;
           var py = (relY / r.height) - 0.5;
-          card.style.setProperty("--ry", (px * 5).toFixed(2) + "deg");
-          card.style.setProperty("--rx", (py * -5).toFixed(2) + "deg");
+          card.style.setProperty("--ry", (px * 4).toFixed(1) + "deg");
+          card.style.setProperty("--rx", (py * -4).toFixed(1) + "deg");
         }
       }
 
@@ -3387,12 +3405,19 @@ html.theme-contrast .ai-modal-col.ai {
       }, { passive: true });
     });
 
-    window.addEventListener("scroll", function () {
-      cards.forEach(function (c) { c._rect = null; });
-    }, { passive: true });
-
+    var resizePending = false;
     window.addEventListener("resize", function () {
-      cards.forEach(function (c) { c._rect = null; });
+      if (!resizePending) {
+        resizePending = true;
+        requestAnimationFrame(function () {
+          resizePending = false;
+          cards.forEach(function (c) { c._rect = null; });
+          if (typeof cacheSecOffsets === "function") cacheSecOffsets();
+          if (typeof updateMaxScroll === "function") updateMaxScroll();
+          if (typeof updateProgress === "function") updateProgress();
+          if (typeof updateScrollspy === "function") updateScrollspy();
+        });
+      }
     }, { passive: true });
   }
 
@@ -3575,22 +3600,70 @@ html.theme-contrast .ai-modal-col.ai {
   var barEl  = document.getElementById("c-bar");
   if (fillEl && pctEl && daysEl) {
     var DAY   = 86400000;
-    var start = new Date(2025, 9, 1).getTime();
-    var end   = new Date(2026, 10, 30).getTime();
+    var start = new Date(2025, 7, 19).getTime(); // 19/Ago/2025 (Início formal do contrato de 15 meses)
+    var end   = new Date(2026, 10, 19, 23, 59, 59).getTime(); // 19/Nov/2026 23:59:59 (Término oficial do contrato)
     var now   = Date.now();
+    var isContractFinished = (now >= end);
     var pct, text;
 
     if (now <= start) {
       pct = 0;
       text = "inicia em " + Math.ceil((start - now) / DAY) + " dias";
-    } else if (now >= end) {
+    } else if (isContractFinished) {
       pct = 100;
-      text = "contrato concluído";
+      text = "Contrato de 15 meses concluído com sucesso e cumprimento integral";
+
+      // Transição automática para status finalizado após dia 19/11
+      var engBadge = document.getElementById("engemap-badge");
+      if (engBadge) engBadge.innerHTML = '<span class="bdot b-green" aria-hidden="true"></span>15 meses cumpridos (Concluído com sucesso)';
+
+      var engRoleChip = document.getElementById("engemap-role-chip");
+      if (engRoleChip) {
+        engRoleChip.textContent = "Concluído · 15 meses integrais cumpridos";
+        engRoleChip.className = "chip";
+      }
+
+      var engRange = document.getElementById("engemap-range");
+      if (engRange) engRange.textContent = "Ago/2025 → 19/Nov/2026 (15 meses)";
+
+      var engLen = document.getElementById("engemap-len");
+      if (engLen) engLen.textContent = "Contrato de 15 meses concluído com êxito (100% cumprido)";
+
+      var engFicha = document.getElementById("engemap-ficha-contrato");
+      if (engFicha) engFicha.textContent = "Engemap · 15 meses concluídos com êxito";
+
+      var qvKpi = document.getElementById("quickview-kpi-contrato");
+      if (qvKpi) qvKpi.textContent = "15 meses concluídos (Disponibilidade Imediata)";
+
+      var metricLabel = document.getElementById("engemap-metric-label");
+      if (metricLabel) metricLabel.textContent = "meses concluídos com êxito na Engemap";
+
+      var metricNum = document.getElementById("engemap-metric-num");
+      if (metricNum) metricNum.innerHTML = '<span data-count="15">15</span><em> meses</em>';
+
+      if (typeof caseStudiesData !== "undefined" && caseStudiesData.engemap) {
+        caseStudiesData.engemap.tag = "ESTUDO DE CASO TÉCNICO · AGO/2025 → 19/NOV/2026 · CONCLUÍDO COM SUCESSO";
+        caseStudiesData.engemap.kpis[0].val = "15 meses concluídos com sucesso";
+      }
+
+      if (typeof terminalSnippets !== "undefined" && terminalSnippets.trajetoria) {
+        terminalSnippets.trajetoria[3] = '  <span class="tk-prop">experienciaAnterior</span> <span class="tk-pun">=</span> <span class="tk-str">"Engemap (15 meses concluídos com êxito · Mapeamento & CAD)"</span><span class="tk-pun">;</span>';
+      }
     } else {
-      pct = (now - start) / (end - start) * 100;
-      var done = Math.floor((now - start) / DAY);
-      var left = Math.ceil((end - now) / DAY);
-      text = done + " dias decorridos · " + left + " restantes";
+      pct = Math.min(99, Math.max(0, (now - start) / (end - start) * 100));
+      var nowDate = new Date(now);
+      var startMidnight = new Date(2025, 7, 19).getTime();
+      var targetMidnight = new Date(2026, 10, 19).getTime();
+      var todayMidnight = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate()).getTime();
+
+      var done = Math.max(0, Math.floor((todayMidnight - startMidnight) / DAY));
+      var left = Math.max(0, Math.round((targetMidnight - todayMidnight) / DAY));
+
+      if (left === 0) {
+        text = done + " dias decorridos · Último dia de contrato (encerra hoje!)";
+      } else {
+        text = done + " dias decorridos · " + left + " restantes (encerra dia 19/11)";
+      }
     }
 
     pctEl.textContent = Math.round(pct) + "%";
@@ -3693,7 +3766,7 @@ html.theme-contrast .ai-modal-col.ai {
         "  <h2>Experiência Corporativa</h2>",
         "  <div class='item'>",
         "    <h3>Engemap — Engenharia e Aerolevantamento</h3>",
-        "    <p class='meta'>Jovem Aprendiz · 14º indo para o 15º mês (Último mês de contrato)</p>",
+        "    <p class=\'meta\'>Jovem Aprendiz · Contrato de 15 meses (15º mês · Encerramento em 19/11/2026)</p>",
         "    <ul>",
         "      <li><strong>Mapeamento Móvel &amp; WebGIS:</strong> Identificação, georreferenciamento e catalogação espacial de ativos em sistema de visualização 360° no WebGIS, incluindo placas de sinalização (especificações e tipos), postes de telecom/Wi-Fi e placas solares.</li>",
         "      <li><strong>Vetorização em AutoCAD com Imagens de Drone:</strong> Processamento de ortoimagens aéreas de alta precisão para traçado contínuo do eixo geométrico de rodovias e linhas de borda de pista com rigor técnico de engenharia.</li>",
@@ -3769,22 +3842,22 @@ html.theme-contrast .ai-modal-col.ai {
   /* DADOS E CONTROLADORES DE ESTUDO DE CASO E VISÃO RÁPIDA */
   var caseStudiesData = {
     engemap: {
-      tag: "ESTUDO DE CASO TÉCNICO · OUT/2025 → NOV/2026 · EM PRODUÇÃO",
+      tag: "ESTUDO DE CASO TÉCNICO · AGO/2025 → 19/NOV/2026 · CONTRATO DE 15 MESES",
       title: "Engemap",
       sub: "Mapeamento Móvel (WebGIS) & Vetorização Rodoviária com Drone (AutoCAD)",
       kpis: [
-        { label: "Contrato", val: "14º → 15º mês (Último mês)" },
+        { label: "Contrato", val: "Contrato 15 meses · 15º mês (Encerra dia 19/11)" },
         { label: "Ferramentas", val: "WebGIS & AutoCAD" },
         { label: "Operação", val: "Mapeamento Móvel & Drones" }
       ],
-      context: "A Engemap é referência nacional em engenharia e geotecnologia. A atuação na Produção técnica envolve duas frentes de alta precisão: mapeamento cadastral de ativos via Mapeamento Móvel (visualizador 360°) no WebGIS e restituição vetorial de rodovias no AutoCAD a partir de imagens aéreas capturadas por drones.",
+      context: "A Engemap é referência nacional em engenharia e geotecnologia. Contrato corporativo de 15 meses com encerramento previsto para 19 de novembro de 2026. Inicialmente alocado no Departamento Pessoal (~11 meses), realizou transição ágil e bem-sucedida para a Produção técnica diante da baixa demanda e readequação de frentes operacionais, assumindo o mapeamento cadastral de ativos em 360° (WebGIS) e a restituição vetorial de rodovias no AutoCAD a partir de imagens aéreas capturadas por drones.",
       challenge: "Garantir exatidão métrica e consistência cadastral ao georreferenciar centenas de ativos urbanos e rodoviários em nível de solo e delimitar com rigor técnico o alinhamento horizontal (eixo e bordas de pista) a partir de mosaicos de imagens de drone.",
       solution: "Uso do visualizador 360° de Mapeamento Móvel para identificar e classificar placas de sinalização, postes de Wi-Fi e placas solares, somado ao traçado milimétrico no AutoCAD de eixos e bordas de rodovias com padronização rigorosa de layers.",
       decisions: [
         { num: "01", title: "Mapeamento Móvel em WebGIS (360°)", desc: "Navegação em imagens terrestres 360° para identificação precisa e marcação espacial de placas (especificações e tipos), postes de Wi-Fi e placas solares." },
         { num: "02", title: "Processamento de Imagens de Drone", desc: "Recepção, conferência de escala e alinhamento de ortomosaicos aéreos capturados por drones em trechos rodoviários." },
         { num: "03", title: "Vetorização no AutoCAD (Eixo e Bordas)", desc: "Traçado vetorial contínuo da linha de eixo central da rodovia e das linhas de borda da pista com tolerâncias métricas de engenharia." },
-        { num: "04", title: "Controle de Qualidade e Topologia", desc: "Checagem de tangências, remoção de inconsistências vetoriais e validação de atributos cadastrais antes da entrega técnica." }
+        { num: "04", title: "Pivotagem Ágil no 11º Mês", desc: "Transição rápida para a Produção técnica impulsionada por baixa demanda do setor inicial, assimilando ferramentas e rigor cartográfico sem curva improdutiva." }
       ],
       tradeoffs: "O processo meticuloso de vetorização manual e verificação visual em Mapeamento Móvel 360° assegura fidelidade cartográfica e valor jurídico aos projetos as-built, sobrepondo a exatidão à automação cega.",
       stack: ["WebGIS", "AutoCAD", "Mapeamento Móvel (MMS)", "Drones & Fotogrametria", "Vetorização Cartográfica", "Topologia"],
@@ -4050,6 +4123,8 @@ html.theme-contrast .ai-modal-col.ai {
 
       // Invalida rects cacheados para que o tilt e luz usem posições precisas dos cards visíveis
       document.querySelectorAll('.panel').forEach(function(c) { c._rect = null; });
+      if (typeof cacheSecOffsets === 'function') cacheSecOffsets();
+      if (typeof updateMaxScroll === 'function') updateMaxScroll();
       if (typeof updateScrollspy === 'function') {
         updateScrollspy();
       }
