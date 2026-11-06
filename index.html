@@ -1635,7 +1635,199 @@ html.theme-contrast .pf-tab.active {
   display: none !important;
 }
 
+/* AI Transparency Card & Modal Styles */
+.ai-card {
+  padding: 24px 28px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(139, 92, 246, 0.22);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(99, 102, 241, 0.03) 50%, var(--surface) 100%);
+}
+.ai-card-glow {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+  border-radius: 50%;
+}
+.ai-card-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ai-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: .72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--violet-2);
+}
+.ai-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--violet);
+  box-shadow: 0 0 8px var(--violet);
+  animation: ai-pulse 2s infinite ease-in-out;
+}
+@keyframes ai-pulse {
+  0%, 100% { transform: scale(1); opacity: .75; }
+  50% { transform: scale(1.35); opacity: 1; }
+}
+.ai-card-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.ai-card-info {
+  flex: 1 1 540px;
+}
+.ai-card-info h3 {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  letter-spacing: -.01em;
+}
+.ai-card-info p {
+  font-size: .86rem;
+  color: var(--text-2);
+  line-height: 1.55;
+  margin: 0;
+}
+.ai-card-action {
+  flex-shrink: 0;
+}
+.btn-ai-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  color: var(--text);
+  font-size: .84rem;
+  font-weight: 600;
+  font-family: var(--mono);
+  cursor: pointer;
+  transition: all .25s ease;
+}
+.btn-ai-trigger:hover {
+  background: var(--violet);
+  color: #ffffff;
+  border-color: var(--violet-2);
+  box-shadow: 0 4px 18px rgba(139, 92, 246, 0.35);
+  transform: translateY(-2px);
+}
+.ai-sparkle-icon {
+  color: var(--violet-2);
+  font-size: .95rem;
+  transition: transform .25s ease;
+}
+.btn-ai-trigger:hover .ai-sparkle-icon {
+  color: #ffffff;
+  transform: rotate(45deg) scale(1.2);
+}
+.ai-duo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 14px;
+  margin-bottom: 24px;
+}
+.ai-modal-col {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.ai-modal-col.human {
+  border-color: rgba(52, 211, 153, 0.28);
+  background: rgba(52, 211, 153, 0.035);
+}
+.ai-modal-col.ai {
+  border-color: rgba(139, 92, 246, 0.28);
+  background: rgba(139, 92, 246, 0.035);
+}
+.ai-modal-col h4 {
+  font-family: var(--mono);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ai-modal-col.human h4 { color: #34d399; }
+.ai-modal-col.ai h4 { color: #a78bfa; }
+.ai-modal-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ai-modal-col li {
+  font-size: .83rem;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+.ai-modal-col li strong {
+  color: var(--text);
+  font-weight: 600;
+}
+html.theme-light .ai-card {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.06) 0%, rgba(99, 102, 241, 0.04) 50%, #ffffff 100%);
+  border-color: rgba(124, 58, 237, 0.25);
+}
+html.theme-light .ai-modal-col.human {
+  background: rgba(5, 150, 105, 0.05);
+  border-color: rgba(5, 150, 105, 0.22);
+}
+html.theme-light .ai-modal-col.human h4 { color: #047857; }
+html.theme-light .ai-modal-col.ai {
+  background: rgba(124, 58, 237, 0.05);
+  border-color: rgba(124, 58, 237, 0.22);
+}
+html.theme-light .ai-modal-col.ai h4 { color: #6d28d9; }
+html.theme-contrast .ai-card {
+  border: 2px solid #00ffff;
+  background: #000000;
+}
+html.theme-contrast .btn-ai-trigger {
+  background: #ffff00;
+  color: #000000;
+  border-color: #ffffff;
+}
+html.theme-contrast .ai-modal-col.human {
+  border: 2px solid #00ff00;
+  background: #000000;
+}
+html.theme-contrast .ai-modal-col.ai {
+  border: 2px solid #00ffff;
+  background: #000000;
+}
+
 @media (max-width: 768px) {
+  .ai-card { padding: 20px 18px; }
+  .ai-card-body { flex-direction: column; align-items: stretch; gap: 16px; }
+  .btn-ai-trigger { width: 100%; justify-content: center; }
+  .ai-duo-grid { grid-template-columns: 1fr; }
   .modal-box { padding: 24px 20px; border-radius: 20px; }
   .modal-kpis-4 { grid-template-columns: repeat(2, 1fr); }
   .cs-kpi-bar { grid-template-columns: 1fr; }
@@ -2667,6 +2859,30 @@ html.theme-contrast .pf-tab.active {
       </section>
     </div>
 
+    <div class="cell sp-12 reveal" style="--d:.04s">
+      <section class="panel ai-card tilt" aria-labelledby="ai-card-title">
+        <div class="ai-card-glow" aria-hidden="true"></div>
+        <div class="ai-card-content">
+          <div class="ai-card-badge">
+            <span class="ai-pulse-dot" aria-hidden="true"></span>
+            <span>Metodologia &amp; Transparência Técnica</span>
+          </div>
+          <div class="ai-card-body">
+            <div class="ai-card-info">
+              <h3 id="ai-card-title">Construído por Murilo Rogério com Apoio de Inteligência Artificial</h3>
+              <p>A IA atuou como copiloto técnico e acelerador de desenvolvimento — sob arquitetura, curadoria e validação de código 100% humanas. Cada componente, estilo e lógica foi concebido, inspecionado e mantido por mim.</p>
+            </div>
+            <div class="ai-card-action">
+              <button type="button" class="btn btn-ai-trigger" id="ai-modal-trigger-btn" aria-label="Ver metodologia de uso de Inteligência Artificial">
+                <span>Como a IA foi utilizada</span>
+                <span class="ai-sparkle-icon" aria-hidden="true">✦</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
     <div class="cell sp-12 reveal" style="--d:.05s">
       <footer class="panel foot">
         <span>© <span id="year">2026</span> Murilo Rogério Carvalho da Conceição</span>
@@ -2768,6 +2984,78 @@ html.theme-contrast .pf-tab.active {
 <div class="modal-overlay" id="modal-casestudy-overlay" role="dialog" aria-modal="true" aria-label="Estudo de Caso Técnico">
   <div class="modal-box" id="modal-casestudy-content">
     <!-- Conteúdo populado dinamicamente via JS -->
+  </div>
+</div>
+
+<!-- Modal Metodologia IA & Engenharia -->
+<div class="modal-overlay" id="modal-ai-overlay" role="dialog" aria-modal="true" aria-label="Engenharia Apoiada por IA: Transparência e Metodologia">
+  <div class="modal-box">
+    <button type="button" class="modal-close" data-close-modal aria-label="Fechar nota de transparência">
+      <svg class="ic" style="width:16px;height:16px;"><use href="#i-x"/></svg>
+    </button>
+    <div class="modal-tag">
+      <span class="dot" aria-hidden="true"></span>
+      Transparência Técnica · AI-Augmented Workflow
+    </div>
+    <h2 class="modal-title">Engenharia Humana, Produtividade Aumentada</h2>
+    <p class="modal-sub">Como utilizo Inteligência Artificial Generativa como copiloto técnico sem abrir mão da visão arquitetural, autoria e rigor de engenharia.</p>
+
+    <div class="modal-kpis-4">
+      <div class="modal-kpi-item">
+        <span>Arquiteto &amp; Autor</span>
+        <strong class="accent-violet">Murilo Rogério (100%)</strong>
+      </div>
+      <div class="modal-kpi-item">
+        <span>Papel da IA</span>
+        <strong class="accent-blue">Copiloto &amp; Acelerador</strong>
+      </div>
+      <div class="modal-kpi-item">
+        <span>Validação de Código</span>
+        <strong class="accent-green">Revisão Linha a Linha</strong>
+      </div>
+      <div class="modal-kpi-item">
+        <span>Controle Técnico</span>
+        <strong>Total &amp; Auditável</strong>
+      </div>
+    </div>
+
+    <div class="modal-section-title">O Papel do Desenvolvedor vs. O Papel da IA</div>
+    <div class="ai-duo-grid">
+      <div class="ai-modal-col human">
+        <h4>O que é feito por mim (Humano / Arquiteto)</h4>
+        <ul>
+          <li><strong>Visão Arquitetural:</strong> Concepção do layout Bento Grid, hierarquia visual, design system e experiência do usuário (UX).</li>
+          <li><strong>Critério &amp; Curadoria:</strong> Validação de semântica HTML5, performance nativa, acessibilidade (WCAG) e contraste.</li>
+          <li><strong>Domínio dos Fundamentos:</strong> Compreensão profunda de cada função, algoritmo e estilo. Não há caixas-pretas: qualquer bug é diagnosticado e resolvido diretamente no código.</li>
+        </ul>
+      </div>
+      <div class="ai-modal-col ai">
+        <h4>Como a IA é utilizada (Ferramenta / Copiloto)</h4>
+        <ul>
+          <li><strong>Aceleração de Boilerplate:</strong> Agilidade na estruturação mecânica e digitação de blocos repetitivos.</li>
+          <li><strong>Pair Programming &amp; Brainstorming:</strong> Consulta de abordagens alternativas, refinamento de casos de borda e documentação.</li>
+          <li><strong>Multiplicador de Velocidade:</strong> Foco em regras de negócio e entrega contínua em alto padrão sem trabalho braçal ocioso.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modal-section-title">Por que isso é um diferencial técnico de mercado?</div>
+    <div class="modal-bullets">
+      <div class="modal-bullet">
+        <strong>Uso Consciente vs. Dependência Passiva:</strong> A IA é um excelente motor de sugestão, mas um péssimo tomador de decisões. Saber formular comandos com restrições arquiteturais precisas, identificar alucinações e depurar saídas é a competência que separa um operador passivo de um engenheiro moderno.
+      </div>
+      <div class="modal-bullet">
+        <strong>Engenharia de Software Moderna:</strong> Alavancar IA generativa é um reflexo direto de adaptabilidade tecnológica. Permite que um desenvolvedor alcance a velocidade de entrega de um time inteiro enquanto mantém o código limpo, auditável e padronizado.
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <div class="modal-actions-left">
+        <button type="button" class="btn btn-solid" data-close-modal>
+          Fechar
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -3642,6 +3930,15 @@ html.theme-contrast .pf-tab.active {
   if (modalCvBtn && cvBtn) {
     modalCvBtn.addEventListener('click', function() {
       cvBtn.click();
+    });
+  }
+
+  // AI Methodology Modal Trigger
+  var aiModalBtn = document.getElementById('ai-modal-trigger-btn');
+  var aiModal = document.getElementById('modal-ai-overlay');
+  if (aiModalBtn && aiModal) {
+    aiModalBtn.addEventListener('click', function() {
+      openModal(aiModal);
     });
   }
 
