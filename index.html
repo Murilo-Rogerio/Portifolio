@@ -1637,76 +1637,77 @@ html.theme-contrast .pf-tab.active {
   display: none !important;
 }
 
-/* AI Transparency Card & Modal Styles */
+/* AI Transparency Card & Modal Styles - Minimalist & Compact */
+.ai-cell {
+  align-self: start;
+}
 .ai-card {
-  padding: 24px 28px;
+  padding: 14px 22px;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(139, 92, 246, 0.22);
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(99, 102, 241, 0.03) 50%, var(--surface) 100%);
-}
-.ai-card-glow {
-  position: absolute;
-  top: -40px;
-  right: -40px;
-  width: 160px;
-  height: 160px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, transparent 70%);
-  pointer-events: none;
-  border-radius: 50%;
-}
-.ai-card-content {
-  position: relative;
-  z-index: 1;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.04) 0%, var(--surface) 100%);
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-self: start;
+  height: auto !important;
+  min-height: 0 !important;
+}
+.ai-card-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1 1 480px;
+  min-width: 0;
+  flex-wrap: wrap;
 }
 .ai-card-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-family: var(--mono);
-  font-size: .72rem;
+  font-size: .68rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .08em;
   color: var(--violet-2);
+  background: rgba(139, 92, 246, 0.08);
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  white-space: nowrap;
+  flex: none;
 }
 .ai-pulse-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--violet);
-  box-shadow: 0 0 8px var(--violet);
+  box-shadow: 0 0 6px var(--violet);
   animation: ai-pulse 2s infinite ease-in-out;
+  flex: none;
 }
 @keyframes ai-pulse {
   0%, 100% { transform: scale(1); opacity: .75; }
   50% { transform: scale(1.35); opacity: 1; }
 }
-.ai-card-body {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-.ai-card-info {
-  flex: 1 1 540px;
-}
-.ai-card-info h3 {
-  font-size: 1.08rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 6px;
-  letter-spacing: -.01em;
-}
-.ai-card-info p {
-  font-size: .86rem;
-  color: var(--text-2);
-  line-height: 1.55;
+.ai-card-text {
   margin: 0;
+  font-size: .83rem;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+.ai-card-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.ai-card-sep {
+  color: var(--text-3);
+  margin: 0 6px;
 }
 .ai-card-action {
   flex-shrink: 0;
@@ -1714,33 +1715,34 @@ html.theme-contrast .pf-tab.active {
 .btn-ai-trigger {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 10px 20px;
+  gap: 7px;
+  padding: 7px 15px;
   border-radius: 999px;
-  background: rgba(139, 92, 246, 0.12);
-  border: 1px solid rgba(139, 92, 246, 0.35);
-  color: var(--text);
-  font-size: .84rem;
+  background: var(--surface-2);
+  border: 1px solid var(--line-2);
+  color: var(--text-2);
+  font-size: .78rem;
   font-weight: 600;
   font-family: var(--mono);
   cursor: pointer;
-  transition: all .25s ease;
+  transition: all .2s ease;
+  white-space: nowrap;
 }
 .btn-ai-trigger:hover {
-  background: var(--violet);
-  color: #ffffff;
-  border-color: var(--violet-2);
-  box-shadow: 0 4px 18px rgba(139, 92, 246, 0.35);
-  transform: translateY(-2px);
+  background: rgba(139, 92, 246, 0.12);
+  color: var(--text);
+  border-color: rgba(139, 92, 246, 0.45);
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.18);
+  transform: translateY(-1px);
 }
 .ai-sparkle-icon {
   color: var(--violet-2);
-  font-size: .95rem;
+  font-size: .85rem;
   transition: transform .25s ease;
 }
 .btn-ai-trigger:hover .ai-sparkle-icon {
-  color: #ffffff;
-  transform: rotate(45deg) scale(1.2);
+  color: #c4b5fd;
+  transform: rotate(45deg) scale(1.15);
 }
 .ai-duo-grid {
   display: grid;
@@ -1826,9 +1828,21 @@ html.theme-contrast .ai-modal-col.ai {
 }
 
 @media (max-width: 768px) {
-  .ai-card { padding: 20px 18px; }
-  .ai-card-body { flex-direction: column; align-items: stretch; gap: 16px; }
-  .btn-ai-trigger { width: 100%; justify-content: center; }
+  .ai-card {
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .ai-card-main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .ai-card-sep { display: none; }
+  .ai-card-text { font-size: .8rem; }
+  .ai-card-action { width: 100%; }
+  .btn-ai-trigger { width: 100%; justify-content: center; padding: 8px 14px; }
   .ai-duo-grid { grid-template-columns: 1fr; }
   .modal-box { padding: 24px 20px; border-radius: 20px; }
   .modal-kpis-4 { grid-template-columns: repeat(2, 1fr); }
@@ -2861,26 +2875,24 @@ html.theme-contrast .ai-modal-col.ai {
       </section>
     </div>
 
-    <div class="cell sp-12 reveal" style="--d:.04s">
+    <div class="cell sp-12 reveal ai-cell" style="--d:.04s">
       <section class="panel ai-card tilt" aria-labelledby="ai-card-title">
-        <div class="ai-card-glow" aria-hidden="true"></div>
-        <div class="ai-card-content">
+        <div class="ai-card-main">
           <div class="ai-card-badge">
             <span class="ai-pulse-dot" aria-hidden="true"></span>
-            <span>Metodologia &amp; Transparência Técnica</span>
+            <span>Metodologia IA</span>
           </div>
-          <div class="ai-card-body">
-            <div class="ai-card-info">
-              <h3 id="ai-card-title">Construído por Murilo Rogério com Apoio de Inteligência Artificial</h3>
-              <p>A IA atuou como copiloto técnico e acelerador de desenvolvimento — sob arquitetura, curadoria e validação de código 100% humanas. Cada componente, estilo e lógica foi concebido, inspecionado e mantido por mim.</p>
-            </div>
-            <div class="ai-card-action">
-              <button type="button" class="btn btn-ai-trigger" id="ai-modal-trigger-btn" aria-label="Ver metodologia de uso de Inteligência Artificial">
-                <span>Como a IA foi utilizada</span>
-                <span class="ai-sparkle-icon" aria-hidden="true">✦</span>
-              </button>
-            </div>
-          </div>
+          <p class="ai-card-text">
+            <strong id="ai-card-title">Construído com Apoio de IA</strong>
+            <span class="ai-card-sep">·</span>
+            <span>Copiloto técnico sob arquitetura, código e validação 100% humanas de Murilo Rogério.</span>
+          </p>
+        </div>
+        <div class="ai-card-action">
+          <button type="button" class="btn btn-ai-trigger" id="ai-modal-trigger-btn" aria-label="Ver metodologia de uso de Inteligência Artificial">
+            <span>Como a IA foi utilizada</span>
+            <span class="ai-sparkle-icon" aria-hidden="true">✦</span>
+          </button>
         </div>
       </section>
     </div>
