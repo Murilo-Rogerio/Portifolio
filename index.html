@@ -695,6 +695,122 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
   opacity:.9; transform:translateY(-1px);
   box-shadow:0 12px 28px -12px rgba(0,0,0,.7);
 }
+.act-cta-primary{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg, #4f46e5 0%, #7c3aed 52%, #9333ea 100%);
+  color:#ffffff !important;
+  border:1px solid rgba(255,255,255,.24);
+  box-shadow:0 0 0 1px rgba(139,92,246,.35), 0 8px 24px -4px rgba(124,58,237,.5);
+  cursor:pointer;
+  padding:16px 18px;
+}
+.act-cta-primary::before{
+  content:'';
+  position:absolute;
+  top:0; left:-120%; width:60%; height:100%;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+  transform:skewX(-20deg);
+  animation:ctaShimmer 4.5s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes ctaShimmer{
+  0%{ left:-120%; }
+  30%{ left:220%; }
+  100%{ left:220%; }
+}
+.act-cta-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 0 2px rgba(196,181,253,.65), 0 14px 34px -4px rgba(124,58,237,.7);
+  opacity:1;
+}
+.act-cta-primary:focus-visible{
+  outline:2px solid #ffffff;
+  outline-offset:3px;
+}
+.act-icon-box{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  background:rgba(255,255,255,.2);
+  border:1px solid rgba(255,255,255,.3);
+  flex-shrink:0;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.35);
+}
+.act-icon-box .ic{
+  width:20px;
+  height:20px;
+  color:#ffffff !important;
+}
+.act-content{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  text-align:left;
+  gap:1px;
+  flex:1;
+}
+.act-badge-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  background:rgba(255,255,255,.22);
+  border:1px solid rgba(255,255,255,.32);
+  color:#ffffff;
+  font-size:.65rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+  padding:2px 8px;
+  border-radius:6px;
+  margin-bottom:3px;
+  font-family:var(--font);
+}
+.act-title{
+  font-size:.96rem;
+  font-weight:700;
+  color:#ffffff;
+  letter-spacing:-.01em;
+  line-height:1.25;
+}
+.act-cta-primary small{
+  color:rgba(255,255,255,.88) !important;
+  font-size:.72rem;
+  opacity:1;
+}
+html.theme-light .act-cta-primary{
+  background:linear-gradient(135deg, #4338ca 0%, #6d28d9 52%, #7e22ce 100%);
+  color:#ffffff !important;
+  box-shadow:0 0 0 1px rgba(109,40,217,.3), 0 8px 24px -4px rgba(109,40,217,.4);
+}
+html.theme-contrast .act-cta-primary{
+  background:#000000;
+  border:2px solid #00ff00;
+  color:#00ff00 !important;
+  box-shadow:none;
+}
+html.theme-contrast .act-cta-primary::before{ display:none; }
+html.theme-contrast .act-cta-primary .act-icon-box{
+  background:#000000;
+  border:1px solid #00ff00;
+}
+html.theme-contrast .act-cta-primary .act-icon-box .ic{
+  color:#00ff00 !important;
+}
+html.theme-contrast .act-cta-primary .act-badge-tag{
+  background:#000000;
+  border-color:#00ff00;
+  color:#00ff00;
+}
+html.theme-contrast .act-cta-primary .act-title{
+  color:#00ff00;
+}
+html.theme-contrast .act-cta-primary small{
+  color:#00ff00 !important;
+}
 .act-ghost{
   border:1px solid var(--line-2); color:var(--text);
 }
@@ -2026,7 +2142,7 @@ html.theme-contrast .ai-modal-col.ai {
         <p class="roles">Desenvolvimento Web &nbsp;·&nbsp; Geotecnologia &amp; WebGIS &nbsp;·&nbsp; Robótica</p>
         <div class="pills">
           <span class="pill status"><span class="dot" aria-hidden="true"></span>Disponível para Oportunidades / Efetivação</span>
-          <span class="pill"><svg class="ic" aria-hidden="true"><use href="#i-graduation"/></svg>3º Ano do Ensino Médio · <span class="dynamic-age">17</span> Anos</span>
+          <span class="pill"><svg class="ic" aria-hidden="true"><use href="#i-graduation"/></svg>Ensino Médio Concluído · 2026</span>
           <span class="pill"><svg class="ic" aria-hidden="true"><use href="#i-languages"/></svg>Inglês Intermediário</span>
         </div>
       </header>
@@ -2081,12 +2197,12 @@ html.theme-contrast .ai-modal-col.ai {
       <section class="panel summary tilt" id="summary">
         <div class="spec-head">Resumo Profissional</div>
         <p>
-          Atuação corporativa na <strong>Engemap</strong> em Produção de <strong>WebGIS</strong> e <strong>AutoCAD</strong>: especialista em Mapeamento Móvel via visualizador 360° no WebGIS para cadastro de placas, postes Wi-Fi e placas solares, e vetorização de imagens de <strong>drones</strong> para traçado preciso do <strong>eixo e bordas de rodovias</strong>. Contrato formal de 15 meses (15º e último mês · término em 19/11), com transição ágil para a Produção técnica por volta do 11º mês devido à baixa demanda de projetos externos. Histórico com diagnóstico formal de <strong>Altas Habilidades / Superdotação (AH/SD)</strong>.
+          Experiência Corporativa na <strong>Engemap (15 meses)</strong> com foco em <strong>Produção WebGIS e Geotecnologia</strong>: atuação técnica em Mapeamento Móvel via visualizador 360° no WebGIS para cadastro de placas, postes Wi-Fi e placas solares, além de vetorização de ortoimagens de <strong>drones</strong> no AutoCAD para traçado de precisão do <strong>eixo e bordas de rodovias</strong>. Histórico de transição ágil para a Produção por volta do 11º mês e diagnóstico formal de <strong>Altas Habilidades / Superdotação (AH/SD)</strong>.
         </p>
         <div class="metrics">
           <div class="metric">
-            <b id="engemap-metric-num"><span data-count="15">0</span><em>º mês</em></b>
-            <span id="engemap-metric-label">último mês de contrato (encerra dia 19/11)</span>
+            <b id="engemap-metric-num"><span data-count="15">0</span><em> meses</em></b>
+            <span id="engemap-metric-label">experiência corporativa na Engemap (WebGIS &amp; CAD)</span>
           </div>
           <div class="metric">
             <b><span data-count="4">0</span><em>+</em></b>
@@ -2111,12 +2227,12 @@ html.theme-contrast .ai-modal-col.ai {
           <h2>Ficha Técnica</h2>
         </header>
         <dl>
-          <div class="frow"><dt>Idade</dt><dd><span class="dynamic-age">17</span> anos</dd></div>
-          <div class="frow"><dt>Escolaridade</dt><dd>3º ano EM · conclusão 2026</dd></div>
-          <div class="frow"><dt>Modalidade</dt><dd>Remoto, Híbrido ou Presencial</dd></div>
+          <div class="frow"><dt>Idade</dt><dd><span class="dynamic-age">17</span> anos (18 em Jan/2027)</dd></div>
+          <div class="frow"><dt>Escolaridade</dt><dd>Ensino Médio Concluído · 2026</dd></div>
+          <div class="frow"><dt>Modalidade</dt><dd>Remoto, Híbrido ou Presencial (CLT Integral)</dd></div>
           <div class="frow"><dt>Foco Técnico</dt><dd>WebGIS · AutoCAD · Dev Web</dd></div>
           <div class="frow"><dt>Perfil</dt><dd>AH/SD · rápida assimilação lógica</dd></div>
-          <div class="frow"><dt>Contrato</dt><dd id="engemap-ficha-contrato">Engemap · 15 meses (15º mês · Encerra dia 19/11)</dd></div>
+          <div class="frow"><dt>Corporativo</dt><dd id="engemap-ficha-contrato">Engemap (15 meses) · Foco em Produção WebGIS e Geotecnologia</dd></div>
         </dl>
       </section>
     </div>
@@ -2160,13 +2276,17 @@ html.theme-contrast .ai-modal-col.ai {
           </p>
         </section>
 
-        <section class="panel actions" aria-label="Ações rápidas" style="transform:none!important;">
-          <h2>Ações Rápidas</h2>
-          <p class="a-sub">Acesso direto ao resumo executivo e contato imediato.</p>
-          <button class="act act-solid" type="button" id="cv-btn">
-            <svg class="ic" aria-hidden="true"><use href="#i-file-down"/></svg>
-            <span>Baixar Currículo PDF
-              <small>layout executivo A4 pronto para impressão</small>
+        <section class="panel actions" aria-label="Ações rápidas e contratação" style="transform:none!important;">
+          <h2>Ações Rápidas &amp; Contratação</h2>
+          <p class="a-sub">Acesso direto ao currículo para envio a gestores e decisão ágil.</p>
+          <button class="act act-cta-primary" type="button" id="cv-btn" aria-label="Baixar Currículo em PDF executivo A4">
+            <span class="act-icon-box" aria-hidden="true">
+              <svg class="ic"><use href="#i-file-down"/></svg>
+            </span>
+            <span class="act-content">
+              <span class="act-badge-tag">✦ Recomendado para Recrutadores</span>
+              <strong class="act-title">Baixar CV em PDF (A4)</strong>
+              <small>Layout executivo pronto para envio no WhatsApp do gestor</small>
             </span>
           </button>
           <button class="act act-ghost" type="button" id="quick-view-btn">
@@ -2199,7 +2319,7 @@ html.theme-contrast .ai-modal-col.ai {
       <article class="panel project tilt" id="engemap">
         <div class="panel-head">
           <div class="p-badges">
-            <span class="badge" id="engemap-badge"><span class="bdot b-green" aria-hidden="true"></span>Contrato de 15 meses · 15º mês (Encerra dia 19/11)</span>
+            <span class="badge" id="engemap-badge"><span class="bdot b-green" aria-hidden="true"></span>Experiência Corporativa: Engemap (15 meses) · Foco em Produção WebGIS e Geotecnologia</span>
             <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>WebGIS &amp; AutoCAD</span>
             <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>Mapeamento Móvel &amp; Drone</span>
           
@@ -2258,8 +2378,8 @@ html.theme-contrast .ai-modal-col.ai {
                 <span class="xp-dot now" aria-hidden="true"></span>
                 <div class="xp-body">
                   <div class="xp-head">
-                    <h4>Jovem Aprendiz — Mapeamento Móvel &amp; CAD Rodoviário</h4>
-                    <span class="chip live" id="engemap-role-chip">Atual · Encerramento em 19/11/2026</span>
+                    <h4>Mapeamento Móvel &amp; CAD Rodoviário (WebGIS / Drones)</h4>
+                    <span class="chip" id="engemap-role-chip">Experiência Corporativa · 15 meses</span>
                   </div>
                   <p>
                     Atuação técnica na Produção dividida em duas frentes de alta precisão: no <strong>WebGIS</strong>, utilizando o sistema de Mapeamento Móvel (visualizador 360°) para identificar e marcar no mapa ativos como placas de sinalização (especificações e tipos), postes de Wi-Fi e placas solares; no <strong>AutoCAD</strong>, processando mosaicos de imagens de <strong>drone</strong> para traçado preciso do <strong>eixo geométrico da rodovia</strong> e as <strong>linhas de borda</strong> da pista. Transição realizada por volta do 11º mês de contrato para suprir demandas técnicas de engenharia.
@@ -2271,7 +2391,7 @@ html.theme-contrast .ai-modal-col.ai {
                 <span class="xp-dot" aria-hidden="true"></span>
                 <div class="xp-body">
                   <div class="xp-head">
-                    <h4>Jovem Aprendiz — Auxiliar de Departamento Pessoal (RH)</h4>
+                    <h4>Suporte Operacional &amp; Departamento Pessoal (RH)</h4>
                     <span class="chip">1º ao 11º mês</span>
                   </div>
                   <p>
@@ -2289,13 +2409,13 @@ html.theme-contrast .ai-modal-col.ai {
           </div>
 
           <div class="p-specs">
-            <div class="spec-head">Contrato de Aprendizagem</div>
+            <div class="spec-head">Ciclo de Atuação Corporativa</div>
             <div class="contract">
               <div class="c-top">
-                <span class="c-range" id="engemap-range">Ago/2025 → 19/Nov/2026</span>
-                <span class="c-len" id="engemap-len">Contrato de 15 meses (15º mês · Encerramento em 19/11)</span>
+                <span class="c-range" id="engemap-range">Ago/2025 → Nov/2026 (15 meses)</span>
+                <span class="c-len" id="engemap-len">Experiência Corporativa: Engemap (15 meses) · Foco em Produção WebGIS e Geotecnologia</span>
               </div>
-              <div class="c-track" role="progressbar" aria-label="Progresso do contrato de aprendizagem" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="c-bar">
+              <div class="c-track" role="progressbar" aria-label="Progresso do ciclo corporativo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="c-bar">
                 <div class="c-fill" id="c-fill"></div>
               </div>
               <div class="c-meta">
@@ -2307,7 +2427,7 @@ html.theme-contrast .ai-modal-col.ai {
             <div class="spec-head" style="margin-top:24px">Setores de Atuação</div>
             <div class="c-areas">
               <span class="chip core">Produção: Mapeamento Móvel (WebGIS)</span>
-              <span class="chip core">Produção: AutoCAD &amp; Drone (11º ao 15º mês)</span>
+              <span class="chip core">Produção: AutoCAD &amp; Drone (Fase Técnica)</span>
               <span class="chip">RH · Depto Pessoal (1º ao 11º mês)</span>
             </div>
           </div>
@@ -2740,9 +2860,9 @@ html.theme-contrast .ai-modal-col.ai {
           <li>
             <span class="e-ic"><svg class="ic"><use href="#i-graduation"/></svg></span>
             <div class="e-body">
-              <div class="e-head"><h4>Ensino Médio</h4><span class="dur">2026</span></div>
-              <p class="inst">3º ano · cursando</p>
-              <p>Escola Dr. Clybas. Conclusão projetada para manter histórico inabalável.</p>
+              <div class="e-head"><h4>Ensino Médio Concluído</h4><span class="dur">2026</span></div>
+              <p class="inst">Escola Dr. Clybas · Formado em 2026</p>
+              <p>Ciclo escolar finalizado com distinção acadêmica e histórico exemplar. Total disponibilidade para jornada integral (CLT 40h/44h).</p>
             </div>
           </li>
           <li>
@@ -2925,8 +3045,8 @@ html.theme-contrast .ai-modal-col.ai {
         <strong class="accent-violet">AH/SD (Superdotação)</strong>
       </div>
       <div class="modal-kpi-item">
-        <span>Vivência / Contrato</span>
-        <strong id="quickview-kpi-contrato">Contrato 15 meses · 15º mês (Encerra 19/11)</strong>
+        <span>Experiência Corporativa</span>
+        <strong id="quickview-kpi-contrato">Engemap (15 meses) · Foco em Produção WebGIS e Geotecnologia</strong>
       </div>
     </div>
 
@@ -2936,7 +3056,8 @@ html.theme-contrast .ai-modal-col.ai {
         <strong>Capacidade de Resolução Rápida (AH/SD):</strong> Diagnóstico formal atestando velocidade incomum de assimilação lógica e abstração sistêmica.
       </div>
       <div class="modal-bullet">
-        <strong>Atuação Corporativa na Engemap (15 meses):</strong> Transição ágil no 11º mês para a Produção técnica (WebGIS 360° e AutoCAD com drones para traçado geométrico rodoviário) em virtude de baixa demanda no setor inicial, comprovando flexibilidade cognitiva e rápido domínio prático.</div>
+        <strong>Experiência Corporativa na Engemap (15 meses):</strong> Ciclo completo de 15 meses com foco em Produção WebGIS e Geotecnologia (Mapeamento Móvel 360° e AutoCAD com ortoimagens de drones para traçado geométrico rodoviário), comprovando flexibilidade cognitiva, rigor cartográfico e rápido domínio prático.
+      </div>
       <div class="modal-bullet">
         <strong>Projetos em Produção Real:</strong> Aplicações operando com arquiteturas modernas (Next.js 15, React 18, Supabase RLS, PWA Offline-First, Canvas 2D).
       </div>
@@ -2966,7 +3087,7 @@ html.theme-contrast .ai-modal-col.ai {
       <div class="modal-actions-left">
         <button type="button" class="btn btn-solid" id="modal-cv-btn">
           <svg class="ic" aria-hidden="true"><use href="#i-file-down"/></svg>
-          Visualizar / Imprimir Currículo A4
+          Baixar Currículo PDF (A4)
         </button>
         <a class="btn-whatsapp-modal" href="https://wa.me/5518998121327" target="_blank" rel="noopener noreferrer">
           <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
@@ -3292,8 +3413,8 @@ html.theme-contrast .ai-modal-col.ai {
     trajetoria: [
       '<span class="tk-com">// Trajetória profissional e acadêmica condensada</span>',
       '<span class="tk-kw">export class</span> <span class="tk-prop">TrajetoriaProfissional</span> <span class="tk-pun">{</span>',
-      '  <span class="tk-prop">ensinoMedio</span> <span class="tk-pun">=</span> <span class="tk-str">"Escola Dr. Clybas (3º Ano - 2026)"</span><span class="tk-pun">;</span>',
-      '  <span class="tk-prop">experienciaAtual</span> <span class="tk-pun">=</span> <span class="tk-str">"Engemap (15º mês · Encerra dia 19/11/2026)"</span><span class="tk-pun">;</span>',
+      '  <span class="tk-prop">ensinoMedio</span> <span class="tk-pun">=</span> <span class="tk-str">"Escola Dr. Clybas (Concluído · 2026)"</span><span class="tk-pun">;</span>',
+      '  <span class="tk-prop">experienciaCorporativa</span> <span class="tk-pun">=</span> <span class="tk-str">"Engemap (15 meses) · Foco em Produção WebGIS e Geotecnologia"</span><span class="tk-pun">;</span>',
       '  <span class="tk-prop">perfilCognitivo</span> <span class="tk-pun">=</span> <span class="tk-str">"Altas Habilidades / Superdotação (AH/SD)"</span><span class="tk-pun">;</span>',
       '  <span class="tk-prop">objetivo</span> <span class="tk-pun">=</span> <span class="tk-str">"Desenvolvimento Web & Soluções Geoespaciais"</span><span class="tk-pun">;</span>',
       '<span class="tk-pun">}</span>'
@@ -3601,69 +3722,68 @@ html.theme-contrast .ai-modal-col.ai {
   if (fillEl && pctEl && daysEl) {
     var DAY   = 86400000;
     var start = new Date(2025, 7, 19).getTime(); // 19/Ago/2025 (Início formal do contrato de 15 meses)
-    var end   = new Date(2026, 10, 19, 23, 59, 59).getTime(); // 19/Nov/2026 23:59:59 (Término oficial do contrato)
+    var end   = new Date(2026, 10, 19, 0, 0, 0).getTime(); // 19/Nov/2026 00:00:00 (Virada imediata do dia 19/11)
     var now   = Date.now();
     var isContractFinished = (now >= end);
     var pct, text;
 
-    if (now <= start) {
-      pct = 0;
-      text = "inicia em " + Math.ceil((start - now) / DAY) + " dias";
-    } else if (isContractFinished) {
-      pct = 100;
-      text = "Contrato de 15 meses concluído com sucesso e cumprimento integral";
+    function applyEngemapCorporateExperience(isFinished) {
+      var cleanTitle = "Experiência Corporativa: Engemap (15 meses) · Foco em Produção WebGIS e Geotecnologia";
+      var shortTitle = "Engemap (15 meses) · Foco em Produção WebGIS e Geotecnologia";
 
-      // Transição automática para status finalizado após dia 19/11
       var engBadge = document.getElementById("engemap-badge");
-      if (engBadge) engBadge.innerHTML = '<span class="bdot b-green" aria-hidden="true"></span>15 meses cumpridos (Concluído com sucesso)';
+      if (engBadge) {
+        engBadge.innerHTML = '<span class="bdot b-green" aria-hidden="true"></span>' + cleanTitle;
+      }
 
       var engRoleChip = document.getElementById("engemap-role-chip");
       if (engRoleChip) {
-        engRoleChip.textContent = "Concluído · 15 meses integrais cumpridos";
+        engRoleChip.textContent = isFinished ? "Ciclo Concluído · 15 meses integrais cumpridos" : "Experiência Corporativa · 15 meses";
         engRoleChip.className = "chip";
       }
 
       var engRange = document.getElementById("engemap-range");
-      if (engRange) engRange.textContent = "Ago/2025 → 19/Nov/2026 (15 meses)";
+      if (engRange) engRange.textContent = "Ago/2025 → Nov/2026 (15 meses)";
 
       var engLen = document.getElementById("engemap-len");
-      if (engLen) engLen.textContent = "Contrato de 15 meses concluído com êxito (100% cumprido)";
+      if (engLen) engLen.textContent = cleanTitle;
 
       var engFicha = document.getElementById("engemap-ficha-contrato");
-      if (engFicha) engFicha.textContent = "Engemap · 15 meses concluídos com êxito";
+      if (engFicha) engFicha.textContent = shortTitle;
 
       var qvKpi = document.getElementById("quickview-kpi-contrato");
-      if (qvKpi) qvKpi.textContent = "15 meses concluídos (Disponibilidade Imediata)";
+      if (qvKpi) qvKpi.textContent = shortTitle;
 
       var metricLabel = document.getElementById("engemap-metric-label");
-      if (metricLabel) metricLabel.textContent = "meses concluídos com êxito na Engemap";
+      if (metricLabel) metricLabel.textContent = "meses de experiência corporativa na Engemap (WebGIS & CAD)";
 
       var metricNum = document.getElementById("engemap-metric-num");
       if (metricNum) metricNum.innerHTML = '<span data-count="15">15</span><em> meses</em>';
 
       if (typeof caseStudiesData !== "undefined" && caseStudiesData.engemap) {
-        caseStudiesData.engemap.tag = "ESTUDO DE CASO TÉCNICO · AGO/2025 → 19/NOV/2026 · CONCLUÍDO COM SUCESSO";
-        caseStudiesData.engemap.kpis[0].val = "15 meses concluídos com sucesso";
+        caseStudiesData.engemap.tag = isFinished
+          ? "ESTUDO DE CASO TÉCNICO · AGO/2025 → NOV/2026 · CICLO COMPLETO CONCLUÍDO COM SUCESSO"
+          : "ESTUDO DE CASO TÉCNICO · AGO/2025 → NOV/2026 · EXPERIÊNCIA CORPORATIVA (15 MESES)";
+        caseStudiesData.engemap.kpis[0].label = "Experiência Corporativa";
+        caseStudiesData.engemap.kpis[0].val = shortTitle;
       }
 
       if (typeof terminalSnippets !== "undefined" && terminalSnippets.trajetoria) {
-        terminalSnippets.trajetoria[3] = '  <span class="tk-prop">experienciaAnterior</span> <span class="tk-pun">=</span> <span class="tk-str">"Engemap (15 meses concluídos com êxito · Mapeamento & CAD)"</span><span class="tk-pun">;</span>';
+        terminalSnippets.trajetoria[3] = '  <span class="tk-prop">experienciaCorporativa</span> <span class="tk-pun">=</span> <span class="tk-str">"' + shortTitle + '"</span><span class="tk-pun">;</span>';
       }
+    }
+
+    applyEngemapCorporateExperience(isContractFinished);
+
+    if (now <= start) {
+      pct = 0;
+      text = "Início formal em Ago/2025";
+    } else if (isContractFinished) {
+      pct = 100;
+      text = "Experiência Corporativa: Engemap (15 meses) · Ciclo concluído com sucesso";
     } else {
-      pct = Math.min(99, Math.max(0, (now - start) / (end - start) * 100));
-      var nowDate = new Date(now);
-      var startMidnight = new Date(2025, 7, 19).getTime();
-      var targetMidnight = new Date(2026, 10, 19).getTime();
-      var todayMidnight = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate()).getTime();
-
-      var done = Math.max(0, Math.floor((todayMidnight - startMidnight) / DAY));
-      var left = Math.max(0, Math.round((targetMidnight - todayMidnight) / DAY));
-
-      if (left === 0) {
-        text = done + " dias decorridos · Último dia de contrato (encerra hoje!)";
-      } else {
-        text = done + " dias decorridos · " + left + " restantes (encerra dia 19/11)";
-      }
+      pct = Math.min(100, Math.max(0, (now - start) / (end - start) * 100));
+      text = "Ciclo corporativo de 15 meses · Conclusão em Nov/2026";
     }
 
     pctEl.textContent = Math.round(pct) + "%";
@@ -3756,17 +3876,17 @@ html.theme-contrast .ai-modal-col.ai {
         "    <h1>Murilo Rogério Carvalho da Conceição</h1>",
         "    <div class='tag'>Desenvolvimento Web &amp; WebGIS</div>",
         "    <div class='contact'>",
-        "      Assis, SP · Brasil (Remoto, Híbrido ou Presencial) &nbsp;·&nbsp; ",
+        "      Assis, SP · Brasil (Disponibilidade para Contratação Integral CLT · Remoto, Híbrido ou Presencial) &nbsp;·&nbsp; ",
         "      <a href='mailto:murilo.rogerio.conceicao@gmail.com'>murilo.rogerio.conceicao@gmail.com</a> &nbsp;·&nbsp; ",
         "      WhatsApp: (18) 99812-1327",
         "    </div>",
         "  </header>",
         "  <h2>Resumo Executivo</h2>",
-        "  <p>Profissional em formação (" + currentAge + " anos) atuando no suporte a arquiteturas técnicas em Desenvolvimento Web (Next.js/React), Geoprocessamento (WebGIS) e Sistemas Embarcados. Vivência corporativa comprovando rápida adaptabilidade a pivotagens de departamento para resolver demandas estratégicas de negócio. Suportado por um diagnóstico formal de Altas Habilidades / Superdotação (AH/SD) voltado para rápido aprendizado técnico e entregas seguras.</p>",
+        "  <p>Profissional com sólida vivência prática em Desenvolvimento Web (Next.js/React), Geoprocessamento (WebGIS) e Geotecnologia. Ensino Médio concluído em 2026 e total disponibilidade para jornada de trabalho integral (CLT 40h/44h semanais). Experiência corporativa de 15 meses na Engemap comprovando rápida capacidade de entrega técnica, rigor cartográfico e adaptabilidade ágil a novos desafios. Suportado por diagnóstico formal de Altas Habilidades / Superdotação (AH/SD) voltado para rápida assimilação lógica e resolução de problemas complexos.</p>",
         "  <h2>Experiência Corporativa</h2>",
         "  <div class='item'>",
         "    <h3>Engemap — Engenharia e Aerolevantamento</h3>",
-        "    <p class=\'meta\'>Jovem Aprendiz · Contrato de 15 meses (15º mês · Encerramento em 19/11/2026)</p>",
+        "    <p class=\'meta\'>Experiência Corporativa (15 meses) · Foco em Produção WebGIS e Geotecnologia</p>",
         "    <ul>",
         "      <li><strong>Mapeamento Móvel &amp; WebGIS:</strong> Identificação, georreferenciamento e catalogação espacial de ativos em sistema de visualização 360° no WebGIS, incluindo placas de sinalização (especificações e tipos), postes de telecom/Wi-Fi e placas solares.</li>",
         "      <li><strong>Vetorização em AutoCAD com Imagens de Drone:</strong> Processamento de ortoimagens aéreas de alta precisão para traçado contínuo do eixo geométrico de rodovias e linhas de borda de pista com rigor técnico de engenharia.</li>",
@@ -3796,7 +3916,7 @@ html.theme-contrast .ai-modal-col.ai {
         "  </div>",
         "  <h2>Formação &amp; Hardware Base</h2>",
         "  <ul>",
-        "    <li><strong>Acadêmico:</strong> 3º ano do E.M (Escola Dr. Clybas - Prev. 2026). Detentor de Certificação de Aluno Destaque e Laudo AH/SD.</li>",
+        "    <li><strong>Formação Acadêmica:</strong> Ensino Médio Concluído · 2026 (Escola Dr. Clybas) — Total disponibilidade para regime integral (40h/44h). Detentor de Certificação de Aluno Destaque e Laudo AH/SD.</li>",
         "    <li><strong>Robótica:</strong> 4 anos de especialização em componentes e C++ (Arduino, Lego EV3, Micro:bit).</li>",
         "  </ul>",
         "  <div class='grid'>",
@@ -3842,15 +3962,15 @@ html.theme-contrast .ai-modal-col.ai {
   /* DADOS E CONTROLADORES DE ESTUDO DE CASO E VISÃO RÁPIDA */
   var caseStudiesData = {
     engemap: {
-      tag: "ESTUDO DE CASO TÉCNICO · AGO/2025 → 19/NOV/2026 · CONTRATO DE 15 MESES",
+      tag: "ESTUDO DE CASO TÉCNICO · AGO/2025 → NOV/2026 · EXPERIÊNCIA CORPORATIVA (15 MESES)",
       title: "Engemap",
       sub: "Mapeamento Móvel (WebGIS) & Vetorização Rodoviária com Drone (AutoCAD)",
       kpis: [
-        { label: "Contrato", val: "Contrato 15 meses · 15º mês (Encerra dia 19/11)" },
+        { label: "Experiência", val: "Engemap (15 meses) · Foco em Produção WebGIS e Geotecnologia" },
         { label: "Ferramentas", val: "WebGIS & AutoCAD" },
         { label: "Operação", val: "Mapeamento Móvel & Drones" }
       ],
-      context: "A Engemap é referência nacional em engenharia e geotecnologia. Contrato corporativo de 15 meses com encerramento previsto para 19 de novembro de 2026. Inicialmente alocado no Departamento Pessoal (~11 meses), realizou transição ágil e bem-sucedida para a Produção técnica diante da baixa demanda e readequação de frentes operacionais, assumindo o mapeamento cadastral de ativos em 360° (WebGIS) e a restituição vetorial de rodovias no AutoCAD a partir de imagens aéreas capturadas por drones.",
+      context: "A Engemap é referência nacional em engenharia e geotecnologia. Atuação corporativa de 15 meses com foco central em Produção WebGIS e Geotecnologia. Inicialmente alocado no Departamento Pessoal (~11 meses), realizou transição ágil e bem-sucedida para a Produção técnica diante da baixa demanda de projetos externos, assumindo o mapeamento cadastral de ativos em 360° (WebGIS) e a restituição vetorial de rodovias no AutoCAD a partir de imagens aéreas capturadas por drones.",
       challenge: "Garantir exatidão métrica e consistência cadastral ao georreferenciar centenas de ativos urbanos e rodoviários em nível de solo e delimitar com rigor técnico o alinhamento horizontal (eixo e bordas de pista) a partir de mosaicos de imagens de drone.",
       solution: "Uso do visualizador 360° de Mapeamento Móvel para identificar e classificar placas de sinalização, postes de Wi-Fi e placas solares, somado ao traçado milimétrico no AutoCAD de eixos e bordas de rodovias com padronização rigorosa de layers.",
       decisions: [
