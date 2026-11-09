@@ -695,6 +695,95 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
   opacity:.9; transform:translateY(-1px);
   box-shadow:0 12px 28px -12px rgba(0,0,0,.7);
 }
+.act-cta-primary{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg, #4f46e5 0%, #7c3aed 52%, #9333ea 100%);
+  color:#ffffff !important;
+  border:1px solid rgba(255,255,255,.24);
+  box-shadow:0 0 0 1px rgba(139,92,246,.35), 0 8px 24px -4px rgba(124,58,237,.5);
+  cursor:pointer;
+}
+.act-cta-primary::before{
+  content:'';
+  position:absolute;
+  top:0; left:-120%; width:60%; height:100%;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+  transform:skewX(-20deg);
+  animation:ctaShimmer 4.5s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes ctaShimmer{
+  0%{ left:-120%; }
+  30%{ left:220%; }
+  100%{ left:220%; }
+}
+.act-cta-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 0 2px rgba(196,181,253,.65), 0 14px 34px -4px rgba(124,58,237,.7);
+  opacity:1;
+}
+.act-cta-primary:focus-visible{
+  outline:2px solid #ffffff;
+  outline-offset:3px;
+}
+.act-cta-primary small{
+  color:rgba(255,255,255,.88) !important;
+  opacity:1;
+}
+.act-icon-box{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  background:rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.32);
+  flex-shrink:0;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.45),
+              inset 0 -1px 2px rgba(0,0,0,.25),
+              0 0 14px rgba(139,92,246,.45),
+              0 4px 10px rgba(0,0,0,.25);
+}
+.act-icon-box .ic{
+  width:19px;
+  height:19px;
+  color:#ffffff !important;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,.35));
+}
+html.theme-light .act-cta-primary{
+  background:linear-gradient(135deg, #4338ca 0%, #6d28d9 52%, #7e22ce 100%);
+  color:#ffffff !important;
+  box-shadow:0 0 0 1px rgba(109,40,217,.3), 0 8px 24px -4px rgba(109,40,217,.4);
+}
+html.theme-contrast .act-cta-primary{
+  background:#000000;
+  border:2px solid #00ff00;
+  color:#00ff00 !important;
+  box-shadow:none;
+}
+html.theme-contrast .act-cta-primary::before{
+  display:none !important;
+}
+html.theme-contrast .act-cta-primary .act-icon-box{
+  background:#000000;
+  border:1px solid #00ff00;
+  box-shadow:none;
+}
+html.theme-contrast .act-cta-primary .act-icon-box .ic{
+  color:#00ff00 !important;
+  filter:none;
+}
+html.theme-contrast .act-cta-primary small{
+  color:#00ff00 !important;
+}
+@media (prefers-reduced-motion: reduce){
+  .act-cta-primary::before{
+    animation:none !important;
+    display:none !important;
+  }
+}
 .act-ghost{
   border:1px solid var(--line-2); color:var(--text);
 }
@@ -2177,8 +2266,10 @@ html.theme-contrast .ai-modal-col.ai {
         <section class="panel actions" aria-label="Ações rápidas" style="transform:none!important;">
           <h2>Ações Rápidas</h2>
           <p class="a-sub">Acesso direto ao resumo executivo e contato imediato.</p>
-          <button class="act act-solid" type="button" id="cv-btn">
-            <svg class="ic" aria-hidden="true"><use href="#i-file-down"/></svg>
+          <button class="act act-cta-primary" type="button" id="cv-btn" aria-label="Baixar Currículo em PDF executivo A4">
+            <span class="act-icon-box" aria-hidden="true">
+              <svg class="ic"><use href="#i-file-down"/></svg>
+            </span>
             <span>Baixar Currículo PDF
               <small>layout executivo A4 pronto para impressão</small>
             </span>
