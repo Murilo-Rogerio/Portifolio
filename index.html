@@ -1750,7 +1750,7 @@ html.theme-contrast .pf-tab.active {
   display: flex;
   align-items: center;
   gap: 14px;
-  flex: 1 1 480px;
+  flex: 1 1 auto;
   min-width: 0;
   flex-wrap: wrap;
 }
@@ -1917,21 +1917,32 @@ html.theme-contrast .ai-modal-col.ai {
 }
 
 @media (max-width: 768px) {
+  .ai-cell {
+    align-self: start !important;
+    height: auto !important;
+  }
   .ai-card {
-    padding: 12px 16px;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
+    padding: 14px 16px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    height: auto !important;
+    min-height: 0 !important;
   }
   .ai-card-main {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    height: auto !important;
+    min-height: 0 !important;
   }
-  .ai-card-sep { display: none; }
-  .ai-card-text { font-size: .8rem; }
-  .ai-card-action { width: 100%; }
-  .btn-ai-trigger { width: 100%; justify-content: center; padding: 8px 14px; }
+  .ai-card-sep { display: none !important; }
+  .ai-card-text { font-size: .82rem !important; line-height: 1.55 !important; }
+  .ai-card-action { width: 100% !important; margin-top: 2px !important; }
+  .btn-ai-trigger { width: 100% !important; justify-content: center !important; padding: 9px 16px !important; font-size: .8rem !important; }
   .ai-duo-grid { grid-template-columns: 1fr; }
   .modal-box { padding: 24px 20px; border-radius: 20px; }
   .modal-kpis-4 { grid-template-columns: repeat(2, 1fr); }
@@ -2971,16 +2982,16 @@ html.theme-contrast .ai-modal-col.ai {
         <div class="ai-card-main">
           <div class="ai-card-badge">
             <span class="ai-pulse-dot" aria-hidden="true"></span>
-            <span>Metodologia IA</span>
+            <span>Metodologia &amp; Transparência</span>
           </div>
           <p class="ai-card-text">
             <strong id="ai-card-title">Construído com Apoio de IA</strong>
             <span class="ai-card-sep">·</span>
-            <span>Copiloto técnico sob arquitetura, código e validação 100% humanas de Murilo Rogério.</span>
+            <span>IA como copiloto acelerador — arquitetura, decisões técnicas e testes práticos conduzidos por Murilo Rogério.</span>
           </p>
         </div>
         <div class="ai-card-action">
-          <button type="button" class="btn btn-ai-trigger" id="ai-modal-trigger-btn" aria-label="Ver metodologia de uso de Inteligência Artificial">
+          <button type="button" class="btn btn-ai-trigger" id="ai-modal-trigger-btn" aria-label="Ver como a IA foi utilizada no desenvolvimento">
             <span>Como a IA foi utilizada</span>
             <span class="ai-sparkle-icon" aria-hidden="true">✦</span>
           </button>
@@ -3092,65 +3103,66 @@ html.theme-contrast .ai-modal-col.ai {
   </div>
 </div>
 
-<!-- Modal Metodologia IA & Engenharia -->
-<div class="modal-overlay" id="modal-ai-overlay" role="dialog" aria-modal="true" aria-label="Engenharia Apoiada por IA: Transparência e Metodologia">
+<!-- Modal Metodologia IA & Transparência Técnica -->
+<div class="modal-overlay" id="modal-ai-overlay" role="dialog" aria-modal="true" aria-label="Como a IA foi utilizada: Transparência e Metodologia">
   <div class="modal-box">
     <button type="button" class="modal-close" data-close-modal aria-label="Fechar nota de transparência">
       <svg class="ic" style="width:16px;height:16px;"><use href="#i-x"/></svg>
     </button>
     <div class="modal-tag">
       <span class="dot" aria-hidden="true"></span>
-      Transparência Técnica · AI-Augmented Workflow
+      Transparência Técnica · Desenvolvimento com Apoio de IA
     </div>
-    <h2 class="modal-title">Engenharia Humana, Produtividade Aumentada</h2>
-    <p class="modal-sub">Como utilizo Inteligência Artificial Generativa como copiloto técnico sem abrir mão da visão arquitetural, autoria e rigor de engenharia.</p>
+    <h2 class="modal-title">Como Uso Inteligência Artificial no Meu Dia a Dia</h2>
+    <p class="modal-sub">Transparência técnica sobre o papel da IA no meu fluxo: aceleração de código e rascunhos, com arquitetura, decisões técnicas e validação prática feitas por mim.</p>
 
     <div class="modal-kpis-4">
       <div class="modal-kpi-item">
-        <span>Arquiteto &amp; Autor</span>
-        <strong class="accent-violet">Murilo Rogério (100%)</strong>
+        <span>Direção &amp; Autoria</span>
+        <strong class="accent-violet">Murilo Rogério</strong>
       </div>
       <div class="modal-kpi-item">
         <span>Papel da IA</span>
         <strong class="accent-blue">Copiloto &amp; Acelerador</strong>
       </div>
       <div class="modal-kpi-item">
-        <span>Validação de Código</span>
-        <strong class="accent-green">Revisão Linha a Linha</strong>
+        <span>Validação</span>
+        <strong class="accent-green">Testes &amp; Depuração Real</strong>
       </div>
       <div class="modal-kpi-item">
-        <span>Controle Técnico</span>
-        <strong>Total &amp; Auditável</strong>
+        <span>Critério Técnico</span>
+        <strong>Decisões Práticas</strong>
       </div>
     </div>
 
-    <div class="modal-section-title">O Papel do Desenvolvedor vs. O Papel da IA</div>
+    <div class="modal-section-title">Divisão de Papéis: O que eu faço vs. O que a IA faz</div>
     <div class="ai-duo-grid">
       <div class="ai-modal-col human">
-        <h4>O que é feito por mim (Humano / Arquiteto)</h4>
+        <h4>O que é feito por mim (Murilo Rogério)</h4>
         <ul>
-          <li><strong>Visão Arquitetural:</strong> Concepção do layout Bento Grid, hierarquia visual, design system e experiência do usuário (UX).</li>
-          <li><strong>Critério &amp; Curadoria:</strong> Validação de semântica HTML5, performance nativa, acessibilidade (WCAG) e contraste.</li>
-          <li><strong>Domínio dos Fundamentos:</strong> Compreensão profunda de cada função, algoritmo e estilo. Não há caixas-pretas: qualquer bug é diagnosticado e resolvido diretamente no código.</li>
+          <li><strong>Arquitetura &amp; Planejamento:</strong> Definição da estrutura do projeto, escolha de bibliotecas, organização de pastas e fluxo dos dados antes de escrever qualquer código.</li>
+          <li><strong>Decisão de Design e UX:</strong> Concepção do layout, responsividade para celular, acessibilidade, paleta de cores e comportamento dos componentes na tela.</li>
+          <li><strong>Depuração &amp; Testes Práticos:</strong> Quando um código falha, gera comportamento estranho ou sugere caminhos complexos demais, sou eu quem investiga, simplifica e testa no navegador até funcionar redondo.</li>
+          <li><strong>Critério &amp; Bom Senso:</strong> A IA não sabe o contexto do negócio nem os limites de performance de um app real; cabe a mim filtrar o que realmente presta e descartar o excesso.</li>
         </ul>
       </div>
       <div class="ai-modal-col ai">
-        <h4>Como a IA é utilizada (Ferramenta / Copiloto)</h4>
+        <h4>Como a IA me ajuda (Ferramenta / Copiloto)</h4>
         <ul>
-          <li><strong>Aceleração de Boilerplate:</strong> Agilidade na estruturação mecânica e digitação de blocos repetitivos.</li>
-          <li><strong>Pair Programming &amp; Brainstorming:</strong> Consulta de abordagens alternativas, refinamento de casos de borda e documentação.</li>
-          <li><strong>Multiplicador de Velocidade:</strong> Foco em regras de negócio e entrega contínua em alto padrão sem trabalho braçal ocioso.</li>
+          <li><strong>Velocidade em Boilerplate:</strong> Criação rápida de estruturas repetitivas, como formulários, marcações HTML e regras CSS utilitárias.</li>
+          <li><strong>Sugestão de Alternativas:</strong> Rascunhos rápidos para testar ideias de implementação, consultar sintaxes específicas e explorar abordagens diferentes.</li>
+          <li><strong>Agilidade de Desenvolvimento:</strong> Menos tempo digitando código mecânico e mais tempo focado em resolver problemas, polir a interface e entregar valor real.</li>
         </ul>
       </div>
     </div>
 
-    <div class="modal-section-title">Por que isso é um diferencial técnico de mercado?</div>
+    <div class="modal-section-title">Por que sou transparente sobre isso?</div>
     <div class="modal-bullets">
       <div class="modal-bullet">
-        <strong>Uso Consciente vs. Dependência Passiva:</strong> A IA é um excelente motor de sugestão, mas um péssimo tomador de decisões. Saber formular comandos com restrições arquiteturais precisas, identificar alucinações e depurar saídas é a competência que separa um operador passivo de um engenheiro moderno.
+        <strong>Honestidade Profissional:</strong> Hoje, quase todo desenvolvedor utiliza ferramentas modernas de assistência por código. Prefiro ser 100% transparente sobre como uso tecnologia para produzir mais, sem inventar que fiz tudo sozinho do zero ou que passei horas digitando boilerplate.
       </div>
       <div class="modal-bullet">
-        <strong>Engenharia de Software Moderna:</strong> Alavancar IA generativa é um reflexo direto de adaptabilidade tecnológica. Permite que um desenvolvedor alcance a velocidade de entrega de um time inteiro enquanto mantém o código limpo, auditável e padronizado.
+        <strong>Ferramenta requer quem saiba guiar:</strong> A IA é excelente para acelerar, mas não resolve nada sozinha sem quem entenda o que está sendo construído. Saber formular os problemas, identificar saídas ruins e ter domínio para corrigir qualquer bug no código é a habilidade que realmente importa.
       </div>
     </div>
 
