@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#08080a">
-<meta name="description" content="Portfólio profissional de Murilo Rogério Carvalho da Conceição — Foco em Produção WebGIS, Geotecnologia e Robótica.">
-<meta property="og:title" content="Murilo Rogério — Portfólio & Currículo">
-<meta property="og:description" content="Produção WebGIS, Geotecnologia e Robótica. Conheça meus projetos e trajetória profissional.">
+<meta name="description" content="Portfólio profissional de Murilo Rogério Carvalho da Conceição — Desenvolvedor Web Júnior | Full-Stack | WebGIS. Experiência corporativa na Engemap e projetos em produção.">
+<meta property="og:title" content="Murilo Rogério — Desenvolvedor Web Júnior | Full-Stack | WebGIS">
+<meta property="og:description" content="Experiência corporativa em WebGIS e AutoCAD na Engemap e projetos web em React, Next.js, TypeScript, PostgreSQL e Supabase.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://murilorogerio.dev">
-<meta property="og:image" content="https://ifqbuhrhmefqiwrpzvsh.supabase.co/storage/v1/object/public/site-assets/Capa.jpeg">
+<meta property="og:image" content="https://ifqbuhrhmefqiwrpzvsh.supabase.co/storage/v1/object/public/site-assets/url.jpeg">
 <meta name="twitter:card" content="summary_large_image">
-<title>Murilo Rogério — Portfólio & Currículo</title>
+<title>Murilo Rogério — Desenvolvedor Web Júnior | Full-Stack | WebGIS</title>
 <link rel="icon" type="image/jpeg" href="https://ifqbuhrhmefqiwrpzvsh.supabase.co/storage/v1/object/public/site-assets/url.jpeg">
 
 <!-- Otimização Avançada para IAs e Motores de Busca (Schema.org) -->
@@ -20,9 +20,9 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Murilo Rogério Carvalho da Conceição",
-  "jobTitle": "Produção WebGIS & Geoprocessamento",
+  "jobTitle": "Desenvolvedor Web Júnior | Full-Stack | WebGIS",
   "url": "https://murilorogerio.dev",
-  "image": "https://ifqbuhrhmefqiwrpzvsh.supabase.co/storage/v1/object/public/site-assets/Capa.jpeg",
+  "image": "https://ifqbuhrhmefqiwrpzvsh.supabase.co/storage/v1/object/public/site-assets/url.jpeg",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Assis",
@@ -1916,6 +1916,232 @@ html.theme-contrast .ai-modal-col.ai {
   background: #000000;
 }
 
+/* Horizontal Quick Actions Bar (Below Summary & Ficha) */
+.actions-row {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.actions-head {
+  flex: 1 1 240px;
+  min-width: 0;
+}
+.actions-head .a-sub {
+  margin-bottom: 0;
+}
+.actions-btns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 12px;
+  flex: 1.4 1 480px;
+}
+
+/* Complementary Deep-Dive Section ("Ir Além") */
+.deep-dive {
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  transform: none !important;
+}
+.deep-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.deep-head-info {
+  flex: 1 1 420px;
+  min-width: 0;
+}
+.deep-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--mono);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--violet-2);
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.28);
+  border-radius: 999px;
+  padding: 4px 11px;
+  margin-bottom: 10px;
+}
+.deep-head h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--text);
+}
+.deep-head p {
+  font-size: .84rem;
+  line-height: 1.55;
+  color: var(--text-3);
+  margin-top: 4px;
+}
+.deep-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.deep-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.deep-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: .72rem;
+  font-weight: 500;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all .25s ease;
+}
+.deep-tab:hover {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--line-2);
+}
+.deep-dive.open .deep-tab.active {
+  background: rgba(139, 92, 246, 0.18);
+  color: var(--text);
+  border-color: rgba(167, 139, 250, 0.55);
+}
+.deep-body {
+  display: none;
+  margin-top: 20px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.deep-dive.open .deep-body {
+  display: block;
+}
+.deep-pane {
+  display: none;
+}
+.deep-pane.active {
+  display: block;
+}
+.deep-forja-card {
+  padding: 22px 24px;
+  border-radius: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.deep-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.deep-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.deep-term-grid {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 16px;
+  align-items: stretch;
+}
+.deep-term-grid .panel {
+  border-radius: 18px;
+  height: 100%;
+}
+.deep-card {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.deep-card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.deep-card h3 {
+  font-size: .96rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -.01em;
+}
+.deep-card p {
+  font-size: .84rem;
+  line-height: 1.65;
+  color: var(--text-2);
+}
+.deep-card-foot {
+  margin-top: auto;
+  padding-top: 8px;
+}
+.cs-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 0 0 20px;
+}
+.cs-meta-box {
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.cs-meta-box h4 {
+  font-family: var(--mono);
+  font-size: .66rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--violet-2);
+  margin-bottom: 6px;
+}
+.cs-meta-box p {
+  font-size: .82rem;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+html.theme-light .deep-dive.open .deep-tab.active {
+  background: rgba(124, 58, 237, 0.12);
+  border-color: rgba(124, 58, 237, 0.45);
+  color: #4c1d95;
+}
+html.theme-contrast .deep-dive.open .deep-tab.active {
+  background: #ffff00;
+  color: #000000;
+  border-color: #ffffff;
+}
+html.theme-contrast .deep-eyebrow {
+  background: #000000;
+  color: #00ffff;
+  border-color: #00ffff;
+}
+
+@media (max-width: 960px) {
+  .deep-grid-3 { grid-template-columns: 1fr; }
+  .deep-term-grid { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 768px) {
   .ai-cell {
     align-self: start !important;
@@ -1944,6 +2170,12 @@ html.theme-contrast .ai-modal-col.ai {
   .ai-card-action { width: 100% !important; margin-top: 2px !important; }
   .btn-ai-trigger { width: 100% !important; justify-content: center !important; padding: 9px 16px !important; font-size: .8rem !important; }
   .ai-duo-grid { grid-template-columns: 1fr; }
+  .actions-row { padding: 20px; flex-direction: column; align-items: stretch; gap: 14px; }
+  .actions-btns { grid-template-columns: 1fr; flex: none; width: 100%; }
+  .deep-dive { padding: 20px; }
+  .deep-forja-card { padding: 18px 16px; }
+  .deep-grid-2 { grid-template-columns: 1fr; }
+  .cs-meta-grid { grid-template-columns: 1fr; }
   .modal-box { padding: 24px 20px; border-radius: 20px; }
   .modal-kpis-4 { grid-template-columns: repeat(2, 1fr); }
   .cs-kpi-bar { grid-template-columns: 1fr; }
@@ -1975,7 +2207,7 @@ html.theme-contrast .ai-modal-col.ai {
   <a href="#arca" class="rail-item" data-sec="arca"><span class="tooltip">Arca</span></a>
   <a href="#nossofluxo" class="rail-item" data-sec="nossofluxo"><span class="tooltip">Nosso Fluxo</span></a>
   <a href="#viviboty" class="rail-item" data-sec="viviboty"><span class="tooltip">Vivi Carvalho Boty</span></a>
-  <a href="#forja" class="rail-item" data-sec="forja"><span class="tooltip">Forja</span></a>
+  <a href="#ir-alem" class="rail-item" data-sec="ir-alem"><span class="tooltip">Ir Além &amp; Forja</span></a>
   <a href="#formacao" class="rail-item" data-sec="formacao"><span class="tooltip">Formação &amp; Robótica</span></a>
 </nav>
 
@@ -2133,13 +2365,14 @@ html.theme-contrast .ai-modal-col.ai {
           <span class="avatar-halo" aria-hidden="true"></span>
           <span class="avatar-ring" aria-hidden="true"></span>
           <span class="avatar-core">
-            <img src="https://ifqbuhrhmefqiwrpzvsh.supabase.co/storage/v1/object/public/site-assets/Capa.jpeg" alt="Foto de perfil de Murilo Rogério" width="114" height="114" loading="eager" fetchpriority="high">
+            <!-- Foto principal alinhada ao ícone do site -->
+            <img src="https://ifqbuhrhmefqiwrpzvsh.supabase.co/storage/v1/object/public/site-assets/url.jpeg" alt="Foto de perfil de Murilo Rogério" width="114" height="114" loading="eager" fetchpriority="high">
           </span>
         </div>
         <h1>Murilo Rogério <span class="soft">Carvalho da Conceição</span></h1>
-        <p class="roles">Desenvolvimento Web &nbsp;·&nbsp; Geotecnologia &amp; WebGIS &nbsp;·&nbsp; Robótica</p>
+        <p class="roles">Desenvolvedor Web Júnior &nbsp;·&nbsp; Full-Stack &nbsp;·&nbsp; WebGIS</p>
         <div class="pills">
-          <span class="pill status"><span class="dot" aria-hidden="true"></span>Disponível para Oportunidades / Efetivação</span>
+          <span class="pill status"><span class="dot" aria-hidden="true"></span>Disponível para Contratação · CLT Integral</span>
           <span class="pill"><svg class="ic" aria-hidden="true"><use href="#i-graduation"/></svg>Ensino Médio Concluído · 2026</span>
           <span class="pill"><svg class="ic" aria-hidden="true"><use href="#i-languages"/></svg>Inglês Intermediário</span>
         </div>
@@ -2195,24 +2428,27 @@ html.theme-contrast .ai-modal-col.ai {
       <section class="panel summary tilt" id="summary">
         <div class="spec-head">Resumo Profissional</div>
         <p>
-          Experiência Corporativa na <strong>Engemap (15 meses)</strong> com foco em <strong>Produção WebGIS e Geotecnologia</strong>: atuação técnica em Mapeamento Móvel via visualizador 360° no WebGIS para cadastro de placas, postes Wi-Fi e placas solares, além de vetorização de ortoimagens de <strong>drones</strong> no AutoCAD para traçado de precisão do <strong>eixo e bordas de rodovias</strong>. Histórico de transição ágil para a Produção por volta do 11º mês e diagnóstico formal de <strong>Altas Habilidades / Superdotação (AH/SD)</strong>.
+          Jovem profissional com experiência em ambiente corporativo, desenvolvimento de aplicações web e geotecnologia. Vivência prática em projetos com <strong>React, Next.js, TypeScript, PostgreSQL e Supabase</strong>, além de experiência com <strong>AutoCAD</strong> e sistemas de informação geográfica (<strong>WebGIS</strong>).
+        </p>
+        <p style="margin-top:10px;">
+          Na <strong>Engemap (15 meses)</strong>, atuei no suporte administrativo de RH e migrei para a produção técnica em mapeamento rodoviário. Busco uma oportunidade para contribuir com soluções práticas, ampliar minha experiência profissional e desenvolver projetos de impacto real.
         </p>
         <div class="metrics">
           <div class="metric">
             <b id="engemap-metric-num"><span data-count="15">0</span><em> meses</em></b>
-            <span id="engemap-metric-label">experiência corporativa na Engemap (WebGIS &amp; CAD)</span>
+            <span id="engemap-metric-label">de experiência corporativa na Engemap (RH, WebGIS e AutoCAD)</span>
           </div>
           <div class="metric">
             <b><span data-count="4">0</span><em>+</em></b>
-            <span>anos moldando base em robótica e sistemas</span>
+            <span>anos de prática em robótica e lógica</span>
           </div>
           <div class="metric">
             <b><span data-count="4">0</span></b>
-            <span>sistemas robustos operando em produção</span>
+            <span>aplicações web publicadas e em uso</span>
           </div>
           <div class="metric">
             <b><span data-count="100">0</span><em>%</em></b>
-            <span>aproveitamento com distinção escolar máxima</span>
+            <span>de conclusão escolar (Aluno Destaque)</span>
           </div>
         </div>
       </section>
@@ -2226,57 +2462,22 @@ html.theme-contrast .ai-modal-col.ai {
         </header>
         <dl>
           <div class="frow"><dt>Idade</dt><dd><span class="dynamic-age">17</span> anos (18 em Jan/2027)</dd></div>
+          <div class="frow"><dt>Localidade</dt><dd>Assis, SP · Brasil (BRT · UTC−3)</dd></div>
           <div class="frow"><dt>Escolaridade</dt><dd>Ensino Médio Concluído · 2026</dd></div>
-          <div class="frow"><dt>Modalidade</dt><dd>Remoto, Híbrido ou Presencial (CLT Integral)</dd></div>
-          <div class="frow"><dt>Foco Técnico</dt><dd>WebGIS · AutoCAD · Dev Web</dd></div>
-          <div class="frow"><dt>Perfil</dt><dd>AH/SD · rápida assimilação lógica</dd></div>
-          <div class="frow"><dt>Corporativo</dt><dd id="engemap-ficha-contrato">Engemap (15 meses) · Foco em Produção WebGIS e Geotecnologia</dd></div>
+          <div class="frow"><dt>Modalidade</dt><dd>Remoto, Híbrido ou Presencial (CLT)</dd></div>
+          <div class="frow"><dt>Atuação</dt><dd>Dev Web Júnior · Full-Stack · WebGIS</dd></div>
+          <div class="frow"><dt>Corporativo</dt><dd id="engemap-ficha-contrato">Engemap (15 meses) · RH e Produção WebGIS</dd></div>
         </dl>
       </section>
     </div>
 
-    <div class="cell sp-7 reveal" style="--d:.08s">
-      <section class="panel terminal tilt" aria-label="Terminal Interativo">
-        <div class="t-bar">
-          <div class="t-bar-left">
-            <span class="t-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <div class="t-tabs">
-              <button class="t-tab active" data-tab="config">murilo.config.ts</button>
-              <button class="t-tab" data-tab="trajetoria">trajetoria.ts</button>
-              <button class="t-tab" data-tab="stack">stack.ts</button>
-            </div>
-          </div>
-        </div>
-        <div class="t-body" id="terminal-content">
-          <!-- Conteúdo inserido dinamicamente via JS -->
-        </div>
-      </section>
-    </div>
-
-    <div class="cell sp-5 reveal" style="--d:.14s">
-      <div class="stack">
-
-        <section class="panel geo tilt" aria-label="Localização e horário local">
-          <header>
-            <span class="sk-icon"><svg class="ic"><use href="#i-map-pin"/></svg></span>
-            <div>
-              <h2>Assis, SP</h2>
-              <p class="g-sub">São Paulo · Brasil</p>
-            </div>
-          </header>
-          <div class="clock">
-            <span id="clock-time">--:--:--</span> <small id="clock-mer">BRT</small>
-          </div>
-          <p class="g-date" id="clock-date">—</p>
-          <p class="g-tz">
-            <svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>
-            BRT · UTC−3 · fuso America/Sao_Paulo
-          </p>
-        </section>
-
-        <section class="panel actions" aria-label="Ações rápidas" style="transform:none!important;">
+    <div class="cell sp-12 reveal" style="--d:.1s">
+      <section class="panel actions actions-row" aria-label="Ações rápidas" style="transform:none!important;">
+        <div class="actions-head">
           <h2>Ações Rápidas</h2>
-          <p class="a-sub">Acesso direto ao resumo executivo e contato imediato.</p>
+          <p class="a-sub">Acesso direto ao currículo em PDF e resumo executivo para recrutadores.</p>
+        </div>
+        <div class="actions-btns">
           <button class="act act-cta-primary" type="button" id="cv-btn" aria-label="Baixar Currículo em PDF executivo A4">
             <span class="act-icon-box" aria-hidden="true">
               <svg class="ic"><use href="#i-file-down"/></svg>
@@ -2288,19 +2489,18 @@ html.theme-contrast .ai-modal-col.ai {
           <button class="act act-ghost" type="button" id="quick-view-btn">
             <svg class="ic" aria-hidden="true" style="color:var(--violet-2)"><use href="#i-award"/></svg>
             <span>Visão Rápida (Recrutador)
-              <small>resumo em 30s de competências &amp; impacto</small>
+              <small>resumo direto em 30s de entregas e stack</small>
             </span>
           </button>
-        </section>
-
-      </div>
+        </div>
+      </section>
     </div>
 
     <div class="cell sp-12 reveal" style="--d:.06s">
       <div class="panel projects-filter-bar">
         <div class="pf-info">
-          <h2>Projetos em Produção &amp; Experiência</h2>
-          <p>Sistemas com código real em execução na web e geoprocessamento corporativo.</p>
+          <h2>Experiência &amp; Principais Projetos</h2>
+          <p>Experiência corporativa e 3 projetos em destaque; o projeto complementar (FORJA), Terminal e Relógio ficam em Ir Além.</p>
         </div>
         <div class="pf-tabs" role="tablist" aria-label="Filtrar projetos por categoria">
           <button type="button" class="pf-tab active" data-filter="all">Todos (5)</button>
@@ -2315,13 +2515,13 @@ html.theme-contrast .ai-modal-col.ai {
       <article class="panel project tilt" id="engemap">
         <div class="panel-head">
           <div class="p-badges">
-            <span class="badge" id="engemap-badge"><span class="bdot b-green" aria-hidden="true"></span>Experiência Corporativa: Engemap (15 meses) · Foco em Produção WebGIS e Geotecnologia</span>
+            <span class="badge" id="engemap-badge"><span class="bdot b-green" aria-hidden="true"></span>Experiência Corporativa: Engemap (15 meses) · RH e Produção WebGIS/CAD</span>
             <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>WebGIS &amp; AutoCAD</span>
             <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>Mapeamento Móvel &amp; Drone</span>
           
-            <button type="button" class="btn-case-badge btn-case-study" data-case="engemap" aria-label="Abrir estudo de caso">
+            <button type="button" class="btn-case-badge btn-case-study" data-case="engemap" aria-label="Abrir detalhes técnicos da Engemap">
               <svg class="ic" aria-hidden="true"><use href="#i-award"/></svg>
-              Estudo de Caso
+              Aprofundar
               <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
             </button>
           </div>
@@ -2365,7 +2565,7 @@ html.theme-contrast .ai-modal-col.ai {
               <span class="p-icon"><svg class="ic"><use href="#i-briefcase"/></svg></span>
               <div>
                 <h3>Engemap</h3>
-                <p class="p-tag">Mapeamento Móvel &amp; Vetorização Rodoviária</p>
+                <p class="p-tag">Experiência Corporativa · Geotecnologia &amp; RH</p>
               </div>
             </div>
 
@@ -2374,11 +2574,11 @@ html.theme-contrast .ai-modal-col.ai {
                 <span class="xp-dot now" aria-hidden="true"></span>
                 <div class="xp-body">
                   <div class="xp-head">
-                    <h4>Mapeamento Móvel &amp; CAD Rodoviário (WebGIS / Drones)</h4>
-                    <span class="chip" id="engemap-role-chip">Experiência Corporativa · 15 meses</span>
+                    <h4>Produção: Mapeamento Móvel (WebGIS) &amp; AutoCAD</h4>
+                    <span class="chip" id="engemap-role-chip">11º ao 15º mês · Fase Técnica</span>
                   </div>
                   <p>
-                    Atuação técnica na Produção dividida em duas frentes de alta precisão: no <strong>WebGIS</strong>, utilizando o sistema de Mapeamento Móvel (visualizador 360°) para identificar e marcar no mapa ativos como placas de sinalização (especificações e tipos), postes de Wi-Fi e placas solares; no <strong>AutoCAD</strong>, processando mosaicos de imagens de <strong>drone</strong> para traçado preciso do <strong>eixo geométrico da rodovia</strong> e as <strong>linhas de borda</strong> da pista. Transição realizada por volta do 11º mês de contrato para suprir demandas técnicas de engenharia.
+                    Atuação na equipe de Produção em duas frentes: no <strong>WebGIS</strong>, uso do sistema de Mapeamento Móvel (visualizador 360°) para identificar e cadastrar ativos no mapa (placas de sinalização com tipos e especificações, postes Wi-Fi e placas solares); no <strong>AutoCAD</strong>, vetorização de imagens de <strong>drones</strong> para traçado do <strong>eixo e bordas de rodovias</strong> seguindo padrões técnicos de entrega.
                   </p>
                 </div>
               </article>
@@ -2387,18 +2587,18 @@ html.theme-contrast .ai-modal-col.ai {
                 <span class="xp-dot" aria-hidden="true"></span>
                 <div class="xp-body">
                   <div class="xp-head">
-                    <h4>Suporte Operacional &amp; Departamento Pessoal (RH)</h4>
+                    <h4>Departamento Pessoal (RH) &amp; Suporte Operacional</h4>
                     <span class="chip">1º ao 11º mês</span>
                   </div>
                   <p>
-                    Gestão meticulosa de processos internos, organização documental e suporte operacional ao departamento pessoal por ~11 meses, até a transição ágil para a Produção técnica motivada por baixa demanda e readequação estratégica de projetos.
+                    Apoio às rotinas administrativas, conferência e organização de documentos do departamento pessoal durante os primeiros 11 meses, até a transição para a Produção técnica conforme a demanda de projetos da empresa.
                   </p>
                 </div>
               </article>
             </div>
             <div style="margin-top:22px;">
               <button class="btn btn-solid btn-case-study" type="button" data-case="engemap">
-                Ver Estudo de Caso Completo
+                Aprofundar Detalhes Técnicos
                 <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
               </button>
             </div>
@@ -2409,7 +2609,7 @@ html.theme-contrast .ai-modal-col.ai {
             <div class="contract">
               <div class="c-top">
                 <span class="c-range" id="engemap-range">Ago/2025 → Nov/2026 (15 meses)</span>
-                <span class="c-len" id="engemap-len">Experiência Corporativa: Engemap (15 meses) · Foco em Produção WebGIS e Geotecnologia</span>
+                <span class="c-len" id="engemap-len">Engemap (15 meses) · Foco em Produção WebGIS e AutoCAD</span>
               </div>
               <div class="c-track" role="progressbar" aria-label="Progresso do ciclo corporativo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="c-bar">
                 <div class="c-fill" id="c-fill"></div>
@@ -2420,12 +2620,15 @@ html.theme-contrast .ai-modal-col.ai {
               </div>
             </div>
 
-            <div class="spec-head" style="margin-top:24px">Setores de Atuação</div>
+            <div class="spec-head" style="margin-top:24px">Áreas &amp; Validação em Produção</div>
             <div class="c-areas">
-              <span class="chip core">Produção: Mapeamento Móvel (WebGIS)</span>
-              <span class="chip core">Produção: AutoCAD &amp; Drone (Fase Técnica)</span>
-              <span class="chip">RH · Depto Pessoal (1º ao 11º mês)</span>
+              <span class="chip core">WebGIS · Mapeamento Móvel</span>
+              <span class="chip core">AutoCAD · Vetorização de Drones</span>
+              <span class="chip">RH · Depto Pessoal (1º–11º mês)</span>
             </div>
+            <p style="margin-top:12px; font-size:.82rem; line-height:1.55; color:var(--text-3);">
+              Entregas submetidas à conferência técnica interna de qualidade e precisão cartográfica antes da liberação dos lotes.
+            </p>
           </div>
         </div>
       </article>
@@ -2435,16 +2638,15 @@ html.theme-contrast .ai-modal-col.ai {
       <article class="panel project tilt" id="arca">
         <div class="panel-head">
           <div class="p-badges">
+            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Destaque 1 · Arquitetura Web</span>
             <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>React 18</span>
             <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>TypeScript</span>
-            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>Vite</span>
-            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Tailwind CSS</span>
             <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Supabase RLS</span>
-            <span class="badge"><span class="bdot b-rose" aria-hidden="true"></span>PWA / Share Target</span>
+            <span class="badge"><span class="bdot b-rose" aria-hidden="true"></span>PWA Instalável</span>
           
-            <button type="button" class="btn-case-badge btn-case-study" data-case="arca" aria-label="Abrir estudo de caso">
+            <button type="button" class="btn-case-badge btn-case-study" data-case="arca" aria-label="Abrir estudo de caso técnico do Arca">
               <svg class="ic" aria-hidden="true"><use href="#i-award"/></svg>
-              Estudo de Caso
+              Aprofundar
               <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
             </button>
           </div>
@@ -2469,19 +2671,19 @@ html.theme-contrast .ai-modal-col.ai {
               <span class="p-icon"><svg class="ic"><use href="#i-archive"/></svg></span>
               <div>
                 <h3>Arca</h3>
-                <p class="p-tag">Organização Pessoal &amp; Bloco de Notas PWA</p>
+                <p class="p-tag">Organização Pessoal e Bloco de Notas (PWA)</p>
               </div>
             </div>
             <p class="p-desc">
-              PWA de alta performance para organização pessoal e bookmarking. Criado para mitigar o atrito de salvar referências rapidamente no mobile, implementando captura nativa via Web Share Target (TikTok/YouTube) e garantindo integridade de dados por sincronização offline-first com atualização otimista.
+              Aplicação web instalável criada para resolver um problema prático do dia a dia: salvar links, vídeos e anotações pelo celular em segundos, com busca rápida e funcionamento mesmo quando a conexão oscila. Demonstra organização de arquitetura frontend, banco de dados e autenticação.
             </p>
-            <div class="p-stack" aria-label="Stack complementar">
-              <span class="chip core">PWA Instalável</span>
-              <span class="chip">Web Share Target</span>
-              <span class="chip">oEmbed Auto-Fetch</span>
-              <span class="chip">Compressão Canvas</span>
-              <span class="chip">Supabase Auth</span>
-              <span class="chip">PostgreSQL RLS</span>
+            <div class="p-stack" aria-label="Tecnologias do projeto">
+              <span class="chip core">React 18</span>
+              <span class="chip core">TypeScript</span>
+              <span class="chip">Vite</span>
+              <span class="chip">Tailwind CSS</span>
+              <span class="chip">Supabase Auth/RLS</span>
+              <span class="chip">PWA</span>
             </div>
             <div class="p-actions">
               <a class="btn btn-solid" href="https://arcaik-notes.vercel.app/" target="_blank" rel="noopener noreferrer">
@@ -2493,40 +2695,47 @@ html.theme-contrast .ai-modal-col.ai {
                 Código-fonte
               </a>
               <button type="button" class="btn btn-ghost btn-case-study" data-case="arca">
-                Estudo de Caso
+                Aprofundar Arquitetura
               </button>
             </div>
           </div>
 
           <div class="p-specs">
-            <div class="spec-head">Estudo de Caso &amp; Arquitetura</div>
+            <div class="spec-head">Resumo de Entrega</div>
             <ol class="spec-list">
               <li>
                 <span class="spec-num">01</span>
                 <div>
-                  <strong>Web Share Target &amp; oEmbed Nativo</strong>
-                  <p>Integração com a folha de compartilhamento nativa do Android para arquivar vídeos consumindo metadados automaticamente.</p>
+                  <strong>Problema resolvido</strong>
+                  <p>Centralizar links (como TikTok e YouTube), imagens e notas salvas pelo celular sem depender de grupos de conversa ou abas perdidas.</p>
                 </div>
               </li>
               <li>
                 <span class="spec-num">02</span>
                 <div>
-                  <strong>Compressão Client-Side &amp; Resiliência</strong>
-                  <p>Imagens otimizadas diretamente via canvas reduzindo o payload de rede substancialmente.</p>
+                  <strong>Minha participação</strong>
+                  <p>Desenvolvimento individual completo: planejamento de uso, interface responsiva, autenticação, banco de dados e deploy.</p>
                 </div>
               </li>
               <li>
                 <span class="spec-num">03</span>
                 <div>
-                  <strong>Segurança (RLS) &amp; URLs Assinadas</strong>
-                  <p>Controle estrito de vazamento de dados assegurado com Row Level Security (RLS) no Postgres e buckets efêmeros.</p>
+                  <strong>Funcionalidades que implementei</strong>
+                  <p>Compartilhamento direto pelo menu do celular (Web Share Target), busca automática de título/capa, compressão de imagens e suporte offline.</p>
                 </div>
               </li>
               <li>
                 <span class="spec-num">04</span>
                 <div>
-                  <strong>Navegação Offline e Updates Otimistas</strong>
-                  <p>Estratégia avançada de Service Worker com mutações falsas velozes para UX perfeita.</p>
+                  <strong>Tecnologias utilizadas</strong>
+                  <p>React 18, TypeScript, Vite, Tailwind CSS, Service Worker (PWA) e Supabase (Auth, Storage e PostgreSQL com RLS).</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">05</span>
+                <div>
+                  <strong>Validação e manutenção</strong>
+                  <p>Publicado na Vercel, testado continuamente em uso real no mobile, com controle de acesso por usuário no banco e histórico no GitHub.</p>
                 </div>
               </li>
             </ol>
@@ -2539,15 +2748,15 @@ html.theme-contrast .ai-modal-col.ai {
       <article class="panel project tilt" id="nossofluxo">
         <div class="panel-head">
           <div class="p-badges">
+            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Destaque 2 · Dados &amp; Regras de Negócio</span>
             <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>Next.js 15</span>
             <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>React 19</span>
             <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>TypeScript</span>
-            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Supabase</span>
-            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Fintech</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>PostgreSQL / Supabase</span>
           
-            <button type="button" class="btn-case-badge btn-case-study" data-case="nossofluxo" aria-label="Abrir estudo de caso">
+            <button type="button" class="btn-case-badge btn-case-study" data-case="nossofluxo" aria-label="Abrir estudo de caso técnico do Nosso Fluxo">
               <svg class="ic" aria-hidden="true"><use href="#i-award"/></svg>
-              Estudo de Caso
+              Aprofundar
               <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
             </button>
           </div>
@@ -2578,15 +2787,16 @@ html.theme-contrast .ai-modal-col.ai {
               <span class="p-icon"><svg class="ic"><use href="#i-trending-up"/></svg></span>
               <div>
                 <h3>Nosso Fluxo</h3>
-                <p class="p-tag">Plataforma Fintech de Controle Patrimonial</p>
+                <p class="p-tag">Controle Financeiro e Investimentos</p>
               </div>
             </div>
             <p class="p-desc">
-              Produto Fintech projetado para sanar ineficiências em planilhas de terceiros. Integra consumo real-time de juros básicos (CDI/BrasilAPI) e ativos B3 para entrega de panoramas automatizados através de um motor de recursão autoral sem duplicação de dados.
+              Aplicação web de controle financeiro pessoal e acompanhamento de investimentos criada para substituir planilhas manuais que se quebram com facilidade. Demonstra trabalho estruturado com dados, lógica de recorrência e integração de APIs financeiras.
             </p>
-            <div class="p-stack" aria-label="Stack complementar">
+            <div class="p-stack" aria-label="Tecnologias do projeto">
+              <span class="chip core">Next.js 15</span>
+              <span class="chip">TypeScript</span>
               <span class="chip">Tailwind CSS</span>
-              <span class="chip">Framer Motion</span>
               <span class="chip">Recharts</span>
               <span class="chip">PostgreSQL RLS</span>
               <span class="chip">BrasilAPI</span>
@@ -2601,33 +2811,47 @@ html.theme-contrast .ai-modal-col.ai {
                 Código-fonte
               </a>
               <button type="button" class="btn btn-ghost btn-case-study" data-case="nossofluxo">
-                Estudo de Caso
+                Aprofundar Arquitetura
               </button>
             </div>
           </div>
 
           <div class="p-specs">
-            <div class="spec-head">Estudo de Caso &amp; Arquitetura</div>
+            <div class="spec-head">Resumo de Entrega</div>
             <ol class="spec-list">
               <li>
                 <span class="spec-num">01</span>
                 <div>
-                  <strong>Consumo Dinâmico de CDI</strong>
-                  <p>Taxa alimentada via BrasilAPI e mitigada por estratégia robusta de cache de 1h, com fallback seguro.</p>
+                  <strong>Problema resolvido</strong>
+                  <p>Dificuldade de acompanhar gastos parcelados, contas recorrentes e rendimento da carteira em planilhas estáticas e propensas a erro.</p>
                 </div>
               </li>
               <li>
                 <span class="spec-num">02</span>
                 <div>
-                  <strong>Motor Lógico de Recorrência</strong>
-                  <p>Lógica customizada prevendo saídas de caixa contínuas eliminando a poluição desnecessária do PostgreSQL.</p>
+                  <strong>Minha participação</strong>
+                  <p>Responsável integral pela modelagem de dados, lógica de cálculo financeiro, interface com gráficos, autenticação e publicação.</p>
                 </div>
               </li>
               <li>
                 <span class="spec-num">03</span>
                 <div>
-                  <strong>Postura de Segurança em Camadas</strong>
-                  <p>Sessões interceptadas no Middleware com barreiras de layout injetadas na fundação do RLS.</p>
+                  <strong>Funcionalidades que implementei</strong>
+                  <p>Projeção automática de parcelas e despesas fixas sem duplicar linhas no banco, consulta da taxa CDI e gráficos de patrimônio e risco × retorno.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">04</span>
+                <div>
+                  <strong>Tecnologias utilizadas</strong>
+                  <p>Next.js 15, React 19, TypeScript, Tailwind CSS, Recharts, Supabase (PostgreSQL RLS) e APIs BrasilAPI / cotações.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">05</span>
+                <div>
+                  <strong>Validação e manutenção</strong>
+                  <p>Operando na Vercel com cache de 1h e taxa de contingência caso a API externa oscile, garantindo estabilidade na leitura.</p>
                 </div>
               </li>
             </ol>
@@ -2640,15 +2864,15 @@ html.theme-contrast .ai-modal-col.ai {
       <article class="panel project alt tilt" id="viviboty">
         <div class="panel-head">
           <div class="p-badges">
-            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Google Gemini 3.8 Flash</span>
-            <span class="badge"><span class="bdot b-rose" aria-hidden="true"></span>JavaScript ES6+</span>
-            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Tailwind CSS</span>
+            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Destaque 3 · Aplicação Comercial Real</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>JavaScript ES6+</span>
             <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>Supabase Auth/RLS</span>
-            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>E-commerce</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Google Gemini</span>
+            <span class="badge"><span class="bdot b-rose" aria-hidden="true"></span>E-commerce B2C</span>
           
-            <button type="button" class="btn-case-badge btn-case-study" data-case="viviboty" aria-label="Abrir estudo de caso">
+            <button type="button" class="btn-case-badge btn-case-study" data-case="viviboty" aria-label="Abrir estudo de caso técnico do Vivi Carvalho Boty">
               <svg class="ic" aria-hidden="true"><use href="#i-award"/></svg>
-              Estudo de Caso
+              Aprofundar
               <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
             </button>
           </div>
@@ -2669,21 +2893,22 @@ html.theme-contrast .ai-modal-col.ai {
               <span class="p-icon"><svg class="ic"><use href="#i-shopping-bag"/></svg></span>
               <div>
                 <h3>Vivi Carvalho Boty</h3>
-                <p class="p-tag">Vitrine Digital B2C com IA Generativa</p>
+                <p class="p-tag">Vitrine Digital Comercial e Painel de Vendas</p>
               </div>
             </div>
             <p class="p-desc">
-              Solução de e-commerce desenvolvida para a consultora Vivi Carvalho (O Boticário, Natura, Eudora) com funil click-to-chat de zero fricção no WhatsApp, controle dinâmico de pronta entrega vs. encomendas e painel administrativo turbinado com Google Gemini 3.8 Flash para cadastro instantâneo de cosméticos por foto ou texto.
+              Loja virtual e catálogo digital criado para uma cliente real, a consultora Vivi Carvalho (O Boticário, Natura, Eudora). Facilita o pedido dos clientes direto pelo WhatsApp e agiliza o cadastro de produtos no painel administrativo com apoio de IA.
             </p>
-            <div class="p-stack" aria-label="Stack complementar">
-              <span class="chip">Google Gemini AI</span>
-              <span class="chip">HTML5 Semântico</span>
+            <div class="p-stack" aria-label="Tecnologias do projeto">
+              <span class="chip core">JavaScript ES6+</span>
+              <span class="chip">Tailwind CSS</span>
+              <span class="chip">Supabase Auth/RLS</span>
+              <span class="chip">Google Gemini</span>
               <span class="chip">Vercel Edge</span>
-              <span class="chip">Supabase Storage</span>
             </div>
             <div class="p-actions">
               <a class="btn btn-solid" href="https://www.vivicarvalhoboty.com.br" target="_blank" rel="noopener noreferrer">
-                Testar App (Live Demo)
+                Visitar Loja no Ar
                 <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
               </a>
               <a class="btn btn-ghost" href="https://github.com/Murilo-Rogerio/Vivi-Boty" target="_blank" rel="noopener noreferrer">
@@ -2691,136 +2916,47 @@ html.theme-contrast .ai-modal-col.ai {
                 Código-fonte
               </a>
               <button type="button" class="btn btn-ghost btn-case-study" data-case="viviboty">
-                Estudo de Caso
-              </button>
-            </div>
-          </div>
-
-          <div class="p-specs">
-            <div class="spec-head">Estudo de Caso &amp; Arquitetura</div>
-            <ol class="spec-list">
-              <li>
-                <span class="spec-num">01</span>
-                <div>
-                  <strong>Engenharia de Conversão (Click-to-chat)</strong>
-                  <p>Interpretação e serialização de pedidos em URI strings para WhatsApp com distinção de pronta entrega vs. sob encomenda e cálculo de economia.</p>
-                </div>
-              </li>
-              <li>
-                <span class="spec-num">02</span>
-                <div>
-                  <strong>Automação de Catálogo com Google Gemini 3.8 Flash</strong>
-                  <p>Extração multimodal de dados técnicos por foto/nome com fallback em cascata contra sobrecarga e feedback sensorial (áudio Web Audio + haptics).</p>
-                </div>
-              </li>
-              <li>
-                <span class="spec-num">03</span>
-                <div>
-                  <strong>Edge Middleware &amp; Resiliência de Rotas</strong>
-                  <p>Injeção dinâmica de metadados Open Graph para previews ricos no WhatsApp e redirecionamento HTTP 302 em rotas administrativas na Vercel.</p>
-                </div>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <div class="cell sp-12 reveal project-cell" data-category="fullstack pwa" style="--d:.08s">
-      <article class="panel project tilt" id="forja">
-        <div class="panel-head">
-          <div class="p-badges">
-            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>PWA Offline</span>
-            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Google Gemini AI</span>
-            <span class="badge"><span class="bdot b-rose" aria-hidden="true"></span>JavaScript ES6+</span>
-            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>HTML5 Canvas 2D</span>
-            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Supabase Cloud</span>
-            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Strava API</span>
-          
-            <button type="button" class="btn-case-badge btn-case-study" data-case="forja" aria-label="Abrir estudo de caso técnico do FORJA">
-              <svg class="ic" aria-hidden="true"><use href="#i-award"/></svg>
-              Aprofundar
-              <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
-            </button>
-          </div>
-          <div class="p-widget" aria-hidden="true">
-            <span class="w-label">Treino &amp; Carga · e1RM ao vivo</span>
-            <svg viewBox="0 0 200 118">
-              <line class="w-line" x1="15" y1="100" x2="185" y2="100"/>
-              <line class="w-line" x1="15" y1="18" x2="15" y2="100"/>
-              <line class="w-line" x1="15" y1="72" x2="185" y2="72" stroke-dasharray="2 3" opacity="0.3"/>
-              <line class="w-line" x1="15" y1="45" x2="185" y2="45" stroke-dasharray="2 3" opacity="0.3"/>
-              <rect x="30" y="66" width="12" height="34" rx="3" fill="rgba(244,63,94,0.3)"/>
-              <rect x="58" y="54" width="12" height="46" rx="3" fill="rgba(244,63,94,0.4)"/>
-              <rect x="86" y="44" width="12" height="56" rx="3" fill="rgba(244,63,94,0.55)"/>
-              <rect x="114" y="36" width="12" height="64" rx="3" fill="rgba(244,63,94,0.7)"/>
-              <rect x="142" y="24" width="12" height="76" rx="3" fill="rgba(244,63,94,0.9)"/>
-              <polyline points="36,66 64,54 92,44 120,36 148,24" fill="none" stroke="#f43f5e" stroke-width="2"/>
-              <circle cx="148" cy="24" r="4" fill="#f43f5e"/>
-              <circle cx="148" cy="24" r="8" fill="none" stroke="#f43f5e" stroke-width="1" class="w-ring" style="stroke:#f43f5e"/>
-              <text class="w-axis" x="185" y="112" text-anchor="end">SESSÃO</text>
-              <text class="w-axis" transform="rotate(-90 10 52)" x="10" y="52" text-anchor="middle">KG (1RM)</text>
-            </svg>
-          </div>
-        </div>
-
-        <div class="project-body">
-          <div class="p-info">
-            <div class="p-id">
-              <span class="p-icon"><svg class="ic"><use href="#i-zap"/></svg></span>
-              <div>
-                <h3>FORJA</h3>
-                <p class="p-tag">Treino, Alta Performance &amp; Rede Social PWA</p>
-              </div>
-            </div>
-            <p class="p-desc">
-              Aplicação Web Progressiva (PWA) mobile-first inspirada no Hevy para atletas e praticantes de musculação. Combina AI Coach multifuncional (Google Gemini), biblioteca completa de 132+ exercícios com guias biomecânicos em 3 etapas, contador de macros e 9 micronutrientes por linguagem natural, mapa corporal anatômico com heatmap em vermelho incandescente, cronômetro inteligente com alertas sonoros/táteis, sincronização em nuvem e feed social em tempo real com Supabase, e gráficos de evolução de carga (1RM) renderizados via Canvas.
-            </p>
-            <div class="p-stack" aria-label="Stack complementar">
-              <span class="chip core">PWA Instalável</span>
-              <span class="chip">Google Gemini Flash</span>
-              <span class="chip">HTML5 Canvas 2D</span>
-              <span class="chip">Service Worker Cache</span>
-              <span class="chip">Supabase Cloud</span>
-              <span class="chip">Strava API</span>
-            </div>
-            <div class="p-actions">
-              <a class="btn btn-solid" href="https://theforge-rho.vercel.app" target="_blank" rel="noopener noreferrer">
-                Testar App (Live Demo)
-                <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
-              </a>
-              <a class="btn btn-ghost" href="https://github.com/Murilo-Rogerio/Forja-gym" target="_blank" rel="noopener noreferrer">
-                <svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>
-                Código-fonte
-              </a>
-              <button type="button" class="btn btn-ghost btn-case-study" data-case="forja">
                 Aprofundar Arquitetura
               </button>
             </div>
           </div>
 
           <div class="p-specs">
-            <div class="spec-head">Estudo de Caso &amp; Arquitetura</div>
+            <div class="spec-head">Resumo de Entrega</div>
             <ol class="spec-list">
               <li>
                 <span class="spec-num">01</span>
                 <div>
-                  <strong>AI Coach Multifuncional &amp; Nutrição Generativa</strong>
-                  <p>Integração com a API do Google Gemini para sugestão inteligente de exercícios complementares, scanner visual de pratos e análise de refeições por linguagem natural calculando calorias, macros e 9 micronutrientes.</p>
+                  <strong>Problema resolvido</strong>
+                  <p>Clientes tinham dificuldade para consultar produtos disponíveis no celular e a vendedora perdia tempo cadastrando centenas de itens manualmente.</p>
                 </div>
               </li>
               <li>
                 <span class="spec-num">02</span>
                 <div>
-                  <strong>Heatmap Anatômico &amp; Canvas 2D de Alta Fidelidade</strong>
-                  <p>Mapeamento visual dinâmico dos grupamentos musculares fadigados em vermelho neon proporcional ao volume de séries, com geração de cartões de compartilhamento social em 1080x1350.</p>
+                  <strong>Minha participação</strong>
+                  <p>Levantamento da necessidade junto à cliente, criação do catálogo, painel administrativo, automação de cadastro e publicação em domínio próprio.</p>
                 </div>
               </li>
               <li>
                 <span class="spec-num">03</span>
                 <div>
-                  <strong>Arquitetura Local-First com Supabase Cloud</strong>
-                  <p>Operação sem latência no chão da academia via Service Worker dedicado, persistência local e sincronização contínua de rotinas, histórico e feed social no Supabase PostgreSQL.</p>
+                  <strong>Funcionalidades que implementei</strong>
+                  <p>Sacola que envia o pedido formatado para o WhatsApp (separando pronta entrega de encomenda), cadastro por foto/texto com IA e edição em lote.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">04</span>
+                <div>
+                  <strong>Tecnologias utilizadas</strong>
+                  <p>JavaScript ES6+, HTML5, Tailwind CSS, Supabase (Auth, RLS e Storage), Google Gemini API e Vercel Edge Middleware.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">05</span>
+                <div>
+                  <strong>Validação e manutenção</strong>
+                  <p>Em produção em domínio próprio (vivicarvalhoboty.com.br), validado diretamente no fluxo real de atendimento e atualizado conforme demandas da loja.</p>
                 </div>
               </li>
             </ol>
@@ -2828,15 +2964,276 @@ html.theme-contrast .ai-modal-col.ai {
         </div>
       </article>
     </div>
+
+    <!-- SEÇÃO COMPLEMENTAR & APROFUNDAMENTO ("IR ALÉM") -->
+    <div class="cell sp-12 reveal" style="--d:.08s">
+      <section class="panel deep-dive" id="ir-alem" aria-label="Projeto complementar, propósitos, terminal e aprofundamento técnico">
+        <div class="deep-head">
+          <div class="deep-head-info">
+            <span class="deep-eyebrow">Seção Complementar · Ir Além</span>
+            <h2>Projeto Complementar, Propósitos, Terminal &amp; Conhecimentos</h2>
+            <p>Para manter a leitura principal objetiva para RH, reuni aqui o projeto complementar <strong>FORJA</strong>, meus propósitos, base técnica, o <strong>Terminal Interativo</strong> e o <strong>Horário Local</strong>.</p>
+          </div>
+          <div class="deep-head-actions">
+            <button type="button" class="btn btn-solid" id="deep-toggle-btn" aria-expanded="false" aria-controls="deep-body">
+              Explorar conteúdo completo ↓
+            </button>
+          </div>
+        </div>
+
+        <div class="deep-tabs" role="tablist" aria-label="Conteúdo complementar e aprofundamento">
+          <button type="button" class="deep-tab active" role="tab" aria-selected="true" data-deep-tab="forja">Projeto Complementar: FORJA</button>
+          <button type="button" class="deep-tab" role="tab" aria-selected="false" data-deep-tab="propositos">Propósitos &amp; Forma de Trabalhar</button>
+          <button type="button" class="deep-tab" role="tab" aria-selected="false" data-deep-tab="conhecimentos">Aprofundamento Técnico</button>
+          <button type="button" class="deep-tab" role="tab" aria-selected="false" data-deep-tab="terminal">Terminal &amp; Horário Local</button>
+        </div>
+
+        <div class="deep-body" id="deep-body">
+          <div class="deep-pane active" data-deep-pane="forja" role="tabpanel">
+            <div class="project-cell" data-category="fullstack pwa">
+              <article class="deep-forja-card project" id="forja">
+                <div class="panel-head">
+                  <div class="p-badges">
+                    <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>Projeto Complementar</span>
+                    <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>PWA Offline</span>
+                    <span class="badge"><span class="bdot b-rose" aria-hidden="true"></span>HTML5 Canvas 2D</span>
+                    <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Supabase Cloud</span>
+                    <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Google Gemini</span>
+                    <button type="button" class="btn-case-badge btn-case-study" data-case="forja" aria-label="Abrir estudo de caso técnico do FORJA">
+                      <svg class="ic" aria-hidden="true"><use href="#i-award"/></svg>
+                      Aprofundar
+                      <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                    </button>
+                  </div>
+                  <div class="p-widget" aria-hidden="true">
+                    <span class="w-label">Treino &amp; Carga · e1RM ao vivo</span>
+                    <svg viewBox="0 0 200 118">
+                      <line class="w-line" x1="15" y1="100" x2="185" y2="100"/>
+                      <line class="w-line" x1="15" y1="18" x2="15" y2="100"/>
+                      <line class="w-line" x1="15" y1="72" x2="185" y2="72" stroke-dasharray="2 3" opacity="0.3"/>
+                      <line class="w-line" x1="15" y1="45" x2="185" y2="45" stroke-dasharray="2 3" opacity="0.3"/>
+                      <rect x="30" y="66" width="12" height="34" rx="3" fill="rgba(244,63,94,0.3)"/>
+                      <rect x="58" y="54" width="12" height="46" rx="3" fill="rgba(244,63,94,0.4)"/>
+                      <rect x="86" y="44" width="12" height="56" rx="3" fill="rgba(244,63,94,0.55)"/>
+                      <rect x="114" y="36" width="12" height="64" rx="3" fill="rgba(244,63,94,0.7)"/>
+                      <rect x="142" y="24" width="12" height="76" rx="3" fill="rgba(244,63,94,0.9)"/>
+                      <polyline points="36,66 64,54 92,44 120,36 148,24" fill="none" stroke="#f43f5e" stroke-width="2"/>
+                      <circle cx="148" cy="24" r="4" fill="#f43f5e"/>
+                      <circle cx="148" cy="24" r="8" fill="none" stroke="#f43f5e" stroke-width="1" class="w-ring" style="stroke:#f43f5e"/>
+                      <text class="w-axis" x="185" y="112" text-anchor="end">SESSÃO</text>
+                      <text class="w-axis" transform="rotate(-90 10 52)" x="10" y="52" text-anchor="middle">KG (1RM)</text>
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="project-body">
+                  <div class="p-info">
+                    <div class="p-id">
+                      <span class="p-icon"><svg class="ic"><use href="#i-zap"/></svg></span>
+                      <div>
+                        <h3>FORJA</h3>
+                        <p class="p-tag">Aplicativo de Treino e Acompanhamento (PWA)</p>
+                      </div>
+                    </div>
+                    <p class="p-desc">
+                      Aplicativo web mobile-first para registro de treinos de musculação, acompanhamento de evolução de carga (1RM), mapa muscular visual e registro alimentar. Criado como projeto pessoal para testar recursos avançados de interface, modo offline e gráficos em Canvas 2D.
+                    </p>
+                    <div class="p-stack" aria-label="Tecnologias do projeto FORJA">
+                      <span class="chip core">JavaScript ES6+</span>
+                      <span class="chip">HTML5 Canvas 2D</span>
+                      <span class="chip">PWA / Service Worker</span>
+                      <span class="chip">Supabase Cloud</span>
+                      <span class="chip">Google Gemini</span>
+                      <span class="chip">Strava API</span>
+                    </div>
+                    <div class="p-actions">
+                      <a class="btn btn-solid" href="https://theforge-rho.vercel.app" target="_blank" rel="noopener noreferrer">
+                        Testar App (Live Demo)
+                        <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                      </a>
+                      <a class="btn btn-ghost" href="https://github.com/Murilo-Rogerio/Forja-gym" target="_blank" rel="noopener noreferrer">
+                        <svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>
+                        Código-fonte
+                      </a>
+                      <button type="button" class="btn btn-ghost btn-case-study" data-case="forja">
+                        Aprofundar Arquitetura
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="p-specs">
+                    <div class="spec-head">Resumo de Entrega</div>
+                    <ol class="spec-list">
+                      <li>
+                        <span class="spec-num">01</span>
+                        <div>
+                          <strong>Problema resolvido</strong>
+                          <p>Registrar treinos rapidamente durante a academia mesmo com sinal de internet instável e visualizar evolução real de carga por exercício.</p>
+                        </div>
+                      </li>
+                      <li>
+                        <span class="spec-num">02</span>
+                        <div>
+                          <strong>Minha participação</strong>
+                          <p>Idealização e implementação completa de frontend, gráficos em Canvas, banco em nuvem, sincronização offline e integração com APIs.</p>
+                        </div>
+                      </li>
+                      <li>
+                        <span class="spec-num">03</span>
+                        <div>
+                          <strong>Funcionalidades que implementei</strong>
+                          <p>Biblioteca com 132+ exercícios, mapa muscular, gráficos de 1RM em Canvas 2D, cronômetro, feed social, suporte nutricional por texto/foto e Strava API.</p>
+                        </div>
+                      </li>
+                      <li>
+                        <span class="spec-num">04</span>
+                        <div>
+                          <strong>Tecnologias utilizadas</strong>
+                          <p>JavaScript ES6+, HTML5 Canvas 2D, Service Worker (PWA), Supabase Cloud, Google Gemini API e Strava API.</p>
+                        </div>
+                      </li>
+                      <li>
+                        <span class="spec-num">05</span>
+                        <div>
+                          <strong>Validação e manutenção</strong>
+                          <p>Publicado na Vercel com funcionamento local-first validado em aparelho móvel real e código mantido no GitHub.</p>
+                        </div>
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="deep-pane" data-deep-pane="propositos" role="tabpanel">
+            <div class="deep-grid-3">
+              <article class="deep-card">
+                <div class="deep-card-head">
+                  <span class="sk-icon"><svg class="ic"><use href="#i-zap"/></svg></span>
+                  <h3>Por que construo projetos reais</h3>
+                </div>
+                <p>
+                  Acredito que aprender programação faz mais sentido quando o código resolve um problema concreto. Foi assim que criei o catálogo da Vivi Carvalho Boty para uma vendedora real, o Nosso Fluxo para organizar finanças sem planilhas frágeis e o Arca para salvar referências do dia a dia no celular.
+                </p>
+              </article>
+              <article class="deep-card">
+                <div class="deep-card-head">
+                  <span class="sk-icon"><svg class="ic"><use href="#i-briefcase"/></svg></span>
+                  <h3>O que aprendi na Engemap</h3>
+                </div>
+                <p>
+                  Os 15 meses na Engemap foram minha principal escola profissional. No RH aprendi rotina administrativa, organização documental e responsabilidade com prazos. Quando surgiu necessidade na Produção, me adaptei rapidamente ao WebGIS e ao AutoCAD, entendendo o peso da precisão técnica em entregas reais.
+                </p>
+              </article>
+              <article class="deep-card">
+                <div class="deep-card-head">
+                  <span class="sk-icon"><svg class="ic"><use href="#i-trending-up"/></svg></span>
+                  <h3>O que busco em uma equipe</h3>
+                </div>
+                <p>
+                  Com o Ensino Médio concluído em 2026 e disponibilidade para jornada integral, procuro uma oportunidade como Desenvolvedor Web Júnior para colaborar em entregas reais, aprender padrões de engenharia com colegas mais experientes e evoluir de forma consistente dentro da empresa.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <div class="deep-pane" data-deep-pane="conhecimentos" role="tabpanel">
+            <div class="deep-grid-2">
+              <article class="deep-card">
+                <div class="deep-card-head">
+                  <span class="sk-icon"><svg class="ic"><use href="#i-monitor"/></svg></span>
+                  <h3>Arquitetura Web &amp; Fluxo de Dados</h3>
+                </div>
+                <p>
+                  Organização de aplicações em React e Next.js com TypeScript, separando interface, regras de negócio (como o motor de recorrência financeira sem duplicar registros no banco) e chamadas externas protegidas por cache e valores de contingência.
+                </p>
+              </article>
+              <article class="deep-card">
+                <div class="deep-card-head">
+                  <span class="sk-icon"><svg class="ic"><use href="#i-server"/></svg></span>
+                  <h3>Banco Relacional, Segurança &amp; Edge</h3>
+                </div>
+                <p>
+                  Modelagem em PostgreSQL via Supabase com autenticação e políticas de Row Level Security (RLS) garantindo que cada usuário acesse apenas seus dados, buckets privados com URLs assinadas e Edge Middleware para proteção de rotas e metadados dinâmicos.
+                </p>
+              </article>
+              <article class="deep-card">
+                <div class="deep-card-head">
+                  <span class="sk-icon"><svg class="ic"><use href="#i-cpu"/></svg></span>
+                  <h3>Offline-First, Mídia &amp; Base de Lógica</h3>
+                </div>
+                <p>
+                  Experiência com Service Workers (PWA), Web Share Target no mobile, compressão de imagens no navegador e gráficos em Canvas 2D — apoiada por mais de 4 anos de lógica e programação em C++ com robótica (Arduino, Lego EV3 e Micro:bit).
+                </p>
+              </article>
+              <article class="deep-card">
+                <div class="deep-card-head">
+                  <span class="sk-icon"><svg class="ic"><use href="#i-award"/></svg></span>
+                  <h3>Uso Prático e Transparente de IA</h3>
+                </div>
+                <p>
+                  Utilizo inteligência artificial tanto dentro dos produtos (extração de dados com Google Gemini e fallback entre modelos) quanto como copiloto de produtividade no código — mantendo arquitetura, testes e revisão sempre sob responsabilidade minha.
+                </p>
+                <div class="deep-card-foot">
+                  <button type="button" class="btn btn-ghost" id="deep-open-ai-btn" style="padding:8px 16px; font-size:.82rem;">
+                    Ver transparência sobre uso de IA
+                    <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                  </button>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="deep-pane" data-deep-pane="terminal" role="tabpanel">
+            <div class="deep-term-grid">
+              <section class="panel terminal" aria-label="Terminal Interativo">
+                <div class="t-bar">
+                  <div class="t-bar-left">
+                    <span class="t-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <div class="t-tabs">
+                      <button class="t-tab active" data-tab="config">murilo.config.ts</button>
+                      <button class="t-tab" data-tab="trajetoria">trajetoria.ts</button>
+                      <button class="t-tab" data-tab="stack">stack.ts</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="t-body" id="terminal-content">
+                  <!-- Conteúdo inserido dinamicamente via JS -->
+                </div>
+              </section>
+
+              <section class="panel geo" aria-label="Localização e horário local">
+                <header>
+                  <span class="sk-icon"><svg class="ic"><use href="#i-map-pin"/></svg></span>
+                  <div>
+                    <h2>Assis, SP</h2>
+                    <p class="g-sub">São Paulo · Brasil</p>
+                  </div>
+                </header>
+                <div class="clock">
+                  <span id="clock-time">--:--:--</span> <small id="clock-mer">BRT</small>
+                </div>
+                <p class="g-date" id="clock-date">—</p>
+                <p class="g-tz">
+                  <svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>
+                  BRT · UTC−3 · fuso America/Sao_Paulo
+                </p>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
     
-    <!-- NOVO BLOCO GITHUB LIVE API -->
+    <!-- BLOCO GITHUB LIVE API -->
     <div class="cell sp-12 reveal" style="--d:.06s">
       <section class="panel gh-box tilt">
         <header>
           <span class="sk-icon"><svg class="ic"><use href="#i-github"/></svg></span>
-          <h2>Live GitHub Tracking</h2>
+          <h2>Atividade Recente no GitHub</h2>
         </header>
-        <p class="sk-sub" style="margin-top:6px; font-size:0.83rem; color:var(--text-3);">Mostrando que o código realmente sobe. Fetch API consumindo meus webhooks publicos em tempo real.</p>
+        <p class="sk-sub" style="margin-top:6px; font-size:0.83rem; color:var(--text-3);">Último envio de código registrado em tempo real pela API pública do GitHub.</p>
         <div class="gh-inner">
            <span class="gh-time"><span class="gh-pulse"></span>Live Connection</span>
            <span class="gh-repo" id="gh-repo">Conectando...</span>
@@ -2851,30 +3248,30 @@ html.theme-contrast .ai-modal-col.ai {
           <span class="sk-icon"><svg class="ic"><use href="#i-graduation"/></svg></span>
           <h2>Formação &amp; Conquistas</h2>
         </header>
-        <p class="sk-sub">Base analítica amparada por diagnóstico formal.</p>
+        <p class="sk-sub">Escolaridade formal, histórico acadêmico e perfil de aprendizagem.</p>
         <ul class="entries">
           <li>
             <span class="e-ic"><svg class="ic"><use href="#i-graduation"/></svg></span>
             <div class="e-body">
               <div class="e-head"><h4>Ensino Médio Concluído</h4><span class="dur">2026</span></div>
-              <p class="inst">Escola Dr. Clybas · Formado em 2026</p>
-              <p>Ciclo escolar finalizado com distinção acadêmica e histórico exemplar. Total disponibilidade para jornada integral (CLT 40h/44h).</p>
+              <p class="inst">Escola Dr. Clybas · Assis, SP</p>
+              <p>Ensino Médio concluído em 2026 com histórico regular, sem reprovações e total disponibilidade para jornada integral (CLT 40h/44h).</p>
             </div>
           </li>
           <li>
             <span class="e-ic"><svg class="ic"><use href="#i-award"/></svg></span>
             <div class="e-body">
-              <div class="e-head"><h4>Certificado de Aluno Destaque</h4><span class="dur">Destaque</span></div>
-              <p class="inst">Aproveitamento Absoluto</p>
-              <p>Consistência e rigor validados com a ausência sumária de infrações ou reprovações no trajeto educacional.</p>
+              <div class="e-head"><h4>Certificado de Aluno Destaque</h4><span class="dur">Reconhecimento</span></div>
+              <p class="inst">Desempenho Escolar</p>
+              <p>Reconhecimento concedido pela constância, frequência e desempenho acadêmico ao longo do ciclo escolar.</p>
             </div>
           </li>
           <li>
             <span class="e-ic"><svg class="ic"><use href="#i-zap"/></svg></span>
             <div class="e-body">
-              <div class="e-head"><h4>Altas Habilidades (AH/SD)</h4><span class="dur">AH/SD</span></div>
-              <p class="inst">Laudo de Alta Assimilação</p>
-              <p>Diagnóstico atestando processamento massivo de lógicas não triviais, evidenciando adaptação voraz frente a complexidade técnica no dia a dia.</p>
+              <div class="e-head"><h4>Altas Habilidades (AH/SD)</h4><span class="dur">Diagnóstico</span></div>
+              <p class="inst">Identificação Formal</p>
+              <p>Diagnóstico formal voltado à facilidade de aprendizagem e raciocínio lógico — aspecto que direciono para entregas práticas e aprofundo melhor em entrevista.</p>
             </div>
           </li>
         </ul>
@@ -2885,16 +3282,16 @@ html.theme-contrast .ai-modal-col.ai {
       <section class="panel skill tilt">
         <header>
           <span class="sk-icon"><svg class="ic"><use href="#i-bot"/></svg></span>
-          <h2>Robótica &amp; Prototipagem Lógica</h2>
+          <h2>Robótica &amp; Lógica de Programação</h2>
         </header>
-        <p class="sk-sub">Manipulação cirúrgica de fluxos, eletrônica e código embarcado.</p>
+        <p class="sk-sub">Experiência prática com eletrônica, sensores e programação aplicada.</p>
         <ul class="entries">
           <li>
             <span class="e-ic"><svg class="ic"><use href="#i-cpu"/></svg></span>
             <div class="e-body">
               <div class="e-head"><h4>Arduino (C++)</h4><span class="dur">3–4 anos</span></div>
               <p class="inst">Fundação CEDET</p>
-              <p>Tradução de abstrações algorítmicas em atuadores e sensores de precisão, desenvolvendo resiliência fundamental com escassez de memória.</p>
+              <p>Montagem de circuitos e programação em C++ para leitura de sensores e controle de atuadores, lidando com limites práticos de hardware e memória.</p>
             </div>
           </li>
           <li>
@@ -2902,7 +3299,7 @@ html.theme-contrast .ai-modal-col.ai {
             <div class="e-body">
               <div class="e-head"><h4>Lego Mindstorms EV3</h4><span class="dur">6 meses</span></div>
               <p class="inst">Campus FEMA</p>
-              <p>Lógica rotacional focada em calibragem contínua e mitigação de falsos positivos na malha do sistema físico de navegação.</p>
+              <p>Programação de robôs autônomos com foco em calibragem de sensores e controle de movimentação.</p>
             </div>
           </li>
           <li>
@@ -2910,7 +3307,7 @@ html.theme-contrast .ai-modal-col.ai {
             <div class="e-body">
               <div class="e-head"><h4>Micro:bit</h4><span class="dur">6 meses</span></div>
               <p class="inst">Polos SESI</p>
-              <p>Operação focada em blocos e triggers com amostragem real-time validando conceitos iniciais de telemetria.</p>
+              <p>Prototipagem de lógica baseada em eventos, sensores integrados e leitura de dados em tempo real.</p>
             </div>
           </li>
         </ul>
@@ -2921,9 +3318,9 @@ html.theme-contrast .ai-modal-col.ai {
       <section class="panel skill tilt">
         <header>
           <span class="sk-icon"><svg class="ic"><use href="#i-monitor"/></svg></span>
-          <h2>Frontend &amp; Arquitetura Visual</h2>
+          <h2>Frontend &amp; Interfaces</h2>
         </header>
-        <p class="sk-sub">UI/UX pautada em state-management sólido.</p>
+        <p class="sk-sub">Construção de aplicações web responsivas e fáceis de usar.</p>
         <ul class="chips">
           <li class="chip core">TypeScript</li>
           <li class="chip core">React 18</li>
@@ -2942,9 +3339,9 @@ html.theme-contrast .ai-modal-col.ai {
       <section class="panel skill tilt">
         <header>
           <span class="sk-icon"><svg class="ic"><use href="#i-server"/></svg></span>
-          <h2>Backend, Data &amp; Autenticação</h2>
+          <h2>Backend, Dados &amp; Segurança</h2>
         </header>
-        <p class="sk-sub">Operações protegidas focando em segurança de rotas.</p>
+        <p class="sk-sub">Integração de APIs, banco relacional e controle de acesso.</p>
         <ul class="chips">
           <li class="chip core">Node.js</li>
           <li class="chip core">Supabase</li>
@@ -2962,9 +3359,9 @@ html.theme-contrast .ai-modal-col.ai {
       <section class="panel skill tilt">
         <header>
           <span class="sk-icon"><svg class="ic"><use href="#i-map"/></svg></span>
-          <h2>Geotecnologia &amp; Infraestrutura</h2>
+          <h2>Geotecnologia &amp; Ferramentas</h2>
         </header>
-        <p class="sk-sub">Pipeline de controle topológico.</p>
+        <p class="sk-sub">Mapeamento digital, desenho técnico e ambiente de trabalho.</p>
         <ul class="chips">
           <li class="chip core">WebGIS</li>
           <li class="chip core">AutoCAD</li>
@@ -3023,40 +3420,40 @@ html.theme-contrast .ai-modal-col.ai {
       Resumo Executivo para Recrutadores &amp; Líderes Técnicos
     </div>
     <h2 class="modal-title">Murilo Rogério C. da Conceição</h2>
-    <p class="modal-sub">Foco: Desenvolvimento Web Full-Stack · WebGIS, AutoCAD &amp; Geotecnologia · Sistemas Embarcados</p>
+    <p class="modal-sub">Desenvolvedor Web Júnior | Full-Stack | WebGIS</p>
     
     <div class="modal-kpis-4">
       <div class="modal-kpi-item">
         <span>Disponibilidade</span>
-        <strong class="accent-green">Imediata / Efetivação</strong>
+        <strong class="accent-green">Imediata · CLT Integral</strong>
       </div>
       <div class="modal-kpi-item">
         <span>Local / Modalidade</span>
         <strong>Assis, SP (Remoto, Híbrido ou Presencial)</strong>
       </div>
       <div class="modal-kpi-item">
-        <span>Perfil Cognitivo</span>
-        <strong class="accent-violet">AH/SD (Superdotação)</strong>
+        <span>Escolaridade</span>
+        <strong class="accent-violet">Ensino Médio Concluído (2026)</strong>
       </div>
       <div class="modal-kpi-item">
         <span>Experiência Corporativa</span>
-        <strong id="quickview-kpi-contrato">Engemap (15 meses) · Foco em Produção WebGIS e Geotecnologia</strong>
+        <strong id="quickview-kpi-contrato">Engemap (15 meses) · RH e Produção WebGIS</strong>
       </div>
     </div>
 
-    <div class="modal-section-title">Principais Diferenciais Técnicos</div>
+    <div class="modal-section-title">Resumo de Entregas &amp; Competências</div>
     <div class="modal-bullets">
       <div class="modal-bullet">
-        <strong>Capacidade de Resolução Rápida (AH/SD):</strong> Diagnóstico formal atestando velocidade incomum de assimilação lógica e abstração sistêmica.
+        <strong>Experiência Corporativa na Engemap (15 meses):</strong> Atuação inicial em Departamento Pessoal (RH) seguida de transição para Produção em WebGIS (Mapeamento Móvel 360°) e AutoCAD (vetorização de rodovias a partir de imagens de drone).
       </div>
       <div class="modal-bullet">
-        <strong>Experiência Corporativa na Engemap (15 meses):</strong> Ciclo completo de 15 meses com foco em Produção WebGIS e Geotecnologia (Mapeamento Móvel 360° e AutoCAD com ortoimagens de drones para traçado geométrico rodoviário), comprovando flexibilidade cognitiva, rigor cartográfico e rápido domínio prático.
+        <strong>3 Projetos Principais em Produção:</strong> <em>Arca</em> (arquitetura PWA e banco isolado por usuário), <em>Nosso Fluxo</em> (regras de negócio financeiras e APIs) e <em>Vivi Carvalho Boty</em> (catálogo B2C real integrado ao WhatsApp e painel com IA).
       </div>
       <div class="modal-bullet">
-        <strong>Projetos em Produção Real:</strong> Aplicações operando com arquiteturas modernas (Next.js 15, React 18, Supabase RLS, PWA Offline-First, Canvas 2D).
+        <strong>Base Técnica Aplicada:</strong> React, Next.js, TypeScript, JavaScript, PostgreSQL, Supabase, Tailwind CSS e AutoCAD / WebGIS.
       </div>
       <div class="modal-bullet">
-        <strong>4 Anos em Robótica:</strong> Base em C++ com Arduino, Lego EV3 e Micro:bit com tolerância a restrições de memória.
+        <strong>4+ Anos em Robótica:</strong> Lógica de programação e eletrônica com Arduino (C++), Lego EV3 e Micro:bit.
       </div>
     </div>
 
@@ -3283,7 +3680,7 @@ html.theme-contrast .ai-modal-col.ai {
   updateProgress();
 
   var railLinks = document.querySelectorAll('.rail-item');
-  var targetSecs = document.querySelectorAll('#perfil, #summary, #engemap, #arca, #nossofluxo, #viviboty, #forja, #formacao');
+  var targetSecs = document.querySelectorAll('#perfil, #summary, #engemap, #arca, #nossofluxo, #viviboty, #ir-alem, #formacao');
 
   var secOffsets = [];
   function cacheSecOffsets() {
@@ -3395,32 +3792,32 @@ html.theme-contrast .ai-modal-col.ai {
       '<span class="tk-kw">export const</span> config <span class="tk-pun">=</span> <span class="tk-pun">{</span>',
       '  <span class="tk-prop">nome</span><span class="tk-pun">:</span> <span class="tk-str">"Murilo Rogério"</span><span class="tk-pun">,</span>',
       '  <span class="tk-prop">idade</span><span class="tk-pun">:</span> <span class="tk-num">' + currentAge + '</span><span class="tk-pun">,</span>',
-      '  <span class="tk-prop">cargo</span><span class="tk-pun">:</span> <span class="tk-str">"WebGIS, AutoCAD & Desenvolvimento Web"</span><span class="tk-pun">,</span>',
+      '  <span class="tk-prop">cargo</span><span class="tk-pun">:</span> <span class="tk-str">"Desenvolvedor Web Júnior | Full-Stack | WebGIS"</span><span class="tk-pun">,</span>',
       '  <span class="tk-prop">local</span><span class="tk-pun">:</span> <span class="tk-str">"Assis, SP (Remoto, Híbrido ou Presencial)"</span><span class="tk-pun">,</span>',
       '  <span class="tk-prop">tecnologias</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>',
-      '    <span class="tk-prop">frontend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"React 18"</span><span class="tk-pun">,</span> <span class="tk-str">"Next.js 15"</span><span class="tk-pun">,</span> <span class="tk-str">"TS"</span><span class="tk-pun">,</span> <span class="tk-str">"PWA"</span><span class="tk-pun">],</span>',
-      '    <span class="tk-prop">backend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"Node"</span><span class="tk-pun">,</span> <span class="tk-str">"Supabase"</span><span class="tk-pun">,</span> <span class="tk-str">"PostgreSQL"</span><span class="tk-pun">],</span>',
+      '    <span class="tk-prop">frontend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"React 18"</span><span class="tk-pun">,</span> <span class="tk-str">"Next.js 15"</span><span class="tk-pun">,</span> <span class="tk-str">"TypeScript"</span><span class="tk-pun">,</span> <span class="tk-str">"PWA"</span><span class="tk-pun">],</span>',
+      '    <span class="tk-prop">backend</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"Node.js"</span><span class="tk-pun">,</span> <span class="tk-str">"Supabase"</span><span class="tk-pun">,</span> <span class="tk-str">"PostgreSQL"</span><span class="tk-pun">],</span>',
       '    <span class="tk-prop">geotecnologia</span><span class="tk-pun">:</span> <span class="tk-pun">[</span><span class="tk-str">"WebGIS"</span><span class="tk-pun">,</span> <span class="tk-str">"AutoCAD"</span><span class="tk-pun">],</span>',
       '  <span class="tk-pun">},</span>',
-      '  <span class="tk-prop">status</span><span class="tk-pun">:</span> <span class="tk-str">"disponivel-efetivacao"</span><span class="tk-pun">,</span>',
+      '  <span class="tk-prop">status</span><span class="tk-pun">:</span> <span class="tk-str">"disponivel-clt-integral"</span><span class="tk-pun">,</span>',
       '<span class="tk-pun">}</span><span class="tk-pun">;</span> <span class="t-caret" aria-hidden="true"></span>'
     ],
     trajetoria: [
-      '<span class="tk-com">// Trajetória profissional e acadêmica condensada</span>',
+      '<span class="tk-com">// Trajetória profissional e acadêmica resumida</span>',
       '<span class="tk-kw">export class</span> <span class="tk-prop">TrajetoriaProfissional</span> <span class="tk-pun">{</span>',
       '  <span class="tk-prop">ensinoMedio</span> <span class="tk-pun">=</span> <span class="tk-str">"Escola Dr. Clybas (Concluído · 2026)"</span><span class="tk-pun">;</span>',
-      '  <span class="tk-prop">experienciaCorporativa</span> <span class="tk-pun">=</span> <span class="tk-str">"Engemap (15 meses) · Foco em Produção WebGIS e Geotecnologia"</span><span class="tk-pun">;</span>',
-      '  <span class="tk-prop">perfilCognitivo</span> <span class="tk-pun">=</span> <span class="tk-str">"Altas Habilidades / Superdotação (AH/SD)"</span><span class="tk-pun">;</span>',
-      '  <span class="tk-prop">objetivo</span> <span class="tk-pun">=</span> <span class="tk-str">"Desenvolvimento Web & Soluções Geoespaciais"</span><span class="tk-pun">;</span>',
+      '  <span class="tk-prop">experienciaCorporativa</span> <span class="tk-pun">=</span> <span class="tk-str">"Engemap (15 meses) · RH e Produção WebGIS/AutoCAD"</span><span class="tk-pun">;</span>',
+      '  <span class="tk-prop">baseRobotica</span> <span class="tk-pun">=</span> <span class="tk-str">"4+ anos em Arduino (C++), Lego EV3 e Micro:bit"</span><span class="tk-pun">;</span>',
+      '  <span class="tk-prop">objetivo</span> <span class="tk-pun">=</span> <span class="tk-str">"Entregar soluções web reais e crescer em equipe"</span><span class="tk-pun">;</span>',
       '<span class="tk-pun">}</span>'
     ],
     stack: [
-      '<span class="tk-com">// Base arquitetural para ecossistemas sustentáveis</span>',
+      '<span class="tk-com">// Principais tecnologias utilizadas nos projetos</span>',
       '<span class="tk-kw">const</span> <span class="tk-prop">stackPrincipal</span> <span class="tk-pun">=</span> <span class="tk-pun">{</span>',
       '  <span class="tk-prop">linguagens</span><span class="tk-pun">:</span> <span class="tk-str">"TypeScript, JavaScript, Python"</span><span class="tk-pun">,</span>',
       '  <span class="tk-prop">frameworks</span><span class="tk-pun">:</span> <span class="tk-str">"React 18, Next.js 15, Tailwind CSS"</span><span class="tk-pun">,</span>',
-      '  <span class="tk-prop">seguranca</span><span class="tk-pun">:</span> <span class="tk-str">"Supabase Auth, PostgreSQL RLS"</span><span class="tk-pun">,</span>',
-      '  <span class="tk-prop">automacao</span><span class="tk-pun">:</span> <span class="tk-str">"Arduino, Micro:bit, Algoritmos Embarcados"</span><span class="tk-pun">,</span>',
+      '  <span class="tk-prop">dadosESeguranca</span><span class="tk-pun">:</span> <span class="tk-str">"Supabase Auth, PostgreSQL RLS"</span><span class="tk-pun">,</span>',
+      '  <span class="tk-prop">logicaEHardware</span><span class="tk-pun">:</span> <span class="tk-str">"Arduino (C++), Micro:bit, Lego EV3"</span><span class="tk-pun">,</span>',
       '<span class="tk-pun">}</span><span class="tk-pun">;</span>'
     ]
   };
@@ -3723,8 +4120,8 @@ html.theme-contrast .ai-modal-col.ai {
     var pct, text;
 
     function applyEngemapCorporateExperience(isFinished) {
-      var cleanTitle = "Experiência Corporativa: Engemap (15 meses) · Foco em Produção WebGIS e Geotecnologia";
-      var shortTitle = "Engemap (15 meses) · Foco em Produção WebGIS e Geotecnologia";
+      var cleanTitle = "Experiência Corporativa: Engemap (15 meses) · RH e Produção WebGIS/CAD";
+      var shortTitle = "Engemap (15 meses) · RH e Produção WebGIS";
 
       var engBadge = document.getElementById("engemap-badge");
       if (engBadge) {
@@ -3733,7 +4130,7 @@ html.theme-contrast .ai-modal-col.ai {
 
       var engRoleChip = document.getElementById("engemap-role-chip");
       if (engRoleChip) {
-        engRoleChip.textContent = isFinished ? "Ciclo Concluído · 15 meses integrais cumpridos" : "Experiência Corporativa · 15 meses";
+        engRoleChip.textContent = isFinished ? "11º ao 15º mês · Ciclo de 15 meses concluído" : "11º ao 15º mês · Fase Técnica";
         engRoleChip.className = "chip";
       }
 
@@ -3741,7 +4138,7 @@ html.theme-contrast .ai-modal-col.ai {
       if (engRange) engRange.textContent = "Ago/2025 → Nov/2026 (15 meses)";
 
       var engLen = document.getElementById("engemap-len");
-      if (engLen) engLen.textContent = cleanTitle;
+      if (engLen) engLen.textContent = shortTitle;
 
       var engFicha = document.getElementById("engemap-ficha-contrato");
       if (engFicha) engFicha.textContent = shortTitle;
@@ -3750,17 +4147,17 @@ html.theme-contrast .ai-modal-col.ai {
       if (qvKpi) qvKpi.textContent = shortTitle;
 
       var metricLabel = document.getElementById("engemap-metric-label");
-      if (metricLabel) metricLabel.textContent = "meses de experiência corporativa na Engemap (WebGIS & CAD)";
+      if (metricLabel) metricLabel.textContent = "de experiência corporativa na Engemap (RH, WebGIS e AutoCAD)";
 
       var metricNum = document.getElementById("engemap-metric-num");
       if (metricNum) metricNum.innerHTML = '<span data-count="15">15</span><em> meses</em>';
 
       if (typeof caseStudiesData !== "undefined" && caseStudiesData.engemap) {
         caseStudiesData.engemap.tag = isFinished
-          ? "ESTUDO DE CASO TÉCNICO · AGO/2025 → NOV/2026 · CICLO COMPLETO CONCLUÍDO COM SUCESSO"
-          : "ESTUDO DE CASO TÉCNICO · AGO/2025 → NOV/2026 · EXPERIÊNCIA CORPORATIVA (15 MESES)";
-        caseStudiesData.engemap.kpis[0].label = "Experiência Corporativa";
-        caseStudiesData.engemap.kpis[0].val = shortTitle;
+          ? "DETALHAMENTO TÉCNICO · AGO/2025 → NOV/2026 · CICLO CORPORATIVO CONCLUÍDO"
+          : "DETALHAMENTO TÉCNICO · AGO/2025 → NOV/2026 · EXPERIÊNCIA CORPORATIVA (15 MESES)";
+        caseStudiesData.engemap.kpis[0].label = "Experiência";
+        caseStudiesData.engemap.kpis[0].val = "Engemap (15 meses)";
       }
 
       if (typeof terminalSnippets !== "undefined" && terminalSnippets.trajetoria) {
@@ -3869,50 +4266,50 @@ html.theme-contrast .ai-modal-col.ai {
         "<div class='sheet'>",
         "  <header>",
         "    <h1>Murilo Rogério Carvalho da Conceição</h1>",
-        "    <div class='tag'>Desenvolvimento Web &amp; WebGIS</div>",
+        "    <div class='tag'>Desenvolvedor Web Júnior | Full-Stack | WebGIS</div>",
         "    <div class='contact'>",
-        "      Assis, SP · Brasil (Disponibilidade para Contratação Integral CLT · Remoto, Híbrido ou Presencial) &nbsp;·&nbsp; ",
+        "      Assis, SP · Brasil (Disponibilidade Integral CLT · Remoto, Híbrido ou Presencial) &nbsp;·&nbsp; ",
         "      <a href='mailto:murilo.rogerio.conceicao@gmail.com'>murilo.rogerio.conceicao@gmail.com</a> &nbsp;·&nbsp; ",
         "      WhatsApp: (18) 99812-1327",
         "    </div>",
         "  </header>",
-        "  <h2>Resumo Executivo</h2>",
-        "  <p>Profissional com sólida vivência prática em Desenvolvimento Web (Next.js/React), Geoprocessamento (WebGIS) e Geotecnologia. Ensino Médio concluído em 2026 e total disponibilidade para jornada de trabalho integral (CLT 40h/44h semanais). Experiência corporativa de 15 meses na Engemap comprovando rápida capacidade de entrega técnica, rigor cartográfico e adaptabilidade ágil a novos desafios. Suportado por diagnóstico formal de Altas Habilidades / Superdotação (AH/SD) voltado para rápida assimilação lógica e resolução de problemas complexos.</p>",
+        "  <h2>Resumo Profissional</h2>",
+        "  <p>Jovem profissional com experiência em ambiente corporativo, desenvolvimento de aplicações web e geotecnologia. Vivência prática em projetos com React, Next.js, TypeScript, PostgreSQL e Supabase, além de experiência com AutoCAD e sistemas de informação geográfica (WebGIS). Ensino Médio concluído em 2026, com disponibilidade integral para contribuir com soluções tecnológicas e evoluir em equipe.</p>",
         "  <h2>Experiência Corporativa</h2>",
         "  <div class='item'>",
         "    <h3>Engemap — Engenharia e Aerolevantamento</h3>",
-        "    <p class=\'meta\'>Experiência Corporativa (15 meses) · Foco em Produção WebGIS e Geotecnologia</p>",
+        "    <p class='meta'>Experiência Corporativa (15 meses) · Departamento Pessoal (RH) e Produção WebGIS/CAD</p>",
         "    <ul>",
-        "      <li><strong>Mapeamento Móvel &amp; WebGIS:</strong> Identificação, georreferenciamento e catalogação espacial de ativos em sistema de visualização 360° no WebGIS, incluindo placas de sinalização (especificações e tipos), postes de telecom/Wi-Fi e placas solares.</li>",
-        "      <li><strong>Vetorização em AutoCAD com Imagens de Drone:</strong> Processamento de ortoimagens aéreas de alta precisão para traçado contínuo do eixo geométrico de rodovias e linhas de borda de pista com rigor técnico de engenharia.</li>",
-        "      <li><strong>Recursos Humanos:</strong> Gestão de processos internos e organização documental de departamento pessoal até a transição para a Produção técnica.</li>",
+        "      <li><strong>Mapeamento Móvel &amp; WebGIS (Produção):</strong> Identificação e cadastro georreferenciado de ativos em visualizador 360°, incluindo placas de sinalização, postes de Wi-Fi e placas solares.</li>",
+        "      <li><strong>Vetorização em AutoCAD com Imagens de Drone (Produção):</strong> Traçado do eixo geométrico e das linhas de borda de rodovias a partir de mosaicos aéreos, seguindo critérios técnicos de entrega.</li>",
+        "      <li><strong>Departamento Pessoal (RH · 1º ao 11º mês):</strong> Suporte operacional, organização documental e rotinas administrativas até a transição para a equipe técnica de Produção.</li>",
         "    </ul>",
         "  </div>",
-        "  <h2>Arquitetura e Projetos Pessoais</h2>",
+        "  <h2>Principais Projetos em Produção</h2>",
         "  <div class='item'>",
-        "    <h3>Arca — PWA de Alta Performance para Bookmarking</h3>",
-        "    <p class='meta'>React 18, TypeScript, Supabase (RLS & Storage), PWA Offline-First</p>",
-        "    <ul><li>Projetado para mitigar a latência do arquivamento mobile, com consumo nativo do Web Share Target. Sincronização offline com mutações otimistas.</li></ul>",
+        "    <h3>Arca — Organização Pessoal e Bloco de Notas (PWA)</h3>",
+        "    <p class='meta'>React 18, TypeScript, Vite, Tailwind CSS, Supabase (Auth, Storage, RLS), PWA</p>",
+        "    <ul><li>Desenvolvimento completo de app instalável para salvar links e notas no celular via compartilhamento nativo, com compressão de imagens, funcionamento offline e isolamento de dados por usuário.</li></ul>",
         "  </div>",
         "  <div class='item'>",
-        "    <h3>Nosso Fluxo — Controle Patrimonial Fintech</h3>",
-        "    <p class='meta'>Next.js 15, PostgreSQL, Recharts, integrações BrasilAPI e brapi.dev</p>",
-        "    <ul><li>Incorpora um script recursivo customizado que emite parcelas sem poluir o DB original, processando dispersão de Risco × Retorno atrelada ao juro básico.</li></ul>",
+        "    <h3>Nosso Fluxo — Controle Financeiro e Investimentos</h3>",
+        "    <p class='meta'>Next.js 15, React 19, TypeScript, PostgreSQL (RLS), Recharts, BrasilAPI</p>",
+        "    <ul><li>Sistema criado para substituir planilhas manuais com projeção automática de despesas parceladas sem duplicar registros no banco, consulta da taxa CDI com cache/contingência e gráficos patrimoniais.</li></ul>",
         "  </div>",
         "  <div class='item'>",
-        "    <h3>Vivi Carvalho Boty — Vitrine B2C &amp; E-commerce com IA</h3>",
-        "    <p class='meta'>JavaScript ES6+, Google Gemini 3.8 Flash, Tailwind CSS, Supabase Auth/RLS, Vercel Edge</p>",
-        "    <ul><li>Desenho de funil digital click-to-chat no WhatsApp, painel administrativo com extração multimodal via Gemini 3.8 Flash e Edge Middleware para Open Graph e rotas seguras.</li></ul>",
+        "    <h3>Vivi Carvalho Boty — Vitrine Digital Comercial e Painel B2C</h3>",
+        "    <p class='meta'>JavaScript ES6+, Tailwind CSS, Supabase (Auth/RLS/Storage), Google Gemini API, Vercel Edge</p>",
+        "    <ul><li>Loja virtual em produção para cliente real com envio de pedidos formatados no WhatsApp (pronta entrega e encomenda) e painel administrativo com cadastro assistido por foto/texto via Gemini.</li></ul>",
         "  </div>",
         "  <div class='item'>",
-        "    <h3>FORJA — Plataforma de Treino, IA &amp; Performance PWA</h3>",
-        "    <p class='meta'>JavaScript ES6+, Supabase Cloud, Google Gemini API, HTML5 Canvas 2D, PWA Local-First, Strava API</p>",
-        "    <ul><li>PWA mobile-first inspirada no Hevy com AI Coach multifuncional (Gemini), biblioteca de 132+ exercícios com guias biomecânicos, análise nutricional de macros e 9 micronutrientes por linguagem natural, heatmap corporal anatômico, tracking de 1RM com Canvas e sincronização em nuvem via Supabase.</li></ul>",
+        "    <h3>FORJA — Aplicativo Complementar de Treino (PWA)</h3>",
+        "    <p class='meta'>JavaScript ES6+, HTML5 Canvas 2D, Service Worker, Supabase Cloud, Google Gemini, Strava API</p>",
+        "    <ul><li>PWA mobile-first com biblioteca de 132+ exercícios, gráficos de evolução de carga em Canvas 2D, mapa muscular, funcionamento offline e registro nutricional.</li></ul>",
         "  </div>",
-        "  <h2>Formação &amp; Hardware Base</h2>",
+        "  <h2>Formação &amp; Base em Robótica</h2>",
         "  <ul>",
-        "    <li><strong>Formação Acadêmica:</strong> Ensino Médio Concluído · 2026 (Escola Dr. Clybas) — Total disponibilidade para regime integral (40h/44h). Detentor de Certificação de Aluno Destaque e Laudo AH/SD.</li>",
-        "    <li><strong>Robótica:</strong> 4 anos de especialização em componentes e C++ (Arduino, Lego EV3, Micro:bit).</li>",
+        "    <li><strong>Escolaridade:</strong> Ensino Médio Concluído em 2026 (Escola Dr. Clybas) — Certificado de Aluno Destaque; identificação formal de Altas Habilidades (AH/SD).</li>",
+        "    <li><strong>Robótica:</strong> Mais de 4 anos de prática com Arduino (C++ · Fundação CEDET), Lego Mindstorms EV3 (FEMA) e Micro:bit (SESI).</li>",
         "  </ul>",
         "  <div class='grid'>",
         "    <div>",
@@ -3957,117 +4354,127 @@ html.theme-contrast .ai-modal-col.ai {
   /* DADOS E CONTROLADORES DE ESTUDO DE CASO E VISÃO RÁPIDA */
   var caseStudiesData = {
     engemap: {
-      tag: "ESTUDO DE CASO TÉCNICO · AGO/2025 → NOV/2026 · EXPERIÊNCIA CORPORATIVA (15 MESES)",
+      tag: "DETALHAMENTO TÉCNICO · AGO/2025 → NOV/2026 · EXPERIÊNCIA CORPORATIVA (15 MESES)",
       title: "Engemap",
-      sub: "Mapeamento Móvel (WebGIS) & Vetorização Rodoviária com Drone (AutoCAD)",
+      sub: "Departamento Pessoal (RH), Mapeamento Móvel (WebGIS) & Vetorização Rodoviária (AutoCAD)",
       kpis: [
-        { label: "Experiência", val: "Engemap (15 meses) · Foco em Produção WebGIS e Geotecnologia" },
+        { label: "Experiência", val: "Engemap (15 meses)" },
         { label: "Ferramentas", val: "WebGIS & AutoCAD" },
         { label: "Operação", val: "Mapeamento Móvel & Drones" }
       ],
-      context: "A Engemap é referência nacional em engenharia e geotecnologia. Atuação corporativa de 15 meses com foco central em Produção WebGIS e Geotecnologia. Inicialmente alocado no Departamento Pessoal (~11 meses), realizou transição ágil e bem-sucedida para a Produção técnica diante da baixa demanda de projetos externos, assumindo o mapeamento cadastral de ativos em 360° (WebGIS) e a restituição vetorial de rodovias no AutoCAD a partir de imagens aéreas capturadas por drones.",
-      challenge: "Garantir exatidão métrica e consistência cadastral ao georreferenciar centenas de ativos urbanos e rodoviários em nível de solo e delimitar com rigor técnico o alinhamento horizontal (eixo e bordas de pista) a partir de mosaicos de imagens de drone.",
-      solution: "Uso do visualizador 360° de Mapeamento Móvel para identificar e classificar placas de sinalização, postes de Wi-Fi e placas solares, somado ao traçado milimétrico no AutoCAD de eixos e bordas de rodovias com padronização rigorosa de layers.",
+      participation: "Atuação como colaborador corporativo por 15 meses: primeiros ~11 meses em rotinas administrativas e suporte de RH/Departamento Pessoal e fase técnica final na Produção de Geotecnologia.",
+      validation: "Entregas submetidas à conferência interna de qualidade, padronização de camadas (layers) e precisão cartográfica antes da liberação dos projetos.",
+      context: "A Engemap atua no setor de engenharia e geotecnologia. Durante 15 meses de ciclo corporativo, iniciei no Departamento Pessoal apoiando processos internos e organização documental, realizando posteriormente a transição para a equipe de Produção técnica para atuar em mapeamento cadastral via WebGIS e vetorização rodoviária no AutoCAD.",
+      challenge: "Manter consistência cadastral ao identificar centenas de ativos em nível de solo e assegurar precisão no traçado vetorial de rodovias a partir de mosaicos de imagens aéreas de drone.",
+      solution: "Uso do visualizador 360° de Mapeamento Móvel para identificar e classificar ativos no WebGIS, combinado ao traçado contínuo no AutoCAD do eixo geométrico e das linhas de borda da pista com padronização de camadas.",
       decisions: [
-        { num: "01", title: "Mapeamento Móvel em WebGIS (360°)", desc: "Navegação em imagens terrestres 360° para identificação precisa e marcação espacial de placas (especificações e tipos), postes de Wi-Fi e placas solares." },
-        { num: "02", title: "Processamento de Imagens de Drone", desc: "Recepção, conferência de escala e alinhamento de ortomosaicos aéreos capturados por drones em trechos rodoviários." },
-        { num: "03", title: "Vetorização no AutoCAD (Eixo e Bordas)", desc: "Traçado vetorial contínuo da linha de eixo central da rodovia e das linhas de borda da pista com tolerâncias métricas de engenharia." },
-        { num: "04", title: "Pivotagem Ágil no 11º Mês", desc: "Transição rápida para a Produção técnica impulsionada por baixa demanda do setor inicial, assimilando ferramentas e rigor cartográfico sem curva improdutiva." }
+        { num: "01", title: "Mapeamento Móvel em WebGIS (360°)", desc: "Navegação em imagens terrestres 360° para identificar e marcar no mapa placas de sinalização (tipos e especificações), postes de Wi-Fi e placas solares." },
+        { num: "02", title: "Vetorização de Imagens de Drone", desc: "Conferência de escala e alinhamento sobre ortomosaicos aéreos capturados por drones em trechos rodoviários." },
+        { num: "03", title: "Traçado em AutoCAD (Eixo e Bordas)", desc: "Desenho vetorial do eixo geométrico e das linhas de borda da rodovia respeitando os padrões técnicos exigidos pela engenharia." },
+        { num: "04", title: "Transição entre Áreas (11º Mês)", desc: "Adaptação rápida da rotina administrativa de RH para a operação técnica de produção conforme demanda de projetos da empresa." }
       ],
-      tradeoffs: "O processo meticuloso de vetorização manual e verificação visual em Mapeamento Móvel 360° assegura fidelidade cartográfica e valor jurídico aos projetos as-built, sobrepondo a exatidão à automação cega.",
-      stack: ["WebGIS", "AutoCAD", "Mapeamento Móvel (MMS)", "Drones & Fotogrametria", "Vetorização Cartográfica", "Topologia"],
+      tradeoffs: "A verificação visual e vetorização criteriosa exigem atenção manual constante, mas evitam retrabalho em revisão e garantem confiabilidade cadastral às entregas.",
+      stack: ["WebGIS", "AutoCAD", "Mapeamento Móvel (MMS)", "Drones & Ortomosaicos", "Vetorização", "Rotinas de RH"],
       liveUrl: null,
       repoUrl: null
     },
     arca: {
-      tag: "ESTUDO DE CASO TÉCNICO · 2025–2026 · PRODUÇÃO ATIVA",
+      tag: "APROFUNDAMENTO TÉCNICO · 2025–2026 · PRODUÇÃO ATIVA",
       title: "Arca",
-      sub: "Organização Pessoal & Bloco de Notas PWA",
+      sub: "Organização Pessoal e Bloco de Notas (PWA)",
       kpis: [
-        { label: "Offline-First", val: "Sync Otimista" },
-        { label: "Ingestão Nativa", val: "Web Share Target" },
-        { label: "Segurança", val: "Postgres RLS" }
+        { label: "Modo Offline", val: "Cache + Sync" },
+        { label: "Captura Mobile", val: "Web Share Target" },
+        { label: "Segurança", val: "PostgreSQL RLS" }
       ],
-      context: "PWA de alta performance para organização pessoal e bookmarking. Criado para eliminar o atrito de salvar referências rapidamente no mobile, permitindo arquivar links do TikTok/YouTube diretamente pelo menu de compartilhamento do sistema operacional com sincronização offline contínua.",
-      challenge: "Garantir experiência com latência zero no mobile ao salvar mídias pesadas e links externos, mantendo sincronização de dados resiliente mesmo em conexões instáveis ou offline.",
-      solution: "Arquitetura offline-first com Service Worker e cache local, combinada com compressão de imagens via Canvas no client-side antes do upload e fallback transacional em caso de falha de rede.",
+      participation: "Projeto autoral desenvolvido de ponta a ponta por mim: definição das funcionalidades, interface, regras de sincronização, banco de dados e publicação.",
+      validation: "Aplicação em uso real contínuo na Vercel, testada em navegador e como PWA instalado no celular, com versionamento mantido no GitHub.",
+      context: "Aplicação web progressiva (PWA) criada para centralizar referências rápidas no celular — links de vídeos (TikTok/YouTube), imagens e anotações — sem depender de conexão estável no momento do salvamento.",
+      challenge: "Reduzir passos ao salvar conteúdo no celular e manter as notas disponíveis mesmo em oscilações de rede, evitando sobrecarga de upload com imagens pesadas.",
+      solution: "Implementação de Service Worker com cache local e atualizações otimistas, além de compressão de imagens via Canvas no próprio navegador antes do envio ao Supabase Storage.",
       decisions: [
-        { num: "01", title: "Web Share Target & oEmbed Nativo", desc: "Integração direta com a folha nativa de compartilhamento do Android/iOS, capturando payloads de URLs e extraindo metadados automaticamente em background." },
-        { num: "02", title: "Compressão Client-Side via Canvas", desc: "Otimização e redimensionamento de imagens direto no navegador do usuário, reduzindo o payload de rede em até 70% antes do envio ao Supabase Storage." },
-        { num: "03", title: "Isolamento Criptográfico com PostgreSQL RLS", desc: "Políticas estritas de Row Level Security no Postgres e geração de URLs assinadas efêmeras (24h) em buckets privados, impedindo vazamento de dados." },
-        { num: "04", title: "Mutações Otimistas e Cache Resiliente", desc: "A interface reflete imediatamente a ação do usuário; se a requisição falhar no servidor, uma tratativa de rollback automático desfaz a mutação sem corromper o estado." }
+        { num: "01", title: "Web Share Target & oEmbed", desc: "Integração com o menu de compartilhamento do celular para receber links e buscar metadados (título e miniatura) automaticamente." },
+        { num: "02", title: "Compressão no Cliente via Canvas", desc: "Redimensionamento e compressão de imagens no navegador antes do upload, reduzindo o peso dos arquivos enviados ao armazenamento." },
+        { num: "03", title: "Isolamento por Usuário (PostgreSQL RLS)", desc: "Políticas de Row Level Security no banco e URLs assinadas temporárias para buckets privados, garantindo que cada conta veja apenas seus dados." },
+        { num: "04", title: "Atualização Otimista & Tratamento de Erro", desc: "A interface responde de forma imediata à ação do usuário e desfaz a alteração localmente caso o servidor retorne erro." }
       ],
-      tradeoffs: "Processamento de mídia no dispositivo do cliente consome levemente mais CPU local, mas reduz drasticamente custos de computação serverless e elimina gargalos de upload.",
+      tradeoffs: "Comprimir imagens no aparelho do usuário utiliza um pouco mais de processamento local, mas reduz consumo de rede, tempo de upload e uso de armazenamento em nuvem.",
       stack: ["React 18", "TypeScript", "PWA / Service Worker", "Tailwind CSS", "Supabase Auth/Storage", "PostgreSQL RLS", "Canvas 2D", "Vite", "Vercel"],
       liveUrl: "https://arcaik-notes.vercel.app/",
       repoUrl: "https://github.com/Murilo-Rogerio/Arcaik"
     },
     nossofluxo: {
-      tag: "ESTUDO DE CASO TÉCNICO · 2025 · FINTECH EM PRODUÇÃO",
+      tag: "APROFUNDAMENTO TÉCNICO · 2025 · EM PRODUÇÃO",
       title: "Nosso Fluxo",
-      sub: "Plataforma Fintech de Controle Patrimonial & Investimentos",
+      sub: "Controle Financeiro Pessoal e Acompanhamento de Investimentos",
       kpis: [
-        { label: "Cotações Real-Time", val: "B3 & BrasilAPI" },
-        { label: "Motor Recorrência", val: "Zero Duplicação DB" },
-        { label: "Visualização", val: "Recharts & Framer" }
+        { label: "Dados Externos", val: "B3 & BrasilAPI" },
+        { label: "Recorrência", val: "Cálculo Sob Demanda" },
+        { label: "Visualização", val: "Recharts" }
       ],
-      context: "Plataforma fintech completa criada para substituir planilhas financeiras frágeis por um sistema automatizado com inteligência de análise de risco, projeção de renda passiva e telemetria de investimentos da bolsa brasileira (B3).",
-      challenge: "Modelar compras parceladas e despesas recorrentes futuras sem inflar exponencialmente a base de dados do PostgreSQL com dezenas de milhares de registros vazios redundantes.",
-      solution: "Criação de um motor de projeção recursivo client/server (lib/recurrence.ts) que sintetiza calendários financeiros sob demanda a partir de regras matemáticas, além de caching inteligente para APIs financeiras.",
+      participation: "Responsável integral pelo projeto: modelagem do banco, lógica de projeção financeira, consumo de APIs, dashboard e deploy.",
+      validation: "Sistema publicado na Vercel e validado com cenários reais de orçamento, parcelamentos e carteira de investimentos, com cache e contingência de API.",
+      context: "Sistema web desenvolvido para substituir planilhas financeiras manuais por um controle unificado de receitas, despesas parceladas, metas e acompanhamento de ativos financeiros.",
+      challenge: "Representar compras parceladas e despesas fixas futuras no calendário sem gerar dezenas de milhares de linhas repetidas no PostgreSQL.",
+      solution: "Criação de um módulo de recorrência (lib/recurrence.ts) que calcula parcelas e datas futuras sob demanda a partir de regras salvas no banco, aliado a cache de APIs financeiras.",
       decisions: [
-        { num: "01", title: "Consumo Dinâmico de CDI com Cache em Camadas", desc: "Consulta à BrasilAPI com cache em memória de 1 hora e fallback resiliente com taxa padrão para impedir tela branca se a API externa oscilar." },
-        { num: "02", title: "Visualização Multidimensional Risco x Retorno", desc: "Processamento no Next.js para agrupar carteiras em clusters estatísticos, plotando gráficos interativos via Recharts sem degradação de FPS no cliente." },
-        { num: "03", title: "Motor Matemático de Recorrência (lib/recurrence.ts)", desc: "Função pura responsável por computar datas de faturas, competências e parcelamentos dinamicamente, mantendo o banco normalizado e veloz." },
-        { num: "04", title: "Segurança em Camadas e Middleware Next.js", desc: "Verificação de tokens JWT via Middleware com injeção de contexto de sessão, reforçado pelas políticas de Row Level Security no banco." }
+        { num: "01", title: "Consulta de CDI com Cache e Contingência", desc: "Integração com a BrasilAPI usando cache em memória de 1 hora e valor padrão de contingência caso o serviço externo fique indisponível." },
+        { num: "02", title: "Gráficos de Patrimônio e Risco × Retorno", desc: "Agrupamento dos ativos no Next.js e renderização interativa via Recharts para facilitar a leitura comparativa da carteira." },
+        { num: "03", title: "Motor de Recorrência (lib/recurrence.ts)", desc: "Cálculo dinâmico das competências e parcelas evitando duplicação desnecessária de registros e mantendo consultas simples no banco." },
+        { num: "04", title: "Proteção de Rotas e RLS", desc: "Verificação de sessão em Middleware do Next.js combinada com Row Level Security diretamente no PostgreSQL." }
       ],
-      tradeoffs: "Cálculo de recorrência on-the-fly demanda mais processamento analítico na leitura, porém preserva a integridade, facilidade de auditoria e escalabilidade do banco de dados.",
+      tradeoffs: "Calcular recorrências na leitura exige mais atenção às regras de data no código, mas mantém o banco enxuto, auditável e fácil de editar quando uma despesa muda.",
       stack: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Recharts", "Framer Motion", "PostgreSQL RLS", "Supabase", "BrasilAPI", "Vercel"],
       liveUrl: "https://nossofluxo.vercel.app",
       repoUrl: "https://github.com/Murilo-Rogerio/nossofluxo"
     },
     viviboty: {
-      tag: "ESTUDO DE CASO TÉCNICO · 2026 · PRODUÇÃO ATIVA",
+      tag: "APROFUNDAMENTO TÉCNICO · 2026 · APLICAÇÃO COMERCIAL REAL",
       title: "Vivi Carvalho Boty",
-      sub: "Vitrine Digital B2C com IA Generativa & Edge Middleware",
+      sub: "Vitrine Digital B2C e Painel Administrativo com IA",
       kpis: [
-        { label: "IA de Catálogo", val: "Gemini 3.8 Flash" },
-        { label: "Fricção Checkout", val: "Zero Cadastros" },
-        { label: "Conversão", val: "Direto no WhatsApp" }
+        { label: "Cadastro com IA", val: "Gemini 3.8 Flash" },
+        { label: "Pedido", val: "Direto no WhatsApp" },
+        { label: "Roteamento", val: "Vercel Edge" }
       ],
-      context: "E-commerce digital desenvolvido para a consultora oficial Vivi Carvalho (O Boticário, Natura, Eudora), unindo experiência de compra fluida no WhatsApp a um painel de gestão acelerado por inteligência artificial.",
-      challenge: "Eliminar o abandono de checkout no celular e acelerar o cadastro exaustivo de centenas de cosméticos e perfumes pela lojista sem erros de digitação.",
-      solution: "Sacola fluida no navegador que serializa itens para WhatsApp distinguindo pronta-entrega de sob encomenda, integrada a um motor de extração multimodal via Gemini 3.8 Flash com fallback em cascata e feedback sensorial (áudio Web Audio + vibração).",
+      participation: "Levantamento direto dos requisitos com a cliente, desenvolvimento completo da vitrine pública, painel administrativo, integração com IA e deploy em domínio próprio.",
+      validation: "Loja no ar em vivicarvalhoboty.com.br, validada pela própria consultora no atendimento real a clientes e mantida continuamente conforme o uso.",
+      context: "Catálogo e vitrine de pedidos desenvolvido para a consultora Vivi Carvalho (O Boticário, Natura, Eudora), permitindo que clientes montem a sacola sem cadastro burocrático e enviem o pedido pronto no WhatsApp.",
+      challenge: "Evitar desistências em formulários longos de compra no celular e reduzir o tempo gasto pela lojista para cadastrar e atualizar dezenas de cosméticos manualmente.",
+      solution: "Sacola que formata o pedido para WhatsApp separando itens de pronta entrega e sob encomenda, junto a um painel administrativo que extrai dados do produto por foto ou texto via Gemini.",
       decisions: [
-        { num: "01", title: "Catálogo Acelerado por IA Multimodal", desc: "Integração do Google Gemini 3.8 Flash com fallback dinâmico (3.5-flash-lite) para extrair nome, marca, volume e pirâmide olfativa por foto ou texto." },
-        { num: "02", title: "Click-to-Chat Serializer & Estoque Dinâmico", desc: "Algoritmo que empacota pedidos com separação automática entre produtos pronta-entrega e sob encomenda, além de cálculo de economia em tempo real." },
-        { num: "03", title: "Edge Middleware & Resiliência de Rotas", desc: "Middleware Vercel para injeção dinâmica de metadados Open Graph para links no WhatsApp e redirecionamento de rotas administrativas evitando telas pretas 404." },
-        { num: "04", title: "Painel Administrativo com Ações em Lote", desc: "Área autenticada com Supabase Auth/RLS, edição rápida inline, barra flutuante de ações em lote e gerador de rotas de entrega por bairro." }
+        { num: "01", title: "Cadastro Assistido por IA (Gemini 3.8 Flash)", desc: "Leitura de foto ou texto do produto com fallback automático para outro modelo da família Gemini para preencher nome, marca e volume no painel." },
+        { num: "02", title: "Serialização para WhatsApp & Controle de Estoque", desc: "Montagem automática da mensagem de pedido separando pronta entrega vs. encomenda e exibindo o valor economizado em promoções." },
+        { num: "03", title: "Edge Middleware & Open Graph", desc: "Ajuste dinâmico de metadados para visualização correta de links compartilhados no WhatsApp e redirecionamento seguro das rotas administrativas." },
+        { num: "04", title: "Painel com Ações em Lote", desc: "Área autenticada via Supabase Auth/RLS com edição rápida de preços, alterações em lote e apoio à organização de entregas por bairro." }
       ],
-      tradeoffs: "Ausência de gateway nativo exige fechamento humano no chat, mas aumenta a taxa de conversão em 4x para o perfil de público da região.",
+      tradeoffs: "Optou-se por finalizar o pagamento e atendimento direto no WhatsApp em vez de integrar gateway de cartão, mantendo a proximidade e a flexibilidade que o público local prefere.",
       stack: ["Google Gemini 3.8 Flash", "JavaScript ES6+", "Tailwind CSS", "Supabase Auth/RLS", "Storage", "Vercel Edge", "WhatsApp API"],
       liveUrl: "https://www.vivicarvalhoboty.com.br",
       repoUrl: "https://github.com/Murilo-Rogerio/Vivi-Boty"
     },
     forja: {
-      tag: "ESTUDO DE CASO TÉCNICO · 2026 · PWA FITNESS TECH",
+      tag: "PROJETO COMPLEMENTAR · 2026 · PWA FITNESS",
       title: "FORJA",
-      sub: "Treino, Alta Performance & Rede Social PWA",
+      sub: "Aplicativo de Treino, Gráficos em Canvas 2D e Modo Offline",
       kpis: [
-        { label: "Performance", val: "Canvas 2D 60fps" },
-        { label: "Inteligência Artificial", val: "Google Gemini Flash" },
-        { label: "Cloud & Realtime", val: "Supabase + Offline Cache" }
+        { label: "Gráficos", val: "HTML5 Canvas 2D" },
+        { label: "Assistente", val: "Google Gemini" },
+        { label: "Sincronização", val: "Supabase + Offline" }
       ],
-      context: "Aplicação Web Progressiva (PWA) mobile-first inspirada no Hevy para atletas e praticantes de musculação, unindo biblioteca de 132+ exercícios com guias biomecânicos e 1RM, IA para montagem de rotinas, nutrição em linguagem natural e backend Supabase para comunidade e sincronização.",
-      challenge: "Renderizar gráficos de evolução de carga (1RM) e mapa anatômico de calor corporal em tempo real sem travar a thread de UI em dispositivos móveis modestos, mantendo sincronização de dados resiliente mesmo com oscilações de sinal de academia.",
-      solution: "Renderização de alta performance utilizando HTML5 Canvas 2D direto na GPU com buffers reutilizáveis, arquitetura Local-First com Service Worker e sincronização contínua com Supabase Cloud.",
+      participation: "Projeto pessoal desenvolvido integralmente por mim para aprofundar conhecimentos em PWA offline, Canvas 2D e integração com múltiplas APIs.",
+      validation: "Publicado na Vercel e testado em uso prático no celular dentro da academia para validar fluidez dos gráficos e persistência offline.",
+      context: "Aplicação Web Progressiva (PWA) mobile-first inspirada no Hevy, reunindo biblioteca com 132+ exercícios, cálculo de carga estimada (1RM), mapa muscular e registro alimentar.",
+      challenge: "Desenhar gráficos de evolução e mapa de grupos musculares com boa resposta no celular sem deixar a interface pesada, mantendo os registros funcionando mesmo com internet fraca.",
+      solution: "Desenho direto em HTML5 Canvas 2D combinado a arquitetura local-first com Service Worker e sincronização em nuvem via Supabase.",
       decisions: [
-        { num: "01", title: "AI Coach Multifuncional & Nutrição Generativa", desc: "Integração com Google Gemini para síntese de rotinas, substituição biomecânica, scanner de pratos e análise de refeições por linguagem natural calculando calorias, macros e 9 micronutrientes essenciais." },
-        { num: "02", title: "Renderização Direta em Canvas 2D", desc: "Heatmap muscular e curvas de e1RM (one-rep max) desenhados via Canvas nativo, garantindo 60fps constantes sem sobrecarregar a árvore de nós do DOM." },
-        { num: "03", title: "Arquitetura Local-First com Supabase Cloud", desc: "Operação com zero latência no aparelho aliada à sincronização de fichas, histórico e feed social em tempo real via Supabase PostgreSQL e RLS." },
-        { num: "04", title: "Feedback Tátil & Cronômetro em Background", desc: "Notificações com vibrações táteis sincronizadas ao término de descansos entre séries." }
+        { num: "01", title: "Assistente de Treino e Nutrição (Gemini)", desc: "Sugestão de exercícios equivalentes e estimativa de macros e micronutrientes a partir da descrição ou foto da refeição." },
+        { num: "02", title: "Gráficos e Mapa Muscular em Canvas 2D", desc: "Renderização de curvas de 1RM e mapa anatômico em Canvas nativo, evitando centenas de elementos extras no DOM." },
+        { num: "03", title: "Funcionamento Local-First + Supabase", desc: "Registro imediato no aparelho durante o treino e sincronização posterior com o banco PostgreSQL e RLS." },
+        { num: "04", title: "Cronômetro & Integração Strava", desc: "Temporizador entre séries com alertas sonoros/táteis e integração opcional com a API do Strava." }
       ],
-      tradeoffs: "Uso de Canvas 2D exige gerenciamento manual de DPI e redimensionamento, mas entrega fidelidade gráfica e fluidez inalcançáveis com divs HTML comuns.",
-      stack: ["JavaScript ES6+", "Google Gemini API", "Supabase Cloud", "HTML5 Canvas 2D", "PWA / Service Worker", "CSS3 Moderno", "Strava API", "Vercel"],
+      tradeoffs: "Trabalhar diretamente com Canvas 2D exige controle manual de escala e nitidez (DPI), mas oferece controle visual completo e leveza em aparelhos móveis.",
+      stack: ["JavaScript ES6+", "Google Gemini API", "Supabase Cloud", "HTML5 Canvas 2D", "PWA / Service Worker", "CSS3", "Strava API", "Vercel"],
       liveUrl: "https://theforge-rho.vercel.app",
       repoUrl: "https://github.com/Murilo-Rogerio/Forja-gym"
     }
@@ -4169,6 +4576,10 @@ html.theme-contrast .ai-modal-col.ai {
       '<div class="cs-kpi-bar">' + kpiHtml + '</div>',
       '<div class="modal-section-title">Visão Geral &amp; Contexto</div>',
       '<p class="cs-context">' + data.context + '</p>',
+      (data.participation || data.validation ? '<div class="cs-meta-grid">' +
+        (data.participation ? '<div class="cs-meta-box"><h4>Minha Participação</h4><p>' + data.participation + '</p></div>' : '') +
+        (data.validation ? '<div class="cs-meta-box"><h4>Validação &amp; Manutenção</h4><p>' + data.validation + '</p></div>' : '') +
+      '</div>' : ''),
       '<div class="cs-duo-grid">',
       '  <div class="cs-card-challenge"><h4>O Desafio Técnico</h4><p>' + data.challenge + '</p></div>',
       '  <div class="cs-card-solution"><h4>A Solução de Engenharia</h4><p>' + data.solution + '</p></div>',
@@ -4210,6 +4621,78 @@ html.theme-contrast .ai-modal-col.ai {
     }
   });
 
+  // Complementary Deep-Dive ("Ir Além") Controller
+  var deepDiveEl = document.getElementById('ir-alem');
+  var deepToggleBtn = document.getElementById('deep-toggle-btn');
+  var deepTabs = document.querySelectorAll('.deep-tab');
+  var deepPanes = document.querySelectorAll('.deep-pane');
+  var deepUserOpened = false;
+
+  function syncLayoutAfterToggle() {
+    document.querySelectorAll('.panel').forEach(function(c) { c._rect = null; });
+    if (typeof cacheSecOffsets === 'function') cacheSecOffsets();
+    if (typeof updateMaxScroll === 'function') updateMaxScroll();
+    if (typeof updateProgress === 'function') updateProgress();
+    if (typeof updateScrollspy === 'function') updateScrollspy();
+  }
+
+  function setDeepOpen(open, fromUser) {
+    if (!deepDiveEl || !deepToggleBtn) return;
+    if (fromUser) deepUserOpened = open;
+    deepDiveEl.classList.toggle('open', open);
+    deepToggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    deepToggleBtn.textContent = open ? 'Recolher conteúdo ↑' : 'Explorar conteúdo completo ↓';
+    syncLayoutAfterToggle();
+  }
+
+  function selectDeepTab(tabKey) {
+    deepTabs.forEach(function(t) {
+      var active = t.getAttribute('data-deep-tab') === tabKey;
+      t.classList.toggle('active', active);
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    deepPanes.forEach(function(p) {
+      p.classList.toggle('active', p.getAttribute('data-deep-pane') === tabKey);
+    });
+    if (tabKey === 'terminal') {
+      var activeTermTab = document.querySelector('.t-tab.active');
+      if (activeTermTab && typeof renderTerminalTab === 'function') {
+        renderTerminalTab(activeTermTab.getAttribute('data-tab') || 'config');
+      }
+    }
+    syncLayoutAfterToggle();
+  }
+
+  if (deepToggleBtn) {
+    deepToggleBtn.addEventListener('click', function() {
+      var isOpen = deepDiveEl && deepDiveEl.classList.contains('open');
+      setDeepOpen(!isOpen, true);
+    });
+  }
+
+  deepTabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var tabKey = tab.getAttribute('data-deep-tab');
+      if (!tabKey) return;
+      selectDeepTab(tabKey);
+      if (deepDiveEl && !deepDiveEl.classList.contains('open')) {
+        setDeepOpen(true, true);
+      }
+    });
+  });
+
+  var deepOpenAiBtn = document.getElementById('deep-open-ai-btn');
+  if (deepOpenAiBtn && aiModal) {
+    deepOpenAiBtn.addEventListener('click', function() {
+      openModal(aiModal);
+    });
+  }
+
+  if (window.location.hash === '#forja') {
+    selectDeepTab('forja');
+    setDeepOpen(true, true);
+  }
+
   // Project Category Filter Tabs
   var filterTabs = document.querySelectorAll('.pf-tab');
   var projectCells = document.querySelectorAll('.project-cell');
@@ -4236,12 +4719,24 @@ html.theme-contrast .ai-modal-col.ai {
         }
       });
 
-      // Invalida rects cacheados para que o tilt e luz usem posições precisas dos cards visíveis
-      document.querySelectorAll('.panel').forEach(function(c) { c._rect = null; });
-      if (typeof cacheSecOffsets === 'function') cacheSecOffsets();
-      if (typeof updateMaxScroll === 'function') updateMaxScroll();
-      if (typeof updateScrollspy === 'function') {
-        updateScrollspy();
+      if (filter === 'fullstack' || filter === 'pwa') {
+        selectDeepTab('forja');
+        setDeepOpen(true, false);
+      } else if (filter === 'webgis') {
+        if (!deepUserOpened) {
+          setDeepOpen(false, false);
+        } else {
+          var activeDeep = document.querySelector('.deep-tab.active');
+          if (activeDeep && activeDeep.getAttribute('data-deep-tab') === 'forja') {
+            selectDeepTab('propositos');
+          } else {
+            syncLayoutAfterToggle();
+          }
+        }
+      } else if (!deepUserOpened) {
+        setDeepOpen(false, false);
+      } else {
+        syncLayoutAfterToggle();
       }
     });
   });
