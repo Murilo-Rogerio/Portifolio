@@ -2040,12 +2040,6 @@ html.theme-contrast .ai-modal-col.ai {
 .deep-pane.active {
   display: block;
 }
-.deep-forja-card {
-  padding: 22px 24px;
-  border-radius: 18px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-}
 .deep-grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2173,7 +2167,6 @@ html.theme-contrast .deep-eyebrow {
   .actions-row { padding: 20px; flex-direction: column; align-items: stretch; gap: 14px; }
   .actions-btns { grid-template-columns: 1fr; flex: none; width: 100%; }
   .deep-dive { padding: 20px; }
-  .deep-forja-card { padding: 18px 16px; }
   .deep-grid-2 { grid-template-columns: 1fr; }
   .cs-meta-grid { grid-template-columns: 1fr; }
   .modal-box { padding: 24px 20px; border-radius: 20px; }
@@ -2207,7 +2200,8 @@ html.theme-contrast .deep-eyebrow {
   <a href="#arca" class="rail-item" data-sec="arca"><span class="tooltip">Arca</span></a>
   <a href="#nossofluxo" class="rail-item" data-sec="nossofluxo"><span class="tooltip">Nosso Fluxo</span></a>
   <a href="#viviboty" class="rail-item" data-sec="viviboty"><span class="tooltip">Vivi Carvalho Boty</span></a>
-  <a href="#ir-alem" class="rail-item" data-sec="ir-alem"><span class="tooltip">Ir Além &amp; Forja</span></a>
+  <a href="#forja" class="rail-item" data-sec="forja"><span class="tooltip">Forja</span></a>
+  <a href="#ir-alem" class="rail-item" data-sec="ir-alem"><span class="tooltip">Ir Além</span></a>
   <a href="#formacao" class="rail-item" data-sec="formacao"><span class="tooltip">Formação &amp; Robótica</span></a>
 </nav>
 
@@ -2500,7 +2494,7 @@ html.theme-contrast .deep-eyebrow {
       <div class="panel projects-filter-bar">
         <div class="pf-info">
           <h2>Experiência &amp; Principais Projetos</h2>
-          <p>Experiência corporativa e 3 projetos em destaque; o projeto complementar (FORJA), Terminal e Relógio ficam em Ir Além.</p>
+          <p>Experiência corporativa e 4 projetos em destaque em produção (Arca, Nosso Fluxo, Vivi Boty e FORJA).</p>
         </div>
         <div class="pf-tabs" role="tablist" aria-label="Filtrar projetos por categoria">
           <button type="button" class="pf-tab active" data-filter="all">Todos (5)</button>
@@ -2965,14 +2959,117 @@ html.theme-contrast .deep-eyebrow {
       </article>
     </div>
 
+    <div class="cell sp-12 reveal project-cell" data-category="fullstack pwa" style="--d:.08s">
+      <article class="panel project tilt" id="forja">
+        <div class="panel-head">
+          <div class="p-badges">
+            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Destaque 4 · PWA &amp; Alta Performance</span>
+            <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>PWA Offline</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Google Gemini</span>
+            <span class="badge"><span class="bdot b-rose" aria-hidden="true"></span>HTML5 Canvas 2D</span>
+            <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Supabase Cloud</span>
+            <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Strava API</span>
+          
+            <button type="button" class="btn-case-badge btn-case-study" data-case="forja" aria-label="Abrir estudo de caso técnico do FORJA">
+              <svg class="ic" aria-hidden="true"><use href="#i-award"/></svg>
+              Aprofundar
+              <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+            </button>
+          </div>
+          <div class="p-widget" aria-hidden="true">
+            <span class="w-label">Treino &amp; Carga · e1RM ao vivo</span>
+            <svg viewBox="0 0 200 118">
+              <line class="w-line" x1="15" y1="100" x2="185" y2="100"/>
+              <line class="w-line" x1="15" y1="18" x2="15" y2="100"/>
+              <line class="w-line" x1="15" y1="72" x2="185" y2="72" stroke-dasharray="2 3" opacity="0.3"/>
+              <line class="w-line" x1="15" y1="45" x2="185" y2="45" stroke-dasharray="2 3" opacity="0.3"/>
+              <rect x="30" y="66" width="12" height="34" rx="3" fill="rgba(244,63,94,0.3)"/>
+              <rect x="58" y="54" width="12" height="46" rx="3" fill="rgba(244,63,94,0.4)"/>
+              <rect x="86" y="44" width="12" height="56" rx="3" fill="rgba(244,63,94,0.55)"/>
+              <rect x="114" y="36" width="12" height="64" rx="3" fill="rgba(244,63,94,0.7)"/>
+              <rect x="142" y="24" width="12" height="76" rx="3" fill="rgba(244,63,94,0.9)"/>
+              <polyline points="36,66 64,54 92,44 120,36 148,24" fill="none" stroke="#f43f5e" stroke-width="2"/>
+              <circle cx="148" cy="24" r="4" fill="#f43f5e"/>
+              <circle cx="148" cy="24" r="8" fill="none" stroke="#f43f5e" stroke-width="1" class="w-ring" style="stroke:#f43f5e"/>
+              <text class="w-axis" x="185" y="112" text-anchor="end">SESSÃO</text>
+              <text class="w-axis" transform="rotate(-90 10 52)" x="10" y="52" text-anchor="middle">KG (1RM)</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="project-body">
+          <div class="p-info">
+            <div class="p-id">
+              <span class="p-icon"><svg class="ic"><use href="#i-zap"/></svg></span>
+              <div>
+                <h3>FORJA</h3>
+                <p class="p-tag">Treino, Alta Performance &amp; Rede Social PWA</p>
+              </div>
+            </div>
+            <p class="p-desc">
+              Aplicação Web Progressiva (PWA) mobile-first inspirada no Hevy para atletas e praticantes de musculação. Combina AI Coach multifuncional (Google Gemini), biblioteca completa de 132+ exercícios com guias biomecânicos em 3 etapas, contador de macros e 9 micronutrientes por linguagem natural, mapa corporal anatômico com heatmap em vermelho incandescente, cronômetro inteligente com alertas sonoros/táteis, sincronização em nuvem e feed social em tempo real com Supabase, e gráficos de evolução de carga (1RM) renderizados via Canvas 2D.
+            </p>
+            <div class="p-stack" aria-label="Tecnologias do projeto FORJA">
+              <span class="chip core">JavaScript ES6+</span>
+              <span class="chip">HTML5 Canvas 2D</span>
+              <span class="chip">PWA / Service Worker</span>
+              <span class="chip">Supabase Cloud</span>
+              <span class="chip">Google Gemini</span>
+              <span class="chip">Strava API</span>
+            </div>
+            <div class="p-actions">
+              <a class="btn btn-solid" href="https://theforge-rho.vercel.app" target="_blank" rel="noopener noreferrer">
+                Testar App (Live Demo)
+                <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+              </a>
+              <a class="btn btn-ghost" href="https://github.com/Murilo-Rogerio/Forja-gym" target="_blank" rel="noopener noreferrer">
+                <svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>
+                Código-fonte
+              </a>
+              <button type="button" class="btn btn-ghost btn-case-study" data-case="forja">
+                Aprofundar Arquitetura
+              </button>
+            </div>
+          </div>
+
+          <div class="p-specs">
+            <div class="spec-head">Estudo de Caso &amp; Arquitetura</div>
+            <ol class="spec-list">
+              <li>
+                <span class="spec-num">01</span>
+                <div>
+                  <strong>AI Coach Multifuncional &amp; Nutrição Generativa</strong>
+                  <p>Integração com a API do Google Gemini para sugestão inteligente de exercícios complementares, scanner visual de pratos e análise de refeições por linguagem natural calculando calorias, macros e 9 micronutrientes.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">02</span>
+                <div>
+                  <strong>Heatmap Anatômico &amp; Canvas 2D de Alta Fidelidade</strong>
+                  <p>Mapeamento visual dinâmico dos grupamentos musculares fadigados em vermelho neon proporcional ao volume de séries, com geração de cartões de compartilhamento social em 1080x1350.</p>
+                </div>
+              </li>
+              <li>
+                <span class="spec-num">03</span>
+                <div>
+                  <strong>Arquitetura Local-First com Supabase Cloud</strong>
+                  <p>Operação sem latência no chão da academia via Service Worker dedicado, persistência local e sincronização contínua de rotinas, histórico e feed social no Supabase PostgreSQL.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </article>
+    </div>
+
     <!-- SEÇÃO COMPLEMENTAR & APROFUNDAMENTO ("IR ALÉM") -->
     <div class="cell sp-12 reveal" style="--d:.08s">
-      <section class="panel deep-dive" id="ir-alem" aria-label="Projeto complementar, propósitos, terminal e aprofundamento técnico">
+      <section class="panel deep-dive" id="ir-alem" aria-label="Propósitos, terminal e aprofundamento técnico">
         <div class="deep-head">
           <div class="deep-head-info">
             <span class="deep-eyebrow">Seção Complementar · Ir Além</span>
-            <h2>Projeto Complementar, Propósitos, Terminal &amp; Conhecimentos</h2>
-            <p>Para manter a leitura principal objetiva para RH, reuni aqui o projeto complementar <strong>FORJA</strong>, meus propósitos, base técnica, o <strong>Terminal Interativo</strong> e o <strong>Horário Local</strong>.</p>
+            <h2>Propósitos, Terminal &amp; Conhecimentos</h2>
+            <p>Para aprofundar, reuni aqui meus propósitos profissionais, base técnica, o <strong>Terminal Interativo</strong> e o <strong>Horário Local</strong>.</p>
           </div>
           <div class="deep-head-actions">
             <button type="button" class="btn btn-solid" id="deep-toggle-btn" aria-expanded="false" aria-controls="deep-body">
@@ -2982,131 +3079,13 @@ html.theme-contrast .deep-eyebrow {
         </div>
 
         <div class="deep-tabs" role="tablist" aria-label="Conteúdo complementar e aprofundamento">
-          <button type="button" class="deep-tab active" role="tab" aria-selected="true" data-deep-tab="forja">Projeto Complementar: FORJA</button>
-          <button type="button" class="deep-tab" role="tab" aria-selected="false" data-deep-tab="propositos">Propósitos &amp; Forma de Trabalhar</button>
+          <button type="button" class="deep-tab active" role="tab" aria-selected="true" data-deep-tab="propositos">Propósitos &amp; Forma de Trabalhar</button>
           <button type="button" class="deep-tab" role="tab" aria-selected="false" data-deep-tab="conhecimentos">Aprofundamento Técnico</button>
           <button type="button" class="deep-tab" role="tab" aria-selected="false" data-deep-tab="terminal">Terminal &amp; Horário Local</button>
         </div>
 
         <div class="deep-body" id="deep-body">
-          <div class="deep-pane active" data-deep-pane="forja" role="tabpanel">
-            <div class="project-cell" data-category="fullstack pwa">
-              <article class="deep-forja-card project" id="forja">
-                <div class="panel-head">
-                  <div class="p-badges">
-                    <span class="badge"><span class="bdot b-violet" aria-hidden="true"></span>Projeto Complementar</span>
-                    <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>PWA Offline</span>
-                    <span class="badge"><span class="bdot b-rose" aria-hidden="true"></span>HTML5 Canvas 2D</span>
-                    <span class="badge"><span class="bdot b-green" aria-hidden="true"></span>Supabase Cloud</span>
-                    <span class="badge"><span class="bdot b-blue" aria-hidden="true"></span>Google Gemini</span>
-                    <button type="button" class="btn-case-badge btn-case-study" data-case="forja" aria-label="Abrir estudo de caso técnico do FORJA">
-                      <svg class="ic" aria-hidden="true"><use href="#i-award"/></svg>
-                      Aprofundar
-                      <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
-                    </button>
-                  </div>
-                  <div class="p-widget" aria-hidden="true">
-                    <span class="w-label">Treino &amp; Carga · e1RM ao vivo</span>
-                    <svg viewBox="0 0 200 118">
-                      <line class="w-line" x1="15" y1="100" x2="185" y2="100"/>
-                      <line class="w-line" x1="15" y1="18" x2="15" y2="100"/>
-                      <line class="w-line" x1="15" y1="72" x2="185" y2="72" stroke-dasharray="2 3" opacity="0.3"/>
-                      <line class="w-line" x1="15" y1="45" x2="185" y2="45" stroke-dasharray="2 3" opacity="0.3"/>
-                      <rect x="30" y="66" width="12" height="34" rx="3" fill="rgba(244,63,94,0.3)"/>
-                      <rect x="58" y="54" width="12" height="46" rx="3" fill="rgba(244,63,94,0.4)"/>
-                      <rect x="86" y="44" width="12" height="56" rx="3" fill="rgba(244,63,94,0.55)"/>
-                      <rect x="114" y="36" width="12" height="64" rx="3" fill="rgba(244,63,94,0.7)"/>
-                      <rect x="142" y="24" width="12" height="76" rx="3" fill="rgba(244,63,94,0.9)"/>
-                      <polyline points="36,66 64,54 92,44 120,36 148,24" fill="none" stroke="#f43f5e" stroke-width="2"/>
-                      <circle cx="148" cy="24" r="4" fill="#f43f5e"/>
-                      <circle cx="148" cy="24" r="8" fill="none" stroke="#f43f5e" stroke-width="1" class="w-ring" style="stroke:#f43f5e"/>
-                      <text class="w-axis" x="185" y="112" text-anchor="end">SESSÃO</text>
-                      <text class="w-axis" transform="rotate(-90 10 52)" x="10" y="52" text-anchor="middle">KG (1RM)</text>
-                    </svg>
-                  </div>
-                </div>
-
-                <div class="project-body">
-                  <div class="p-info">
-                    <div class="p-id">
-                      <span class="p-icon"><svg class="ic"><use href="#i-zap"/></svg></span>
-                      <div>
-                        <h3>FORJA</h3>
-                        <p class="p-tag">Aplicativo de Treino e Acompanhamento (PWA)</p>
-                      </div>
-                    </div>
-                    <p class="p-desc">
-                      Aplicativo web mobile-first para registro de treinos de musculação, acompanhamento de evolução de carga (1RM), mapa muscular visual e registro alimentar. Criado como projeto pessoal para testar recursos avançados de interface, modo offline e gráficos em Canvas 2D.
-                    </p>
-                    <div class="p-stack" aria-label="Tecnologias do projeto FORJA">
-                      <span class="chip core">JavaScript ES6+</span>
-                      <span class="chip">HTML5 Canvas 2D</span>
-                      <span class="chip">PWA / Service Worker</span>
-                      <span class="chip">Supabase Cloud</span>
-                      <span class="chip">Google Gemini</span>
-                      <span class="chip">Strava API</span>
-                    </div>
-                    <div class="p-actions">
-                      <a class="btn btn-solid" href="https://theforge-rho.vercel.app" target="_blank" rel="noopener noreferrer">
-                        Testar App (Live Demo)
-                        <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
-                      </a>
-                      <a class="btn btn-ghost" href="https://github.com/Murilo-Rogerio/Forja-gym" target="_blank" rel="noopener noreferrer">
-                        <svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>
-                        Código-fonte
-                      </a>
-                      <button type="button" class="btn btn-ghost btn-case-study" data-case="forja">
-                        Aprofundar Arquitetura
-                      </button>
-                    </div>
-                  </div>
-
-                  <div class="p-specs">
-                    <div class="spec-head">Resumo de Entrega</div>
-                    <ol class="spec-list">
-                      <li>
-                        <span class="spec-num">01</span>
-                        <div>
-                          <strong>Problema resolvido</strong>
-                          <p>Registrar treinos rapidamente durante a academia mesmo com sinal de internet instável e visualizar evolução real de carga por exercício.</p>
-                        </div>
-                      </li>
-                      <li>
-                        <span class="spec-num">02</span>
-                        <div>
-                          <strong>Minha participação</strong>
-                          <p>Idealização e implementação completa de frontend, gráficos em Canvas, banco em nuvem, sincronização offline e integração com APIs.</p>
-                        </div>
-                      </li>
-                      <li>
-                        <span class="spec-num">03</span>
-                        <div>
-                          <strong>Funcionalidades que implementei</strong>
-                          <p>Biblioteca com 132+ exercícios, mapa muscular, gráficos de 1RM em Canvas 2D, cronômetro, feed social, suporte nutricional por texto/foto e Strava API.</p>
-                        </div>
-                      </li>
-                      <li>
-                        <span class="spec-num">04</span>
-                        <div>
-                          <strong>Tecnologias utilizadas</strong>
-                          <p>JavaScript ES6+, HTML5 Canvas 2D, Service Worker (PWA), Supabase Cloud, Google Gemini API e Strava API.</p>
-                        </div>
-                      </li>
-                      <li>
-                        <span class="spec-num">05</span>
-                        <div>
-                          <strong>Validação e manutenção</strong>
-                          <p>Publicado na Vercel com funcionamento local-first validado em aparelho móvel real e código mantido no GitHub.</p>
-                        </div>
-                      </li>
-                    </ol>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
-
-          <div class="deep-pane" data-deep-pane="propositos" role="tabpanel">
+          <div class="deep-pane active" data-deep-pane="propositos" role="tabpanel">
             <div class="deep-grid-3">
               <article class="deep-card">
                 <div class="deep-card-head">
@@ -3680,7 +3659,7 @@ html.theme-contrast .deep-eyebrow {
   updateProgress();
 
   var railLinks = document.querySelectorAll('.rail-item');
-  var targetSecs = document.querySelectorAll('#perfil, #summary, #engemap, #arca, #nossofluxo, #viviboty, #ir-alem, #formacao');
+  var targetSecs = document.querySelectorAll('#perfil, #summary, #engemap, #arca, #nossofluxo, #viviboty, #forja, #ir-alem, #formacao');
 
   var secOffsets = [];
   function cacheSecOffsets() {
@@ -4302,9 +4281,9 @@ html.theme-contrast .deep-eyebrow {
         "    <ul><li>Loja virtual em produção para cliente real com envio de pedidos formatados no WhatsApp (pronta entrega e encomenda) e painel administrativo com cadastro assistido por foto/texto via Gemini.</li></ul>",
         "  </div>",
         "  <div class='item'>",
-        "    <h3>FORJA — Aplicativo Complementar de Treino (PWA)</h3>",
+        "    <h3>FORJA — Plataforma de Treino, IA &amp; Performance (PWA)</h3>",
         "    <p class='meta'>JavaScript ES6+, HTML5 Canvas 2D, Service Worker, Supabase Cloud, Google Gemini, Strava API</p>",
-        "    <ul><li>PWA mobile-first com biblioteca de 132+ exercícios, gráficos de evolução de carga em Canvas 2D, mapa muscular, funcionamento offline e registro nutricional.</li></ul>",
+        "    <ul><li>PWA mobile-first inspirada no Hevy com AI Coach multifuncional (Gemini), biblioteca de 132+ exercícios com guias biomecânicos, análise nutricional de macros e 9 micronutrientes por linguagem natural, heatmap corporal anatômico, tracking de 1RM com Canvas e sincronização em nuvem via Supabase.</li></ul>",
         "  </div>",
         "  <h2>Formação &amp; Base em Robótica</h2>",
         "  <ul>",
@@ -4454,9 +4433,9 @@ html.theme-contrast .deep-eyebrow {
       repoUrl: "https://github.com/Murilo-Rogerio/Vivi-Boty"
     },
     forja: {
-      tag: "PROJETO COMPLEMENTAR · 2026 · PWA FITNESS",
+      tag: "APROFUNDAMENTO TÉCNICO · 2026 · PWA FITNESS",
       title: "FORJA",
-      sub: "Aplicativo de Treino, Gráficos em Canvas 2D e Modo Offline",
+      sub: "Plataforma de Treino, IA & Performance (PWA)",
       kpis: [
         { label: "Gráficos", val: "HTML5 Canvas 2D" },
         { label: "Assistente", val: "Google Gemini" },
@@ -4688,11 +4667,6 @@ html.theme-contrast .deep-eyebrow {
     });
   }
 
-  if (window.location.hash === '#forja') {
-    selectDeepTab('forja');
-    setDeepOpen(true, true);
-  }
-
   // Project Category Filter Tabs
   var filterTabs = document.querySelectorAll('.pf-tab');
   var projectCells = document.querySelectorAll('.project-cell');
@@ -4719,21 +4693,7 @@ html.theme-contrast .deep-eyebrow {
         }
       });
 
-      if (filter === 'fullstack' || filter === 'pwa') {
-        selectDeepTab('forja');
-        setDeepOpen(true, false);
-      } else if (filter === 'webgis') {
-        if (!deepUserOpened) {
-          setDeepOpen(false, false);
-        } else {
-          var activeDeep = document.querySelector('.deep-tab.active');
-          if (activeDeep && activeDeep.getAttribute('data-deep-tab') === 'forja') {
-            selectDeepTab('propositos');
-          } else {
-            syncLayoutAfterToggle();
-          }
-        }
-      } else if (!deepUserOpened) {
+      if (!deepUserOpened) {
         setDeepOpen(false, false);
       } else {
         syncLayoutAfterToggle();
