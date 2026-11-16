@@ -155,6 +155,8 @@ html.no-effects .panel {
     radial-gradient(760px 540px at 90% 4%,   rgba(54,104,214,.10), transparent 60%),
     radial-gradient(900px 720px at 72% 110%, rgba(88,58,178,.08),  transparent 56%),
     var(--bg);
+  transform:translateZ(0);
+  will-change:transform;
 }
 
 .grain{
@@ -199,9 +201,10 @@ html.cursor-live #cursor-ring.link{
   will-change:transform;
   z-index:50; display:none; flex-direction:column; gap:16px;
   padding:14px 10px; border-radius:99px;
-  background:var(--surface); border:1px solid var(--line);
-  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  background:rgba(12, 12, 16, 0.82); border:1px solid var(--line);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
   box-shadow:0 12px 32px -12px rgba(0,0,0,.5);
+  contain:layout paint;
 }
 .side-rail.left{ left:32px; }
 .side-rail.right{ right:32px; border-radius:20px; padding:18px 12px; align-items:center; }
@@ -360,8 +363,8 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
   background:var(--surface);
   border:1px solid var(--line);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.045);
+  contain:layout;
   transition:
-    transform .35s var(--ease),
     background-color .3s ease,
     border-color .3s ease,
     box-shadow .3s ease;
@@ -369,12 +372,19 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
 
 .panel.tilt{
   transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+  will-change:transform;
+  transition:transform .4s var(--ease), background-color .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+.panel.tilt.is-tilting{
+  transition:background-color .3s ease, border-color .3s ease, box-shadow .3s ease !important;
 }
 
 .panel::before{
   content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
   background:radial-gradient(520px circle at var(--mx,-600px) var(--my,-600px), rgba(255,255,255,.055), transparent 42%);
   opacity:0; transition:opacity .45s ease;
+  contain:paint;
 }
 
 .panel::after{
@@ -386,6 +396,7 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
           mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
           mask-composite:exclude;
   opacity:0; transition:opacity .45s ease;
+  contain:paint;
 }
 
 @media (hover:hover){
@@ -393,18 +404,6 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
     background-color:var(--surface-2);
     border-color:var(--line-2);
     box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 20px 48px -20px rgba(0,0,0,.75);
-    transition:
-      background-color .3s ease,
-      border-color .3s ease,
-      box-shadow .3s ease;
-  }
-  .panel.tilt:hover{
-    will-change:transform;
-    transition:
-      transform .08s linear,
-      background-color .3s ease,
-      border-color .3s ease,
-      box-shadow .3s ease;
   }
   .panel:hover::before,
   .panel:hover::after{ opacity:1; }
@@ -435,6 +434,8 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
     rgba(255,255,255,0) 300deg,
     rgba(139,92,246,.35) 360deg);
   animation:ring-spin 7s linear infinite;
+  will-change:transform;
+  transform:translateZ(0);
 }
 .avatar-core{
   position:absolute; inset:4px; border-radius:50%;
@@ -506,6 +507,12 @@ html.theme-light .rail-item{ background:rgba(0,0,0,.2); }
   display:flex; gap:0;
   width:max-content;
   animation:marquee 30s linear infinite;
+  will-change:transform;
+  transform:translateZ(0);
+}
+#survey-svg{
+  contain:strict;
+  will-change:transform;
 }
 .marquee:hover .marquee-track{ animation-play-state:paused; }
 .marquee-track > span{
@@ -3632,7 +3639,6 @@ html.theme-contrast .deep-eyebrow {
   }
 
   var progressEl = document.getElementById("progress");
-  var progressPending = false;
   var maxScroll = 1;
 
   function updateMaxScroll() {
@@ -3641,7 +3647,6 @@ html.theme-contrast .deep-eyebrow {
   updateMaxScroll();
 
   function updateProgress() {
-    progressPending = false;
     if (!progressEl) return;
     var pct = (window.scrollY / maxScroll) * 100;
     if (pct < 0) pct = 0;
@@ -3650,27 +3655,21 @@ html.theme-contrast .deep-eyebrow {
     progressEl.setAttribute("aria-valuenow", String(Math.round(pct)));
   }
 
-  window.addEventListener("scroll", function () {
-    if (!progressPending) {
-      progressPending = true;
-      requestAnimationFrame(updateProgress);
-    }
-  }, { passive: true });
-  updateProgress();
-
   var railLinks = document.querySelectorAll('.rail-item');
   var targetSecs = document.querySelectorAll('#perfil, #summary, #engemap, #viviboty, #arca, #nossofluxo, #forja, #ir-alem, #formacao');
 
   var secOffsets = [];
   function cacheSecOffsets() {
     secOffsets = [];
+    var curScrollY = window.scrollY;
     targetSecs.forEach(function(sec) {
       var id = sec.getAttribute('id');
       if (id) {
+        var rect = sec.getBoundingClientRect();
         secOffsets.push({
           id: id,
-          top: sec.offsetTop,
-          height: sec.offsetHeight
+          top: rect.top + curScrollY,
+          height: rect.height
         });
       }
     });
@@ -3691,26 +3690,39 @@ html.theme-contrast .deep-eyebrow {
     });
   });
 
-  var scrollspyPending = false;
+  var currentActiveSec = null;
   function updateScrollspy() {
-    scrollspyPending = false;
     var scrollPos = window.scrollY + 250;
+    var activeId = null;
     for (var i = 0; i < secOffsets.length; i++) {
       var item = secOffsets[i];
       if (scrollPos >= item.top && scrollPos < item.top + item.height) {
-        railLinks.forEach(function(link) {
-          link.classList.toggle('active', link.getAttribute('data-sec') === item.id);
-        });
+        activeId = item.id;
         break;
       }
     }
+    if (activeId && activeId !== currentActiveSec) {
+      currentActiveSec = activeId;
+      railLinks.forEach(function(link) {
+        link.classList.toggle('active', link.getAttribute('data-sec') === activeId);
+      });
+    }
   }
-  window.addEventListener('scroll', function() {
-    if (!scrollspyPending) {
-      scrollspyPending = true;
-      requestAnimationFrame(updateScrollspy);
+
+  var scrollTicking = false;
+  function onScrollTick() {
+    scrollTicking = false;
+    updateProgress();
+    updateScrollspy();
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!scrollTicking) {
+      scrollTicking = true;
+      requestAnimationFrame(onScrollTick);
     }
   }, { passive: true });
+  updateProgress();
 
   var backTopBtn = document.getElementById('rail-back-top');
   if (backTopBtn) {
@@ -3849,6 +3861,7 @@ html.theme-contrast .deep-eyebrow {
       var isTilt = allowTilt && card.classList.contains("tilt");
       var rafId = null;
       var curX = 0, curY = 0;
+      var lastRelX = -9999, lastRelY = -9999;
 
       function updateCardHover() {
         rafId = null;
@@ -3856,20 +3869,25 @@ html.theme-contrast .deep-eyebrow {
         if (!r) return;
         var relX = curX - r.left;
         var relY = curY - r.top;
-        card.style.setProperty("--mx", relX.toFixed(0) + "px");
-        card.style.setProperty("--my", relY.toFixed(0) + "px");
+        if (Math.abs(relX - lastRelX) > 2 || Math.abs(relY - lastRelY) > 2) {
+          lastRelX = relX;
+          lastRelY = relY;
+          card.style.setProperty("--mx", relX.toFixed(0) + "px");
+          card.style.setProperty("--my", relY.toFixed(0) + "px");
 
-        if (isTilt && r.width > 0 && r.height > 0) {
-          var px = (relX / r.width)  - 0.5;
-          var py = (relY / r.height) - 0.5;
-          card.style.setProperty("--ry", (px * 4).toFixed(1) + "deg");
-          card.style.setProperty("--rx", (py * -4).toFixed(1) + "deg");
+          if (isTilt && r.width > 0 && r.height > 0) {
+            var px = (relX / r.width)  - 0.5;
+            var py = (relY / r.height) - 0.5;
+            card.style.setProperty("--ry", (px * 4).toFixed(1) + "deg");
+            card.style.setProperty("--rx", (py * -4).toFixed(1) + "deg");
+          }
         }
       }
 
       card.addEventListener("pointerenter", function () {
         if (document.documentElement.classList.contains('no-effects')) return;
         card._rect = card.getBoundingClientRect();
+        if (isTilt) card.classList.add("is-tilting");
       }, { passive: true });
 
       card.addEventListener("pointermove", function (e) {
@@ -3888,6 +3906,9 @@ html.theme-contrast .deep-eyebrow {
           rafId = null;
         }
         card._rect = null;
+        lastRelX = -9999;
+        lastRelY = -9999;
+        if (isTilt) card.classList.remove("is-tilting");
         card.style.setProperty("--mx", "-600px");
         card.style.setProperty("--my", "-600px");
         if (isTilt) {
@@ -3914,12 +3935,23 @@ html.theme-contrast .deep-eyebrow {
   }
 
   var spot = document.querySelector(".spotlight");
-  if (spot && finePointer && !reduceMotion) {
+  var ring = document.getElementById("cursor-ring");
+
+  if (finePointer && !reduceMotion && (spot || ring)) {
+    var spotActive = false, spotRunning = false;
     var tx = window.innerWidth / 2, ty = window.innerHeight * 0.3;
-    var cx = tx, cy = ty, active = false;
-    var spotRunning = false;
+    var cx = tx, cy = ty;
+
+    var cursorShown = false, ringRunning = false, isLink = false;
+    var mx = -100, my = -100;
+    var rx = -100, ry = -100;
+
+    if (ring) {
+      document.documentElement.classList.add("cursor-on");
+    }
 
     function tickSpot() {
+      if (!spot) return;
       var dx = tx - cx;
       var dy = ty - cy;
       if (Math.abs(dx) > 0.15 || Math.abs(dy) > 0.15) {
@@ -3935,38 +3967,8 @@ html.theme-contrast .deep-eyebrow {
       }
     }
 
-    function wakeSpot() {
-      if (!spotRunning) {
-        spotRunning = true;
-        requestAnimationFrame(tickSpot);
-      }
-    }
-
-    window.addEventListener("pointermove", function (e) {
-      if (document.documentElement.classList.contains('no-effects')) return;
-      tx = e.clientX; ty = e.clientY;
-      if (!active) {
-        active = true;
-        cx = tx; cy = ty;
-        spot.style.transform = "translate3d(" + (cx - 300).toFixed(1) + "px," + (cy - 300).toFixed(1) + "px,0)";
-        spot.classList.add("on");
-      }
-      wakeSpot();
-    }, { passive: true });
-  }
-
-  var ring = document.getElementById("cursor-ring");
-
-  if (ring && finePointer && !reduceMotion) {
-    document.documentElement.classList.add("cursor-on");
-
-    var mx = -100, my = -100;
-    var rx = -100, ry = -100;
-    var cursorShown = false;
-    var ringRunning = false;
-    var isLink = false;
-
     function tickRing() {
+      if (!ring) return;
       var dx = mx - rx;
       var dy = my - ry;
       if (Math.abs(dx) > 0.2 || Math.abs(dy) > 0.2) {
@@ -3982,43 +3984,64 @@ html.theme-contrast .deep-eyebrow {
       }
     }
 
-    function wakeRing() {
-      if (!ringRunning) {
-        ringRunning = true;
-        requestAnimationFrame(tickRing);
-      }
-    }
-
     document.addEventListener("pointermove", function (e) {
       if (document.documentElement.classList.contains('no-effects')) return;
-      mx = e.clientX;
-      my = e.clientY;
-      if (!cursorShown) {
+      var x = e.clientX, y = e.clientY;
+
+      if (spot) {
+        tx = x; ty = y;
+        if (!spotActive) {
+          spotActive = true;
+          cx = tx; cy = ty;
+          spot.style.transform = "translate3d(" + (cx - 300).toFixed(1) + "px," + (cy - 300).toFixed(1) + "px,0)";
+          spot.classList.add("on");
+        }
+        if (!spotRunning) {
+          spotRunning = true;
+          requestAnimationFrame(tickSpot);
+        }
+      }
+
+      if (ring) {
+        mx = x; my = y;
+        if (!cursorShown) {
+          cursorShown = true;
+          rx = mx; ry = my;
+          document.documentElement.classList.add("cursor-live");
+          ring.style.transform = "translate3d(" + rx.toFixed(1) + "px," + ry.toFixed(1) + "px,0) translate(-50%,-50%)";
+        }
+        if (!ringRunning) {
+          ringRunning = true;
+          requestAnimationFrame(tickRing);
+        }
+      }
+    }, { passive: true });
+
+    if (ring) {
+      document.addEventListener("mouseleave", function () {
+        cursorShown = false;
+        document.documentElement.classList.remove("cursor-live");
+      }, { passive: true });
+      document.addEventListener("mouseenter", function () {
         cursorShown = true;
-        rx = mx; ry = my;
         document.documentElement.classList.add("cursor-live");
-        ring.style.transform = "translate3d(" + rx.toFixed(1) + "px," + ry.toFixed(1) + "px,0) translate(-50%,-50%)";
-      }
-      wakeRing();
-    }, { passive: true });
+      }, { passive: true });
 
-    document.addEventListener("mouseleave", function () {
-      cursorShown = false;
-      document.documentElement.classList.remove("cursor-live");
-    });
-    document.addEventListener("mouseenter", function () {
-      cursorShown = true;
-      document.documentElement.classList.add("cursor-live");
-    });
-
-    document.addEventListener("mouseover", function (e) {
-      if (!e.target || !e.target.closest) return;
-      var hit = !!e.target.closest("a, button, .chip, [data-copy], .rail-item, input, textarea, select, .pf-tab");
-      if (hit !== isLink) {
-        isLink = hit;
-        ring.classList.toggle("link", isLink);
-      }
-    }, { passive: true });
+      var lastTarget = null;
+      document.addEventListener("mouseover", function (e) {
+        var t = e.target;
+        if (!t || t === lastTarget || !t.closest) return;
+        lastTarget = t;
+        var tag = t.tagName;
+        var hit = tag === "A" || tag === "BUTTON" || tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" ||
+          t.hasAttribute("data-copy") || t.classList.contains("chip") || t.classList.contains("rail-item") || t.classList.contains("pf-tab") ||
+          !!t.closest("a, button, .chip, [data-copy], .rail-item, input, textarea, select, .pf-tab");
+        if (hit !== isLink) {
+          isLink = hit;
+          ring.classList.toggle("link", isLink);
+        }
+      }, { passive: true });
+    }
   }
 
   function animateCount(el) {
