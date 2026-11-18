@@ -7,7 +7,7 @@
 [![Licença](https://img.shields.io/badge/Licen%C3%A7a-MIT-violet?style=flat-square)](LICENSE)
 [![Deploy](https://img.shields.io/badge/Deploy-Vercel-black?logo=vercel&style=flat-square)](https://meuportifolio-pessoal.vercel.app/)
 
-Portfólio web moderno, de alto desempenho e totalmente responsivo, desenvolvido com arquitetura Bento Grid. O projeto reúne minha trajetória acadêmica, experiência corporativa na Engemap Geoinformação, noções práticas de desenvolvimento web aplicadas com apoio de Inteligência Artificial, geotecnologia (WebGIS) e robótica, além de 4 aplicações reais em produção.
+Portfólio web moderno, de alto desempenho e totalmente responsivo, desenvolvido com arquitetura Bento Grid. O projeto reúne minha trajetória acadêmica, experiência corporativa na Engemap Geoinformação, experiência prática em desenvolvimento web aplicado com apoio de Inteligência Artificial, geotecnologia (WebGIS) e robótica, além de 4 aplicações reais em produção.
 
 🔗 **Acesse o portfólio ao vivo:** [meuportifolio-pessoal.vercel.app](https://meuportifolio-pessoal.vercel.app/)
 
@@ -43,7 +43,7 @@ O objetivo principal deste projeto é apresentar o meu perfil profissional e té
 - 🏷️ **Filtro Dinâmico de Projetos:** Filtragem instantânea por categoria (`Todos`, `WebGIS`, `Aplicações Web`, `PWA / Mobile`).
 - 🧭 **Navegação & Scrollspy:** Barra lateral com indicação de seção ativa e retorno rápido ao topo.
 - 📊 **Barra de Progresso de Leitura:** Indicador no topo acompanhando a rolagem da página.
-- 📄 **Gerador de Currículo PDF:** Impressão e exportação dinâmica do currículo em formato A4 numa nova aba.
+- 📄 **Visualizador e Impressão de Currículo A4:** Visualização e exportação dinâmica do currículo executivo em formato A4 pronto para impressão.
 - ⚡ **Atalhos Rápidos:** Botões para cópia instantânea de dados de contato (E-mail, WhatsApp) com notificações *Toast*.
 - 🕒 **Horário Local em Tempo Real:** Relógio digital configurado para o fuso horário de Assis, SP (BRT).
 - 📡 **Live GitHub Tracking:** Conexão direta com a API pública do GitHub exibindo o repositório e mensagem do commit mais recente em tempo real.
@@ -54,7 +54,7 @@ O objetivo principal deste projeto é apresentar o meu perfil profissional e té
 ## 🚀 Projetos em Destaque
 
 - **Engemap (RH e Produção WebGIS):** Experiência Corporativa (15 meses) iniciando em rotinas administrativas no Departamento Pessoal e posterior atuação em Produção: Mapeamento Móvel de ativos em nível de solo no WebGIS (visualizador 360°) e apoio prático em vetorização no AutoCAD a partir de imagens de drones.
-- **[Vivi Carvalho Boty](https://github.com/Murilo-Rogerio/Vivi-Boty)** ([Demo](https://www.vivicarvalhoboty.com.br/)): Catálogo e-commerce e vitrine digital com funil de vendas integrado diretamente ao WhatsApp, extração multimodal de cosméticos via Google Gemini 3.8 Flash e painel administrativo com Edge Middleware.
+- **[Vivi Carvalho Boty](https://github.com/Murilo-Rogerio/Vivi-Boty)** ([Demo](https://www.vivicarvalhoboty.com.br/)): Catálogo e-commerce e vitrine digital com funil de vendas integrado diretamente ao WhatsApp, extração multimodal de cosméticos via Google Gemini Flash e painel administrativo com Edge Middleware.
 - **[Arca](https://github.com/Murilo-Rogerio/Arcaik)** ([Demo](https://arcaik-notes.vercel.app/)): Bloco de notas e organização pessoal PWA com captura de mídias (TikTok/YouTube) via Web Share Target do Android, compressão de imagens no cliente e backend Supabase com RLS.
 - **[Nosso Fluxo](https://github.com/Murilo-Rogerio/nossofluxo)** ([Demo](https://nossofluxo.vercel.app)): Gestão financeira pessoal completa com cotações automáticas de FIIs/Ações, projeção de recorrências e taxa CDI em tempo real via BrasilAPI.
 - **[FORJA](https://github.com/Murilo-Rogerio/Forja-gym)** ([Demo](https://theforge-rho.vercel.app)): Plataforma PWA de alta performance e mini rede social fitness inspirada no Hevy, com biblioteca completa de 132+ exercícios com guias biomecânicos e tracking de 1RM, AI Coach multifuncional (Google Gemini), contador de macros e 9 micronutrientes por linguagem natural, sincronização em nuvem e feed social em tempo real com Supabase, heatmap anatômico corporal em vermelho neon e gráficos de 1RM em Canvas 2D.
